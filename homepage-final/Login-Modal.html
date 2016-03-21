@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="animate/animate.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login-Modal</title>
+  </head>
+
+<script src="jquery/jquery.min.js"></script>
+<script type="text/javasccript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<style>
+#Login-Signup
+{
+  position: relative;
+  float:right;
+  color:white;
+}
+.modal-dialog
+{
+  width:100%;
+}
+.modal-header
+{
+  border:0;
+}
+.modal-footer
+{
+  min-height: 10%;
+  margin:auto;
+  text-align: center;
+  position:relative;
+}
+.modal-footer div
+{
+  display:inline-block;
+  margin: 0px auto;
+}
+.modal-footer-button
+{
+  text-align: center;
+}
+.modal-content
+{
+  background: #4285F4;
+  border-radius: 0;
+}
+
+#Login-Signup button
+{
+  border-radius: 0;
+  background: #4285F4;
+  color:white;
+  border:1px solid white;
+}
+.modal-header .row button
+{
+  border:0;
+}
+#Login-Signup input
+{
+  background: #4285F4;
+  border-radius: 0;
+  color:white;
+  border: 1px solid white;
+}
+#login-OR
+{
+  border-radius: 35px;
+}
+</style>
+<body>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Login-Signup">Open Modal</button>
+<div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-3" style="margin:0; padding:0;">
+            <button type="button" class="form-control btn btn-default">Log In</button>
+          </div>
+          <div class="col-md-3" style="margin:0; padding:0;">
+            <button type="button" class="form-control btn btn-default">Sign Up</button>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <h4 class="modal-title" id="">
+
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form name="login" method="post" role="form">
+          <div class="form-group row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <label for="username">Username</label>
+              <input name="username" type="text" class="form-control"></input>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <label for="password">Password</label>
+              <input name="password" type="password" class="form-control"></input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+              </div>
+            </div>
+            <div class="col-md-5" style="">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          </form>
+          <!--p align="center">
+            <button class="disabled btn btn-default" id="login-OR">OR</button>
+          </p-->
+        </div>
+
+      <div class="modal-footer row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          <button class="form-control btn btn-default modal-footer-button">facebook</button>
+        </div>
+        <div class="col-md-3">
+          <button class="form-control btn btn-default modal-footer-button">google</button>
+        </div>
+        <div class="col-md-3">
+          <button class="form-control btn btn-default modal-footer-button">LinkedIn</button>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</body>

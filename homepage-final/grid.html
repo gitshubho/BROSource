@@ -1,0 +1,405 @@
+<!DocType HTML>
+<Html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script src="jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+      var Wht=$(window).height();
+      var Wwt=$(window).width();
+      if(Wwt>Wht && Wwt>1000)
+      {
+        var card_height=Wht/3.6;
+        var card_header_ht=$(".card-header").height();
+        $(".customcard").css("height",card_height);
+        var card_body_ht=$(".customcard").height()/1.75;
+        $(".card-body").css("height",card_body_ht);
+        var card_footer_ht=$(".card-footer").height();
+        $(".card-footer").css("height",card_header_ht);
+        $(".customcard").css("font-size",card_height/2.1+"%");
+      }
+      else
+      {
+        var card_height=Wht/2.6;
+        var card_header_ht=$(".card-header").height();
+        $(".customcard").css("height",card_height);
+        var card_body_ht=$(".customcard").height()/1.85;
+        $(".card-body").css("height",card_body_ht);
+        $(".card-footer").css("height",card_header_ht);
+        $(".customcard").css("font-size",card_height/2.3+"%");
+      }
+});
+</script>
+<style>
+*{
+    font-family: 'Varela', sans-serif;
+  }
+body
+{
+    background-color: #4285F4;
+}
+.customcard
+{
+  background:white;
+  width:100%;
+  right:10%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.card-holder:hover .customcard
+{
+    transition: all 0.3s;
+    box-shadow: 7px 7px 3px rgba(0,0,0,0.1);
+}
+.grid-padding
+{
+
+  padding:1%;
+  margin:0;
+}
+.card-padding
+{
+  padding-top:3%;
+  padding-left: 9%;
+  padding-right: 9%;
+}
+.topcard
+{
+  padding-top:0;
+}
+#features
+{
+  padding-left: 3%;
+  padding-right:3%;
+  padding-bottom: 2%;
+  background:rgb(240,240,240);
+}
+.card-profile-image
+{
+  border-radius: 100%;
+  position: relative;
+  margin:0;
+  padding:0;
+}
+.card-header
+{
+  border-bottom:0.5px solid;
+  padding:0;
+  margin:0;
+  border-color: rgb(217,217,217);
+}
+.card-body
+{
+padding-top: 1.5%;
+padding-bottom: 1.5%;
+}
+.card-footer
+{
+border-top: 0.5px solid;
+border-color: rgb(217,217,217);
+padding:0;
+margin:0;
+}
+@media(min-width:1000px)
+{
+  .card-button
+  {
+    padding-top:1%;
+    padding-bottom: 1%;
+    padding-left: 7%;
+    padding-right: 7%;
+    background-color: #4285F4;
+    color: white;
+    float: right;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 0.45%;
+  }
+}
+@media(max-width:1000px)
+{
+  .card-button
+  {
+    padding-top:0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 7%;
+    padding-right: 7%;
+    background-color: #4285F4;
+    color: white;
+    float: right;
+    border-radius: 25px;
+    text-align: center;
+    margin-top:0;
+  }
+}
+.card-footer
+{
+  padding-top: 1%;
+}
+a:hover
+{
+  text-decoration: none;
+}
+.recent
+{
+  background-color: rgb(84,95,102);
+  padding-bottom: 3.5%;
+  padding-top: 1.5%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#features-heading
+{
+color: rgb(84,95,102);
+font-size: 275%;
+}
+#recent-heading
+{
+  color:white;
+  font-size: 275%;
+}
+.grid-text
+{
+  overflow-y:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
+  display: -moz-box;
+  -moz-line-clamp: 5;
+  -moz-box-orient: vertical;
+}
+</style>
+<body>
+<div class="container-fluid" id="features">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p id="features-heading"><b>FEATURED</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer" >
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles.
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+          <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding card-holder">
+          <div class="customcard card-padding">
+          <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles... <a class="more">more"</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+  <div class="container-fluid">
+  <div class="row recent">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p id="recent-heading"><b>RECENT</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer" >
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles.
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+          <div class="row card-header">
+              <div class="col-md-2 col-xs-2 card_image_holder">
+                <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-10 col-xs-10 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+</HTML>
