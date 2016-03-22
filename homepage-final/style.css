@@ -396,3 +396,78 @@ font-size: 275%;
   -webkit-animation-name: flipOutY;
   animation-name: flipOutY;
 }
+
+
+/*The Card Flipping CSS*/
+
+/* entire container, keeps perspective */
+        .flip-container1 {
+            perspective: 1000; 
+        }
+        .flip-container2 {
+            perspective: 1000; 
+        }
+        .flip-container3 {
+            perspective: 1000; 
+        }
+        .flip-container4 {
+            perspective: 1000; 
+        }
+        .flip-container5 {
+            perspective: 1000; 
+        }
+        .flip-container6 {
+            perspective: 1000; 
+        }
+        /* flip the pane when hovered */
+        .flip-container-on-click .flipper, .flip-container.hover .flipper {
+            transform: rotateY(180deg);
+        }
+
+        
+
+        /* flip speed goes here */
+        .flipper {
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        /* hide back of pane during swap */
+        .front, .back {
+            backface-visibility: hidden;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        /* front pane, placed above back */
+        .front {
+            z-index: 2;
+            /* for firefox 31 */
+            transform: rotateY(0deg);
+            padding:5px;
+
+        }
+
+       
+
+        /* back, initially hidden pane */
+        .back {
+            transform: rotateY(180deg);
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        .back-card{
+          padding: 10px;
+        }
+
+        .back-content{
+          border: #000 1px solid;
+        }
+        .gap{
+          height: 5px;
+        }

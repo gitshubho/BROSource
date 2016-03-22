@@ -66,31 +66,6 @@ $(document).ready(function()
       }
 
       /*Creating the Animation For the Card Flip*/
-      $(".customcard").children(".card-front").addClass("visible");
-      $(".customcard").children(".card-flip").addClass("invisible");
-      $(".customcard").click(function()
-      {
-        $(this).addClass("animated flipOutY");
-        setTimeout(animate,600,$(this));
-      });
-
-      function animate(thisObj)
-      {
-        thisObj.removeClass("animated flipOutY");
-        if(thisObj.children(".card-front").hasClass("visible"))
-        {
-        thisObj.children(".card-front").removeClass("visible");
-        thisObj.children(".card-front").addClass("invisible");
-        thisObj.children(".card-flip").removeClass("invisible");
-        thisObj.children(".card-flip").addClass("visible");
-        }
-        else
-        {
-          thisObj.children(".card-front").removeClass("invisible");
-          thisObj.children(".card-front").addClass("visible");
-          thisObj.children(".card-flip").removeClass("visible");
-          thisObj.children(".card-flip").addClass("invisible");
-        }
-      }
+      
 
 });
