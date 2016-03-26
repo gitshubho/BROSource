@@ -266,8 +266,9 @@ font-size: 275%;
     padding-right: 0;
     text-align: center;
   }
+
   .search{
-     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 30px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold;
+     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 15px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold;
   }
 .search-on-scroll{
      width: 100%;  visibility: visible; transition: all 0.5s; left: 20px; font-weight: bold;
@@ -294,7 +295,7 @@ font-size: 275%;
     text-align: center;
   }
   .search{
-     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 30px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; top:60px;
+     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 10px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; top:60px;
   }
  .search-on-scroll{
      width: 100%;  visibility: visible; transition: all 0.5s; left: -20px; font-weight: bold; top:60px;
@@ -402,29 +403,29 @@ font-size: 275%;
 
 /* entire container, keeps perspective */
         .flip-container1 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         .flip-container2 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         .flip-container3 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         .flip-container4 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         .flip-container5 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         .flip-container6 {
-            perspective: 1000; 
+            perspective: 1000;
         }
         /* flip the pane when hovered */
         .flip-container-on-click .flipper, .flip-container.hover .flipper {
             transform: rotateY(180deg);
         }
 
-        
+
 
         /* flip speed goes here */
         .flipper {
@@ -452,7 +453,7 @@ font-size: 275%;
 
         }
 
-       
+
 
         /* back, initially hidden pane */
         .back {
@@ -471,3 +472,172 @@ font-size: 275%;
         .gap{
           height: 5px;
         }
+
+/* Modal CSS */
+.login-modal-toggle
+{
+  text-decoration: none;
+  height:100%;
+  cursor: pointer;
+  text-align:center;
+  color:black;
+}
+.login-modal-toggle-text
+{
+  margin-top:2%;
+  margin-left: -13%;
+  text-align: left;
+  visibility: visible;
+}
+.login-modal-image
+{
+  position: relative;
+  width:50%;
+  height: auto;
+  display: inline-block;
+}
+#Login-Signup
+{
+  position:absolute;
+  color:white;
+}
+.modal-header
+{
+  border:0;
+}
+.modal-body
+{
+  height: 100%;
+  overflow-y: auto;
+}
+.modal-footer
+{
+  min-height: 10%;
+  margin:auto;
+  text-align: center;
+  position:relative;
+}
+.modal-footer div
+{
+  display:inline-block;
+  margin: 0px auto;
+}
+.modal-footer-button
+{
+  width:auto;
+}
+.modal-content
+{
+  background: #4285F4;
+  border-radius: 0;
+}
+
+.modal-header .row button
+{
+  border:0;
+}
+.modal-footer-button
+{
+  width: 150%;
+}
+.deselected
+{
+  border-radius: 0;
+  background: #4285F4;
+  color:white;
+  border:1px solid white;
+}
+.selected
+{
+  border-radius: 0;
+  background: white;
+  color:#4285F4;
+  border:1px solid white;
+}
+.modal-header-button-holder:hover .modal-header-button,
+.modal-body-button-holder:hover .modal-body-button
+{
+  text-decoration: none;
+}
+#Login-Signup input
+{
+  background: #4285F4;
+  border-radius: 0;
+  color:white;
+  border: 1px solid white;
+}
+#login-OR
+{
+  border-radius: 35px;
+}
+#facebook-btn-holder:hover #facebook-btn
+{
+  background:#3B5998;
+  transition: all 0.6s;
+}
+#google-btn-holder:hover #google-btn
+{
+  background:#DD4B39;
+  transition: all 0.6s;
+}
+#linkedin-btn-holder:hover #linkedin-btn
+{
+  background:#4875B4;
+  transition: all 0.6s;
+}
+.Login
+{
+  position:relative;
+}
+.Signup
+{
+  position:absolute;
+}
+.borderless
+{
+  border:0;
+}
+.bordered
+{
+  border-top: 1px solid white;
+}
+@media(min-width:1500px)
+{
+  .login-modal-image
+  {
+    width:35%;
+  }
+}
+@media(max-width:600px)
+{
+  #Login-Signup
+  {
+    font-size: 70%;
+  }
+  #Login-Signup button
+  {
+    font-size: 80%;
+  }
+  .login-modal-image
+  {
+    width:500px;
+    height:500px;
+  }
+  .login-modal-toggle-text
+  {
+    visibility:hidden;
+    position:absolute;
+  }
+  .Signup
+  {
+    width:90%;
+  }
+}
+@media(min-width:600px)
+{
+  .Signup
+  {
+    width:92.5%;
+  }
+}
+/*Modal CSS Ends*/

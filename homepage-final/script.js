@@ -65,7 +65,32 @@ $(document).ready(function()
         $(".card-body").css("height",card_body_ht);
       }
 
-      /*Creating the Animation For the Card Flip*/
-      
+      /*Modal JS, The Signup/Login Toggle Effect*/
+      $(".modal-header-button").on("click",function()
+      {
+        $(".modal-header-button").toggleClass("selected");
+        $(".modal-header-button").toggleClass("deselected");
+        $(".Login").toggleClass("visible");
+        $(".Login").toggleClass("invisible");
+        $(".Signup").toggleClass("visible");
+        $(".Signup").toggleClass("invisible");
+        $(".modal-footer").toggleClass("borderless");
+        $(".modal-footer").toggleClass("bordered");
+      });
+
+      $(".modal-body").bind("scroll", function()
+      {
+        var modal_Body_Height = $(".modal-body").height();
+         if ($(".modal-body").scrollTop()>modal_Body_Height/5)
+         {
+           $("#modal-scroll-icon").removeClass("glyphicon-menu-down");
+           $("#modal-scroll-icon").addClass("glyphicon-menu-up");
+         }
+         else
+         {
+           $("#modal-scroll-icon").removeClass("glyphicon-menu-up");
+           $("#modal-scroll-icon").addClass("glyphicon-menu-down");     }
+      });
+
 
 });
