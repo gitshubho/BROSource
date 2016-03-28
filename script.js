@@ -76,13 +76,11 @@ $(document).ready(function()
       });
       $("#modal-login-holder").on("click",function()
       {
-        $(".modal-content").addClass("animated slideInUp");
         $(".Login").show();
         $(".Signup").hide();
       });
       $("#modal-signup-holder").on("click",function()
       {
-        $(".modal-content").removeClass("animated slideInUp");
         $(".Signup").show('fast');
         $(".Login").hide();
       });
