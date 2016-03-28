@@ -66,18 +66,26 @@ $(document).ready(function()
       }
 
       /*Modal JS, The Signup/Login Toggle Effect*/
+      $(".Signup").hide();
       $(".modal-header-button").on("click",function()
       {
         $(".modal-header-button").toggleClass("selected");
         $(".modal-header-button").toggleClass("deselected");
-        $(".Login").toggleClass("visible");
-        $(".Login").toggleClass("invisible");
-        $(".Signup").toggleClass("visible");
-        $(".Signup").toggleClass("invisible");
         $(".modal-footer").toggleClass("borderless");
         $(".modal-footer").toggleClass("bordered");
       });
-
+      $("#modal-login-holder").on("click",function()
+      {
+        $(".modal-content").addClass("animated slideInUp");
+        $(".Login").show();
+        $(".Signup").hide();
+      });
+      $("#modal-signup-holder").on("click",function()
+      {
+        $(".modal-content").removeClass("animated slideInUp");
+        $(".Signup").show('fast');
+        $(".Login").hide();
+      });
       $(".modal-body").bind("scroll", function()
       {
         var modal_Body_Height = $(".modal-body").height();

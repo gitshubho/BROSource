@@ -55,10 +55,10 @@
                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                    <div class="row">
                      <div class="col-md-3 col-xs-3"></div>
-                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;">
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
                        <button type="button" class="form-control modal-header-button selected">Log In</button>
                      </div>
-                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;">
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-signup-holder">
                        <button type="button" class="form-control modal-header-button deselected">Sign Up</button>
                      </div>
                      <div class="col-md-3 col-xs-3"></div>
@@ -67,7 +67,7 @@
                  <!-- Modal Body-->
                  <div class="modal-body">
                    <!-- This is the Signup Form that is Invisible onload-->
-                   <div class="Signup invisible">
+                   <div class="Signup">
                      <form name="signup" method="post" role="form">
                        <div class="form-group row">
                          <div class="col-md-1 col-xs-1"></div>
@@ -118,7 +118,7 @@
                    <!-- Signup Form Ends-->
 
                    <!-- This is the Login Form-->
-                   <div class="Login visible">
+                   <div class="Login">
                    <form name="login" method="post" role="form">
                      <div class="form-group row">
                        <div class="col-md-1 col-xs-1"></div>
@@ -156,12 +156,12 @@
                  <!-- Modal Footer-->
                  <div class="modal-footer row bordered">
                    <!-- This contains the Down Arrow for the Signup Content-->
-                   <div class="Signup invisible" style="width:64%;">
+                   <div class="Signup" style="width:64%;">
                      <br>
                      <span class="glyphicon glyphicon-menu-down" id="modal-scroll-icon"></span>
                    </div>
                    <!-- Facebook,Google and LinkedIn  -->
-                   <div class="Login visible">
+                   <div class="Login">
                    <div class="col-md-1 col-xs-1"></div>
                    <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="facebook-btn-holder">
                        <button class="form-control  modal-footer-button deselected" id="facebook-btn">Facebook</button>
