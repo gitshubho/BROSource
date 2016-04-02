@@ -98,5 +98,19 @@ $(document).ready(function()
            $("#modal-scroll-icon").addClass("glyphicon-menu-down");     }
       });
 
+    /*Profile Page-Self Begins*/
+    /**/
+    /**/
+    /**/
+    /**/
+
+    $(".profile-self-info-footer-tab").on("click",function()
+    {
+
+        $(".profile-self-info-footer-tab").addClass("topborder-invisible");
+        $(".profile-self-info-footer-tab").removeClass("topborder-visible");
+        $(this).toggleClass("topborder-invisible");
+        $(this).toggleClass("topborder-visible");
+    });
 
 });

@@ -2,6 +2,7 @@
   {
     background:#4285F4;
   }
+
   .hello-image
   {
     float:left;
@@ -621,7 +622,7 @@ font-size: 275%;
   }
   .login-modal-image
   {
-  width: 100%; 
+  width: 100%;
   }
   .login-modal-toggle-text
   {
@@ -641,3 +642,199 @@ font-size: 275%;
   }
 }
 /*Modal CSS Ends*/
+
+
+/*Profile Page CSS Begins*/
+/**/
+/**/
+/**/
+
+.profile-self-aboutme-holder
+{
+  background:white;
+  width:100%;
+  height:40%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.profile-self-info
+{
+  background:white;
+  width:100%;
+  height:65%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.profile-self-findproject-holder
+{
+  text-align: center;
+  width:100%;
+  cursor pointer;
+  background:white;
+  padding:5%;
+  margin-top:5%;
+  margin-bottom:5%;
+}
+.profile-self-aboutme-header
+{
+  height:60%;
+  border-bottom: 1px solid rgb(204,204,204);
+  text-align: center;
+}
+.profile-self-image-holder
+{
+  height:70%;
+  display: inline-block;
+  padding:5%;
+}
+.profile-self-image
+{
+  border-radius: 100%;
+  width:auto;
+  height:75%;
+}
+.profile-self-name-holder
+{
+  margin-top:-10%;
+}
+.profile-self-name-holder p
+{
+  margin:0;
+}
+.profile-self-aboutme-footer
+{
+  text-align: center;
+  margin-top:2%;
+}
+.profile-self-info-body
+{
+  height:85%;
+  border-bottom:1px solid rgb(204,204,204);
+}
+.profile-self-info-footer-tab
+{
+  padding:2%;
+  margin:0;
+  float:left;
+  width:20%;
+  border: 1px solid rgb(204,204,204);
+  border-bottom:none;
+  border-top: none;
+}
+.topborder-visible
+{
+  border-top:5px solid #4285F4;
+  transition: 0.2s all;
+}
+.topborder-invisible
+{
+  border-top:0px;
+  transition: 0.2s all;
+}
+#profile-self-nav-right li p
+{
+  padding:1%;
+}
+.profile-self-nav-image
+{
+  height:7%;
+  width:auto;
+  border-radius: 100%;
+}
+
+/*Profile Page - Viewed By Others*/
+.profile-other-banner
+{
+  background:white;
+  width:100%;
+  height:65%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.profile-other-details
+{
+  background:white;
+  width:100%;
+  height:24.5%;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+}
+.profile-other-workdetails
+{
+  list-style-type: none;
+  padding:1%;
+  font-size: 80%;
+}
+.profile-other-workdetails li
+{
+  text-align: left;
+  left:0;
+  padding:6%;
+  border-top: 1px solid rgb(204,204,204);
+  cursor:pointer;
+}
+.notification-count
+{
+  float:right;
+  font-weight: bold;
+}
+.profile-heading
+{
+  background:#4285F4;
+  color:white;
+}
+.profile-other-contact
+{
+  text-align: center;
+  width:100%;
+  cursor pointer;
+  background:white;
+  padding:5%;
+  margin-top:5%;
+  margin-bottom:5%;
+  font-size: 80%;
+}
+.profile-other-banner-header
+{
+    border-bottom: 1px solid rgb(204,204,204);
+}
+.profile-other-banner-image
+{
+  border-radius: 100%;
+  margin-top: -22%;
+  margin-left: 15%;
+  height:26%;
+  width:auto;
+  border: 3px solid white;
+}
+.profile-other-banner-name
+{
+  margin-top: 1%;
+  margin-left: 0.5%;
+}
+.profile-other-banner-name p
+{
+  font-size: 80%;
+}
+.profile-other-banner-name p span
+{
+  font-weight: bold;
+  font-size: 170%;
+}
+.profile-other-banner-body-sections
+{
+  margin-top:2%;
+  margin-bottom:2%;
+  border-bottom: 1px solid rgb(204,204,204);
+}
+.CustomBadge
+{
+  background: white;
+  border: 1px solid #4285F4;
+  color: #4285F4;
+  padding:0.5%;
+  border-radius: 25px;
+  font-size: 80%;
+  padding-left: 0.7%;
+  padding-right: 0.7%;
+}
