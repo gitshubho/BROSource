@@ -1,0 +1,54 @@
+.custom-long-card{
+    background: #ffffff; box-shadow: #0f0f0f 0px 0px 10px 0px; padding: 20px; font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.new-cards{
+    position:relative; top: 100px; padding: 10px;
+}
+
+.long-card-container{
+    padding: 5px;
+}
+
+.long-card-desc{
+	border:1px solid #3498db; padding:10px; color:#3498db;
+}
+.long-card-title{
+    position: relative;
+}
+.req, .apply    {
+     padding: 0px;
+}
+
+.profile-image img{
+	width: 60px; position: relative;
+}
+
+.req{
+    top: 20px;
+}
+
+.apply{
+    top: 20px;
+}
+
+.app{
+	background: #2ecc71;
+    padding:8px;
+    color: #ffffff;
+    border: 1px solid #2ecc71;
+}
+.more{
+    border:#2ecc71 1px solid;
+    padding:8px;
+}
+
+
+.bold-text{
+    font-weight:bolder;
+}
+
+.req-list{
+    color: #727272;
+}
