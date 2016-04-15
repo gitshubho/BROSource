@@ -7,6 +7,7 @@ from tornado.httpclient import AsyncHTTPClient
 from tornado.gen import engine, Task, coroutine
 
 #Other Libraries
+import urllib
 from motor import MotorClient
 import json
 import requests
@@ -89,6 +90,8 @@ class updateProfileHandler(RequestHandler):
         contact = self.get_argument('mobile')
         userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
         result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact,'skills':skills}})
+        message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
+        sendMessage(contact,message)
         self.redirect('/profile?update=True')
         
 
@@ -111,6 +114,33 @@ class logoutHandler(RequestHandler):
     def get(self):
         self.clear_cookie('user')
         self.redirect('/?loggedOut=true')
+
+
+'''
+I am creating some functions over here. Please create a new module, copy the following functions into that module. 
+Import the module into this file and remove functions from this file.
+'''
+def sendMessage(number,message):
+
+    authkey = "81434A3rGba9dY75583ac07" # Your authentication key.
+    mobiles = number # Multiple mobiles numbers separated by comma.
+    message = message # Your message to send.
+    sender = "BROSRC" # Sender ID,While using route4 sender id should be 6 characters long.
+    route = "transactional" # Define route
+    # Prepare you post parameters
+    values = {
+              'authkey' : authkey,
+              'mobiles' : mobiles,
+              'message' : message,
+              'sender' : sender,
+              'route' : route
+              }
+    url = "https://control.msg91.com/api/sendhttp.php" # API URL
+    postdata = urllib.urlencode(values) # URL encoding the data here.
+    req = urllib2.Request(url, postdata)
+    response = urllib2.urlopen(req)
+    # output = response.read() # Get Response
+    # print output # Print Response
 
 settings = dict(
 		db=db,
