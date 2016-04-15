@@ -57,7 +57,9 @@ class onBoardingHandler(RequestHandler):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             print userInfo
-        self.render("onboarding.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            self.render("onboarding.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+        else:
+            self.redirect('/?status=False')
 class signupHandler(RequestHandler):
     @removeslash
     @coroutine
