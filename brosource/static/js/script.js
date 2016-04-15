@@ -25,7 +25,7 @@ $(document).ready(function()
           interval: false
         });
       });
-
+    $(".homepage-carousel").css("top",Wht/4.5);
     /* Navbar-Animation effect*/
       $(window).bind("scroll", function() {
       var navHeight = $( window ).height();
@@ -126,8 +126,26 @@ $(document).ready(function()
 
 $(window).resize(function()
 {
+    var Wht=$(window).height();
+    var Wwt=$(window).width();
     var NavHt=$("#onboarding-nav").height();
     $("#onboarding-carousel-indicators div").css("height",NavHt/2);
     $("#onboarding-carousel-indicators div").css("width",NavHt/2);
     $("#onboarding-carousel-indicators span").css("font-size",NavHt/4);
+
+    if(Wht<Wwt)
+    {
+      $(".hello-image-center").css("height",Wht*1.1/3);
+      $(".hello-image-out").css("height",Wht*1/3);
+      $(".hello-image-outermost").css("height",Wht*0.9/3);
+    }
+    else
+    {
+      $(".hello-image-center").css("height",Wht*0.9/3);
+      $(".hello-image-out").css("height",Wht*0.8/3);
+      $(".hello-image-outermost").css("height",Wht*0.6/3);
+
+    }
+    $(".homepage-carousel").css("top",Wht/4.5);
+
 });
