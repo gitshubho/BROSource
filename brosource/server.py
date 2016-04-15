@@ -33,12 +33,6 @@ class MainHandler(RequestHandler):
 
 class loginHandler(RequestHandler):
 	@removeslash
-	def get(self):
-	        if bool(self.get_secure_cookie("user")):
-	                self.redirect("/")
-                self.render("login.html")
-
-	@removeslash
 	@coroutine
 	def post(self):
 		db = self.settings['db']
@@ -47,9 +41,9 @@ class loginHandler(RequestHandler):
 		result = yield db.users.find_one({'username':username,'password':password})
 		if bool(result):
 			self.set_secure_cookie("user", str(result['_id']))
-			self.redirect("/")
+			self.redirect("/profile")
 		else:
-			self.redirect("/login?status=False")
+			self.redirect("/?status=False")
 
 #Onboarding Handler. Once the user signs up, we will show him onboarding.(One time only)
 
@@ -91,13 +85,15 @@ class profileHandler(RequestHandler):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             print userInfo
-        self.render("profile_self.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            self.render("profile_self.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+        else:
+            self.redirect('/?loggedIn=False')
 class logoutHandler(RequestHandler):
     @removeslash
     @coroutine
     def get(self):
         self.clear_cookie('user')
-        self.redirect('login?loggedOut=true')
+        self.redirect('/?loggedOut=true')
 
 settings = dict(
 		db=db,
