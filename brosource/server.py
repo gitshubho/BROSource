@@ -73,7 +73,7 @@ class signupHandler(RequestHandler):
         if(bool(result)):
             self.redirect('/?username=taken')
         else:
-            result = yield db.users.insert({'username':username,'password':password,'email':email, 'name':name})
+            result = yield db.users.insert({'username':username,'password':password,'email':email, 'name':name,'mobile':'','address':'','skills':[]})
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
             print bool(self.get_secure_cookie("user"))
@@ -84,10 +84,11 @@ class updateProfileHandler(RequestHandler):
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie("user")
+        skills = self.get_argument('skills',[]).split(',')
         address = self.get_argument('address', '')
         contact = self.get_argument('mobile')
         userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-        result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact}})
+        result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact,'skills':skills}})
         self.redirect('/profile?update=True')
         
 
