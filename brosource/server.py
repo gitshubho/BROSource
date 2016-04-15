@@ -9,6 +9,7 @@ from tornado.gen import engine, Task, coroutine
 #Other Libraries
 import urllib
 from motor import MotorClient
+from bson import json_util
 import json
 import requests
 import os
@@ -42,7 +43,7 @@ class loginHandler(RequestHandler):
 		result = yield db.users.find_one({'username':username,'password':password})
 		if bool(result):
 			self.set_secure_cookie("user", str(result['_id']))
-			self.redirect("/profile")
+			self.redirect("/profile/me")
 		else:
 			self.redirect("/?status=False")
 
@@ -92,7 +93,7 @@ class updateProfileHandler(RequestHandler):
         result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact,'skills':skills}})
         message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
         sendMessage(contact,message)
-        self.redirect('/profile?update=True')
+        self.redirect('/profile/me?update=True')
         
 
 class profileHandler(RequestHandler):
@@ -115,6 +116,15 @@ class logoutHandler(RequestHandler):
         self.clear_cookie('user')
         self.redirect('/?loggedOut=true')
 
+
+class userProfileHandler(RequestHandler):
+    @coroutine
+    def get(self):
+        userId = self.get_argument('id','')
+        data = []
+        userData = yield db.users.find_one({'_id':ObjectId(userId)})
+        data.append(json.loads(json_util.dumps(userData)))
+        self.render('profile_others.html',result= dict(data=data))
 
 '''
 I am creating some functions over here. Please create a new module, copy the following functions into that module. 
@@ -156,7 +166,8 @@ application = Application([
     (r"/signup", signupHandler),
     (r"/login", loginHandler),
     (r"/logout",logoutHandler),
-    (r"/profile", profileHandler),
+    (r"/profile/me", profileHandler),
+    (r"/profile/user",userProfileHandler),
     (r"/welcome",onBoardingHandler),
     (r"/update",updateProfileHandler)
 ], **settings)
