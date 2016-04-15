@@ -37,7 +37,7 @@
         <ul class="nav navbar-nav navbar-right custom-pull" id="profile-self-nav-right">
           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
           <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
+          <li><p align="right"><b>{{result['userInfo']['name']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
           <li><img src="../static/images/17.jpg" class="img-responsive profile-self-nav-image"></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -59,8 +59,8 @@
                     <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
                   </div>
                     <div class="profile-self-name-holder">
-                      <p><b>Jim Stone</b></p>
-                      <p>Pune,India<br>myemail@gmail.com</p>
+                      <p><b>{{result['userInfo']['name']}}</b></p>
+                      <p>Pune,India<br>{{result['userInfo']['email']}}</p>
                     </div>
                 </div>
                 <div class="profile-self-aboutme-footer">
