@@ -51,7 +51,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-              <form method="post" action="#" class="CustomForm" name="omboarding-profile">
+              <form method="post" action="/update" class="CustomForm" name="omboarding-profile">
                 <div class="row form-row">
                   <div class="col-md-3">
                     <div class="onboarding-image-holder">
@@ -90,13 +90,16 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Address</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" placeholder="">
+                      <input type="text" class="form-control" name = "address" id="onboarding-firstname" placeholder="">
                     </div>
                     <div class="form-group">
                       <label>Mobile</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" placeholder="">
+                      <input type="text" class="form-control" name = "mobile" id="onboarding-firstname" placeholder="">
                     </div>
                   </div>
+                   <p align="center">
+<button type = "submit" id="myButton" class="float-center submit-button" align = "center" >Update and explore</button>
+</p>
                 </div>
               </form>
             </div>
@@ -129,14 +132,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-  <p align="center">
-<button id="myButton" class="float-center submit-button" align = "center" >Lets explore </button>
-</p>
-<script type="text/javascript">
-    document.getElementById("myButton").onclick = function () {
-        location.href = "/profile";
-    };
-</script>
-                         
+
+ 
 </body>
 </HTML>

@@ -77,6 +77,20 @@ class signupHandler(RequestHandler):
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
             print bool(self.get_secure_cookie("user"))
+
+class updateProfileHandler(RequestHandler):
+    @coroutine
+    @removeslash
+    def post(self):
+        db = self.settings['db']
+        current_id = self.get_secure_cookie("user")
+        address = self.get_argument('address', '')
+        contact = self.get_argument('mobile')
+        userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+        result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact}})
+        self.redirect('/profile?update=True')
+        
+
 class profileHandler(RequestHandler):
     @coroutine
     @removeslash
@@ -112,11 +126,12 @@ application = Application([
     (r"/login", loginHandler),
     (r"/logout",logoutHandler),
     (r"/profile", profileHandler),
-    (r"/welcome",onBoardingHandler)
+    (r"/welcome",onBoardingHandler),
+    (r"/update",updateProfileHandler)
 ], **settings)
 
 #main init
 if __name__ == "__main__":
 	server = HTTPServer(application)
-	server.listen(8001)
+	server.listen(5000)
 	IOLoop.current().start()
