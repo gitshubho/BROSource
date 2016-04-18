@@ -25,6 +25,7 @@
        <div class="row">
          <div class="col-md-4 col-xs-2 title">
             <h3><b>BRO</b>Source</h3>
+		<h2>result['name']</h2>
          </div>
          <div class="col-md-4 col-xs-8">
            <input type="text" class="search rounded-box" placeholder="SEARCH SKILLS">

@@ -126,9 +126,6 @@
    }
    /*Searchbar finish*/
 
-   .homepage-carousel{
-    top: 200px;
-   }
 
    .custom-navbar{
     position: fixed; top: 55px; width: 100%; left: 0px; z-index: 1; background: #fff !important; padding-bottom: 0px !important; transition: all 0s; border-bottom: 10px #4285f4 solid !important; margin-bottom: 0px !important;

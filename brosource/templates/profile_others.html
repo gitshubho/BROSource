@@ -8,7 +8,6 @@
     <title>BroSOURCE</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   </head>
-
 <script src="../static/js/jquery.min.js"></script>
 <script type="text/javasccript" src="../static/js/bootstrap.min.js"></script>
 <script src="../static/bootstrap.min.js"></script>
@@ -60,13 +59,13 @@
             </div>
             <div class="col-md-9 col-md-pull-1">
               <div class="profile-other-banner-name">
-                <p><span>Jim Stone</span></b><br>New York, USA<br>userid@gmail.com</p>
+                <p><span>{{result['data'][0]['name']}} </span></b><br>{{result['data'][0]['address']}} <br>{{result['data'][0]['email']}} </p>
               </div>
             </div>
           </div>
           <div class="profile-other-banner-body">
             <div class="profile-other-banner-body-sections">
-              <p><b>Skills</b><br><br><span class="CustomBadge">Web Development</span></p>
+              <p><b>Skills</b><br><br><span class="CustomBadge">{{result['data'][0]['skills']}} </span></p>
             </div>
           </div>
         </div>
