@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   </head>
 
-<script src=""></script>
+<script src="../static/js/profile.js"></script>
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="../static/js/script.js"></script>
@@ -36,7 +36,7 @@
         <br>
         <ul class="nav navbar-nav navbar-right custom-pull" id="profile-self-nav-right">
           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+          <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-9 not-in-view');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
           <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
           <li><img src="../static/images/17.jpg" class="img-responsive profile-self-nav-image"></li>
         </ul>
@@ -249,6 +249,12 @@
                         <div class="apply text-center"><div class="row"><div class="more col-md-6">More Details </div> <div class="app col-md-6">Apply Now</div> </div></div>
             </div></div> </div>
     </div>
+      <div class="row">
+          <div class="notification">
+              <div class="col-md-3 col-md-offset-11 bar">Notification Center</div>
+          </div>
+      </div>
+
   </div>
 
     <br><br><br><br><br><br>

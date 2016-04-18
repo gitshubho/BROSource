@@ -131,3 +131,5 @@ $(window).resize(function()
     $("#onboarding-carousel-indicators div").css("width",NavHt/2);
     $("#onboarding-carousel-indicators span").css("font-size",NavHt/4);
 });
+
+

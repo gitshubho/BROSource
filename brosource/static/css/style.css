@@ -1060,3 +1060,17 @@ font-size: 275%;
 {
   text-decoration: none;
 }
+
+/*Styles for notification views in profile_self.html*/
+ .notification{
+     height: 100%; position: absolute; top: 30px; left: 0px; width: 100%;
+ }
+ .bar{
+     background:#26333b; height: 100%; transition: all 0.5s;
+ }
+ body{
+     overflow-x: hidden;
+ }
+ .not-in-view{
+     transition: all 0.5s;
+ }
