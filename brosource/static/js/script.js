@@ -3,6 +3,7 @@ $(document).ready(function()
       /* Setting the Animation Of the home Page*/
       var Wht=$(window).height();
       var Wwt=$(window).width();
+      $(".cards").css("top",Wht/2);
       if(Wht<Wwt)
       {
         $(".hello-image-center").css("height",Wht*1.1/3);
@@ -26,43 +27,65 @@ $(document).ready(function()
         });
       });
     $(".homepage-carousel").css("top",Wht/4.5);
-    /* Navbar-Animation effect*/
-      $(window).bind("scroll", function() {
-      var navHeight = $( window ).height();
-         if ($(window).scrollTop()>navHeight/1.4) {
-            $('.search').addClass('search-on-scroll');
-            $('.initial-search').addClass('invisible');
-            $('.navbar-container').addClass('nav-fixed');
-            $('.search').removeClass('animated fadeOut');
-
-         }
-         else{
-            $('.search').removeClass('search-on-scroll');
-            $('.initial-search').removeClass('invisible');
-            $('.navbar-container').removeClass('nav-fixed');
-            $('.search').addClass('animated fadeOut')
-         }
-         });
 
          /*Seting the grid-card size */
-      var Wht=$(window).height();
-      var Wwt=$(window).width();
-      if(Wwt>Wht && Wwt>1000)
+    if(Wwt>Wht)
+    {
+
+      if(Wht>1000)
       {
-        var card_height=Wht/3.6;
-        var card_header_ht=$(".card-header").height();
+        var card_height=Wht/6;
         $(".customcard").css("height",card_height);
-        var card_body_ht=$(".customcard").height()/1.75;
-        $(".card-body").css("height",card_body_ht);
-        var card_footer_ht=$(".card-footer").height();
+        if(Wwt<1430 && Wwt>1000)
+        {
+          var card_height=Wht/5;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt<1700 && Wwt>1400)
+        {
+          var card_height=Wht/5.5;
+          $(".customcard").css("height",card_height);
+        }
       }
       else
       {
-        var card_height=Wht/2.6;
-        var card_header_ht=$(".card-header").height();
+        var card_height=Wht/3.3;
         $(".customcard").css("height",card_height);
-        var card_body_ht=$(".customcard").height()/1.85;
-        $(".card-body").css("height",card_body_ht);
+        if(Wwt<1340 && Wwt>1000)
+        {
+          var card_height=Wht/5;
+          $(".customcard").css("height",card_height);
+        }
+      }
+      if(Wwt>2000)
+      {
+        var card_height=Wht/5;
+        $(".customcard").css("height",card_height);
+      }
+
+    }
+      else
+      {
+        if(Wwt>700)
+        {
+          var card_height=Wht/6;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt>413)
+        {
+          var card_height=Wht/4;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt<330)
+        {
+          var card_height=Wht/2;
+          $(".customcard").css("height",card_height);
+        }
+        else
+        {
+          var card_height=Wht/3.6;
+          $(".customcard").css("height",card_height);
+        }
       }
 
       /*Modal JS, The Signup/Login Toggle Effect*/
@@ -148,6 +171,63 @@ $(window).resize(function()
     }
     $(".homepage-carousel").css("top",Wht/4.5);
 
+    if(Wwt>Wht)
+    {
+
+      if(Wht>1000)
+      {
+        var card_height=Wht/6;
+        $(".customcard").css("height",card_height);
+        if(Wwt<1430 && Wwt>1000)
+        {
+          var card_height=Wht/5;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt<1700 && Wwt>1400)
+        {
+          var card_height=Wht/5.5;
+          $(".customcard").css("height",card_height);
+        }
+      }
+      else
+      {
+        var card_height=Wht/3.3;
+        $(".customcard").css("height",card_height);
+        if(Wwt<1340 && Wwt>1000)
+        {
+          var card_height=Wht/5;
+          $(".customcard").css("height",card_height);
+        }
+      }
+      if(Wwt>2000)
+      {
+        var card_height=Wht/5;
+        $(".customcard").css("height",card_height);
+      }
+
+    }
+      else
+      {
+        if(Wwt>700)
+        {
+          var card_height=Wht/6;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt>413)
+        {
+          var card_height=Wht/4;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt<330)
+        {
+          var card_height=Wht/2;
+          $(".customcard").css("height",card_height);
+        }
+        else
+        {
+          var card_height=Wht/3.6;
+          $(".customcard").css("height",card_height);
+        }
+      }
+
 });
-
-

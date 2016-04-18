@@ -68,15 +68,12 @@
       top: -20px;
    }
 
-
-
-   .initial-search{
-      position: absolute; bottom:20px; left: 0px; z-index: 1; font-weight: bold; width: 100%;
+   .topbar span
+   {
+     font-size: 200%;
+     padding-top: 30%;
+     margin-right: 30%;
    }
-   .initial-search input{
-      box-shadow: 0px 0px 3px 0px; text-align: center; font-size: 13px; padding: 5px; width: 100%;
-   }
-
    .rounded-box{
       width: 100%; border-radius: 50px; border: 0px;
    }
@@ -148,7 +145,7 @@
     /*Styles for the grid and cards*/
 
 .cards{
-  position:absolute; top: 110% ;
+  position: relative;
 }
 
 .customcard
@@ -181,12 +178,12 @@
 {
   padding-top:0;
 }
-#features
+#features, #recents
 {
   padding-left: 3%;
   padding-right:3%;
   padding-bottom: 2%;
-  background:rgb(240,240,240);
+  background:rgb(84,95,102);;
 }
 .card-header
 {
@@ -226,15 +223,10 @@ a:hover
   padding-left: 3%;
   padding-right: 3%;
 }
-#features-heading
+.heading
 {
-color: rgb(84,95,102);
+color:white;
 font-size: 275%;
-}
-#recent-heading
-{
-  color:white;
-  font-size: 275%;
 }
 .grid-text
 {
@@ -272,14 +264,19 @@ font-size: 275%;
     padding-left: 0;
     padding-right: 0;
     text-align: center;
+    padding-bottom: 1%;
+    padding-top: 1%;
   }
 
   .search{
-     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 15px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold;
+     width: 100%; transition: all 0.5s; font-size:13px;  position: absolute;  margin-top: 15px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; visibility: visible; transition: all 0.5s; left: 20px; font-weight: bold;
   }
-.search-on-scroll{
-     width: 100%;  visibility: visible; transition: all 0.5s; left: 20px; font-weight: bold;
+
+  .topbar .search-col input[type=text]:focus
+  {
+    outline: none;
   }
+
 }
 @media(max-width: 600px){
   .carousel-caption{
@@ -297,14 +294,13 @@ font-size: 275%;
   }
   .card_image_holder
   {
+    padding: 1%;
     padding-left: 0;
     padding-right: 0;
     text-align: center;
   }
   .search{
      width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 10px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; top:60px;
-  }
- .search-on-scroll{
      width: 100%;  visibility: visible; transition: all 0.5s; left: -20px; font-weight: bold; top:60px;
   }
 }
@@ -323,7 +319,6 @@ font-size: 275%;
     background-color: #4285F4;
     color: white;
     float: right;
-    border-radius: 25px;
     text-align: center;
     margin-top: 0.45%;
   }
@@ -346,7 +341,6 @@ font-size: 275%;
     background-color: #4285F4;
     color: white;
     float: right;
-    border-radius: 25px;
     text-align: center;
     margin-top:0;
   }
@@ -638,14 +632,25 @@ font-size: 275%;
   {
     width:90%;
   }
+  .hide-on-small
+  {
+    display: none;
+  }
 }
+
 @media(min-width:600px)
 {
   .Signup
   {
     width:100%;
   }
+  .hide-on-large
+  {
+    display: none;
+  }
 }
+
+
 /*Modal CSS Ends*/
 
 
