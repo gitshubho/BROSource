@@ -158,11 +158,21 @@ def sendRequestToken(contact, authToken):
     sendMessage(contact, message)
 
 class forgotPasswordHandler(RequestHandler):
+    def get(self):
+        self.render('forgot.html')
+    @coroutine
     def post(self):
-        authToken = random.randint(10000,99999)
-        contact = self.get_argument('contact','')
-        if(contact!=''):
+        userName = self.get_argument('username','')
+        userInfo = yield db.users.find_one({'username': userName})
+        if(userInfo):
+            authToken = random.randint(10000,99999)
+            contact = userInfo['mobile']
             sendRequestToken(contact, authToken)
+            self.redirect('/forgot?sent=True')
+        else:
+            self.redirect('/forgot?username=False')
+
+
 
 settings = dict(
 		db=db,
@@ -181,7 +191,8 @@ application = Application([
     (r"/profile/me", profileHandler),
     (r"/profile/user",userProfileHandler),
     (r"/welcome",onBoardingHandler),
-    (r"/update",updateProfileHandler)
+    (r"/update",updateProfileHandler),
+    (r"/forgot",forgotPasswordHandler)
 ], **settings)
 
 #main init
