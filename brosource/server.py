@@ -18,6 +18,7 @@ import hashlib
 from bson.objectid import ObjectId
 import re
 import pymongo
+import random
 
 db = MotorClient()['brosource']
 
@@ -151,6 +152,17 @@ def sendMessage(number,message):
     response = urllib2.urlopen(req)
     # output = response.read() # Get Response
     # print output # Print Response
+
+def sendRequestToken(contact, authToken):
+    message = "Your one time token is : "+ str(authToken)
+    sendMessage(contact, message)
+
+class forgotPasswordHandler(RequestHandler):
+    def post(self):
+        authToken = random.randint(10000,99999)
+        contact = self.get_argument('contact','')
+        if(contact!=''):
+            sendRequestToken(contact, authToken)
 
 settings = dict(
 		db=db,
