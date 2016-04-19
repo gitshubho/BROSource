@@ -27,20 +27,23 @@
             <h3><b>BRO</b>Source</h3>
 
          </div>
-         <div class="col-md-4 col-xs-8">
-           <input type="text" class="search rounded-box" placeholder="SEARCH SKILLS">
+         <div class="col-md-4 col-xs-8 search-col">
+           <input type="text" class=" search rounded-box" placeholder="SEARCH SKILLS">
          </div>
          <div class="col-md-4 col-xs-2 col-md-push-1">
            <!-- The Login Modal Toggle Button-->
            {% if result['loggedIn'] == False %}
            <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-             <div class="row">
+             <div class="row hide-on-small">
               <div class="col-md-4 col-xs-4">
                 <img src="../static/images/Login-Icon.png" class="login-modal-image">
               </div>
               <div class="col-md-6 col-xs-6 login-modal-toggle-text">
                 <p><h4>Login/SignUp</h4></p>
               </div>
+            </div>
+            <div class="row hide-on-large">
+              <span class="glyphicon glyphicon-user"></span>
             </div>
           </a>
           {%else%}
@@ -50,7 +53,7 @@
                 <img src="../static/images/Login-Icon.png" class="login-modal-image">
               </div>
               <div class="col-md-6 col-xs-6 login-modal-toggle-text">
-                <p><h4>Hey, {{result['userInfo']['username']}} </h4></p>
+                <p><h4>Hey, {{result['userInfo']['username']}}</h4></p>
               </div>
             </div>
           </a>
@@ -196,19 +199,6 @@
            <!-- Login Modal Ends-->
 
 
-
-<!--The Search field initially seen before scrolling-->
-   <div class="container-fluid">
-      <div class="initial-search col-md-12">
-         <div class="row">
-               <div class="col-md-4 col-xs-2"></div>
-                  <div class="col-md-4 col-xs-8 top-more">
-                     <input type="text" class="rounded-box" placeholder="SEARCH SKILLS">
-                  </div>
-              <div class="col-xs-1 col-md-4"></div>
-         </div>
-      </div>
-
 <!--Navigation Bar-->
 <nav class="navbar navbar-default custom-navbar" role="navigation">
   <div class="container-fluid custom-navbar-container">
@@ -337,14 +327,86 @@
 
 
 <div class="cards">
+
+  <div class="gray-background new-cards-section">
+  <br>
+
+    <div class="new-cards container">
+      <div class="col-md-4 long-card-container">
+        <div class="custom-long-card col-md-12">
+          <div class="center">
+            <div class="img-circle text-center profile-image"><img src="../static/images/gdg.png" class="image"></div>
+            <div class="long-card-title text-center"><h5>BroSource</h5></div>
+            <div class="long-card-desc text-center">Full stack website developer</div>
+            <br>
+            <div class="req">
+              <div class="req-title text-center bold-text">Requirements:</div>
+              <ul class="req-list">
+                <li>Server network and hosting</li>
+                <li>Relational and non relational databases</li>
+                <li>Interaction with API and the external world</li>
+                <li>User interface and user experience</li>
+                <li>Quality assurance</li>
+                <li>Security concerns throughout the program</li>
+                <li>Understanding customer and business needs</li>
+              </ul>
+            </div>
+            <div class="apply text-center"><div class="row"><div class="more col-md-6">More Details </div> <div class="app col-md-6">Apply Now</div> </div></div>
+          </div> </div> </div>
+      <div class="col-md-4 long-card-container">
+        <div class="custom-long-card col-md-12">
+          <div class="center">
+            <div class="img-circle text-center profile-image"><img src="../static/images/gdg.png" class="image"></div>
+            <div class="long-card-title text-center"><h5>BroSource</h5></div>
+            <div class="long-card-desc text-center">Full stack website developer</div>
+            <br>
+            <div class="req">
+              <div class="req-title text-center bold-text">Requirements:</div>
+              <ul class="req-list">
+                <li>Server network and hosting</li>
+                <li>Relational and non relational databases</li>
+                <li>Interaction with API and the external world</li>
+                <li>User interface and user experience</li>
+                <li>Quality assurance</li>
+                <li>Security concerns throughout the program</li>
+                <li>Understanding customer and business needs</li>
+              </ul>
+            </div>
+            <div class="apply text-center"><div class="row"><div class="more col-md-6">More Details </div> <div class="app col-md-6">Apply Now</div> </div></div>
+          </div></div> </div>
+      <div class="col-md-4 long-card-container">
+        <div class="custom-long-card col-md-12">
+          <div class="center">
+            <div class="img-circle text-center profile-image"><img src="../static/images/gdg.png" class="image"></div>
+            <div class="long-card-title text-center"><h5>BroSource</h5></div>
+            <div class="long-card-desc text-center">Full stack website developer</div>
+            <br>
+            <div class="req">
+              <div class="req-title text-center bold-text">Requirements:</div>
+              <ul class="req-list">
+                <li>Server network and hosting</li>
+                <li>Relational and non relational databases</li>
+                <li>Interaction with API and the external world</li>
+                <li>User interface and user experience</li>
+                <li>Quality assurance</li>
+                <li>Security concerns throughout the program</li>
+                <li>Understanding customer and business needs</li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="apply text-center"><div class="row"><div class="more col-md-6">More Details </div> <div class="app col-md-6">Apply Now</div> </div></div>
+        </div></div> </div>
+  </div>
+
   <div class="container-fluid" id="features">
   <!-- Row which has FEATURED written-->
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
       <div class="row">
         <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
-          <p id="features-heading"><b>FEATURED</b></p>
+          <p class="heading"><b>FEATURED</b></p>
         </div>
       </div>
       <!--First Row containing three cards-->
@@ -367,7 +429,7 @@
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
 
                   </p>
                 </div>
@@ -416,7 +478,7 @@
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
 
                   </p>
                 </div>
@@ -458,7 +520,7 @@
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
 
                   </p>
                 </div>
@@ -481,219 +543,163 @@
           </div>
         </div>
       </div>
-      <!--The second row containing the next three cards-->
-      <div class="row">
-      <!--Card 4-->
-         <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-          <div class=" flip-container4" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container4').toggleClass('flip-container-on-click')">
-<div class="flipper">
-<div class="customcard card-padding" >
 
-
-      <!-- Card Front-->
-            <div class="front">
-              <div class="row card-header">
-                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
-                </div>
-                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
-                </div>
-              </div>
-              <div class="row card-body">
-                <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
-
-                  </p>
-                </div>
-              </div>
-              <div class="row card-footer" >
-                <div class="card-button">
-                  <a href="#"><b>101 Reviews</b></a>
-                </div>
-              </div>
-            </div>
-
-
-            <!--Card Back-->
-
-
-
-            <div class="table-responsive back">
-
-            </div>
-
-            </div>
-            </div>
-          </div>
-        </div>
- <!--Card 5-->
- <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-         <div class=" flip-container5" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container5').toggleClass('flip-container-on-click')">
-<div class="flipper">
-<div class="customcard card-padding" >
-
-
-      <!-- Card Front-->
-            <div class="front">
-              <div class="row card-header">
-                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
-                </div>
-                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
-                </div>
-              </div>
-              <div class="row card-body">
-                <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
-
-                  </p>
-                </div>
-              </div>
-              <div class="row card-footer" >
-                <div class="card-button">
-                  <a href="#"><b>101 Reviews</b></a>
-                </div>
-              </div>
-            </div>
-
-            <!--Card Back-->
-            <div class="table-responsive back">
-
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<!--Card 6, The last card in Featured-->
-<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-    <div class=" flip-container6" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container6').toggleClass('flip-container-on-click')">
-<div class="flipper">
-<div class="customcard card-padding" >
-
-
-      <!-- Card Front-->
-            <div class="front">
-              <div class="row card-header">
-                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
-                </div>
-                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
-                </div>
-              </div>
-              <div class="row card-body">
-                <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
-
-                  </p>
-                </div>
-              </div>
-              <div class="row card-footer" >
-                <div class="card-button">
-                  <a href="#"><b>101 Reviews</b></a>
-                </div>
-              </div>
-            </div>
-
-
-            <!--Card Back-->
-
-
-
-            <div class="table-responsive back">
-
-            </div>
-            </div>
-          </div>
-          </div>
-        </div>
-    </div>
     <div class="col-md-2"></div>
   </div>
 </div>
 </div>
 
-<!-- Recent Rows-->
 
-<div class="container-fluid">
-  <div class="row recent">
-    <div class="col-md-2"></div>
-      <div class="col-md-8">
+  <div class="container-fluid" id="recents">
+  <!-- Row which has RECENT written-->
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 ">
       <div class="row">
         <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
-          <p id="recent-heading"><b>RECENT</b></p>
+          <p class="heading"><b>RECENT</b></p>
         </div>
       </div>
+      <!--First Row containing three cards-->
       <div class="row">
+      <!--Card 1-->
         <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-          <div class="customcard card-padding">
-            <div class="row card-header">
-              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+          <div class=" flip-container1" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container1').toggleClass('flip-container-on-click')">
+              <div class="flipper">
+                <div class="customcard card-padding" >
+
+              <!-- Card Front-->
+              <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
               </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
+
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="row card-body">
-              <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
-               </p>
-              </div>
-            </div>
-            <div class="row card-footer" >
-              <a class="card-button" role="button"><b>101 Reviews</b></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-          <div class="customcard card-padding">
-            <div class="row card-header">
-              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
-              </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
               </div>
             </div>
-            <div class="row card-body">
-              <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles.
-               </p>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="back">
+              <div class="row back-card">
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can design a website</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can create an android app</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can do audio remastering</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can add cinematic effects and</div><div class="col-md-2 money">$9</div></div>
               </div>
-            </div>
-            <div class="row card-footer">
-              <a class="card-button" role="button"><b>101 Reviews</b></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
-          <div class="customcard card-padding">
-          <div class="row card-header">
-              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
-                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
-              </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
-              </div>
-            </div>
-            <div class="row card-body">
-              <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
-               </p>
-              </div>
-            </div>
-            <div class="row card-footer">
-              <a class="card-button" role="button"><b>101 Reviews</b></a>
             </div>
           </div>
         </div>
       </div>
     </div>
+<!--Card 2-->
+ <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container2" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container2').toggleClass('flip-container-on-click')">
+      <div class="flipper">
+          <div class="customcard card-padding" >
+            <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+            <div class="table-responsive back">
+
+            </div>
+
+          </div>
+          </div>
+        </div>
+    </div>
+    <!--Card 3-->
+<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container3" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container3').toggleClass('flip-container-on-click')">
+    <div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+            <div class="table-responsive back">
+
+            </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-md-2"></div>
   </div>
-  </div>
+</div>
+</div>
+
 </div>
 </div>
 
