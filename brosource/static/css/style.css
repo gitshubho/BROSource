@@ -1,6 +1,6 @@
  body
   {
-    background:#4285F4;
+    background:#4285F4; font-family: Montserrat;
   }
 .gray-background
 {
@@ -497,9 +497,18 @@ font-size: 275%;
   height: auto;
   display: inline-block;
 }
+
+ .login-modal-image-profile
+ {
+     position: relative;
+     width:100%;
+     height: auto;
+     display: inline-block;
+ }
+
 #Login-Signup
 {
-  position:absolute;
+  
   color:white;
 }
 .modal-header
@@ -508,7 +517,7 @@ font-size: 275%;
 }
 .modal-body
 {
-  height: 100%;
+
   overflow-y: auto;
 }
 .modal-footer
@@ -789,10 +798,20 @@ font-size: 275%;
 }
 
 .new-cards{
-    position:relative; padding: 10px;
+    position:relative; padding: 10px; width: 100%;
 }
-.new-cards-section{
-  height:150%;
+.new-cards-section {
+     width: 100%;
+}
+
+.all-new-cards-margin{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.second-row-in-self{
+    margin-top: 20px;
 }
 .long-card-container{
     padding: 5px;

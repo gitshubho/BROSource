@@ -33,13 +33,33 @@
           <li><a href="#"></a></li>
         </ul>
         <br>
-        <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+         <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
           <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
           <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
 
           <li><img src="../static/images/17.jpg" class="img-responsive profile-self-nav-image"></li>
         </ul>
+        
+        <!-- Login button to appear if not logged in.-->
+
+        <!-- <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+          <div class="col-md-4 col-xs-2 col-md-push-8">
+          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+            <div class="row hide-on-small">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image-profile">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+                <p><h4>Login/SignUp</h4></p>
+              </div>
+            </div>
+            <div class="row hide-on-large">
+              <span class="glyphicon glyphicon-user"></span>
+            </div>
+          </a>
+            </div>
+        </ul> -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
@@ -93,6 +113,141 @@
     <div class="col-md-1"></div>
   </div>
 
+
+  <!-- The Modal Begins-->
+  <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header">
+          <!--This contains the Login/Signup Selection Buttons-->
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="row">
+            <div class="col-md-3 col-xs-3"></div>
+            <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
+              <button type="button" class="form-control modal-header-button selected">Log In</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-signup-holder">
+              <button type="button" class="form-control modal-header-button deselected">Sign Up</button>
+            </div>
+            <div class="col-md-3 col-xs-3"></div>
+          </div>
+        </div>
+        <!-- Modal Body-->
+        <div class="modal-body">
+          <!-- This is the Signup Form that is Invisible onload-->
+          <div class="Signup">
+            <form name="signup" method="post" action="/signup" role="form">
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="name">Name</label>
+                  <input name="name" id="name" type="text" class="form-control"></input>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="emailID">Email Id</label>
+                  <input name="emailID" id="emailID" type="text" class="form-control"></input>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="username_signup">Username</label>
+                  <input name="username_signup" id="username_signup" type="text" class="form-control"></input>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="password_signup">Password</label>
+                  <input name="password_signup" id="password_signup" type="password" class="form-control"></input>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-5 col-xs-5">
+
+                </div>
+                <div class="col-md-5 col-xs-5 modal-body-button-holder">
+                  <p align="right">
+                    <button type="submit" class="btn selected">Let's Go</button>
+                  </p>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+            </form>
+          </div>
+          <!-- Signup Form Ends-->
+
+          <!-- This is the Login Form-->
+          <div class="Login">
+            <form name="login" method="post" action = "/login" role="form">
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="username">Username</label>
+                  <input name="username" id="username" type="text" class="form-control"></input>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="password">Password</label>
+                  <input name="password" id="password" type="password" class="form-control"></input>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-5 col-xs-5">
+                  <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                  </div>
+                </div>
+                <div class="col-md-5 col-xs-5 modal-body-button-holder" style="">
+                  <p align="right">
+                    <button type="submit" class="btn selected">Let Me In</button>
+                  </p>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+            </form>
+          </div>
+          <!-- Login Form Ends-->
+        </div>
+        <!-- Modal Footer-->
+        <div class="modal-footer row bordered">
+          <!-- This contains the Down Arrow for the Signup Content-->
+          <div class="Signup" style="width:64%;">
+            <br>
+            <span class="glyphicon glyphicon-menu-down" id="modal-scroll-icon"></span>
+          </div>
+          <!-- Facebook,Google and LinkedIn  -->
+          <div class="Login">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="facebook-btn-holder">
+              <button class="form-control  modal-footer-button deselected" id="facebook-btn">Facebook</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="google-btn-holder">
+              <button class="form-control modal-footer-button deselected" id="google-btn">Google</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="linkedin-btn-holder">
+              <button class="form-control modal-footer-button deselected" id="linkedin-btn">LinkedIn</button>
+            </div>
+            <div class="col-md-1 col-xs-1"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 
