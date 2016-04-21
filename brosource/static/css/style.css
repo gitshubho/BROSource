@@ -508,7 +508,7 @@ font-size: 275%;
 
 #Login-Signup
 {
-  
+
   color:white;
 }
 .modal-header
@@ -770,7 +770,6 @@ font-size: 275%;
 }
 #profile-self-search-bar-row div
 {
-  border-right: 1px solid rgb(204,204,204);
   display: inline-block;
   padding: 0.5%;
 }
@@ -780,9 +779,14 @@ font-size: 275%;
 }
 .profile-search-bar
 {
-  border:none;
+  border: 0;
   width:100%;
-  height:4%;
+  height:6%;
+}
+.profile-search-bar-holder
+{
+  border-left: 1px solid rgb(204,204,204);
+  border-right: 1px solid rgb(204,204,204);
 }
 .search-icon
 {
@@ -857,6 +861,56 @@ font-size: 275%;
 
 .req-list{
     color: #727272;
+}
+
+
+#display-none{
+  border-right: 1px solid rgb(204,204,204);
+
+ }
+@media (max-width: 600px){
+  #display-none{
+    font-size: 15px;
+  }
+  .search-icon{
+    margin-top: 5px;
+    height:50%;
+    padding-right: 10px;
+ }
+ .profile-self-search-bar-row{
+  height: 10%;
+ }
+ .profile-search-bar
+ {
+    height: 100%;
+ }
+ #profile-self-search-bar-row{
+  height: 2.1%;
+ }
+ .profile-self-aboutme-header{
+  overflow: hidden;
+ }
+ .profile-self-info-footer-tab
+ {
+   width:50%;
+ }
+}
+
+@media (max-width: 600px) and (max-height: 800px){
+  .new-cards-section{
+  height: 325%;
+ }
+
+}
+@media (max-width: 600px) and (max-height: 700px){
+  .new-cards-section{
+  height: 420%;
+ }
+}
+@media (max-width: 600px) and (max-height: 600px){
+  .new-cards-section{
+  height: 510%;
+ }
 }
 
 /*Profile Page - Viewed By Others*/
@@ -979,6 +1033,46 @@ font-size: 275%;
   border-bottom: 1px solid rgb(204,204,204);
 }
 
+.profile-container{
+  padding-bottom: 4%;
+  padding-top: 2%;
+}
+.customcard-profile
+{
+  background-color: white;
+  padding:3%;
+  display: inline-block;
+  width: 100%;
+   box-shadow: 7px 7px 3px rgba(0,0,0,0.1);
+   height: 9%;
+}
+.cards1{
+  margin-left: 9.5%;
+
+}
+.customcard-profile .badge{
+  background: #4285F4;
+  color: #fff;
+}
+
+}
+.profile-other-card-row{
+  margin-top: 1%;
+}
+.profile-other-card-heading{
+  margin-top: 4%;
+}
+.customcard-profile-blue{
+ background: #4285F4;
+ color: white;
+ padding: 3%;
+ display: inline-block;
+ width: 100%;
+ text-align: center;
+ height: 9%;
+ padding-top: 6%;
+  box-shadow: 7px 7px 3px rgba(0,0,0,0.1);
+}
 
 /*Onboarding*/
 /**/
