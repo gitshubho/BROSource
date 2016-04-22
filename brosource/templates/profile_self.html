@@ -35,10 +35,8 @@
         </ul>
         <br>
         <ul class="nav navbar-nav navbar-right custom-pull" id="profile-self-nav-right">
-          <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
-          <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-9 not-in-view');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
-          <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbsp<span class="hide-on-large">Messages</span></a></li>
+          <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-9 not-in-view');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp<span class="hide-on-large">Notifications</span>&nbsp&nbsp</a></li>
           <li><p align="right"><b>{{result['userInfo']['name']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
           <li><a href="/logout">Logout</a></li>
 

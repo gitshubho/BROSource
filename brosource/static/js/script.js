@@ -49,13 +49,8 @@ $(document).ready(function()
       }
       else
       {
-        var card_height=Wht/3.3;
+        var card_height=Wht/3;
         $(".customcard").css("height",card_height);
-        if(Wwt<1340 && Wwt>1000)
-        {
-          var card_height=Wht/5;
-          $(".customcard").css("height",card_height);
-        }
       }
       if(Wwt>2000)
       {
@@ -73,12 +68,17 @@ $(document).ready(function()
         }
         else if(Wwt>413)
         {
-          var card_height=Wht/4;
+          var card_height=Wht/3.4;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt>330)
+        {
+          var card_height=Wht/3;
           $(".customcard").css("height",card_height);
         }
         else if(Wwt<330)
         {
-          var card_height=Wht/2;
+          var card_height=Wht/3;
           $(".customcard").css("height",card_height);
         }
         else
@@ -191,13 +191,8 @@ $(window).resize(function()
       }
       else
       {
-        var card_height=Wht/3.3;
+        var card_height=Wht/3;
         $(".customcard").css("height",card_height);
-        if(Wwt<1340 && Wwt>1000)
-        {
-          var card_height=Wht/5;
-          $(".customcard").css("height",card_height);
-        }
       }
       if(Wwt>2000)
       {
@@ -215,12 +210,17 @@ $(window).resize(function()
         }
         else if(Wwt>413)
         {
-          var card_height=Wht/4;
+          var card_height=Wht/3.4;
+          $(".customcard").css("height",card_height);
+        }
+        else if(Wwt>330)
+        {
+          var card_height=Wht/3;
           $(".customcard").css("height",card_height);
         }
         else if(Wwt<330)
         {
-          var card_height=Wht/2;
+          var card_height=Wht/3;
           $(".customcard").css("height",card_height);
         }
         else
@@ -229,5 +229,6 @@ $(window).resize(function()
           $(".customcard").css("height",card_height);
         }
       }
+
 
 });

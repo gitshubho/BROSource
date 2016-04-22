@@ -66,11 +66,11 @@
                     </div>
                     <div class="form-group">
                       <label>Last Name</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" placeholder="">
+                      <input type="text" class="form-control" id="onboarding-lastname" placeholder="">
                     </div>
                     <div class="form-group">
                       <label>User Name</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" value="{{result['userInfo']['username']}}" >
+                      <input type="text" class="form-control" id="onboarding-username" value="{{result['userInfo']['username']}}" >
                     </div>
                   </div>
                 </div>
@@ -86,17 +86,17 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Address</label>
-                      <input type="text" class="form-control" name = "address" id="onboarding-firstname" placeholder="">
-                    </div><!-- 
+                      <input type="text" class="form-control" name = "address" id="onboarding-address" placeholder="">
+                    </div><!--
                     As of now , comma separated values of skills. Can change it to some other input types. -->
                     <div class="form-group">
                       <label>Skills(Comma separated)</label>
-                      <input type="text" class="form-control" name = "skills" id="onboarding-firstname" placeholder="" >
+                      <input type="text" class="form-control" name = "skills" id="onboarding-skills" placeholder="" >
                     </div>
 
                     <div class="form-group">
                       <label>Mobile</label>
-                      <input type="text" class="form-control" name = "mobile" id="onboarding-firstname" placeholder="">
+                      <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" placeholder="">
                     </div>
                   </div>
                    <p align="center">
@@ -116,11 +116,30 @@
         <div class="col-md-10">
           <form method="post" action="#" class="CustomForm">
             <div class="row">
-              <div class="col-md-11">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+              <div class="onboarding-skills-search">
 
+                <div class="form-group">
+                  <input type="text" class="form-control" name = "skills" id="onboarding-skills-search" placeholder="Search Skills" >
+                </div>
+
+            </div>
+            </div>
+          </div>
+          <br>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+              <div class="onboarding-added-skills-box">
+                <p>Adding skills to your profile lets clients find you easily and helps them to give you specific work</p>
+                <div class="skill-tag-item">
+                  <ul class="skill-tag-list">
+                    <li class="skill-tag"><span class="badge">Web Dev&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-remove"></span></span></li>
+                    <li class="skill-tag"><span class="badge">Android&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-remove"></span></span></li>
+                  </ul>
+                </div>
               </div>
-              <div class="col-md-1">
-
               </div>
             </div>
           </form>
@@ -135,6 +154,6 @@
     </a>
   </div>
 
- 
+
 </body>
 </HTML>
