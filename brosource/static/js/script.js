@@ -120,7 +120,6 @@ $(document).ready(function()
            $("#modal-scroll-icon").removeClass("glyphicon-menu-up");
            $("#modal-scroll-icon").addClass("glyphicon-menu-down");     }
       });
-
     /*Profile Page-Self Begins*/
     /**/
     /**/
@@ -135,16 +134,13 @@ $(document).ready(function()
         $(this).toggleClass("topborder-invisible");
         $(this).toggleClass("topborder-visible");
     });
-    var NavHt=$("#onboarding-nav").height();
-      $("#onboarding-carousel-indicators div").css("height",NavHt/2);
-      $("#onboarding-carousel-indicators div").css("width",NavHt/2);
-      $("#onboarding-carousel-indicators span").css("font-size",NavHt/4);
+    var NavHtOnboard=$("#onboarding-nav").height();
+      $("#onboarding-carousel-indicators div").css("height",NavHtOnboard/2);
+      $("#onboarding-carousel-indicators div").css("width",NavHtOnboard/2);
+      $("#onboarding-carousel-indicators span").css("font-size",NavHtOnboard/4);
 
-      var NavHt=$("#onboarding-nav").height();
-      $("#onboarding-carousel-indicators div").css("height",NavHt/2);
-      $("#onboarding-carousel-indicators div").css("width",NavHt/2);
-      $("#onboarding-carousel-indicators span").css("font-size",NavHt/4);
-
+     var NavHt=$(".navbar").height();
+      $(".bar").css("padding-top",NavHt);
 });
 
 $(window).resize(function()
@@ -230,5 +226,6 @@ $(window).resize(function()
         }
       }
 
-
+      var NavHt=$(".navbar").height();
+      $(".content").css("top",NavHt+20)
 });

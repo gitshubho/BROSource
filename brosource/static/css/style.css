@@ -2,6 +2,10 @@
   {
     background:#4285F4; font-family: Montserrat;
   }
+  .navbar
+  {
+    z-index: 2;
+  }
 .gray-background
 {
   background: rgb(240,240,240);
@@ -756,9 +760,10 @@ font-size: 275%;
 }
 .profile-self-nav-image
 {
-  height:7%;
+  height:15%;
   width:auto;
   border-radius: 100%;
+  margin-right: 10px;
 }
 #profile-self-search-bar-row
 {
@@ -1262,16 +1267,36 @@ font-size: 275%;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-/*Styles for notification views in profile_self.html*/
+/*Styles for notification views */
  .notification{
-     height: 100%; position: absolute; top: 30px; left: 0px; width: 100%; z-index: 1;
+   position: fixed; left: 0px; width: 100%;height: 100%;
  }
  .bar{
-     background:#26333b; height: 100%; transition: all 0.5s;
+     background:#26333b; height: 100%; transition: all 0.5s; color: white;
  }
+
+
+ /*Styles for message views in profile_other.html*/
+
+ .messages
+ {
+   height: 100%;
+   position: fixed;
+   left: 0;
+   width: 100%;
+ }
+
+ .message-bar
+ {
+   background: white;
+   transition: all 0.5s;
+   height: 100%;
+ }
+
  body{
      overflow-x: hidden;
  }
+
  .not-in-view{
      transition: all 0.5s;
  }
