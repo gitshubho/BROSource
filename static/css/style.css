@@ -1,6 +1,6 @@
  body
   {
-    background:#4285F4;
+    background:#4285F4; font-family: Montserrat;
   }
 .gray-background
 {
@@ -52,7 +52,7 @@
 
   /*Searchbar css*/
   *{
-      font-family: 'Varela', sans-serif;
+      
    }
    .topbar{
 
