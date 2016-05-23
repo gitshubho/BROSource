@@ -52,7 +52,7 @@
 
   /*Searchbar css*/
   *{
-      
+
    }
    .topbar{
 
@@ -92,6 +92,8 @@
       visibility: visible;
    }
 
+
+
    .navbar-container{
        background: #fff; height: 57px;
        position: fixed; top: 80px; left: 0px;
@@ -128,7 +130,7 @@
 
 
    .custom-navbar{
-    position: fixed; top: 55px; width: 100%; left: 0px; z-index: 1; background: #fff !important; padding-bottom: 0px !important; transition: all 0s; border-bottom: 10px #4285f4 solid !important; margin-bottom: 0px !important;
+    position: fixed; top: 60px; width: 100%; left: 0px; z-index: 2; background: #fff !important; padding-bottom: 0px !important; transition: all 0s; border-bottom: 10px #4285f4 solid !important; margin-bottom: 0px !important;
    }
 
 
@@ -481,6 +483,8 @@ font-size: 275%;
         }
 
 /* Modal CSS */
+
+
 .login-modal-toggle
 {
   text-decoration: none;
@@ -488,6 +492,7 @@ font-size: 275%;
   cursor: pointer;
   text-align:center;
   color:black;
+
 }
 .login-modal-toggle-text
 {
