@@ -18,7 +18,7 @@
 
   <div class="row">
       <div class="notification">
-          <div class="col-md-3 col-lg-3 col-lg-offset-12 col-md-offset-12 bar">
+          <div class="col-md-3 col-lg-3 bar">
               <div class="notification-content">
                 Notification Center
               </div>
@@ -28,7 +28,7 @@
 
   <div class="row">
       <div class="messages">
-          <div class="col-md-3 col-lg-3 col-lg-offset-12 col-md-offset-12 message-bar">
+          <div class="col-md-3 col-lg-3 message-bar">
               <div class="message-content">
                 Notification Center
               </div>
@@ -57,7 +57,7 @@
         <br>
          <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
           <li><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbsp<span class="hide-on-large">Messages</span></a></li>
-          <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-9 col-lg-offset-9 not-in-view');$('.notification').toggleClass('not-toggler');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp<span class="hide-on-large">Notifications</span>&nbsp&nbsp</a></li>
+          <li><a href="#" onclick="$('.bar').toggleClass('not-in-view');$('.notification').toggleClass('not-toggler');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp<span class="hide-on-large">Notifications</span>&nbsp&nbsp</a></li>
           <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
 
           <li><img src="../static/images/17.jpg" class="img-responsive profile-self-nav-image"></li>
@@ -131,7 +131,7 @@
         <div class="profile-other-contact">
           <a>\0</a>
         </div>
-        <div class="profile-other-contact" onclick="$('.message-bar').toggleClass('col-md-offset-9 col-lg-offset-9 not-in-view');$('.messages').toggleClass('not-toggler');">
+        <div class="profile-other-contact" onclick="$('.message-bar').toggleClass('not-in-view');$('.messages').toggleClass('not-toggler');">
           <a href="#">Message</a>
         </div>
         <div class="profile-other-contact">
