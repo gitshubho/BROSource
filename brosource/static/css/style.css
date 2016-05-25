@@ -121,9 +121,49 @@
       left:0px;
 
    }
+   .brand-name
+   {
+     text-align: left;
+     margin-top: 15px;
+     margin-left: -10px;
+     padding-left: 0;
+     font-size: 130%;
+   }
+   #homepage-menu
+   {
+     width: 300px;
+     background: rgb(240,240,240);
+     transition: all 0.3s;
+     padding: 0
+     margin:0;
+   }
+   #homepage-menu li a
+   {
+     font-size: 120%;
+      padding: 6%;
+      padding-left: 20%;
+      padding-right: 20%;
+      transition: all 0.3s
 
-   .title h3{
-      font-size: 20px;
+   }
+   #homepage-menu li
+   {
+    border-bottom: 0.5px solid rgb(204,204,204);
+   }
+   #homepage-menu a:hover
+   {
+     background: rgb(220,220,220);
+     transition: all 0.3s;
+   }
+   .homepage-menu-last-item
+   {
+     background: rgb(84,95,102);
+     color: white;
+   }
+
+   .homepage-menu-last-item a:hover
+   {
+     background: pink;
    }
    /*Searchbar finish*/
 
@@ -134,13 +174,13 @@
 
 
 
-   .link{
+   /*.link{
       color: #000 !important;  transition: all 0.2s;
       padding-bottom: 5px !important; border-bottom: 2px rgba(1,1,1,0) solid !important;
     }
     .link:hover{
       border-bottom: 6px #4285F4 solid !important; transition: all 0.2s; color: #4285f4 !important; padding-bottom: 1px !important;
-    }
+    }*/
     .custom-navbar-container{
       padding-bottom: 0px !important;
     }
@@ -149,9 +189,22 @@
     /*Styles for the grid and cards*/
 
 .cards{
-  position: relative;
+  margin-top: 5.5%;
 }
-
+@media(min-height: 1000px)
+{
+  .cards
+  {
+    margin-top: 9.4%;
+  }
+}
+@media (max-width:600px)
+{
+  .cards
+  {
+    margin-top: 30%;
+  }
+}
 .customcard
 {
   background:white;
@@ -200,6 +253,12 @@
 {
   text-align: left;
   padding:0;
+  padding-top: 10px;
+}
+.card-heading span
+{
+  font-weight: bold;
+  font-size: 120%;
 }
 .card-body
 {
@@ -663,6 +722,24 @@ font-size: 275%;
   }
 }
 
+.homepage-add-projects-button
+{
+  margin-top: 10%;
+}
+.green-button
+{
+  background: rgb(46,204,113);
+  color: white;
+  padding: 0;
+  font-size: 90%;
+  border: 0.5px solid white;
+}
+.green-button p
+{
+  text-align: center;
+  padding: 0;
+  padding-top: 10px;
+}
 
 /*Modal CSS Ends*/
 
@@ -802,7 +879,7 @@ font-size: 275%;
 /*Cards On Self View profile*/
 
 .custom-long-card{
-    background: #ffffff; box-shadow: #0f0f0f 0px 0px 1px 0px; padding: 20px; font-size: 11px;
+    background: #ffffff; box-shadow: #0f0f0f 0px 0px 1px 0px; padding: 15px;padding-top: 0;font-size: 11px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -825,23 +902,49 @@ font-size: 275%;
 .long-card-container{
     padding: 5px;
 }
+.long-card-heading{
+  background: #4285F4;
+  padding: 5px;
 
+
+}
+.long-card-title{
+  padding-left: 5%;
+  padding-top: 2%;
+  color: white;
+}
+.long-card-title span{
+  font-weight: bold;
+  font-size: 120%;
+}
 .long-card-desc{
-	border:1px solid #3498db; padding:10px; color:#3498db;
+	border:1px solid #3498db; padding:8px; color:#3498db;
+  margin-top: 20px;
 }
 .long-card-title{
     position: relative;
 }
-.req, .apply    {
+.long-card-tag-row{
+  padding: 10px;
+  background: rgb(235,245,252);
+}
+.long-card-tags{
+  background: white;
+  font-size: 85%;
+  color:#4285F4;
+  padding: 5px;
+  margin: 2px;
+  border: 0.5px solid #4285F4;
+}
+.long-card-body{
+  padding-top: 10px;
+}
+ .apply    {
      padding: 0px;
 }
 
 .profile-image img{
 	width: 60px; position: relative;
-}
-
-.req{
-    top: 20px;
 }
 
 .apply{
@@ -864,9 +967,6 @@ font-size: 275%;
     font-weight:bolder;
 }
 
-.req-list{
-    color: #727272;
-}
 
 
 #display-none{
@@ -1295,6 +1395,37 @@ font-size: 275%;
    height: 100%;
  }
 
+.footer
+{
+    position: relative;
+    background: rgb(47,60,68);
+    width: auto;
+    padding-top: 20px;
+    text-align: center;
+}
+.footer-tabs a
+{
+  text-decoration: none;
+  color: white;
+  font-size: 110%;
+}
+.footer-img
+{
+  margin-top: 20px;
+}
+.footer-img img
+{
+  height: 80px;
+  width: auto;
+}
+.footer-credits
+{
+  color: white;
+}
+.footer-credits span
+{
+  color: rgb(117,126,131);
+}
  body{
      overflow-x: hidden;
  }

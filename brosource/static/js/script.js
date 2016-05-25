@@ -3,7 +3,7 @@ $(document).ready(function()
       /* Setting the Animation Of the home Page*/
       var Wht=$(window).height();
       var Wwt=$(window).width();
-      $(".cards").css("top",Wht/2);
+      $(".homepage-add-projects-button").css("top",Wht);
       if(Wht<Wwt)
       {
         $(".hello-image-center").css("height",Wht*1.1/3);
@@ -27,7 +27,8 @@ $(document).ready(function()
         });
       });
     $(".homepage-carousel").css("top",Wht/4.5);
-
+    $(".cards").css("top",Wht/10);
+    $(".footer").css("height",Wht/3);
          /*Seting the grid-card size */
     if(Wwt>Wht)
     {
@@ -36,6 +37,9 @@ $(document).ready(function()
       {
         var card_height=Wht/6;
         $(".customcard").css("height",card_height);
+        $(".homepage-add-projects-button").css("margin-top","15%");
+        $(".cards").css("top",Wht/6);
+
         if(Wwt<1430 && Wwt>1000)
         {
           var card_height=Wht/5;
@@ -61,6 +65,9 @@ $(document).ready(function()
     }
       else
       {
+        $(".homepage-add-projects-button").css("margin-top","50%");
+        $(".cards").css("top",Wht/5);
+        $(".homepage-carousel").css("top",Wht/3);
         if(Wwt>700)
         {
           var card_height=Wht/6;
@@ -147,6 +154,7 @@ $(window).resize(function()
 {
     var Wht=$(window).height();
     var Wwt=$(window).width();
+      $(".cards").css("top",Wht/2.2);
     var NavHt=$("#onboarding-nav").height();
     $("#onboarding-carousel-indicators div").css("height",NavHt/2);
     $("#onboarding-carousel-indicators div").css("width",NavHt/2);
@@ -166,7 +174,9 @@ $(window).resize(function()
 
     }
     $(".homepage-carousel").css("top",Wht/4.5);
-
+    $(".homepage-add-projects-button").css("margin-top","10%");
+    $(".cards").css("top",Wht/10);
+    $(".footer").css("height",Wht/3);
     if(Wwt>Wht)
     {
 
@@ -174,6 +184,8 @@ $(window).resize(function()
       {
         var card_height=Wht/6;
         $(".customcard").css("height",card_height);
+        $(".homepage-add-projects-button").css("margin-top","15%");
+        $(".cards").css("top",Wht/6);
         if(Wwt<1430 && Wwt>1000)
         {
           var card_height=Wht/5;
@@ -199,6 +211,9 @@ $(window).resize(function()
     }
       else
       {
+        $(".homepage-add-projects-button").css("margin-top","50%");
+        $(".cards").css("top",Wht/5);
+        $(".homepage-carousel").css("top",Wht/3);
         if(Wwt>700)
         {
           var card_height=Wht/6;
