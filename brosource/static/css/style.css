@@ -2,9 +2,23 @@
   {
     background:#4285F4; font-family: Montserrat;
   }
-  .navbar
+  #profile-other
+  {
+    background: rgb(240,240,240);
+  }
+  #profile-other .navbar
+  {
+    background: #4285F4;
+    color: white;
+  }
+  #profile-other .navbar span
+  {
+    color: white;
+  }
+.navbar
   {
     z-index: 2;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
   }
 .gray-background
 {
@@ -1027,32 +1041,65 @@ font-size: 275%;
 {
   background:white;
   width:100%;
-  height:65%;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
-  padding-left: 3%;
-  padding-right: 3%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
-.profile-other-details
+.profile-other-nav-image
+{
+  height:15%;
+  width:auto;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.profile-other-user
 {
   background:white;
   width:100%;
-  height:24.5%;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
-
-.profile-other-workdetails
+.profile-other-user-details-holder
 {
-  list-style-type: none;
-  padding:1%;
-  font-size: 80%;
+  background:#4285F4;
+  padding: 3%;
+  color: white;
+  box-shadow: inset 0 -30px 0 rgb(240,240,240);
 }
-.profile-other-workdetails li
+.profile-other-user-details span
 {
-  text-align: left;
-  left:0;
-  padding:6%;
-  border-top: 1px solid rgb(204,204,204);
-  cursor:pointer;
+    font-weight: bold;
+    font-size: 110%;
+}
+.profile-other-user-details
+{
+    font-size: 90%;
+    margin-top: 4%;
+}
+.profile-other-under-user-details
+{
+    margin-top: -5%;
+    font-size: 90%;
+}
+.profile-other-user-project-mid-item
+{
+  border-left: 0.5px solid rgb(204,204,204);
+  border-right: 0.5px solid rgb(204,204,204);
+}
+.profile-other-user-projects
+{
+  margin-top: 5%;
+  text-align: center;
+  font-size: 90%;
+}
+.profile-other-user-projects span
+{
+    font-weight: bold;
+    font-size: 200%;
+}
+.profile-other-get-service
+{
+  padding: 10%;
+  border: 0.5px solid #4285F4;
+  text-align: center;
+  margin-top: 5%;
 }
 .notification-count
 {
@@ -1074,17 +1121,20 @@ font-size: 275%;
   margin-top:5%;
   margin-bottom:5%;
   font-size: 80%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 .profile-other-banner-header
 {
     border-bottom: 1px solid rgb(204,204,204);
+    font-size: 210%;
+    padding: 2%;
 }
 .profile-other-banner-image
 {
   border-radius: 100%;
   margin-top: -22%;
   margin-left: 5%;
-  height:26%;
+  height:45%;
   width:auto;
   border: 3px solid white;
 }
@@ -1104,9 +1154,20 @@ font-size: 275%;
 }
 .profile-other-banner-body-sections
 {
-  margin-top:2%;
-  margin-bottom:2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
   border-bottom: 1px solid rgb(204,204,204);
+}
+.profile-other-banner-body-sections:hover
+{
+  background: rgb(240,240,240);
+}
+.banner-section-heading
+{
+  font-weight: bold;
+  font-size: 120%;
 }
 .profile-other-project-list
 {
@@ -1117,7 +1178,17 @@ font-size: 275%;
   font-size: 85%;
   margin-bottom: 5%;
 }
-
+.nav-brand-heading
+{
+  position: absolute;
+  margin-left: 1%;
+  margin-top: 1.5%;
+  font-size: 110%;
+}
+.nav-brand-heading .brand-name
+{
+  margin-top: 0px;
+}
 .CustomBadge
 {
   background: white;
@@ -1206,13 +1277,6 @@ font-size: 275%;
 }
 @media(max-width:600px)
 {
-  .profile-other-details
-  {
-    background:white;
-    width:100%;
-    height:37%;
-    box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
-  }
   .customcard-profile
   {
     margin-bottom: 5%;
@@ -1403,6 +1467,14 @@ font-size: 275%;
     padding-top: 20px;
     text-align: center;
 }
+.footer-profile
+{
+    position: relative;
+    background: rgb(47,60,68);
+    width: auto;
+    padding-top: 20px;
+    text-align: center;
+}
 .footer-tabs a
 {
   text-decoration: none;
@@ -1482,4 +1554,3 @@ font-size: 275%;
      z-index: 2;
      transition: all 0.5s;
  }
-
