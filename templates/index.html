@@ -357,18 +357,18 @@
                 <div class="customcard card-padding" >
 
               <!-- Card Front-->
-              <div class="front">
+<div class="front">
               <div class="row card-header">
                 <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
                 <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                  <p><b>{{F1_Name}}</b><br>{{ F1_Title }}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{ F1_Desc }}<a class="more">more</a>
 
                   </p>
                 </div>
@@ -387,13 +387,10 @@
 
             <div class="back">
               <div class="row back-card">
-                    <div class="back-content col-md-12"><div class="col-md-10 work">I can design a website</div><div class="col-md-2 money">$9</div></div>
+                  {% for i in S1 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S1[i]}}</div></div>
                     <div class="col-md-12 gap"></div>
-                    <div class="back-content col-md-12"><div class="col-md-10 work">I can create an android app</div><div class="col-md-2 money">$9</div></div>
-                    <div class="col-md-12 gap"></div>
-                    <div class="back-content col-md-12"><div class="col-md-10 work">I can do audio remastering</div><div class="col-md-2 money">$9</div></div>
-                    <div class="col-md-12 gap"></div>
-                    <div class="back-content col-md-12"><div class="col-md-10 work">I can add cinematic effects and</div><div class="col-md-2 money">$9</div></div>
+                  {% end %}
               </div>
             </div>
           </div>
@@ -406,18 +403,19 @@
       <div class="flipper">
           <div class="customcard card-padding" >
             <!-- Card Front-->
-            <div class="front">
+                       <div class="front">
               <div class="row card-header">
                 <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
                 <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                  <p><b>{{F2_Name}}</b><br>{{F2_Title}}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{F2_Desc}}<a class="more">more</a>
+
 
                   </p>
                 </div>
@@ -432,8 +430,13 @@
 
             <!--Card Back-->
 
-            <div class="table-responsive back">
-
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S2 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S2[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
             </div>
 
           </div>
@@ -448,18 +451,18 @@
 
 
       <!-- Card Front-->
-            <div class="front">
+<div class="front">
               <div class="row card-header">
                 <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
                 <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                  <p><b>{{F3_Name}}</b><br>{{F3_Title}}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{ F3_Desc }}<a class="more">more</a>
 
                   </p>
                 </div>
@@ -473,8 +476,13 @@
 
 
             <!--Card Back-->
-            <div class="table-responsive back">
-
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S3 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S3[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
             </div>
 
             </div>
@@ -498,12 +506,12 @@
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
                 <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                  <p><b>{{F4_Name}}</b><br>{{F4_Title}}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{ F4_Desc }}<a class="more">more</a>
 
                   </p>
                 </div>
@@ -517,11 +525,13 @@
 
 
             <!--Card Back-->
-
-
-
-            <div class="table-responsive back">
-
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S4 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S4[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
             </div>
 
             </div>
@@ -541,13 +551,13 @@
                 <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
-                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>{{F5_Name}}</b><br>{{F5_Title}}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{ F5_Desc }}<a class="more">more</a>
 
                   </p>
                 </div>
@@ -559,9 +569,15 @@
               </div>
             </div>
 
-            <!--Card Back-->
-            <div class="table-responsive back">
 
+            <!--Card Back-->
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S5 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S5[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
             </div>
             </div>
           </div>
@@ -581,12 +597,12 @@
                   <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
                 </div>
                 <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                  <p><b>{{F6_Name}}</b><br>{{F6_Title}}</p>
                 </div>
               </div>
               <div class="row card-body">
                 <div class="col-md-12">
-                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+                  <p class="grid-text">{{ F6_Desc }}<a class="more">more</a>
 
                   </p>
                 </div>
@@ -600,11 +616,13 @@
 
 
             <!--Card Back-->
-
-
-
-            <div class="table-responsive back">
-
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S6 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S6[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
             </div>
             </div>
           </div>
@@ -634,13 +652,13 @@
               <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                 <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
               </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+             <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R1_Name }}</b><br>{{ R1_Title }}</p>
               </div>
             </div>
             <div class="row card-body">
               <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+                <p class="grid-text">{{ R1_Desc }} <a class="more">more</a>
                </p>
               </div>
             </div>
@@ -655,13 +673,13 @@
               <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                 <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
               </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+               <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R2_Name }}</b><br>{{ R2_Title }}</p>
               </div>
             </div>
             <div class="row card-body">
               <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles.
+                <p class="grid-text">{{ R2_Desc }}
                </p>
               </div>
             </div>
@@ -676,13 +694,13 @@
               <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
                 <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
               </div>
-              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
-                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+               <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R3_Name }}</b><br>{{ R3_Title }}</p>
               </div>
             </div>
             <div class="row card-body">
               <div class="col-md-12">
-                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+                <p class="grid-text">{{ R3_Desc }}<a class="more">more</a>
                </p>
               </div>
             </div>
