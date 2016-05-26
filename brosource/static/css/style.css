@@ -20,6 +20,11 @@
     z-index: 2;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
   }
+  .navbar a
+  {
+    text-decoration: none;
+    color:white;
+  }
 .gray-background
 {
   background: rgb(240,240,240);
@@ -1677,6 +1682,36 @@ font-size: 275%;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 .profile-add-contact span
+{
+  font-weight: bold;
+  font-size: 110%;
+}
+.profile-apply-user-details-underbar
+{
+  background:  #4285F4;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  padding: 3%;
+  font-weight: bold;
+  font-size: 110%;
+  text-align: center;
+}
+.profile-apply-user-details-underbar a
+{
+  text-decoration: none;
+  color: white;
+}
+.profile-apply-contact
+{
+  width:100%;
+  background:white;
+  padding:5%;
+  padding-top: 7%;
+  margin-top:5%;
+  margin-bottom:5%;
+  font-size: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.profile-apply-contact span
 {
   font-weight: bold;
   font-size: 110%;
