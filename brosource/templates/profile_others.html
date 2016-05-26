@@ -15,29 +15,7 @@
 
 
 <body>
-
-  <div class="row">
-      <div class="notification">
-          <div class="col-md-3 col-lg-3 bar">
-              <div class="notification-content">
-                Notification Center
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div class="row">
-      <div class="messages">
-          <div class="col-md-3 col-lg-3 message-bar">
-              <div class="message-content">
-                Notification Center
-              </div>
-          </div>
-      </div>
-  </div>
-
-
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -55,17 +33,19 @@
           <li><a href="#"></a></li>
         </ul>
         <br>
+        {% if result['loggedIn'] == True %}
          <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
-          <li><a href="#"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbsp<span class="hide-on-large">Messages</span></a></li>
-          <li><a href="#" onclick="$('.bar').toggleClass('not-in-view');$('.notification').toggleClass('not-toggler');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp<span class="hide-on-large">Notifications</span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>Jim Stone&nbsp&nbsp</b><br><a href="#">userid@gmail.com&nbsp&nbsp</a></p></li>
+          <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+          <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
 
           <li><img src="../static/images/17.jpg" class="img-responsive profile-self-nav-image"></li>
         </ul>
 
-        <!-- Login button to appear if not logged in.-->
 
-      <!--   <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+        <!-- Login button to appear if not logged in.-->
+        {% else %}
+        <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
           <div class="col-md-4 col-xs-2 col-md-push-8">
           <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
             <div class="row hide-on-small">
@@ -81,16 +61,11 @@
             </div>
           </a>
             </div>
-        </ul>  -->
+        </ul>
+        {% end %}
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <br>
   <br>
 
@@ -100,7 +75,7 @@
       <div class="col-md-10">
         <div class="profile-other-banner">
           <div class="profile-other-banner-header row">
-            <div class="col-md-3 col-xs-push-3 col-md-push-0">
+            <div class="col-md-3">
               <div class="profile-other-banner-image-holder">
                 <img src="../static/images/17.jpg" class="profile-other-banner-image">
               </div>
@@ -117,7 +92,6 @@
             </div>
           </div>
         </div>
-        <br>
       </div>
       <div class="col-md-2">
         <div class="profile-other-details">
@@ -131,7 +105,7 @@
         <div class="profile-other-contact">
           <a>\0</a>
         </div>
-        <div class="profile-other-contact" onclick="$('.message-bar').toggleClass('not-in-view');$('.messages').toggleClass('not-toggler');">
+        <div class="profile-other-contact">
           <a href="#">Message</a>
         </div>
         <div class="profile-other-contact">
@@ -150,7 +124,7 @@
         <!-- Modal Header-->
         <div class="modal-header">
           <!--This contains the Login/Signup Selection Buttons-->
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <div class="row">
             <div class="col-md-3 col-xs-3"></div>
             <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
@@ -282,91 +256,91 @@
 
   <div class="gray-background row  container-fluid what-can-i">
   <div class="row ">
-    <div class="col-md-1 col-xs-1"></div>
-    <div class="col-md-10 col-xs-10 profile-other-card-heading heading" style="color:black;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 profile-other-card-heading heading" style="color:black;">
       <h3>What can I do for you?</h3>
     </div>
-    <div class="col-md-1 col-xs-1"></div>
+    <div class="col-md-1"></div>
   </div>
     <br>
     <br>
 
     <div class="row profile-other-card-row">
-    <div class="col-md-1 col-xs-1"></div>
-    <div class="col-md-10 col-xs-10">
-    <div class="col-md-4 col-xs-12">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile">
       <div class="row">
-    <div class="col-md-9 col-xs-8">
+    <div class="col-md-9 ">
       <p>Create a clean and minimal website or blog</p>
     </div>
 
-  <div class="col-md-3 col-xs-4">
+  <div class="col-md-3">
     <span class="badge"><p><b>Rs. 800</b></p></span>
   </div>
     </div>
   </div>
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile">
       <div class="row">
-    <div class="col-md-9 col-xs-8">
+    <div class="col-md-9">
       <p>Create a clean and minimal website or blog</p>
     </div>
 
-  <div class="col-md-3 col-xs-4">
+  <div class="col-md-3">
     <span class="badge"><p><b>Rs. 800</b></p></span>
   </div>
     </div>
   </div>
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile">
       <div class="row">
-    <div class="col-md-9 col-xs-8">
+    <div class="col-md-9">
       <p>Create a clean and minimal website or blog</p>
     </div>
 
-  <div class="col-md-3 col-xs-4">
+  <div class="col-md-3">
     <span class="badge"><p><b>Rs. 800</b></p></span>
   </div>
     </div>
   </div>
   </div>
-  <div class="col-md-1 col-xs-1"></div>
+  <div class="col-md-1"></div>
   </div>
   </div>
   <br>
     <div class="row profile-other-card-row">
-    <div class="col-md-1 col-xs-1"></div>
-    <div class="col-md-10 col-xs-10">
-    <div class="col-md-4 col-xs-12">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile">
       <div class="row">
-    <div class="col-md-9 col-xs-8">
+    <div class="col-md-9">
       <p>Create a clean and minimal website or blog</p>
     </div>
 
-  <div class="col-md-3 col-xs-4">
+  <div class="col-md-3">
     <span class="badge"><p><b>Rs. 800</b></p></span>
   </div>
     </div>
   </div>
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile">
       <div class="row">
-    <div class="col-md-9 col-xs-8">
+    <div class="col-md-9">
       <p>Create a clean and minimal website or blog</p>
     </div>
 
-  <div class="col-md-3 col-xs-4">
+  <div class="col-md-3">
     <span class="badge"><p><b>Rs. 800</b></p></span>
   </div>
     </div>
   </div>
   </div>
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 ">
     <div class="customcard-profile-blue">
       <div class="row">
         <div class="col-md-12">
