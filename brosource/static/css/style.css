@@ -1049,11 +1049,13 @@ font-size: 275%;
   width:auto;
   border-radius: 100%;
   margin-right: 10px;
+  border: 2px solid white;
 }
 .profile-other-user
 {
   background:white;
   width:100%;
+  position: relative;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 .profile-other-user-details-holder
@@ -1078,6 +1080,44 @@ font-size: 275%;
     margin-top: -5%;
     font-size: 90%;
 }
+@media(max-width:1200px)
+{
+
+  .profile-other-contact
+  {
+    margin-right: -10%;
+  }
+  .profile-other-user-details span
+  {
+      font-weight: bold;
+      font-size: 100%;
+  }
+  .profile-other-user-details
+  {
+      font-size: 80%;
+      margin-top: 4%;
+  }
+  .profile-other-under-user-details
+  {
+      margin-top: -5%;
+      font-size: 80%;
+  }
+  .profile-other-banner-image
+  {
+    height: 30%;
+  }
+  .profile-other-user-projects
+  {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 80%;
+  }
+  .profile-other-user-projects span
+  {
+      font-weight: bold;
+      font-size: %;
+  }
+}
 .profile-other-user-project-mid-item
 {
   border-left: 0.5px solid rgb(204,204,204);
@@ -1085,7 +1125,7 @@ font-size: 275%;
 }
 .profile-other-user-projects
 {
-  margin-top: 5%;
+  margin-top: 2%;
   text-align: center;
   font-size: 90%;
 }
@@ -1475,6 +1515,17 @@ font-size: 275%;
     padding-top: 20px;
     text-align: center;
 }
+.footer-add-project
+{
+    position: absolute;
+    background: rgb(47,60,68);
+    width: auto;
+    padding-top: 20px;
+    text-align: center;
+    overflow: visible;
+    width: 100%;
+    bottom:0;
+}
 .footer-tabs a
 {
   text-decoration: none;
@@ -1554,3 +1605,79 @@ font-size: 275%;
      z-index: 2;
      transition: all 0.5s;
  }
+
+
+/* Add Project CSS */
+
+.profile-add-banner-body-sections
+{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-bottom: 1px solid rgb(204,204,204);
+}
+.profile-add-banner
+{
+  background:white;
+  width:100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.profile-add-banner-image-holder
+{
+  padding: 2%;
+}
+.profile-add-banner-image
+{
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+.profile-add-user-details-holder
+{
+  background: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  padding: 3%;
+}
+
+  .profile-add-user-details
+  {
+      font-size: 90%;
+      margin-top: 4%;
+  }
+  .profile-add-user-details span
+  {
+      font-weight: bold;
+      font-size: 110%;
+  }
+@media(max-width:1200px)
+{
+  .profile-add-user-details span
+  {
+      font-weight: bold;
+      font-size: 100%;
+  }
+  .profile-add-user-details
+  {
+      font-size: 80%;
+      margin-top: 4%;
+  }
+}
+.profile-add-contact
+{
+  width:100%;
+  cursor: pointer;
+  background:white;
+  padding:5%;
+  padding-top: 7%;
+  margin-top:5%;
+  margin-bottom:5%;
+  font-size: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.profile-add-contact span
+{
+  font-weight: bold;
+  font-size: 110%;
+}

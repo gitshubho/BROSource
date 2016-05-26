@@ -29,6 +29,7 @@ $(document).ready(function()
     $(".homepage-carousel").css("top",Wht/4.5);
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
+    $(".profile-other-user").css("height",Wht/10);
          /*Seting the grid-card size */
     if(Wwt>Wht)
     {
@@ -186,6 +187,7 @@ $(window).resize(function()
         $(".customcard").css("height",card_height);
         $(".homepage-add-projects-button").css("margin-top","15%");
         $(".cards").css("top",Wht/6);
+        $(".profile-other-user").css("height",Wht/8);
         if(Wwt<1430 && Wwt>1000)
         {
           var card_height=Wht/5;
