@@ -62,7 +62,7 @@
 </style>
 <body>
 <div class="container-fluid nav-on-top">
-    <div class="row nav-on-top">
+    <div class="row nav-on-topx">
         <div class="notification">
             <div class="col-md-9 not-outside" onclick="$('.bar').toggleClass('col-md-offset-9 not-in-view');$('.not-outside').toggleClass('out-visible')"></div>
             <div class="col-md-3 col-md-offset-12 bar">Notification Center</div>
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top self-nav" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -91,7 +91,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li><a href="#"></a></li>
+                <li class="left-stripes"><a href="#"><span class="glyphicon glyphicon glyphicon-align-justify"></span> BROSource</a></li>
+                <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span><input type='' class='' placeholder='Search for Projects or People'></li>
             </ul>
             <br>
             <ul class="nav navbar-nav navbar-right custom-pull" id="profile-self-nav-right">

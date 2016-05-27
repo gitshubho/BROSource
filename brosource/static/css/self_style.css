@@ -1275,7 +1275,6 @@ font-size: 275%;
      background:#26333b; height: 100%; transition: all 0.5s; color: white;
  }
 
-
  /*Styles for message views in profile_other.html*/
 
  .messages
@@ -1302,4 +1301,68 @@ font-size: 275%;
  }
  .not-toggler{
      z-index: 2;
+     color: #fff;
+     font-size: 26px;
  }
+
+ .self-nav{
+     background:#3498db;
+     color: #fff;
+     box-shadow: 0 0 5px 0 #000; border: 0;
+ }
+
+.custom-pull{
+  position: relative;; right: -200;
+}
+
+.left-stripes{
+  font-size:24px; margin: auto; top: 10px; color: #fff;
+}
+
+
+.nav-search-icon{
+  position: relative; top: 18px;
+}
+.nav-search{
+  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;
+}
+
+.nav-search input{
+  background: rgba(0,0,0,0);   width: 150%; border: 0; box-shadow: 0; border-radius: 0; padding: 10px; position: relative; left: 15px; top: -10px;
+}
+
+ @media (min-width: 0px) and (max-width:600px) {
+     .nav-search input {
+        width: 80%;
+     }
+ }
+
+.nav-search input:focus{
+  border: 0;
+}
+
+.nav-search input:active{
+  border: 0;
+}
+
+.nav-search input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: hsla(0, 0%, 100%, .7);
+}
+.nav-search input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: hsla(0, 0%, 100%, .7);
+   opacity:  1;
+}
+.nav-search input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: hsla(0, 0%, 100%, .7);
+   opacity:  1;
+}
+.nav-search input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: hsla(0, 0%, 100%, .7);
+}
+
+.navbar-default .navbar-nav>li>a{
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color: #fff;
+}
