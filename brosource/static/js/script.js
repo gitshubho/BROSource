@@ -3,6 +3,7 @@ $(document).ready(function()
       /* Setting the Animation Of the home Page*/
       var Wht=$(window).height();
       var Wwt=$(window).width();
+
       $(".homepage-add-projects-button").css("top",Wht);
       if(Wht<Wwt)
       {
@@ -19,21 +20,21 @@ $(document).ready(function()
       }
       $(".hello-image-left").addClass("animated fadeInRight");
       $(".hello-image-right").addClass("animated fadeInLeft");
-      $('.carousel').each(function()
+      /*$('.carousel').each(function()
       {
         $(this).carousel(
         {
           interval: false
         });
-      });
+      });*/
     $(".homepage-carousel").css("top",Wht/4.5);
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
     $(".profile-other-user").css("height",Wht/10);
          /*Seting the grid-card size */
-    if(Wwt>Wht)
+  if(Wwt>Wht)
     {
-
+      $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
         var card_height=Wht/6;
@@ -62,10 +63,10 @@ $(document).ready(function()
         var card_height=Wht/5;
         $(".customcard").css("height",card_height);
       }
-
     }
       else
       {
+        $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
         $(".homepage-carousel").css("top",Wht/3);
@@ -95,6 +96,22 @@ $(document).ready(function()
           $(".customcard").css("height",card_height);
         }
       }
+
+      /*Fixing the profile or profile_other*/
+
+      if(Wwt<800)
+      {
+        $(".fix-profile").removeClass("affix");
+      }
+      else
+      {
+          $(".fix-profile").addClass("affix");
+      }
+
+      /* */
+
+
+      /* */
 
       /*Modal JS, The Signup/Login Toggle Effect*/
       $(".Signup").hide();
@@ -180,7 +197,7 @@ $(window).resize(function()
     $(".footer").css("height",Wht/3);
     if(Wwt>Wht)
     {
-
+      $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
         var card_height=Wht/6;
@@ -213,6 +230,7 @@ $(window).resize(function()
     }
       else
       {
+        $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
         $(".homepage-carousel").css("top",Wht/3);
@@ -242,6 +260,19 @@ $(window).resize(function()
           $(".customcard").css("height",card_height);
         }
       }
+
+      /*Fixing the profile or profile_other*/
+
+      if(Wwt<800)
+      {
+        $(".fix-profile").removeClass("affix");
+      }
+      else
+      {
+          $(".fix-profile").addClass("affix");
+      }
+
+      /* */
 
       var NavHt=$(".navbar").height();
       $(".content").css("top",NavHt+20)
