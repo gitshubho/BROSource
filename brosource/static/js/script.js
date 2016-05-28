@@ -1,4 +1,4 @@
-$(document).ready(function()
+ $(document).ready(function()
 {
       /* Setting the Animation Of the home Page*/
       var Wht=$(window).height();

@@ -18,7 +18,7 @@
 .navbar
   {
     z-index: 2;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
   }
   .navbar a
   {
@@ -150,6 +150,17 @@
      margin-left: -10px;
      padding-left: 0;
      font-size: 130%;
+   }
+   @media(max-width:600px)
+   {
+     .brand-name
+     {
+       text-align: left;
+       margin-top: 0;
+       margin-left: 0;
+       padding-left: 0;
+       font-size: 130%;
+     }
    }
    #homepage-menu
    {
