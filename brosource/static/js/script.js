@@ -46,6 +46,7 @@ $(document).ready(function()
         {
           var card_height=Wht/5;
           $(".customcard").css("height",card_height);
+          $(".footer").css("height",Wht/2.5);
         }
         else if(Wwt<1700 && Wwt>1400)
         {
@@ -57,6 +58,7 @@ $(document).ready(function()
       {
         var card_height=Wht/3;
         $(".customcard").css("height",card_height);
+        $(".footer").css("height",Wht/2.5);
       }
       if(Wwt>2000)
       {
@@ -66,6 +68,7 @@ $(document).ready(function()
     }
       else
       {
+        $(".footer").css("height",Wht/2.2);
         $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
@@ -209,6 +212,7 @@ $(window).resize(function()
         {
           var card_height=Wht/5;
           $(".customcard").css("height",card_height);
+          $(".footer").css("height",Wht/2.5);
         }
         else if(Wwt<1700 && Wwt>1400)
         {
@@ -220,6 +224,7 @@ $(window).resize(function()
       {
         var card_height=Wht/3;
         $(".customcard").css("height",card_height);
+        $(".footer").css("height",Wht/2.5);
       }
       if(Wwt>2000)
       {
@@ -230,6 +235,7 @@ $(window).resize(function()
     }
       else
       {
+        $(".footer").css("height",Wht/2.2);
         $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
