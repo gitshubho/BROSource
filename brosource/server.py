@@ -8,6 +8,7 @@ from tornado.gen import engine, Task, coroutine
 
 #Other Libraries
 import urllib
+from passlib.hash import sha256_crypt as scrypt
 from motor import MotorClient
 from bson import json_util
 import json
@@ -18,52 +19,63 @@ import hashlib
 from bson.objectid import ObjectId
 import re
 import pymongo
+from utilityFunctions import sendMessage
+import textwrap
 import random
+from datetime import datetime
 
-db = MotorClient()['brosource']
+db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
 class MainHandler(RequestHandler):
+
     @removeslash
     @coroutine
     def get(self):
-        result_current = result_current_info = None
+
         userInfo = None
         if bool(self.get_secure_cookie("user")):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            print userInfo
+            # print userInfo
         self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
 
-class loginHandler(RequestHandler):
+class LoginHandler(RequestHandler):
+
 	@removeslash
 	@coroutine
 	def post(self):
-		db = self.settings['db']
-		username = self.get_argument("username")
-		password = self.get_argument("password")
-		result = yield db.users.find_one({'username':username,'password':password})
-		if bool(result):
-			self.set_secure_cookie("user", str(result['_id']))
-			self.redirect("/profile/me")
-		else:
-			self.redirect("/?status=False")
+
+            username = self.get_argument("username")
+	    password = self.get_argument("password")
+
+            result = yield db.users.find_one({'username':username})
+
+	    if bool(result):
+	        self.set_secure_cookie("user", str(result['_id']))
+                if len(result["dob"]) > 0:
+                    self.redirect("/profile/me")
+                else:
+                    self.redirect("/welcome")
+            else:
+	        self.redirect("/?status=False")
 
 #Onboarding Handler. Once the user signs up, we will show him onboarding.(One time only)
+class OnBoardingHandler(RequestHandler):
 
-class onBoardingHandler(RequestHandler):
     @removeslash
     @coroutine
     def get(self):
-        result_current = result_current_info = None
+
         userInfo = None
         if bool(self.get_secure_cookie("user")):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            print userInfo
+            # print userInfo
             self.render("onboarding.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
         else:
             self.redirect('/?status=False')
-class signupHandler(RequestHandler):
+
+class SignupHandler(RequestHandler):
     @removeslash
     @coroutine
     def post(self):
@@ -71,17 +83,17 @@ class signupHandler(RequestHandler):
         password = self.get_argument('password_signup')
         name = self.get_argument('name')
         email = self.get_argument('emailID')
-        result = yield db.users.find_one({"username":username})
+        result = yield db.users.find_one({"username":username, "email":email})
         print bool(result)
         if(bool(result)):
-            self.redirect('/?username=taken')
+            self.redirect('/?username&email=taken')
         else:
-            result = yield db.users.insert({'username':username,'password':password,'email':email, 'name':name,'mobile':'','address':'','skills':[]})
+            result = yield db.users.insert({'username':username,'password':password,'email':email, 'name':name,'mobile':'','address':'','skills':[], "dob": ""})
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
             print bool(self.get_secure_cookie("user"))
 
-class updateProfileHandler(RequestHandler):
+class UpdateProfileHandler(RequestHandler):
     @coroutine
     @removeslash
     def post(self):
@@ -95,9 +107,8 @@ class updateProfileHandler(RequestHandler):
         message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
         sendMessage(contact,message)
         self.redirect('/profile/me?update=True')
-        
 
-class profileHandler(RequestHandler):
+class SelfProfileHandler(RequestHandler):
     @coroutine
     @removeslash
     def get(self):
@@ -110,54 +121,26 @@ class profileHandler(RequestHandler):
             self.render("profile_self.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
         else:
             self.redirect('/?loggedIn=False')
-class logoutHandler(RequestHandler):
-    @removeslash
-    @coroutine
-    def get(self):
-        self.clear_cookie('user')
-        self.redirect('/?loggedOut=true')
 
+class UserProfileHandler(RequestHandler):
 
-class userProfileHandler(RequestHandler):
     @coroutine
-    def get(self):
-        userId = self.get_argument('id','')
+    def get(self, username):
         data = []
-        userData = yield db.users.find_one({'_id':ObjectId(userId)})
-        data.append(json.loads(json_util.dumps(userData)))
-        self.render('profile_others.html',result= dict(data=data))
+        userInfo = None
+        # current_id = self.get_secure_cookie("user")
+        # userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+        userData = yield db.users.find_one({'username':username})
+        if bool(userData):
+            data.append(json.loads(json_util.dumps(userData)))
+            print bool(self.get_secure_cookie("user")),"\n"
+            if bool(self.get_secure_cookie("user")):
+                self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+            else:
+                self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
-'''
-I am creating some functions over here. Please create a new module, copy the following functions into that module. 
-Import the module into this file and remove functions from this file.
-'''
-def sendMessage(number,message):
+class ForgotPasswordHandler(RequestHandler):
 
-    authkey = "81434A3rGba9dY75583ac07" # Your authentication key.
-    mobiles = number # Multiple mobiles numbers separated by comma.
-    message = message # Your message to send.
-    sender = "BROSRC" # Sender ID,While using route4 sender id should be 6 characters long.
-    route = "transactional" # Define route
-    # Prepare you post parameters
-    values = {
-              'authkey' : authkey,
-              'mobiles' : mobiles,
-              'message' : message,
-              'sender' : sender,
-              'route' : route
-              }
-    url = "https://control.msg91.com/api/sendhttp.php" # API URL
-    postdata = urllib.urlencode(values) # URL encoding the data here.
-    req = urllib2.Request(url, postdata)
-    response = urllib2.urlopen(req)
-    # output = response.read() # Get Response
-    # print output # Print Response
-
-def sendRequestToken(contact, authToken):
-    message = "Your one time token is : "+ str(authToken)
-    sendMessage(contact, message)
-
-class forgotPasswordHandler(RequestHandler):
     def get(self):
         self.render('forgot.html')
     @coroutine
@@ -172,7 +155,57 @@ class forgotPasswordHandler(RequestHandler):
         else:
             self.redirect('/forgot?username=False')
 
+class AddProjectHandler(RequestHandler):
 
+    @coroutine
+    @removeslash
+    def get(self):
+        if not bool(self.get_secure_cookie("user")):
+            self.redirect('/login')
+            return
+        now=datetime.now()
+        time=now.strftime("%d-%m-%Y %I:%M %p")
+        Id = ObjectId(self.get_secure_cookie("user"))
+        user=yield db.users.find_one(Id)
+
+        self.render('addproject.html',time=time,user=user['username'])
+
+    @coroutine
+    @removeslash
+    def post(self):
+
+        user_id = self.get_secure_cookie("user")
+        now = datetime.now()
+        time = now.strftime("%d-%m-%Y %I:%M %p")
+        insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
+        #Id = ObjectId(user_id)
+        #yield db.users.update(Id,{'$push':{"projectsAdded":str(insert)}})
+        #if bool (insert):
+        #    pass
+        self.redirect('/addproj')
+        return
+
+class ViewProjectHandler(RequestHandler):
+
+    @coroutine
+    def get(self, projId):
+        data = []
+        projData = yield db.project.find_one({'_id': ObjectId(projId)})
+        userData = yield db.users.find_one({'_id' : ObjectId(projData['user_id'])})
+        if bool(projData):
+            data.append(json.loads(json_util.dumps(projData)))
+            #print bool(self.get_secure_cookie("user")),"\n"
+            #if bool(self.get_secure_cookie("user")):
+            self.render('viewproject.html',result= dict(data=data, user = userData['username'],loggedIn = True))
+            #else:
+                #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+
+class LogoutHandler(RequestHandler):
+    @removeslash
+    @coroutine
+    def get(self):
+        self.clear_cookie('user')
+        self.redirect('/?loggedOut=true')
 
 settings = dict(
 		db=db,
@@ -185,14 +218,16 @@ settings = dict(
 #Application initialization
 application = Application([
 	(r"/", MainHandler),
-    (r"/signup", signupHandler),
-    (r"/login", loginHandler),
-    (r"/logout",logoutHandler),
-    (r"/profile/me", profileHandler),
-    (r"/profile/user",userProfileHandler),
-    (r"/welcome",onBoardingHandler),
-    (r"/update",updateProfileHandler),
-    (r"/forgot",forgotPasswordHandler)
+    (r"/signup", SignupHandler),
+    (r"/login", LoginHandler),
+    (r"/logout",LogoutHandler),
+    (r"/profile/me", SelfProfileHandler),
+    (r"/profile/(\w+)",UserProfileHandler),
+    (r"/welcome",OnBoardingHandler),
+    (r"/update",UpdateProfileHandler),
+    (r"/forgotpsswd", ForgotPasswordHandler),
+    (r"/addproj", AddProjectHandler),
+    (r"/viewproject/(\w+)", ViewProjectHandler)
 ], **settings)
 
 #main init
