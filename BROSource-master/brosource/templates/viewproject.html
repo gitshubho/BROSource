@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Projects</title>
+</head>
+<body>
+<p>Name: {{ result["data"][0]['name'] }}</p>
+<p>Category: {{ result["data"][0]['category'] }}</p>
+<p>Tags: {{ result["data"][0]['tags'] }}</p>
+<p>No. of People Required: {{ result["data"][0]['nop'] }}</p>
+<p>Bid: </p>
+<p>Is Urgent: {{ result["data"][0]['urgent'] }}</p>
+<p>Time of Project addition: {{ result["data"][0]['time'] }}</p>
+<p>Deadline: </p>
+<p>Description: {{ result["data"][0]['description'] }}</p>
+
+<p>Assigned By: {{result['user']}}</p>
+
+</body>
+</html>
