@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Project Bids</title>
+</head>
+<body>
+<p>
+		<h4>Displaying top 5 bidders:</h4>
+{%for bid in maxbid %}
+	<li>{{escape(str(bid['amount']))}}</li>
+	<li>{{escape(str(bid['days']))}}</li>	
+{%end%}
+	</p>
+<form method="post" action="/">
+ <p>Bid amount<input type="text" name="bidAmt"></p>
+ <p>No. of days<input type="text" name="noOfDays"></p>
+<p><input type="submit" value="Place Bid" ></p> 
+
+</body>
+</html>
