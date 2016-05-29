@@ -1,0 +1,688 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+
+<body>
+
+<div class="container-fluid">
+<!--Title Bar with the title and hidden search field which appears on scroll-->
+   <div class="topbar col-md-12">
+     <br>
+       <div class="row">
+         <div class="col-md-4 col-xs-2 title">
+            <h3><b>BRO</b>Source</h3>
+		<h2>result['name']</h2>
+         </div>
+         <div class="col-md-4 col-xs-8">
+           <input type="text" class="search rounded-box" placeholder="SEARCH SKILLS">
+         </div>
+         <div class="col-md-4 col-xs-2 col-md-push-1">
+           <!-- The Login Modal Toggle Button-->
+           <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+             <div class="row">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+                <p><h4>Login/SignUp</h4></p>
+              </div>
+            </div>
+          </a>
+         </div>
+       </div>
+     </div>
+  </div>
+           <!-- The Modal Begins-->
+           <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+             <div class="modal-dialog modal-md">
+               <div class="modal-content">
+                 <!-- Modal Header-->
+                 <div class="modal-header">
+                   <!--This contains the Login/Signup Selection Buttons-->
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <div class="row">
+                     <div class="col-md-3 col-xs-3"></div>
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
+                       <button type="button" class="form-control modal-header-button selected">Log In</button>
+                     </div>
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-signup-holder">
+                       <button type="button" class="form-control modal-header-button deselected">Sign Up</button>
+                     </div>
+                     <div class="col-md-3 col-xs-3"></div>
+                   </div>
+                 </div>
+                 <!-- Modal Body-->
+                 <div class="modal-body">
+                   <!-- This is the Signup Form that is Invisible onload-->
+                   <div class="Signup">
+                     <form name="signup" method="post" role="form">
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="name">Name</label>
+                           <input name="name" id="name" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="emailID">Email Id</label>
+                           <input name="emailID" id="emailID" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="username_signup">Username</label>
+                           <input name="username_signup" id="username_signup" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="password_signup">Password</label>
+                           <input name="password_signup" id="password_signup" type="password" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-5 col-xs-5">
+
+                         </div>
+                         <div class="col-md-5 col-xs-5 modal-body-button-holder">
+                           <p align="right">
+                             <button type="submit" class="btn selected">Let's Go</button>
+                           </p>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       </form>
+                   </div>
+                   <!-- Signup Form Ends-->
+
+                   <!-- This is the Login Form-->
+                   <div class="Login">
+                   <form name="login" method="post" role="form">
+                     <div class="form-group row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-10 col-xs-10">
+                         <label for="username">Username</label>
+                         <input name="username" id="username" type="text" class="form-control"></input>
+                       </div>
+                       <div class="col-md-1 col-xs-1"></div>
+                     </div>
+                     <div class="form-group row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-10 col-xs-10">
+                         <label for="password">Password</label>
+                         <input name="password" id="password" type="password" class="form-control"></input>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-5 col-xs-5">
+                         <div class="checkbox">
+                           <label><input type="checkbox"> Remember me</label>
+                         </div>
+                       </div>
+                       <div class="col-md-5 col-xs-5 modal-body-button-holder" style="">
+                         <p align="right">
+                           <button type="submit" class="btn selected">Let Me In</button>
+                         </p>
+                       </div>
+                       <div class="col-md-1 col-xs-1"></div>
+                     </div>
+                     </form>
+                   </div>
+                   <!-- Login Form Ends-->
+                 </div>
+                 <!-- Modal Footer-->
+                 <div class="modal-footer row bordered">
+                   <!-- This contains the Down Arrow for the Signup Content-->
+                   <div class="Signup" style="width:64%;">
+                     <br>
+                     <span class="glyphicon glyphicon-menu-down" id="modal-scroll-icon"></span>
+                   </div>
+                   <!-- Facebook,Google and LinkedIn  -->
+                   <div class="Login">
+                   <div class="col-md-1 col-xs-1"></div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="facebook-btn-holder">
+                       <button class="form-control  modal-footer-button deselected" id="facebook-btn">Facebook</button>
+                   </div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="google-btn-holder">
+                       <button class="form-control modal-footer-button deselected" id="google-btn">Google</button>
+                   </div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="linkedin-btn-holder">
+                       <button class="form-control modal-footer-button deselected" id="linkedin-btn">LinkedIn</button>
+                   </div>
+                   <div class="col-md-1 col-xs-1"></div>
+                 </div>
+               </div>
+
+               </div>
+               </div>
+               </div>
+           <!-- Login Modal Ends-->
+
+
+
+<!--The Search field initially seen before scrolling-->
+   <div class="container-fluid">
+      <div class="initial-search col-md-12">
+         <div class="row">
+               <div class="col-md-4 col-xs-2"></div>
+                  <div class="col-md-4 col-xs-8 top-more">
+                     <input type="text" class="rounded-box" placeholder="SEARCH SKILLS">
+                  </div>
+              <div class="col-xs-1 col-md-4"></div>
+         </div>
+      </div>
+
+<!--Navigation Bar-->
+<nav class="navbar navbar-default custom-navbar" role="navigation">
+  <div class="container-fluid custom-navbar-container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="row">
+      <div class="col-md-3 "></div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav ">
+
+            <li><a href="#" class="link">Technical</a></li>
+            <li><a href="#" class="link">Designing</a></li>
+            <li><a href="#" class="link">Marketing</a></li>
+            <li><a href="#" class="link">Writing</a></li>
+            <li><a href="#" class="link">SEO</a></li>
+            <li><a href="#" class="link">Management</a></li>
+            <li><a href="#" class="link">Audio and Video</a></li>
+
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+  </div>
+</nav>
+
+   </div>
+
+
+
+<div id="carousel-generic" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <div class="item active">
+      <!--Hello image with Animations-->
+      <div class="row">
+        <div class="col-md-2 col-xs-1"></div>
+        <div class="col-md-8 col-xs-10 hello">
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/1.png" class="hello-image hello-image-left hello-image-outermost">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/2.png" class="hello-image hello-image-left hello-image-out">
+          </div>
+          <div class="hello-image-mid-holder">
+            <img src="../static/images/3.png" class="hello-image hello-image-center">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/5.png" class="hello-image hello-image-right hello-image-out">
+          </div>
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/4.png" class="hello-image hello-image-right hello-image-outermost">
+          </div>
+      </div>
+        <div class="col-md-2 col-xs-1"></div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-1"></div>
+        <div class="col-md-4 col-xs-10 carousel-caption">
+          <p><b>Get Your Work Done By Creative Geniuses</b></P>
+        </div>
+        <div class="col-md-4 col-xs-1"></div>
+      </div>
+      <!-- -->
+    </div>
+
+    <div class="item">
+      <!--Hello image with Animations-->
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 hello">
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/1.png" class="hello-image hello-image-left hello-image-outermost">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/2.png" class="hello-image hello-image-left hello-image-out">
+          </div>
+          <div class="hello-image-mid-holder">
+            <img src="../static/images/3.png" class="hello-image hello-image-center">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/5.png" class="hello-image hello-image-right hello-image-out">
+          </div>
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/4.png" class="hello-image hello-image-right hello-image-outermost">
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 carousel-caption">
+          <p><b>This is a test to see if the given caption overflows from the div that it is contained in</b></P>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <!-- -->
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="carousel-control" href="#carousel-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+  <!--Cards-->
+
+
+
+<div class="cards">
+  <div class="container-fluid" id="features">
+  <!-- Row which has FEATURED written-->
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p id="features-heading"><b>FEATURED</b></p>
+        </div>
+      </div>
+      <!--First Row containing three cards-->
+      <div class="row">
+      <!--Card 1-->
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class=" flip-container1" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container1').toggleClass('flip-container-on-click')">
+              <div class="flipper">
+                <div class="customcard card-padding" >
+
+              <!-- Card Front-->
+              <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="back">
+              <div class="row back-card">
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can design a website</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can create an android app</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can do audio remastering</div><div class="col-md-2 money">$9</div></div>
+                    <div class="col-md-12 gap"></div>
+                    <div class="back-content col-md-12"><div class="col-md-10 work">I can add cinematic effects and</div><div class="col-md-2 money">$9</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Card 2-->
+ <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container2" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container2').toggleClass('flip-container-on-click')">
+      <div class="flipper">
+          <div class="customcard card-padding" >
+            <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+            <div class="table-responsive back">
+
+            </div>
+
+          </div>
+          </div>
+        </div>
+    </div>
+    <!--Card 3-->
+<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container3" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container3').toggleClass('flip-container-on-click')">
+    <div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+            <div class="table-responsive back">
+
+            </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--The second row containing the next three cards-->
+      <div class="row">
+      <!--Card 4-->
+         <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class=" flip-container4" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container4').toggleClass('flip-container-on-click')">
+<div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="table-responsive back">
+
+            </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+ <!--Card 5-->
+ <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+         <div class=" flip-container5" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container5').toggleClass('flip-container-on-click')">
+<div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+            <!--Card Back-->
+            <div class="table-responsive back">
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--Card 6, The last card in Featured-->
+<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+    <div class=" flip-container6" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container6').toggleClass('flip-container-on-click')">
+<div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos..<a class="more">more</a>
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>101 Reviews</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="table-responsive back">
+
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+</div>
+
+<!-- Recent Rows-->
+
+<div class="container-fluid">
+  <div class="row recent">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p id="recent-heading"><b>RECENT</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer" >
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+            <div class="row card-header">
+              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles.
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class="customcard card-padding">
+          <div class="row card-header">
+              <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+              </div>
+              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>Yash Mahajan</b><br>Cloud Programmer</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">I am an experienced academic writer at your service. I hold a Masters Degree in Marketing and am a ACCA certified Accountant. I am fully proficient in Chicago/Turabian, APA, Harvard, MLA, APSA, ASA, Oxford, IEEE and AGLC referencing styles. I am offering the mos ... <a class="more">more</a>
+               </p>
+              </div>
+            </div>
+            <div class="row card-footer">
+              <a class="card-button" role="button"><b>101 Reviews</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
