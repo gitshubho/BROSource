@@ -179,6 +179,7 @@ class ChangePasswordHandler(RequestHandler):
         print self.get_secure_cookie('uid')
         npswd = self.get_argument('npswd')
         yield db.users.update({'_id': ObjectId(self.get_secure_cookie('uid'))}, {'$set': {'password': npswd}})
+        self.redirect("/?changepassword=True")
 
 class AddProjectHandler(RequestHandler):
 
