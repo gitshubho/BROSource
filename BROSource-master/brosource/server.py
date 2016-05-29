@@ -169,37 +169,16 @@ class AuthTokenHandler(RequestHandler):
             self.redirect('/forgot/verify?otp=False')
 
 class ChangePasswordHandler(RequestHandler):
-    
-	@coroutine
-	@removeslash
-	def get(self):
-		result_current = result_current_info = None
-		userInfo = None
-		if bool(self.get_secure_cookie("user")):
-			current_id = self.get_secure_cookie("user")
-			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-			likesCount = len(userInfo['likes'])
-			followersCount = len(userInfo['followers'])
-			followingCount = len(userInfo['following'])
-			print userInfo
-		self.render("change-password.html",result = dict(userInfo=userInfo, followingCount=followingCount, followersCount=followersCount, likesCount = likesCount,loggedIn = bool(self.get_secure_cookie("user"))))
 
-	@coroutine
-	@removeslash
-	def post(self):
-		if bool(self.get_secure_cookie('user')):
-			current_id = self.get_secure_cookie('user')
-			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-			currentPassword = self.get_argument('currentPassword')
-			newPassword = self.get_argument('newPassword')
-			confirmPassword = self.get_argument('confirmPassword')
-			if((newPassword==confirmPassword) and (currentPassword!=confirmPassword) and currentPassword == userInfo['password']):
-				result = yield db.users.update({'_id' : ObjectId(current_id)}, {'$set':{'password':newPassword}})
-				self.write('password changed successfully..')
-			else:
-				self.write('password mismatch or old pass = new pass')
-		else:
-			self.write('Some error..')
+    def get(self):
+        self.render('changepswd.html')
+
+    @coroutine
+    def post(self):
+        #userInfo = yield db.users.find_one({'_id':ObjectId()})
+        print self.get_secure_cookie('uid')
+        npswd = self.get_argument('npswd')
+        yield db.users.update({'_id': ObjectId(self.get_secure_cookie('uid'))}, {'$set': {'password': npswd}})
 
 class AddProjectHandler(RequestHandler):
 
@@ -207,7 +186,7 @@ class AddProjectHandler(RequestHandler):
     @removeslash
     def get(self):
         if not bool(self.get_secure_cookie("user")):
-            self.redirect('/')
+            self.redirect('/?login=False')
             return
         now=datetime.now()
         time=now.strftime("%d-%m-%Y %I:%M %p")
