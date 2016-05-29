@@ -37,19 +37,7 @@ class MainHandler(RequestHandler):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             # print userInfo
-        featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
-        recent=yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
-        #print(featured)
-        #print(recent)
-        self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
-                    F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
-                    F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
-                    F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
-
-                    R1_Name=recent[0]['name'],R1_Title='Cloud programmer',R1_Desc=recent[0]['aboutme'],S4=recent[0]['services'],
-                    R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
-                    R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Desc=recent[2]['aboutme'],S6=recent[2]['services']
-)
+        self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
 
 class LoginHandler(RequestHandler):
 
@@ -181,16 +169,37 @@ class AuthTokenHandler(RequestHandler):
             self.redirect('/forgot/verify?otp=False')
 
 class ChangePasswordHandler(RequestHandler):
+    
+	@coroutine
+	@removeslash
+	def get(self):
+		result_current = result_current_info = None
+		userInfo = None
+		if bool(self.get_secure_cookie("user")):
+			current_id = self.get_secure_cookie("user")
+			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+			likesCount = len(userInfo['likes'])
+			followersCount = len(userInfo['followers'])
+			followingCount = len(userInfo['following'])
+			print userInfo
+		self.render("change-password.html",result = dict(userInfo=userInfo, followingCount=followingCount, followersCount=followersCount, likesCount = likesCount,loggedIn = bool(self.get_secure_cookie("user"))))
 
-    def get(self):
-        self.render('changepswd.html')
-
-    @coroutine
-    def post(self):
-        #userInfo = yield db.users.find_one({'_id':})
-        print self.get_secure_cookie('uid')
-        npswd = self.get_argument('npswd')
-        yield db.users.updateOne({'_id': self.get_secure_cookie('uid')}, {'$set': {'password': npswd}})
+	@coroutine
+	@removeslash
+	def post(self):
+		if bool(self.get_secure_cookie('user')):
+			current_id = self.get_secure_cookie('user')
+			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+			currentPassword = self.get_argument('currentPassword')
+			newPassword = self.get_argument('newPassword')
+			confirmPassword = self.get_argument('confirmPassword')
+			if((newPassword==confirmPassword) and (currentPassword!=confirmPassword) and currentPassword == userInfo['password']):
+				result = yield db.users.update({'_id' : ObjectId(current_id)}, {'$set':{'password':newPassword}})
+				self.write('password changed successfully..')
+			else:
+				self.write('password mismatch or old pass = new pass')
+		else:
+			self.write('Some error..')
 
 class AddProjectHandler(RequestHandler):
 
@@ -198,14 +207,14 @@ class AddProjectHandler(RequestHandler):
     @removeslash
     def get(self):
         if not bool(self.get_secure_cookie("user")):
-            self.redirect('/login')
+            self.redirect('/')
             return
         now=datetime.now()
         time=now.strftime("%d-%m-%Y %I:%M %p")
         Id = ObjectId(self.get_secure_cookie("user"))
         user=yield db.users.find_one(Id)
 
-        self.render('add_project.html',time=time,user=user['username'])
+        self.render('addproject.html',time=time,user=user['username'])
 
     @coroutine
     @removeslash
@@ -215,11 +224,11 @@ class AddProjectHandler(RequestHandler):
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
         insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
-        #Id = ObjectId(user_id)
-        #yield db.users.update(Id,{'$push':{"projectsAdded":str(insert)}})
-        #if bool (insert):
-        #    pass
-        self.redirect('/addproj')
+        userId = ObjectId(user_id)
+        yield db.users.update({'_id': userId},{'$push':{"projectsAdded":str(insert)}})
+        if bool (insert):
+            pass
+        self.redirect('/viewproject/'+str(insert))
         return
 
 class ViewProjectHandler(RequestHandler):
