@@ -37,7 +37,19 @@ class MainHandler(RequestHandler):
             current_id = self.get_secure_cookie("user")
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             # print userInfo
-        self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+        featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
+        recent=yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
+        #print(featured)
+        #print(recent)
+        self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
+                    F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
+                    F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
+                    F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
+
+                    R1_Name=recent[0]['name'],R1_Title='Cloud programmer',R1_Desc=recent[0]['aboutme'],S4=recent[0]['services'],
+                    R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
+                    R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Desc=recent[2]['aboutme'],S6=recent[2]['services']
+)
 
 class LoginHandler(RequestHandler):
 
