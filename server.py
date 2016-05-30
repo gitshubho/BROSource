@@ -237,6 +237,21 @@ class ViewProjectHandler(RequestHandler):
             #else:
                 #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
+class Donate(RequestHandler):
+    def get(self):
+        self.render('donate.html')
+    @coroutine
+    @removeslash
+    def post(self):
+        anon=self.get_argument('anonymous')
+        if not bool(self.get_secure_cookie("user")):
+            anon= "Anonymous"
+        if (anon=='Anonymous'):
+            yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':anon,'payment received':0})
+        else:
+            user_id = self.get_secure_cookie("user")
+            yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
+
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
@@ -266,7 +281,8 @@ application = Application([
     (r"/forgot/verify", AuthTokenHandler),
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
-    (r"/viewproject/(\w+)", ViewProjectHandler)
+    (r"/viewproject/(\w+)", ViewProjectHandler),
+    (r"/donate", Donate)
 ], **settings)
 
 #main init
