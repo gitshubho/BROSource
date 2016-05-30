@@ -1,0 +1,863 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+
+<body>
+
+<div class="container-fluid">
+<!--Title Bar with the title and hidden search field which appears on scroll-->
+   <div class="topbar col-md-12">
+     <br>
+       <div class="row">
+         <div class="col-md-2 col-xs-2">
+           <!-- Single button -->
+           <div class="row">
+             <div class="col-md-2" style="padding:0;margin:0;margin-top:5px;pointer:cursor">
+               <div class="btn-group">
+                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                   <span class="glyphicon glyphicon glyphicon-menu-hamburger"></span>
+                 </a>
+                 <ul class="dropdown-menu" id="homepage-menu">
+                   <li><a href="#">Technical</a></li>
+                   <li><a href="#">Design</a></li>
+                   <li><a href="#">Management</a></li>
+                   <li class="homepage-menu-last-item"><a href="#">View As</a></li>
+                 </ul>
+               </div>
+             </div>
+             <div class="col-md-10">
+               <div class="brand-name hide-on-small"><b>BRO</b>Source</div>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-6 col-xs-8 search-col">
+           <div class="row">
+             <div class="col-md-1">
+               <span class="glyphicon glyphicon-search" id="homepage-search-icon"></span>
+             </div>
+             <div class="col-md-11">
+               <input type="text" class=" search " placeholder="">
+             </div>
+          </div>
+           <div class="brand-name hide-on-large"><b>BRO</b>Source</div>
+         </div>
+         <div class="col-md-4 col-xs-2 col-md-push-1">
+           <!-- The Login Modal Toggle Button-->
+           {% if result['loggedIn'] == False %}
+           <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+             <div class="row hide-on-small">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+                <p><h4>Login/SignUp</h4></p>
+              </div>
+            </div>
+            <div class="row hide-on-large">
+              <span class="glyphicon glyphicon-user"></span>
+            </div>
+          </a>
+          {%else%}
+          <a type="button" class="login-modal-toggle" href="/profile/me">
+             <div class="row">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+
+                <p><h4>Hey, {{result['userInfo']['username']}}</h4></p>
+              </div>
+            </div>
+          </a>
+          {%end%}
+         </div>
+       </div>
+     </div>
+  </div>
+           <!-- The Modal Begins-->
+           <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+             <div class="modal-dialog modal-md">
+               <div class="modal-content">
+                 <!-- Modal Header-->
+                 <div class="modal-header">
+                   <!--This contains the Login/Signup Selection Buttons-->
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <div class="row">
+                     <div class="col-md-3 col-xs-3"></div>
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
+                       <button type="button" class="form-control modal-header-button selected">Log In</button>
+                     </div>
+                     <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-signup-holder">
+                       <button type="button" class="form-control modal-header-button deselected">Sign Up</button>
+                     </div>
+                     <div class="col-md-3 col-xs-3"></div>
+                   </div>
+                 </div>
+                 <!-- Modal Body-->
+                 <div class="modal-body">
+                   <!-- This is the Signup Form that is Invisible onload-->
+                   <div class="Signup">
+                     <form name="signup" method="post" action="/signup" role="form">
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="name">Name</label>
+                           <input name="name" id="name" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="emailID">Email Id</label>
+                           <input name="emailID" id="emailID" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="username_signup">Username</label>
+                           <input name="username_signup" id="username_signup" type="text" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="form-group row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-10 col-xs-10">
+                           <label for="password_signup">Password</label>
+                           <input name="password_signup" id="password_signup" type="password" class="form-control"></input>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       <div class="row">
+                         <div class="col-md-1 col-xs-1"></div>
+                         <div class="col-md-5 col-xs-5">
+
+                         </div>
+                         <div class="col-md-5 col-xs-5 modal-body-button-holder">
+                           <p align="right">
+                             <button type="submit" class="btn selected">Let's Go</button>
+                           </p>
+                         </div>
+                         <div class="col-md-1 col-xs-1"></div>
+                       </div>
+                       </form>
+                   </div>
+                   <!-- Signup Form Ends-->
+
+                   <!-- This is the Login Form-->
+                   <div class="Login">
+                   <form name="login" method="post" action = "/login" role="form">
+                     <div class="form-group row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-10 col-xs-10">
+                         <label for="username">Username</label>
+                         <input name="username" id="username" type="text" class="form-control"></input>
+                       </div>
+                       <div class="col-md-1 col-xs-1"></div>
+                     </div>
+                     <div class="form-group row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-10 col-xs-10">
+                         <label for="password">Password</label>
+                         <input name="password" id="password" type="password" class="form-control"></input>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-1 col-xs-1"></div>
+                       <div class="col-md-5 col-xs-5">
+                         <div class="checkbox">
+                           <label><input type="checkbox"> Remember me</label>
+                         </div>
+                       </div>
+                       <div class="col-md-5 col-xs-5 modal-body-button-holder" style="">
+                         <p align="right">
+                           <button type="submit" class="btn selected">Let Me In</button>
+                         </p>
+                       </div>
+                       <div class="col-md-1 col-xs-1"></div>
+                     </div>
+                     </form>
+                   </div>
+                   <!-- Login Form Ends-->
+                 </div>
+                 <!-- Modal Footer-->
+                 <div class="modal-footer row bordered">
+                   <!-- This contains the Down Arrow for the Signup Content-->
+                   <div class="Signup" style="width:64%;">
+                     <br>
+                     <span class="glyphicon glyphicon-menu-down" id="modal-scroll-icon"></span>
+                   </div>
+                   <!-- Facebook,Google and LinkedIn  -->
+                   <div class="Login">
+                   <div class="col-md-1 col-xs-1"></div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="facebook-btn-holder">
+                       <button class="form-control  modal-footer-button deselected" id="facebook-btn">Facebook</button>
+                   </div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="google-btn-holder">
+                       <button class="form-control modal-footer-button deselected" id="google-btn">Google</button>
+                   </div>
+                   <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="linkedin-btn-holder">
+                       <button class="form-control modal-footer-button deselected" id="linkedin-btn">LinkedIn</button>
+                   </div>
+                   <div class="col-md-1 col-xs-1"></div>
+                 </div>
+               </div>
+
+               </div>
+               </div>
+               </div>
+           <!-- Login Modal Ends-->
+
+
+
+
+
+
+<div id="carousel-generic" class="carousel slide  homepage-carousel" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+
+    <div class="item active">
+      <!--Hello image with Animations-->
+      <div class="row">
+        <div class="col-md-2 col-xs-1"></div>
+        <div class="col-md-8 col-xs-10 hello">
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/1.png" class="hello-image hello-image-left hello-image-outermost">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/2.png" class="hello-image hello-image-left hello-image-out">
+          </div>
+          <div class="hello-image-mid-holder">
+            <img src="../static/images/3.png" class="hello-image hello-image-center">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/5.png" class="hello-image hello-image-right hello-image-out">
+          </div>
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/4.png" class="hello-image hello-image-right hello-image-outermost">
+          </div>
+      </div>
+        <div class="col-md-2 col-xs-1"></div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-1"></div>
+        <div class="col-md-4 col-xs-10 carousel-caption">
+          <p><b>Get Your Work Done By Creative Geniuses</b></P>
+        </div>
+        <div class="col-md-4 col-xs-1"></div>
+      </div>
+      <!-- -->
+    </div>
+
+    <div class="item">
+      <!--Hello image with Animations-->
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 hello">
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/1.png" class="hello-image hello-image-left hello-image-outermost">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/2.png" class="hello-image hello-image-left hello-image-out">
+          </div>
+          <div class="hello-image-mid-holder">
+            <img src="../static/images/3.png" class="hello-image hello-image-center">
+          </div>
+          <div class="hello-image-out-holder">
+            <img src="../static/images/5.png" class="hello-image hello-image-right hello-image-out">
+          </div>
+          <div class="hello-image-outermost-holder">
+            <img src="../static/images/4.png" class="hello-image hello-image-right hello-image-outermost">
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 carousel-caption">
+          <p><b>This is a test to see if the given caption overflows from the div that it is contained in</b></P>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+      <!-- -->
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="carousel-control" href="#carousel-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+<div class="row homepage-add-projects-button">
+<div class="col-md-4 col-lg-4 col-xs-2"></div>
+<div class="col-md-4 col-lg-4 col-xs-8">
+
+  <div class="col-md-1 col-lg-2 col-xs-0"></div>
+  <div class="col-md-10 col-lg-8 col-xs-12">
+    <div class="center">
+      <div class="green-button">
+        <p>Add Project</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1 col-lg-2 col-xs-0"></div>
+</div>
+<div class="col-md-4 col-lg-4 col-xs-2"></div>
+</div>
+
+
+  <!--Cards-->
+
+<div class="cards">
+
+  <div class="gray-background new-cards-section">
+  <div class="container all-new-cards-margin">
+        <div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="new-cards">
+
+                        <!--Card1-->
+                            <div class="col-md-4 long-card-container">
+                              <div class="custom-long-card col-md-12">
+                                <div class="center">
+                                  <div class="row long-card-heading">
+                                    <div class="col-md-2 col-lg-2 col-sm-2">
+                                      <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                    </div>
+                                    <div class="col-md-10 col-lg-10 col-sm-10">
+                                      <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                    </div>
+                                  </div>
+
+                                  <div class="row long-card-tag-row">
+                                    <div class="long-card-tags-holder">
+                                      <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                    </div>
+                                  </div>
+                                  <div class="long-card-body">
+                                    <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                    </p>
+                                  </div>
+                                  <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                </div>
+                                </div>
+                              </div>
+
+
+                              <!-- Card2 -->
+                              <div class="col-md-4 long-card-container">
+                                <div class="custom-long-card col-md-12">
+                                  <div class="center">
+                                    <div class="row long-card-heading">
+                                      <div class="col-md-2 col-lg-2 col-sm-2">
+                                        <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                      </div>
+                                      <div class="col-md-10 col-lg-10 col-sm-10">
+                                        <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                      </div>
+                                    </div>
+
+                                    <div class="row long-card-tag-row">
+                                      <div class="long-card-tags-holder">
+                                        <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                      </div>
+                                    </div>
+                                    <div class="long-card-body">
+                                      <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                      </p>
+                                    </div>
+                                    <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                  </div>
+                                  </div>
+                                </div>
+
+                                <!-- Card-3 -->
+                                <div class="col-md-4 long-card-container">
+                                  <div class="custom-long-card col-md-12">
+                                    <div class="center">
+                                      <div class="row long-card-heading">
+                                        <div class="col-md-2 col-lg-2 col-sm-2">
+                                          <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                        </div>
+                                        <div class="col-md-10 col-lg-10 col-sm-10">
+                                          <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                        </div>
+                                      </div>
+
+                                      <div class="row long-card-tag-row">
+                                        <div class="long-card-tags-holder">
+                                          <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                        </div>
+                                      </div>
+                                      <div class="long-card-body">
+                                        <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                        </p>
+                                      </div>
+                                      <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                    </div>
+                                    </div>
+                                  </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Second Row OF Cards-->
+
+                      <div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="new-cards">
+
+                                      <!--Card4-->
+                                          <div class="col-md-4 long-card-container">
+                                            <div class="custom-long-card col-md-12">
+                                              <div class="center">
+                                                <div class="row long-card-heading">
+                                                  <div class="col-md-2 col-lg-2 col-sm-2">
+                                                    <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                                  </div>
+                                                  <div class="col-md-10 col-lg-10 col-sm-10">
+                                                    <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                                  </div>
+                                                </div>
+
+                                                <div class="row long-card-tag-row">
+                                                  <div class="long-card-tags-holder">
+                                                    <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                                  </div>
+                                                </div>
+                                                <div class="long-card-body">
+                                                  <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                                  </p>
+                                                </div>
+                                                <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                              </div>
+                                              </div>
+                                            </div>
+
+
+                                            <!-- Card5 -->
+                                            <div class="col-md-4 long-card-container">
+                                              <div class="custom-long-card col-md-12">
+                                                <div class="center">
+                                                  <div class="row long-card-heading">
+                                                    <div class="col-md-2 col-lg-2 col-sm-2">
+                                                      <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                                    </div>
+                                                    <div class="col-md-10 col-lg-10 col-sm-10">
+                                                      <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="row long-card-tag-row">
+                                                    <div class="long-card-tags-holder">
+                                                      <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                                    </div>
+                                                  </div>
+                                                  <div class="long-card-body">
+                                                    <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                                    </p>
+                                                  </div>
+                                                  <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                                </div>
+                                                </div>
+                                              </div>
+
+                                              <!-- Card-6 -->
+                                              <div class="col-md-4 long-card-container">
+                                                <div class="custom-long-card col-md-12">
+                                                  <div class="center">
+                                                    <div class="row long-card-heading">
+                                                      <div class="col-md-2 col-lg-2 col-sm-2">
+                                                        <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
+                                                      </div>
+                                                      <div class="col-md-10 col-lg-10 col-sm-10">
+                                                        <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="row long-card-tag-row">
+                                                      <div class="long-card-tags-holder">
+                                                        <span class="long-card-tags badge">Animation</span><span class="long-card-tags badge">Illustrator</span><span class="long-card-tags badge">Photoshop</span>
+                                                      </div>
+                                                    </div>
+                                                    <div class="long-card-body">
+                                                      <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
+                                                      </p>
+                                                    </div>
+                                                    <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
+                                                  </div>
+                                                  </div>
+                                                </div>
+
+                                        </div>
+                                      </div>
+                                    </div>
+    </div>
+    </div>
+
+  <div class="container-fluid" id="features">
+  <!-- Row which has FEATURED written-->
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p class="heading"><b>FEATURED</b></p>
+        </div>
+      </div>
+      <!--First Row containing three cards-->
+      <div class="row">
+      <!--Card 1-->
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class=" flip-container1" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container1').toggleClass('flip-container-on-click')">
+              <div class="flipper">
+                <div class="customcard card-padding" >
+
+              <!-- Card Front-->
+              <div class="front">
+                 <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>{{F1_Name}}</b><br>{{ F1_Title }}</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">{{ F1_Desc }}
+
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S1 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S1[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<!--Card 2-->
+ <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container2" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container2').toggleClass('flip-container-on-click')">
+      <div class="flipper">
+          <div class="customcard card-padding" >
+            <!-- Card Front-->
+                       <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>{{F2_Name}}</b><br>{{F2_Title}}</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">{{F2_Desc}}
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+           <div class="back">
+              <div class="row back-card">
+                  {% for i in S2 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S2[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+            </div>
+
+          </div>
+          </div>
+        </div>
+</div>
+    <!--Card 3-->
+<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container3" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container3').toggleClass('flip-container-on-click')">
+    <div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+ <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                  <p><b>{{F3_Name}}</b><br>{{F3_Title}}</p>
+                </div>
+              </div>
+              <div class="row card-body">
+                <div class="col-md-12">
+                  <p class="grid-text">{{ F3_Desc }}
+                  </p>
+                </div>
+              </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S3 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S3[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-md-2"></div>
+  </div>
+</div>
+</div>
+
+
+  <div class="container-fluid" id="recents">
+  <!-- Row which has RECENT written-->
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 ">
+      <div class="row">
+        <div class="col-md-12 col-xs-10 col-xs-push-1 col-md-push-0">
+          <p class="heading"><b>RECENT</b></p>
+        </div>
+      </div>
+      <!--First Row containing three cards-->
+      <div class="row">
+      <!--Card 1-->
+        <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+          <div class=" flip-container4" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container4').toggleClass('flip-container-on-click')">
+              <div class="flipper">
+                <div class="customcard card-padding" >
+
+              <!-- Card Front-->
+              <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R1_Name }}</b><br>{{ R1_Title }}</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">{{ R1_Desc }}
+               </p>
+              </div>
+          </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+
+
+
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S4 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S4[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--Card 2-->
+ <div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container5" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container5').toggleClass('flip-container-on-click')">
+      <div class="flipper">
+          <div class="customcard card-padding" >
+            <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R2_Name }}</b><br>{{ R2_Title }}</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">{{ R2_Desc }}
+               </p>
+              </div>
+            </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S5 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S5[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+          </div>
+          </div>
+          </div>
+        </div>
+    </div>
+    <!--Card 3-->
+<div class="col-md-4 col-xs-10 col-md-push-0 col-xs-push-1 grid-padding topcard card-holder">
+  <div class=" flip-container6" ontouchstart="this.classList.toggle('hover');" onclick="$('.flip-container6').toggleClass('flip-container-on-click')">
+    <div class="flipper">
+<div class="customcard card-padding" >
+
+
+      <!-- Card Front-->
+            <div class="front">
+              <div class="row card-header">
+                <div class="col-md-3 col-xs-3 col-sm-3 card_image_holder">
+                  <img src="../static/images/17.jpg" class="card-profile-image img-responsive">
+                </div>
+              <div class="col-md-9 col-xs-9 col-sm-9 card-heading">
+                <p><b>{{ R3_Name }}</b><br>{{ R3_Title }}</p>
+              </div>
+            </div>
+            <div class="row card-body">
+              <div class="col-md-12">
+                <p class="grid-text">{{ R3_Desc }}
+               </p>
+              </div>
+            </div>
+              <div class="row card-footer" >
+                <div class="card-button">
+                  <a href="#"><b>View Profile</b></a>
+                </div>
+              </div>
+            </div>
+
+
+            <!--Card Back-->
+            <div class="back">
+              <div class="row back-card">
+                  {% for i in S6 %}
+                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i }}</div><div class="col-md-2 money">{{S6[i]}}</div></div>
+                    <div class="col-md-12 gap"></div>
+                  {% end %}
+              </div>
+</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-md-2"></div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="footer container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-xs-1"></div>
+    <div class="col-md-4 col-lg-4 col-xs-10">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 col-xs-3">
+          <div class="footer-tabs"><a href="#">Privacy</a></div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xs-6">
+          <div class="footer-tabs"><a href="#">Terms & Conditions</a></div>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xs-3">
+          <div class="footer-tabs"><a href="#">About Us</a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center">
+          <div class="footer-img"><img src="../static/images/gdg.png"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center">
+          <div class="footer-credits"><p><span>Created By</span><br>Google Developers Group<br>VIT Vellore</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-1"></div>
+  </div>
+</div>
+</body>
+</html>
