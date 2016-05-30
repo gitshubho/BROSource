@@ -1409,6 +1409,7 @@ font-size: 275%;
   background:rgb(47,71,87);
   border:none;
   height: 20%;
+  margin-top:2%;
 }
 
 .CustomForm
@@ -1427,6 +1428,15 @@ font-size: 275%;
 {
   text-align: center;
 }
+.onboarding-image-holder label
+{
+  cursor: pointer;
+  background: #4285F4;
+  padding: 3%;
+  color: white;
+  padding-left: 6%;
+  padding-right: 6%;
+}
 .onboarding-image
 {
   border-radius: 100%;
@@ -1438,9 +1448,21 @@ font-size: 275%;
 }
 .upload-img-btn
 {
+
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  cursor: pointer;
+}
+#myButton
+{
   background: #4285F4;
-  padding: 3%;
+  padding: 1%;
   color: white;
+  font-weight: bold;
   padding-left: 6%;
   padding-right: 6%;
 }
@@ -1468,7 +1490,7 @@ font-size: 275%;
 #onboarding-carousel-indicators div
 {
   border-radius: 100%;
-  border:1px solid white;
+  border:2px solid rgb(214,234,248);;
   width:100px;
   height:100px;
   margin-top: 2%;
@@ -1480,9 +1502,17 @@ font-size: 275%;
 #onboarding-carousel-indicators span
 {
   position: relative;
-  color: white;
+  color: rgb(214,234,248);
   font-size: 400%;
   margin-top:22%;
+}
+
+@media(min-width:1400px)
+{
+  .onboarding-carousel
+  {
+    margin-top: 5%;
+  }
 }
 .onboarding-topbar
 {
@@ -1491,6 +1521,9 @@ font-size: 275%;
   text-align: center;
   color: white;
   padding: 0.25%;
+  position:fixed;
+  z-index:3;
+  width: 100%;
 }
 .onboarding-carousel .form-group input
 {
@@ -1499,6 +1532,22 @@ font-size: 275%;
   border-radius: 0;
   background: rgb(240,240,240);
 }
+.onboarding-carousel .form-group select
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.onboarding-carousel .form-group textarea
+{
+  margin-top: 20px;
+  height: 20%;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+
 .onboarding-added-skills-box
 {
   height: 40%;;
@@ -1522,12 +1571,42 @@ font-size: 275%;
 {
   background: white;
   border-radius: 0;
-  color: black;
+  color:gray;
   padding: 15%;
   padding-right: 15%;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  font-weight: lighter;
 }
-
+.onboarding-work
+{
+  margin-top: 30px;
+  text-decoration: none;
+  border-radius: 0;
+  border: 1px solid rgb(204,204,204);
+  background: rgb(240,240,240);
+  margin-bottom: 20px;
+}
+.onboarding-added-work
+{
+  height: 15%;
+  text-decoration: none;
+  border-radius: 0;
+  border: 1px solid rgb(204,204,204);
+  background: rgb(240,240,240);
+  margin-bottom: 20px;
+  padding-top: 2%;
+  font-size: 100%;
+}
+.onboarding-added-work span
+{
+  font-size: 200%;
+  padding-bottom: 0.5%;
+}
+.CustomForm a
+{
+  text-decoration: none;
+  color:rgb(98,98,98);
+}
 /*Styles for notification views */
  .notification{
    height: 100%;position: fixed; left: 0px; width: 100%;margin-left: 100%;transition: all 0.5s;

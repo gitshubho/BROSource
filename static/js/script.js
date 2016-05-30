@@ -20,13 +20,13 @@
       }
       $(".hello-image-left").addClass("animated fadeInRight");
       $(".hello-image-right").addClass("animated fadeInLeft");
-      /*$('.carousel').each(function()
+      $('.onboarding-carousel').each(function()
       {
         $(this).carousel(
         {
           interval: false
         });
-      });*/
+      });
     $(".homepage-carousel").css("top",Wht/4.5);
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
