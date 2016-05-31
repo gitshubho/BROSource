@@ -98,7 +98,9 @@ class SignupHandler(RequestHandler):
         if(bool(result)):
             self.redirect('/?username&email=taken')
         else:
-            result = yield db.users.insert({'username':username,'password':password,'email':email, 'name':name,'mobile':'','address':'','skills':[], "dob": ""})
+            result = yield db.users.insert({'photo_link' : '','username' : username, 'password' : password, 'email' : email, 'name' : name, 'mobile' : '',
+                                            'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
+                                            'signup' : 0, 'aboutme' : '', 'ratings' : '', 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
             print bool(self.get_secure_cookie("user"))
@@ -109,13 +111,27 @@ class UpdateProfileHandler(RequestHandler):
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie("user")
+
+        dob = self.get_argument('dob')
+        address = self.get_argument('address')
         skills = self.get_argument('skills',[]).split(',')
-        address = self.get_argument('address', '')
         contact = self.get_argument('mobile')
+        services = self.get_argument('services',[]).split(',')
+        category = self.get_argument('category')
+        aboutme = self.get_argument('aboutme')
+        certifications = self.get_argument('certifications',[]).split(',')
+        education_details = self.get_argument('education_details',[]).split(',')
+
         userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-        result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'address': address,'mobile':contact,'skills':skills}})
-        message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
-        sendMessage(contact,message)
+
+        if userInfo['signup'] == 0:
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+                                            'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
+            message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
+            sendMessage(contact,message)
+        else:
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+                                            'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
 class SelfProfileHandler(RequestHandler):
@@ -216,7 +232,7 @@ class AddProjectHandler(RequestHandler):
         time = now.strftime("%d-%m-%Y %I:%M %p")
         insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
         userId = ObjectId(user_id)
-        yield db.users.update({'_id': userId},{'$push':{"projectsAdded":str(insert)}})
+        yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
         if bool (insert):
             pass
         self.redirect('/viewproject/'+str(insert))
