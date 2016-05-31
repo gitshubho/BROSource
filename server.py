@@ -26,6 +26,13 @@ from datetime import datetime
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
+def hashingPassword(password):
+    salt=[password[i] for i in range(0,len(password),2)]
+    postsalt=''.join(salt[:len(salt)/2])
+    presalt=''.join(salt[len(salt)/2:])
+    return (presalt+password+postsalt)
+
+
 class MainHandler(RequestHandler):
 
     @removeslash
@@ -51,6 +58,7 @@ class MainHandler(RequestHandler):
                         R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
                         R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Desc=recent[2]['aboutme'],S6=recent[2]['services'])
         except IndexError:
+            #print('Index error encountered')
             self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
                         F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
                         F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
@@ -61,6 +69,7 @@ class MainHandler(RequestHandler):
                         R3_Name='Piyush',R3_Title='Cloud programmer',R3_Desc='I know c++,java,python',S6={'I can do backend in ':'$4'}
                         )
         except KeyError:
+            #print('key error encountred')
             self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
                         F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
                         F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
@@ -73,23 +82,24 @@ class MainHandler(RequestHandler):
 
 class LoginHandler(RequestHandler):
 
-	@removeslash
-	@coroutine
-	def post(self):
+    @removeslash
+    @coroutine
+    def post(self):
+        username = self.get_argument("username")
+        password = self.get_argument("password")
 
-            username = self.get_argument("username")
-	    password = self.get_argument("password")
+        password=hashingPassword(password)
+        password=hashlib.sha256(password).hexdigest()
+        result = yield db.users.find_one({'username': username, 'password': password})
 
-            result = yield db.users.find_one({'username':username,'password':password})
-
-	    if bool(result):
-	        self.set_secure_cookie("user", str(result['_id']))
-                if len(result["dob"]) > 0:
-                    self.redirect("/profile/me")
-                else:
-                    self.redirect("/welcome")
+        if bool(result):
+            self.set_secure_cookie("user", str(result['_id']))
+            if len(result["dob"]) > 0:
+                self.redirect("/profile/me")
             else:
-	        self.redirect("/?status=False")
+                self.redirect("/welcome")
+        else:
+            self.redirect("/?status=False")
 
 class OnBoardingHandler(RequestHandler):
 
@@ -119,6 +129,8 @@ class SignupHandler(RequestHandler):
         if(bool(result)):
             self.redirect('/?username&email=taken')
         else:
+            password=hashingPassword(password)
+            password=hashlib.sha256(password).hexdigest()
             result = yield db.users.insert({'photo_link' : '','username' : username, 'password' : password, 'email' : email, 'name' : name, 'mobile' : '',
                                             'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
                                             'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
