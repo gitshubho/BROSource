@@ -71,7 +71,6 @@ class MainHandler(RequestHandler):
                         R3_Name='Piyush',R3_Title='Cloud programmer',R3_Desc='I know c++,java,python',S6={'I can do backend in ':'$4'}
                         )
 
-
 class LoginHandler(RequestHandler):
 
 	@removeslash
@@ -252,7 +251,9 @@ class AddProjectHandler(RequestHandler):
         user_id = self.get_secure_cookie("user")
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
-        insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
+        insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),
+                                        "skills" : self.get_argument('tags'),"nop":self.get_argument('nop'),"budget":self.get_argument('bid'),
+                                        "urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description'),"bids" : []})
         userId = ObjectId(user_id)
         yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
         if bool (insert):
@@ -271,13 +272,14 @@ class ViewProjectHandler(RequestHandler):
             data.append(json.loads(json_util.dumps(projData)))
             #print bool(self.get_secure_cookie("user")),"\n"
             #if bool(self.get_secure_cookie("user")):
-            self.render('viewproject.html',maxbid=maxbid,result= dict(data=data, user = userData['username'],loggedIn = True))
+            self.render('viewproject.html',result= dict(data=data, user = userData['username'],loggedIn = True))
             #else:
                 #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
 class Donate(RequestHandler):
     def get(self):
         self.render('donate.html')
+
     @coroutine
     @removeslash
     def post(self):
@@ -290,12 +292,12 @@ class Donate(RequestHandler):
             user_id = self.get_secure_cookie("user")
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
-class bidHandler(RequestHandler):
+"""class BidHandler(RequestHandler):
 	@coroutine
 	def get(self,projId):
 		document=yield db.projects.find_one({'_id':ObjectId(projId)})
 		doc=document
-		bids=doc['bids']
+		bids=doc['bid']
 		amount=list()
 		for bid in bids:
 			amount.append(int(bid['amount']))
@@ -319,7 +321,7 @@ class bidHandler(RequestHandler):
 		bidAmt=self.get_argument('bidAmt')
 		days=self.get_argument('noOfDays')
 		result=yield db.projects.update({'_id':ObjectId(projId)},{'$push':{"bids":{'amount':bidAmt,'days':days}}})
-		self.redirect('/viewproject/(\w+)')
+		self.redirect('/viewproject/(\w+)')"""
 
 class LogoutHandler(RequestHandler):
     @removeslash
@@ -352,7 +354,7 @@ application = Application([
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
     (r"/donate", Donate),
-    (r"/bids",bidHandler)
+    (r"/bids/(\w+)",BidHandler)
 ], **settings)
 
 #main init
