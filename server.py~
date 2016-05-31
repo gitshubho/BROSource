@@ -216,7 +216,7 @@ class AddProjectHandler(RequestHandler):
         time = now.strftime("%d-%m-%Y %I:%M %p")
         insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
         userId = ObjectId(user_id)
-        yield db.users.update({'_id': userId},{'$push':{"projectsAdded":str(insert)}})
+        yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
         if bool (insert):
             pass
         self.redirect('/viewproject/'+str(insert))
@@ -236,6 +236,21 @@ class ViewProjectHandler(RequestHandler):
             self.render('viewproject.html',result= dict(data=data, user = userData['username'],loggedIn = True))
             #else:
                 #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+
+class Donate(RequestHandler):
+    def get(self):
+        self.render('donate.html')
+    @coroutine
+    @removeslash
+    def post(self):
+        anon=self.get_argument('anonymous')
+        if not bool(self.get_secure_cookie("user")):
+            anon= "Anonymous"
+        if (anon=='Anonymous'):
+            yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':anon,'payment received':0})
+        else:
+            user_id = self.get_secure_cookie("user")
+            yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
 class LogoutHandler(RequestHandler):
     @removeslash
@@ -266,7 +281,8 @@ application = Application([
     (r"/forgot/verify", AuthTokenHandler),
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
-    (r"/viewproject/(\w+)", ViewProjectHandler)
+    (r"/viewproject/(\w+)", ViewProjectHandler),
+    (r"/donate", Donate)
 ], **settings)
 
 #main init

@@ -67,16 +67,16 @@
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">
-                      <label>First Name</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" value ="{{result['userInfo']['name']}}">
+                      <label>Name</label>
+                      <input type="text" class="form-control" id="onboarding-firstname" value ="{{ result['userInfo']['name'] }}">
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                       <label>Last Name</label>
                       <input type="text" class="form-control" id="onboarding-lastname" placeholder="">
-                    </div>
+                    </div>-->
                     <div class="form-group">
                       <label>User Name</label>
-                      <input type="text" class="form-control" id="onboarding-username" value="{{result['userInfo']['username']}}" >
+                      <input type="text" class="form-control" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
                     </div>
                   </div>
                 </div>
@@ -84,11 +84,15 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Email Address</label>
-                      <input type="text" class="form-control" id="onboarding-email" value="{{result['userInfo']['email']}}">
+                      <input type="text" class="form-control" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
                     </div>
                     <div class="form-group">
                       <label>Date Of Birth</label>
-                      <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="">
+                      {% if result['userInfo']['dob'] == '' %}
+                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="">
+                      {% else %}
+                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="{{ result['userInfo']['dob'] }}">
+                      {% end %}
                     </div>
                   </div>
                 </div>
@@ -96,17 +100,38 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Address</label>
-                      <input type="text" class="form-control" name = "address" id="onboarding-address" placeholder="">
+                      {% if result['userInfo']['address'] == '' %}
+                        <input type="text" class="form-control" name = "address" id="onboarding-address" placeholder="">
+                      {% else %}
+                        <input type="text" class="form-control" name = "address" id="onboarding-address" value="{{ result['userInfo']['address'] }}">
+                      {% end %}
                     </div><!--
                     As of now , comma separated values of skills. Can change it to some other input types. -->
                     <div class="form-group">
                       <label>Skills(Comma separated)</label>
-                      <input type="text" class="form-control" name = "skills" id="onboarding-skills" placeholder="" >
+                      {% if len(result['userInfo']['skills']) == 0 %}
+                        <input type="text" class="form-control" name = "skills" id="onboarding-skills" placeholder="" >
+                      {% else %}
+                        <input type="text" class="form-control" name = "skills" id="onboarding-skills" value="{{ result['userInfo']['skills'] }}" >
+                      {% end %}
                     </div>
 
                     <div class="form-group">
                       <label>Mobile</label>
-                      <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" placeholder="">
+                      {% if result['userInfo']['mobile'] == '' %}
+                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" placeholder="">
+                      {% else %}
+                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
+                      {% end %}
+                    </div>
+
+                    <div class="form-group">
+                      <label>Services(Comma separated)</label>
+                      {% if len(result['userInfo']['services']) == 0 %}
+                        <input type="text" class="form-control" name = "services" id="onboarding-services" placeholder="" >
+                      {% else %}
+                        <input type="text" class="form-control" name = "services" id="onboarding-services" value="{{ result['userInfo']['services'] }}" >
+                      {% end %}
                     </div>
                   </div>
                 </div>
@@ -115,17 +140,22 @@
                     <div class="form-group">
                       <label>Category</label>
                       <select class="form-control" name = "category" id="onboarding-category" placeholder="Choose a Category">
-                        <option value="technical">Technical</option>
-                        <option value="design">Design</option>
-                        <option value="technical and management">Technical and Management</option>
-                        <option value="technical and design">Technical and Design</option>
-                        <option value="design and management">Design and Management</option>
-                        <option value="all three">Technical, Design and Management</option>
+                        <option value=1>Technical</option>
+                        <option value=2>Management</option>
+                        <option value=4>Design</option>
+                        <option value=3>Technical and Management</option>
+                        <option value=5>Technical and Design</option>
+                        <option value=6>Design and Management</option>
+                        <option value=7>Technical, Design and Management</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label>About Me</label>
-                      <textarea class="form-control" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!">
+                      {% if result['userInfo']['aboutme'] == '' %}
+                        <textarea class="form-control" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!">
+                      {% else %}
+                        <textarea class="form-control" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}
+                      {% end %}
                       </textarea>
                     </div>
                   </div>
@@ -134,13 +164,21 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Certification</label>
-                      <textarea class="form-control" name = "certifications" id="onboarding-cetifications" placeholder="">
+                      {% if len(result['userInfo']['certifications']) == 0 %}
+                        <textarea class="form-control" name = "certifications" id="onboarding-cetifications" placeholder="">
+                      {% else %}
+                        <textarea class="form-control" name = "certifications" id="onboarding-cetifications">{{ result['userInfo']['certifications'] }}
+                      {% end %}
                       </textarea>
                     </div><!--
                     As of now , comma separated values of skills. Can change it to some other input types. -->
                     <div class="form-group">
                       <label>Education</label>
-                      <textarea class="form-control" name = "education_details" id="onboarding-education" placeholder="" >
+                      {% if len(result['userInfo']['education_details']) == 0 %}
+                        <textarea class="form-control" name = "education_details" id="onboarding-education" placeholder="" >
+                      {% else %}
+                        <textarea class="form-control" name = "education_details" id="onboarding-education">{{ result['userInfo']['education_details'] }}
+                      {% end %}
                       </textarea>
                     </div>
                     <p align="center">
