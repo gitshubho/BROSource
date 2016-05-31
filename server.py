@@ -216,7 +216,7 @@ class AddProjectHandler(RequestHandler):
         time = now.strftime("%d-%m-%Y %I:%M %p")
         insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),"tags" : self.get_argument('tags'),"nop":self.get_argument('nop'),"bid":self.get_argument('bid'),"urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description')})
         userId = ObjectId(user_id)
-        yield db.users.update({'_id': userId},{'$push':{"projectsAdded":str(insert)}})
+        yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
         if bool (insert):
             pass
         self.redirect('/viewproject/'+str(insert))
