@@ -1,0 +1,11 @@
+.notification{
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+}
+
+.bar{
+    background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important; transition: all 0.5s;
+}
+
+.not-in-view{
+    transition: all 0.5s;
+}

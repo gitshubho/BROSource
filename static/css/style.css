@@ -1674,33 +1674,6 @@ font-size: 275%;
   text-decoration: none;
   color:rgb(98,98,98);
 }
-/*Styles for notification views */
- .notification{
-   height: 100%;position: fixed; left: 0px; width: 100%;margin-left: 100%;transition: all 0.5s;
- }
- .bar{
-     background:#26333b; height: 100%; transition: all 0.5s; color: white;
- }
-
-
- /*Styles for message views in profile_other.html*/
-
- .messages
- {
-   height: 100%;
-   position: fixed;
-   left: 0;
-   width: 100%;
-   transition: all 0.5s;
-   margin-left: 100%;
- }
-
- .message-bar
- {
-   background: white;
-   transition: all 0.5s;
-   height: 100%;
- }
 
 .footer
 {
@@ -1755,60 +1728,6 @@ font-size: 275%;
  body{
      overflow-x: hidden;
  }
-
- .not-toggler{
-     z-index: 2;
-     margin-left: 75%;
- }
-
-
-
-
-/*Styles for notification views in profile_self.html*/
- .notification{
-     height: 100%; position: absolute; left: 0px; width: 100%; z-index: 3;
- }
- .bar{
-     background:#26333b; height: 100%; transition: all 0.5s;
-     color: #ffffff; z-index: 3;
- }
- body{
-     overflow-x: hidden;
- }
- .not-in-view{
-     transition: all 0.5s;
- }
- .not-toggler{
-     z-index: 5;
- }
-
- /*Styles for messages view. Almost same as above ones*/
-
- .messages{
-     height: 100%; position: absolute; left: 0px; width: 100%; z-index: 3;
- }
- .msg-bar{
-     background:#26333b; height: 100%; transition: all 0.5s; color: #ffffff; z-index: 3;
- }
-
- .body-display{
-     display: none; transition: all 0.5s;
- }
-
- .not-body-lighten{
-     background: rgba(0,0,0,0.5);
-     height:100%;
-     z-index: 2;
-     transition: all 1s;
- }
-
- .msg-body-lighten{
-     background: rgba(0,0,0,0.5);
-     height:100%;
-     z-index: 2;
-     transition: all 0.5s;
- }
-
 
 /* Add Project CSS */
 
