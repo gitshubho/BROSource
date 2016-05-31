@@ -4,6 +4,7 @@
       var Wht=$(window).height();
       var Wwt=$(window).width();
 
+
       $(".homepage-add-projects-button").css("top",Wht);
       if(Wht<Wwt)
       {
@@ -27,10 +28,15 @@
           interval: false
         });
       });
+
     $(".homepage-carousel").css("top",Wht/4.5);
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
     $(".profile-other-user").css("height",Wht/10);
+
+    var Onboarding_navHt=$("#onboarding-nav").height()
+    $(".onboarding-carousel-control").css("top",Onboarding_navHt/2);
+    $(".onboarding-carousel-control").css("font-size",Onboarding_navHt*3.2+"%");
          /*Seting the grid-card size */
   if(Wwt>Wht)
     {
@@ -198,6 +204,11 @@ $(window).resize(function()
     $(".homepage-add-projects-button").css("margin-top","10%");
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
+
+    var Onboarding_navHt=$("#onboarding-nav").height()
+    $(".onboarding-carousel-control").css("top",Onboarding_navHt/2);
+    $(".onboarding-carousel-control").css("font-size",Onboarding_navHt*3.2+"%");
+
     if(Wwt>Wht)
     {
       $(".fix-profile").addClass("affix");

@@ -1473,7 +1473,7 @@ font-size: 275%;
 #onboarding-carousel-indicators
 {
   position: absolute;
-  bottom: 20px;
+  top:-25px;
   left: 50%;
   z-index: 15;
   width: 60%;
@@ -1485,7 +1485,7 @@ font-size: 275%;
 {
   list-style-type: none;
   display: inline-block;
-  margin: 2%;
+  margin: 7%;
 }
 #onboarding-carousel-indicators div
 {
@@ -1493,10 +1493,6 @@ font-size: 275%;
   border:2px solid rgb(214,234,248);;
   width:100px;
   height:100px;
-  margin-top: 2%;
-  margin-left: 4%;
-  margin-right: 4%;
-  margin-bottom: 2%;
   background:#4285F4;
 }
 #onboarding-carousel-indicators span
@@ -1507,11 +1503,39 @@ font-size: 275%;
   margin-top:22%;
 }
 
+#onboarding-carousel-indicators p
+{
+  position: fixed;
+  margin-left: -1.2%;
+  margin-top: 5px;
+  color: white;
+}
+
+.onboarding-carousel-control
+{
+  position: fixed;
+  height: 20px;
+  z-index: 4;
+  border-radius: 100%;
+  color:#4285F4;
+}
+@media(max-width:600px)
+{
+  .onboarding-carousel-control
+  {
+    margin-right: 5%;
+  }
+
+}
 @media(min-width:1400px)
 {
   .onboarding-carousel
   {
     margin-top: 5%;
+  }
+  #onboarding-carousel-indicators p
+  {
+    font-size: 150%;
   }
 }
 .onboarding-topbar
@@ -1586,6 +1610,19 @@ font-size: 275%;
   background: rgb(240,240,240);
   margin-bottom: 20px;
 }
+.onboarding-work .col-md-11
+{
+  text-align:center;padding-top:2%;
+}
+.onboarding-work .col-md-1
+{
+  text-align:center;
+  padding-top:1.5%;
+  background:rgb(46,204,113);
+  color:white;
+  font-size:150%;
+}
+
 .onboarding-added-work
 {
   height: 15%;
@@ -1601,6 +1638,36 @@ font-size: 275%;
 {
   font-size: 200%;
   padding-bottom: 0.5%;
+}
+@media(max-width:600px)
+{
+  .onboarding-work
+  {
+    margin-left: 5%;
+    margin-right: 5%;
+
+  }
+  .onboarding-added-work
+  {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .onboarding-added-work span
+  {
+    font-size: 100%;
+    padding-bottom: 0.5%;
+  }
+  .onboarding-work .col-md-11
+  {
+    text-align:center;
+    padding-top:2%;
+  }
+  .onboarding-work .col-md-1
+  {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: -10px;
+  }
 }
 .CustomForm a
 {
