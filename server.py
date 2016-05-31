@@ -100,7 +100,7 @@ class SignupHandler(RequestHandler):
         else:
             result = yield db.users.insert({'photo_link' : '','username' : username, 'password' : password, 'email' : email, 'name' : name, 'mobile' : '',
                                             'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
-                                            'signup' : 0, 'aboutme' : '', 'ratings' : '', 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
+                                            'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
             print bool(self.get_secure_cookie("user"))
