@@ -233,7 +233,7 @@ class ViewProjectHandler(RequestHandler):
             data.append(json.loads(json_util.dumps(projData)))
             #print bool(self.get_secure_cookie("user")),"\n"
             #if bool(self.get_secure_cookie("user")):
-            self.render('viewproject.html',result= dict(data=data, user = userData['username'],loggedIn = True))
+            self.render('viewproject.html',maxbid=maxbid,result= dict(data=data, user = userData['username'],loggedIn = True))
             #else:
                 #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
@@ -251,6 +251,37 @@ class Donate(RequestHandler):
         else:
             user_id = self.get_secure_cookie("user")
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
+
+class bidHandler(RequestHandler):
+	@coroutine
+	def get(self,projId):
+		document=yield db.projects.find_one({'_id':ObjectId(projId)})
+		doc=document
+		bids=doc['bids']
+		amount=list()
+		for bid in bids:
+			amount.append(int(bid['amount']))
+
+		amount.sort(reverse=True)
+		maxbid=list()
+		i=0
+		for amt in amount:
+			if(i==5):break
+			for bid in bids:
+				if bid['amount']==amt:
+					maxbid.append(bid)
+					bids.remove(bid)
+					i+=1
+					break
+		#self.render('viewproject.html',maxbid=maxbid)
+	@coroutine
+	def post(self,projId):
+		#coll=self.application.db.projects
+		db=motor.MotorClient().projectTest
+		bidAmt=self.get_argument('bidAmt')
+		days=self.get_argument('noOfDays')
+		result=yield db.projects.update({'_id':ObjectId(projId)},{'$push':{"bids":{'amount':bidAmt,'days':days}}})
+		self.redirect('/viewproject/(\w+)')
 
 class LogoutHandler(RequestHandler):
     @removeslash
@@ -282,7 +313,8 @@ application = Application([
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
-    (r"/donate", Donate)
+    (r"/donate", Donate),
+    (r"/bids",bidHandler)
 ], **settings)
 
 #main init

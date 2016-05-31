@@ -7,13 +7,21 @@
 <p>Category: {{ result["data"][0]['category'] }}</p>
 <p>Tags: {{ result["data"][0]['tags'] }}</p>
 <p>No. of People Required: {{ result["data"][0]['nop'] }}</p>
-<p>Bid: </p>
 <p>Is Urgent: {{ result["data"][0]['urgent'] }}</p>
 <p>Time of Project addition: {{ result["data"][0]['time'] }}</p>
 <p>Deadline: </p>
 <p>Description: {{ result["data"][0]['description'] }}</p>
-
 <p>Assigned By: {{result['user']}}</p>
 
+<h4>Displaying top 5 bidders:</h4>
+{%for bid in maxbid %}
+	<li>{{escape(str(bid['amount']))}}</li>
+	<li>{{escape(str(bid['days']))}}</li>
+{%end%}
+	</p>
+<form method="post" action="/bids">
+ <p>Bid amount<input type="text" name="bidAmt"></p>
+ <p>No. of days<input type="text" name="noOfDays"></p>
+<p><input type="submit" value="Place Bid" ></p>
 </body>
 </html>
