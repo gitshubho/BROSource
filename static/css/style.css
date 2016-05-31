@@ -53,6 +53,10 @@
     left: auto;
     background-image: none;
   }
+  .carousel-inner .item
+  {
+    width: 100%;
+  }
   .hello
   {
     margin: auto;
@@ -70,9 +74,55 @@
     right: auto;
     z-index: -1;
   }
-
-
-
+  .carousel-caption-active
+  {
+    position: absolute;
+  }
+@media(min-width:600px)
+{
+  .homepage-image-active-carousel-image
+  {
+    width: auto;
+    padding-bottom: 3%;
+  }
+}
+@media(max-width:600px)
+{
+  .homepage-image-active-carousel-image
+  {
+    margin-bottom: 14%;
+  }
+  .brand-icon
+  {
+    font-size: 90%;
+    margin-top: -5px;
+  }
+  .brand-icon span
+  {
+    font-size: 50%;
+  }
+}
+@media(max-width:350px)
+{
+  .homepage-image-active-carousel-image
+  {
+    margin-bottom: 28%;
+  }
+  .brand-icon .brand-name
+  {
+    font-size: 120%;
+    margin-left: -10px;
+    margin-top: -5px;
+  }
+}
+@media(min-width:1400px)
+{
+  .homepage-hello-caption
+  {
+    margin-bottom: 3%;
+    font-size: 150%;
+  }
+}
   /*Searchbar css*/
   *{
       font-family: 'Varela', sans-serif;
@@ -299,13 +349,17 @@ padding-top: 1.5%;
 padding-bottom: 1.5%;
 }
 .card-footer
-{
-border-top: 0.5px solid;
-border-color: rgb(217,217,217);
-padding:0;
-margin:0;
-padding-top: 1%;
-}
+  {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  border-top: 0.5px solid;
+  border-color: rgb(217,217,217);
+  padding:0;
+  margin:0;
+  padding-top: 1%;
+  }
+
 #homepage-search-icon
 {
   margin-top: 65%;
@@ -358,6 +412,7 @@ font-size: 275%;
   padding-top: 10%;
   padding-bottom: 10%;
 }
+
 @media(min-width: 600px){
   .carousel-caption{
     font-size: 250%;
@@ -379,8 +434,20 @@ font-size: 275%;
   }
 
   .search{
-     width: 100%; transition: all 0.5s; font-size:13px;  position: absolute;  margin-top: 15px; border: 0px rgba(0,0,0,0.5) solid;  box-shadow: 0px 0px 0.01px 0px; padding: 5px; font-weight: bold; visibility: visible; transition: all 0.5s; left: 20px; font-weight: bold; background:#3498DB;
-     color:white;
+    width: 100%;
+    transition: all 0.5s;
+    font-size:13px;
+    position: absolute;
+    margin-top: 15px;
+    border: 0px rgba(0,0,0,0.5) solid;
+    box-shadow: 0px 0px 0.01px 0px;
+    padding: 5px;
+    font-weight: bold;
+    visibility: visible;
+    left: 20px;
+    font-weight: bold;
+    background:#3498DB;
+    color:white;
   }
 
   .topbar .search-col input[type=text]:focus
@@ -391,7 +458,7 @@ font-size: 275%;
 }
 @media(max-width: 600px){
   .carousel-caption{
-    font-size: 175%;
+    font-size: 150%;
   }
   #carousel-generic{
     height: 50%;
@@ -411,8 +478,20 @@ font-size: 275%;
     text-align: center;
   }
   .search{
-     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 10px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; top:60px;
-     width: 100%;  visibility: visible; transition: all 0.5s; left: -20px; font-weight: bold; top:60px;
+    width: 80%;
+    transition: all 0.5s;
+    font-size:13px;
+    position: absolute;
+    margin-top: 15px;
+    border: 0px rgba(0,0,0,0.5) solid;
+    box-shadow: 0px 0px 0.01px 0px;
+    padding: 5px;
+    font-weight: bold;
+    visibility: visible;
+    left: 20px;
+    font-weight: bold;
+    background:#3498DB;
+    color:white;
   }
 }
 
@@ -423,6 +502,8 @@ font-size: 275%;
   }
   .card-button
   {
+    position: absolute;
+    right: 5px;
     padding-top:1%;
     padding-bottom: 1%;
     padding-left: 7%;
@@ -445,6 +526,8 @@ font-size: 275%;
   }
   .card-button
   {
+    position: absolute;
+    right: 5px;
     padding-top:0.5%;
     padding-bottom: 0.5%;
     padding-left: 7%;
@@ -553,11 +636,13 @@ font-size: 275%;
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
 
         }
 
         /* front pane, placed above back */
         .front {
+
             z-index: 2;
             /* for firefox 31 */
             transform: rotateY(0deg);
@@ -779,7 +864,9 @@ font-size: 275%;
 {
   background: rgb(46,204,113);
   color: white;
-  padding: 0;
+  padding: 0.1%;
+  padding-left: 6%;
+  padding-right: 6%;
   font-size: 90%;
   border: 0.5px solid white;
 }
