@@ -20,3 +20,28 @@
 .in-view{
     transition: all 0.5s;
 }
+
+/*For Messaging*/
+
+.messaging{
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+}
+
+.msg-dismisser{
+    height: 100%; position: fixed; left: 0; top: 0; visibility: visible;
+}
+
+.msg-dismisser-display-none{
+    visibility: hidden;
+}
+.msg{
+    background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important;
+}
+
+.not-in-view{
+    transition: all 0.5s;
+}
+
+.in-view{
+    transition: all 0.5s;
+}

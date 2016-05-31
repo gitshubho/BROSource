@@ -25,6 +25,13 @@
     <h1>Notification Bar</h1>
     </div>
   </div>
+
+  <div class="row messaging">
+    <div class="col-md-9 msg-dismisser msg-dismisser-display-none" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none')"></div>
+    <div class="col-md-3 col-md-offset-12 msg not-in-view">
+      <h1>Messaging Bar</h1>
+    </div>
+  </div>
 </div>
 
 <div class="container-fluid gray-background">
@@ -66,7 +73,7 @@
         <br>
         {% if result['loggedIn'] == True %}
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
             <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
         </ul>
