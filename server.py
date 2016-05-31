@@ -353,8 +353,7 @@ application = Application([
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
-    (r"/donate", Donate),
-    (r"/bids/(\w+)",BidHandler)
+    (r"/donate", Donate)
 ], **settings)
 
 #main init
