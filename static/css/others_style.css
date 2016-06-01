@@ -35,7 +35,7 @@
     visibility: hidden;
 }
 .msg{
-    background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important;
+    background: rgba(255,255,255,1); height: 100%; padding: 10; padding-top:0 !important; box-shadow: 0 0 10px 0 #c3c3c3;
 }
 
 .not-in-view{
@@ -44,4 +44,29 @@
 
 .in-view{
     transition: all 0.5s;
+}
+
+.message{
+    border-top:1px solid #c3c3c3;
+    border-bottom:1px solid #c3c3c3;
+}
+
+.message:hover{
+    background: #f0f0f0;
+}
+
+.msg-image{
+    margin: auto; margin-top: 3%;
+}
+
+.msg-image h3{
+    padding: 0; margin: 0;
+}
+
+.msg-preview{
+    margin: auto; margin-top: -10px;
+}
+
+.msg-image img{
+    width:140%; margin: 0; padding: 0; left: -20px; position: relative;
 }
