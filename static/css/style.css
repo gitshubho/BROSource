@@ -1,6 +1,7 @@
  body
   {
-    background:#3498DB; font-family: Montserrat;
+    background:#3498DB;
+     font-family: Montserrat, sans-serif;
   }
   #profile-other
   {
@@ -124,9 +125,7 @@
   }
 }
   /*Searchbar css*/
-  *{
-      font-family: 'Varela', sans-serif;
-   }
+
    .topbar{
 
       height: 80px;
