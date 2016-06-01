@@ -1159,6 +1159,120 @@ font-size: 275%;
 /**/
 /**/
 
+.notification article,.notification  aside, .notification figure,.notification footer, .notification header, .notification hgroup, .notification menu, .notification nav, .notification section { display: block }
+
+.notification a {
+    color: #6d84b4;
+    text-decoration: none;
+}
+
+/* {
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
+    font: 16px/1.4 Arial, sans-serif;
+    background: #3b5998;
+}*/
+
+.notification section {
+    background: rgba(0,0,0,0);
+    padding-right: 85px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.comment {
+    padding: 0 0 1em;
+    margin: 0 0 1em;
+    margin-left: 40px;
+    *zoom: 1;
+    width: 100%;
+}
+
+.comment-img {
+    padding: 3.7%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden;
+    margin-left: -50px;
+}
+@media(min-width:1400px)
+{
+  .comment-img {
+      padding: 2.5%;
+  }
+}
+@media(min-width:2000px)
+{
+  .comment-img {
+      padding: 1%;
+  }
+}
+
+.comment-img span{
+    font-size: 90%;
+    color: gray;
+}
+
+.comment-body { overflow: hidden }
+
+.comment .text {
+    padding: 10px;
+    color: rgb(204,204,204);
+}
+
+.comment .text p:last-child { margin: 0 }
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Decoration */
+
+.comments, .comment { position: relative }
+
+.comments:before, .comment:before, .comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    left: 105px;
+    bottom: 0px;
+    background: rgba(240,240,240,0.3);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #3498DB;
+}
+
+.comment:hover {
+    /*  cursor: url('../images/FB_CUR.cur');  See the result on http://lab.web-gate.fr/timeline/ */
+    cursor: cell; /* This line is for the cursor */
+}
+
+.comment:hover:before { background: #3b5998 }
+
+
+
+
+/**//**/
+
 .profile-other-banner
 {
   background:white;
