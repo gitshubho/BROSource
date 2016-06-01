@@ -18,15 +18,15 @@
 
 <body>
 
-<div class="container-fluid">
 <!--Title Bar with the title and hidden search field which appears on scroll-->
+<div class="container-fluid">
    <div class="topbar col-md-12">
      <br>
        <div class="row">
-         <div class="col-md-2 col-xs-2">
+         <div class="col-md-3 col-xs-3">
            <!-- Single button -->
-           <div class="row">
-             <div class="col-md-2" style="padding:0;margin:0;margin-top:5px;pointer:cursor">
+           <div class="row brand-icon">
+             <div class="col-md-2" style="padding:0;margin:0;margin-top:5px;pointer:cursor;">
                <div class="btn-group">
                  <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                    <span class="glyphicon glyphicon glyphicon-menu-hamburger"></span>
@@ -40,56 +40,56 @@
                </div>
              </div>
              <div class="col-md-10">
-               <div class="brand-name hide-on-small"><b>BRO</b>Source</div>
+               <div class="brand-name "><b>BRO</b>Source</div>
              </div>
+
            </div>
          </div>
-         <div class="col-md-6 col-xs-8 search-col">
+         <div class="col-md-5 col-xs-7 search-col">
            <div class="row">
-             <div class="col-md-1">
+             <div class="col-md-1 col-xs-0 hide-on-small">
                <span class="glyphicon glyphicon-search" id="homepage-search-icon"></span>
              </div>
-             <div class="col-md-11">
+             <div class="col-md-11 col-xs-12 center">
                <input type="text" class=" search " placeholder="">
              </div>
           </div>
-           <div class="brand-name hide-on-large"><b>BRO</b>Source</div>
          </div>
          <div class="col-md-4 col-xs-2 col-md-push-1">
-           <!-- The Login Modal Toggle Button-->
-           {% if result['loggedIn'] == False %}
-           <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-             <div class="row hide-on-small">
-              <div class="col-md-4 col-xs-4">
-                <img src="../static/images/Login-Icon.png" class="login-modal-image">
-              </div>
-              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
-                <p><h4>Login/SignUp</h4></p>
-              </div>
+         <!-- The Login Modal Toggle Button -->
+         {% if result['loggedIn'] == False %}
+         <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+           <div class="row hide-on-small">
+            <div class="col-md-4 col-xs-4">
+              <img src="../static/images/Login-Icon.png" class="login-modal-image">
             </div>
-            <div class="row hide-on-large">
-              <span class="glyphicon glyphicon-user"></span>
+            <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+              <p><h4>Login/SignUp</h4></p>
             </div>
-          </a>
-          {%else%}
-          <a type="button" class="login-modal-toggle" href="/profile/me">
-             <div class="row">
-              <div class="col-md-4 col-xs-4">
-                <img src="../static/images/Login-Icon.png" class="login-modal-image">
-              </div>
-              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+          </div>
+          <div class="row hide-on-large" style="margin-top:-5px;">
+            <span class="glyphicon glyphicon-user"></span>
+          </div>
+        </a>
+        {%else%}
+        <a type="button" class="login-modal-toggle" href="/profile/me">
+           <div class="row">
+            <div class="col-md-4 col-xs-4">
+              <img src="../static/images/Login-Icon.png" class="login-modal-image">
+            </div>
+            <div class="col-md-6 col-xs-6 login-modal-toggle-text">
 
-                <p><h4>Hey, {{result['userInfo']['username']}}</h4></p>
-              </div>
+              <p><h4>Hey, {{result['userInfo']['username']}}</h4></p>
             </div>
-          </a>
-          {%end%}
-         </div>
+          </div>
+        </a>
+        {%end%}
+       </div>
        </div>
      </div>
-  </div>
+   </div>
            <!-- The Modal Begins-->
-           <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+         <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
              <div class="modal-dialog modal-md">
                <div class="modal-content">
                  <!-- Modal Header-->
@@ -224,17 +224,20 @@
                </div>
            <!-- Login Modal Ends-->
 
-
-
-
-
-
+<div class="container-fluid">
 <div id="carousel-generic" class="carousel slide  homepage-carousel" data-ride="carousel">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
 
     <div class="item active">
+
+      <div class="homepage-image-active-carousel-image-holder">
+        <p align="center"><img src="../static/images/homepage.png" class="homepage-image-active-carousel-image"></p>
+      </div>
+    </div>
+
+    <div class="item ">
       <!--Hello image with Animations-->
       <div class="row">
         <div class="col-md-2 col-xs-1"></div>
@@ -258,48 +261,17 @@
         <div class="col-md-2 col-xs-1"></div>
 
       </div>
-      <div class="row">
-        <div class="col-md-4 col-xs-1"></div>
-        <div class="col-md-4 col-xs-10 carousel-caption">
-          <p><b>Get Your Work Done By Creative Geniuses</b></P>
+      <div class="row homepage-hello-caption">
+        <div class="col-md-3 col-xs-1"></div>
+        <div class="col-md-6 col-xs-10 carousel-caption ">
+          <p><b>Select a skilled individual for your next big thing</b></P>
         </div>
-        <div class="col-md-4 col-xs-1"></div>
+        <div class="col-md-3 col-xs-1"></div>
       </div>
       <!-- -->
     </div>
 
-    <div class="item">
-      <!--Hello image with Animations-->
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 hello">
-          <div class="hello-image-outermost-holder">
-            <img src="../static/images/1.png" class="hello-image hello-image-left hello-image-outermost">
-          </div>
-          <div class="hello-image-out-holder">
-            <img src="../static/images/2.png" class="hello-image hello-image-left hello-image-out">
-          </div>
-          <div class="hello-image-mid-holder">
-            <img src="../static/images/3.png" class="hello-image hello-image-center">
-          </div>
-          <div class="hello-image-out-holder">
-            <img src="../static/images/5.png" class="hello-image hello-image-right hello-image-out">
-          </div>
-          <div class="hello-image-outermost-holder">
-            <img src="../static/images/4.png" class="hello-image hello-image-right hello-image-outermost">
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 carousel-caption">
-          <p><b>This is a test to see if the given caption overflows from the div that it is contained in</b></P>
-        </div>
-        <div class="col-md-2"></div>
-      </div>
-      <!-- -->
-    </div>
+
 
   </div>
 
@@ -311,6 +283,8 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
+</div>
+
 
 <div class="row homepage-add-projects-button">
 <div class="col-md-4 col-lg-4 col-xs-2"></div>
@@ -331,7 +305,7 @@
 
 
   <!--Cards-->
-
+<div class="conteiner-fluid">
 <div class="cards">
 
   <div class="gray-background new-cards-section">
@@ -829,7 +803,6 @@
 
 </div>
 </div>
-
 <div class="footer container-fluid">
   <div class="row">
     <div class="col-md-4 col-xs-1"></div>

@@ -1,6 +1,6 @@
  body
   {
-    background:#4285F4; font-family: Montserrat;
+    background:#3498DB; font-family: Montserrat;
   }
   #profile-other
   {
@@ -8,7 +8,7 @@
   }
   #profile-other .navbar
   {
-    background: #4285F4;
+    background: #3498DB;
     color: white;
   }
   #profile-other .navbar span
@@ -53,6 +53,10 @@
     left: auto;
     background-image: none;
   }
+  .carousel-inner .item
+  {
+    width: 100%;
+  }
   .hello
   {
     margin: auto;
@@ -70,9 +74,55 @@
     right: auto;
     z-index: -1;
   }
-
-
-
+  .carousel-caption-active
+  {
+    position: absolute;
+  }
+@media(min-width:600px)
+{
+  .homepage-image-active-carousel-image
+  {
+    width: auto;
+    padding-bottom: 3%;
+  }
+}
+@media(max-width:600px)
+{
+  .homepage-image-active-carousel-image
+  {
+    margin-bottom: 14%;
+  }
+  .brand-icon
+  {
+    font-size: 90%;
+    margin-top: -5px;
+  }
+  .brand-icon span
+  {
+    font-size: 50%;
+  }
+}
+@media(max-width:350px)
+{
+  .homepage-image-active-carousel-image
+  {
+    margin-bottom: 28%;
+  }
+  .brand-icon .brand-name
+  {
+    font-size: 120%;
+    margin-left: -10px;
+    margin-top: -5px;
+  }
+}
+@media(min-width:1400px)
+{
+  .homepage-hello-caption
+  {
+    margin-bottom: 3%;
+    font-size: 150%;
+  }
+}
   /*Searchbar css*/
   *{
       font-family: 'Varela', sans-serif;
@@ -89,7 +139,7 @@
       padding-bottom: 4.25%;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       top: -20px;
-      background: #4285F4;
+      background: #3498DB;
       color: white;
    }
 
@@ -131,7 +181,7 @@
       transition: all 0.1s; border-bottom: 4px solid rgba(1,1,1,0);
    }
    .navbar-container a:hover{
-      border-bottom: 4px solid #4285F4; text-decoration: none; color: #4285F4; padding-bottom:5px;
+      border-bottom: 4px solid #3498DB; text-decoration: none; color: #3498DB; padding-bottom:5px;
       transition: all 0.3s;
    }
 
@@ -299,13 +349,17 @@ padding-top: 1.5%;
 padding-bottom: 1.5%;
 }
 .card-footer
-{
-border-top: 0.5px solid;
-border-color: rgb(217,217,217);
-padding:0;
-margin:0;
-padding-top: 1%;
-}
+  {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  border-top: 0.5px solid;
+  border-color: rgb(217,217,217);
+  padding:0;
+  margin:0;
+  padding-top: 1%;
+  }
+
 #homepage-search-icon
 {
   margin-top: 65%;
@@ -358,6 +412,7 @@ font-size: 275%;
   padding-top: 10%;
   padding-bottom: 10%;
 }
+
 @media(min-width: 600px){
   .carousel-caption{
     font-size: 250%;
@@ -379,8 +434,20 @@ font-size: 275%;
   }
 
   .search{
-     width: 100%; transition: all 0.5s; font-size:13px;  position: absolute;  margin-top: 15px; border: 0px rgba(0,0,0,0.5) solid;  box-shadow: 0px 0px 0.01px 0px; padding: 5px; font-weight: bold; visibility: visible; transition: all 0.5s; left: 20px; font-weight: bold; background:#4285F4;
-     color:white;
+    width: 100%;
+    transition: all 0.5s;
+    font-size:13px;
+    position: absolute;
+    margin-top: 15px;
+    border: 0px rgba(0,0,0,0.5) solid;
+    box-shadow: 0px 0px 0.01px 0px;
+    padding: 5px;
+    font-weight: bold;
+    visibility: visible;
+    left: 20px;
+    font-weight: bold;
+    background:#3498DB;
+    color:white;
   }
 
   .topbar .search-col input[type=text]:focus
@@ -391,7 +458,7 @@ font-size: 275%;
 }
 @media(max-width: 600px){
   .carousel-caption{
-    font-size: 175%;
+    font-size: 150%;
   }
   #carousel-generic{
     height: 50%;
@@ -411,8 +478,20 @@ font-size: 275%;
     text-align: center;
   }
   .search{
-     width: 20px; transition: all 0.5s; font-size:13px; visibility: hidden; position: absolute; left: 54%; margin-top: 10px; border: 0px rgba(0,0,0,0.5) solid; text-align: center; box-shadow: 0px 0px 3px 0px; padding: 5px; font-weight: bold; top:60px;
-     width: 100%;  visibility: visible; transition: all 0.5s; left: -20px; font-weight: bold; top:60px;
+    width: 80%;
+    transition: all 0.5s;
+    font-size:13px;
+    position: absolute;
+    margin-top: 15px;
+    border: 0px rgba(0,0,0,0.5) solid;
+    box-shadow: 0px 0px 0.01px 0px;
+    padding: 5px;
+    font-weight: bold;
+    visibility: visible;
+    left: 20px;
+    font-weight: bold;
+    background:#3498DB;
+    color:white;
   }
 }
 
@@ -423,11 +502,13 @@ font-size: 275%;
   }
   .card-button
   {
+    position: absolute;
+    right: 5px;
     padding-top:1%;
     padding-bottom: 1%;
     padding-left: 7%;
     padding-right: 7%;
-    background-color: #4285F4;
+    background-color: #3498DB;
     color: white;
     float: right;
     text-align: center;
@@ -445,11 +526,13 @@ font-size: 275%;
   }
   .card-button
   {
+    position: absolute;
+    right: 5px;
     padding-top:0.5%;
     padding-bottom: 0.5%;
     padding-left: 7%;
     padding-right: 7%;
-    background-color: #4285F4;
+    background-color: #3498DB;
     color: white;
     float: right;
     text-align: center;
@@ -553,11 +636,13 @@ font-size: 275%;
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
 
         }
 
         /* front pane, placed above back */
         .front {
+
             z-index: 2;
             /* for firefox 31 */
             transform: rotateY(0deg);
@@ -600,6 +685,7 @@ font-size: 275%;
   margin-left: -13%;
   text-align: left;
   visibility: visible;
+  color: white;
 }
 .login-modal-image
 {
@@ -649,7 +735,7 @@ font-size: 275%;
 }
 .modal-content
 {
-  background: #4285F4;
+  background: #3498DB;
   border-radius: 0;
 }
 
@@ -664,7 +750,7 @@ font-size: 275%;
 .deselected
 {
   border-radius: 0;
-  background: #4285F4;
+  background: #3498DB;
   color:white;
   border:1px solid white;
 }
@@ -672,7 +758,7 @@ font-size: 275%;
 {
   border-radius: 0;
   background: white;
-  color:#4285F4;
+  color:#3498DB;
   border:1px solid white;
 }
 .modal-header-button-holder:hover .modal-header-button,
@@ -682,7 +768,7 @@ font-size: 275%;
 }
 #Login-Signup input
 {
-  background: #4285F4;
+  background: #3498DB;
   border-radius: 0;
   color:white;
   border: 1px solid white;
@@ -778,7 +864,9 @@ font-size: 275%;
 {
   background: rgb(46,204,113);
   color: white;
-  padding: 0;
+  padding: 0.1%;
+  padding-left: 6%;
+  padding-right: 6%;
   font-size: 90%;
   border: 0.5px solid white;
 }
@@ -871,7 +959,7 @@ font-size: 275%;
 }
 .topborder-visible
 {
-  border-top:5px solid #4285F4;
+  border-top:5px solid #3498DB;
   transition: 0.2s all;
 }
 .topborder-invisible
@@ -951,7 +1039,7 @@ font-size: 275%;
     padding: 5px;
 }
 .long-card-heading{
-  background: #4285F4;
+  background: #3498DB;
   padding: 5px;
 
 
@@ -966,7 +1054,7 @@ font-size: 275%;
   font-size: 120%;
 }
 .long-card-desc{
-	border:1px solid #3498db; padding:8px; color:#3498db;
+	border:1px solid #3498DB;; padding:8px; color:#3498DB;;
   margin-top: 20px;
 }
 .long-card-title{
@@ -979,10 +1067,10 @@ font-size: 275%;
 .long-card-tags{
   background: white;
   font-size: 85%;
-  color:#4285F4;
+  color:#3498DB;
   padding: 5px;
   margin: 2px;
-  border: 0.5px solid #4285F4;
+  border: 0.5px solid #3498DB;
 }
 .long-card-body{
   padding-top: 10px;
@@ -1071,6 +1159,120 @@ font-size: 275%;
 /**/
 /**/
 
+.notification article,.notification  aside, .notification figure,.notification footer, .notification header, .notification hgroup, .notification menu, .notification nav, .notification section { display: block }
+
+.notification a {
+    color: #6d84b4;
+    text-decoration: none;
+}
+
+/* {
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
+    font: 16px/1.4 Arial, sans-serif;
+    background: #3b5998;
+}*/
+
+.notification section {
+    background: rgba(0,0,0,0);
+    padding-right: 85px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.comment {
+    padding: 0 0 1em;
+    margin: 0 0 1em;
+    margin-left: 40px;
+    *zoom: 1;
+    width: 100%;
+}
+
+.comment-img {
+    padding: 3.7%;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden;
+    margin-left: -50px;
+}
+@media(min-width:1400px)
+{
+  .comment-img {
+      padding: 2.5%;
+  }
+}
+@media(min-width:2000px)
+{
+  .comment-img {
+      padding: 1%;
+  }
+}
+
+.comment-img span{
+    font-size: 90%;
+    color: gray;
+}
+
+.comment-body { overflow: hidden }
+
+.comment .text {
+    padding: 10px;
+    color: rgb(204,204,204);
+}
+
+.comment .text p:last-child { margin: 0 }
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Decoration */
+
+.comments, .comment { position: relative }
+
+.comments:before, .comment:before, .comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    left: 105px;
+    bottom: 0px;
+    background: rgba(240,240,240,0.3);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #3498DB;
+}
+
+.comment:hover {
+    /*  cursor: url('../images/FB_CUR.cur');  See the result on http://lab.web-gate.fr/timeline/ */
+    cursor: cell; /* This line is for the cursor */
+}
+
+.comment:hover:before { background: #3b5998 }
+
+
+
+
+/**//**/
+
 .profile-other-banner
 {
   background:white;
@@ -1094,7 +1296,7 @@ font-size: 275%;
 }
 .profile-other-user-details-holder
 {
-  background:#4285F4;
+  background:#3498DB;
   padding: 3%;
   color: white;
   box-shadow: inset 0 -30px 0 rgb(240,240,240);
@@ -1119,7 +1321,7 @@ font-size: 275%;
 .profile-other-get-service
 {
   padding: 10%;
-  border: 0.5px solid #4285F4;
+  border: 0.5px solid #3498DB;
   text-align: center;
   margin-top: 5%;
 }
@@ -1165,7 +1367,7 @@ font-size: 275%;
 {
   .profile-other-user-details-holder
   {
-    background:#4285F4;
+    background:#3498DB;
     padding: 3%;
     color: white;
     box-shadow: inset 0 -15px 0 rgb(240,240,240);
@@ -1205,7 +1407,7 @@ font-size: 275%;
 }
 .profile-heading
 {
-  background:#4285F4;
+  background:#3498DB;
   color:white;
 }
 .profile-other-contact
@@ -1289,8 +1491,8 @@ font-size: 275%;
 .CustomBadge
 {
   background: white;
-  border: 1px solid #4285F4;
-  color: #4285F4;
+  border: 1px solid #3498DB;
+  color: #3498DB;
   padding:0.5%;
   border-radius: 25px;
   font-size: 80%;
@@ -1326,7 +1528,7 @@ font-size: 275%;
 
 }
 .customcard-profile .badge{
-  background: #4285F4;
+  background: #3498DB;
   color: #fff;
 }
 
@@ -1338,7 +1540,7 @@ font-size: 275%;
   margin-top: 4%;
 }
 .customcard-profile-blue{
- background: #4285F4;
+ background: #3498DB;
  color: white;
  padding: 3%;
  display: inline-block;
@@ -1431,7 +1633,7 @@ font-size: 275%;
 .onboarding-image-holder label
 {
   cursor: pointer;
-  background: #4285F4;
+  background: #3498DB;
   padding: 3%;
   color: white;
   padding-left: 6%;
@@ -1459,7 +1661,7 @@ font-size: 275%;
 }
 #myButton
 {
-  background: #4285F4;
+  background: #3498DB;
   padding: 1%;
   color: white;
   font-weight: bold;
@@ -1493,7 +1695,7 @@ font-size: 275%;
   border:2px solid rgb(214,234,248);;
   width:100px;
   height:100px;
-  background:#4285F4;
+  background:#3498DB;
 }
 #onboarding-carousel-indicators span
 {
@@ -1517,7 +1719,7 @@ font-size: 275%;
   height: 20px;
   z-index: 4;
   border-radius: 100%;
-  color:#4285F4;
+  color:#3498DB;
 }
 @media(max-width:600px)
 {
@@ -1540,7 +1742,7 @@ font-size: 275%;
 }
 .onboarding-topbar
 {
-  background: #4285F4;
+  background: #3498DB;
   height: 4.5%;
   text-align: center;
   color: white;
@@ -1805,7 +2007,7 @@ font-size: 275%;
 }
 .profile-apply-user-details-underbar
 {
-  background:  #4285F4;
+  background:  #3498DB;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   padding: 3%;
   font-weight: bold;

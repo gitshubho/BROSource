@@ -4,7 +4,6 @@
       var Wht=$(window).height();
       var Wwt=$(window).width();
 
-
       $(".homepage-add-projects-button").css("top",Wht);
       if(Wht<Wwt)
       {
@@ -30,6 +29,7 @@
       });
 
     $(".homepage-carousel").css("top",Wht/4.5);
+
     $(".cards").css("top",Wht/10);
     $(".footer").css("height",Wht/3);
     $(".profile-other-user").css("height",Wht/10);
@@ -40,6 +40,7 @@
          /*Seting the grid-card size */
   if(Wwt>Wht)
     {
+      $(".homepage-image-active-carousel-image").css("height",Wht/1.64);
       $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
@@ -74,6 +75,8 @@
     }
       else
       {
+        $(".homepage-image-active-carousel-image").css("height",Wht/2.5);
+        $(".homepage-image-active-carousel-image").css("width",Wwt);
         $(".footer").css("height",Wht/2.2);
         $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
@@ -105,7 +108,7 @@
           $(".customcard").css("height",card_height);
         }
       }
-
+       $(".card-footer").css("top",card_height-50);
       /*Fixing the profile or profile_other*/
 
       if(Wwt<800)
@@ -211,6 +214,7 @@ $(window).resize(function()
 
     if(Wwt>Wht)
     {
+      $(".homepage-image-active-carousel-image").css("height",Wht/1.64);
       $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
@@ -246,6 +250,8 @@ $(window).resize(function()
     }
       else
       {
+        $(".homepage-image-active-carousel-image").css("height",Wht/2.5);
+        $(".homepage-image-active-carousel-image").css("width",Wwt);
         $(".footer").css("height",Wht/2.2);
         $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
@@ -278,6 +284,7 @@ $(window).resize(function()
         }
       }
 
+      $(".card-footer").css("top",card_height-50);
       /*Fixing the profile or profile_other*/
 
       if(Wwt<800)
