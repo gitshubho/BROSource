@@ -2054,3 +2054,7 @@ font-size: 275%;
 .add-date{
   border: 0; width: 100%; text-align: center;
 }
+
+.add-select{
+  width: 100%; border: 0;
+}
