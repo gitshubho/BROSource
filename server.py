@@ -19,19 +19,12 @@ import hashlib
 from bson.objectid import ObjectId
 import re
 import pymongo
-from utilityFunctions import sendMessage,sendRequestToken
+from utilityFunctions import sendMessage,sendRequestToken, hashingPassword
 import textwrap
 import random
 from datetime import datetime
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
-
-def hashingPassword(password):
-    salt=[password[i] for i in range(0,len(password),2)]
-    postsalt=''.join(salt[:len(salt)/2])
-    presalt=''.join(salt[len(salt)/2:])
-    return (presalt+password+postsalt)
-
 
 class MainHandler(RequestHandler):
 
