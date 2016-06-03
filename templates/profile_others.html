@@ -1,0 +1,577 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/others_style.css">
+    <script src="../static/js/others_script.js"></script>
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+<body id="profile-other">
+
+<div class="container-fluid">
+  <div class="row notification">
+    <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none')"></div>
+    <div class="col-md-3 col-md-offset-12 bar not-in-view hidden-xs" style="hidden">
+
+    <section class="comments">
+	<article class="comment">
+		<a class="comment-img" href="#non">
+			<p>16 March 2016<br><span>10:30pm</span></p>
+		</a>
+
+		<div class="comment-body">
+			<div class="text">
+			  <p>Hello, this is an example comment</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="comment">
+		<a class="comment-img" href="#non">
+		<p>16 March 2016<br><span>10:30pm</span></P>
+		</a>
+
+		<div class="comment-body">
+			<div class="text">
+			  <p>This is a much longer one that will go on for a few lines.</p>
+			  <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
+			</div>
+		</div>
+	</article>
+
+	<article class="comment">
+		<a class="comment-img" href="#non">
+		<p>16 March 2016<br><span>10:30pm</span></p>
+		</a>
+
+		<div class="comment-body">
+			<div class="text">
+				<p>this presentation has been updated
+				to looks more precisely to the facebook timeline</p>
+			</div>
+		</div>
+	</article>
+</section>​
+
+    </div>
+  </div>
+
+  <div class="row messaging">
+    <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none')"></div>
+    <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
+      <h1>Messages</h1>
+      <div class="row">
+        <div class="col-md-10 col-md-push-1 message">
+          <div class="col-md-3 msg-image">
+            <img src="../static/images/msg_head.jpeg" class="img-circle">
+          </div>
+          <div class="col-md-9 msg-preview">
+            <h3>Sender Name</h3>
+            <small>Content up here!</small>
+          </div>
+        </div>
+
+        <div class="col-md-10 col-md-push-1 message">
+          <div class="col-md-3 msg-image">
+            <img src="../static/images/msg_head.jpeg" class="img-circle">
+          </div>
+          <div class="col-md-9 msg-preview">
+            <h3>Sender Name</h3>
+            <small>Content up here!</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid gray-background">
+
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="row nav-brand-heading">
+          <div class="col-md-2 col-xs-1" style="padding:0;margin:0px;margin-top:5px;pointer:cursor">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="glyphicon glyphicon glyphicon-menu-hamburger"></span>
+              </a>
+              <ul class="dropdown-menu" id="homepage-menu">
+                <li><a href="#">Technical</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Management</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-10 col-xs-10">
+            <div class="brand-name"><b>BRO</b>Source</div>
+          </div>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#"></a></li>
+        </ul>
+        <br>
+        {% if result['loggedIn'] == True %}
+         <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
+           <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+            <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+        </ul>
+
+        <!-- Login button to appear if not logged in.-->
+        {% else %}
+         <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+          <div class="col-md-4 col-xs-2 col-md-push-8">
+          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+            <div class="row hide-on-small">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image-profile">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+                <p><h4>Login/SignUp</h4></p>
+              </div>
+            </div>
+            <div class="row hide-on-large">
+              <span class="glyphicon glyphicon-user"></span>
+            </div>
+          </a>
+            </div>
+        </ul>
+        {% end %}
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="col-md-9">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="profile-other-banner">
+          <div class="profile-other-banner-body">
+            <div class="profile-other-banner-body-sections">
+              <p><span class="banner-section-heading">Skills</span><br><br><span class="CustomBadge">{{result['data'][0]['skills']}} </span></p>
+            </div>
+            <div class="profile-other-banner-body-sections">
+              <p><span class="banner-section-heading">About Me</span><br><br>SIMPLE, FUNCTIONAL &amp; VIBRANT DESIGN SOLUTIONS<br>
+A creative professional for over 15 years. I am a dynamic and multi-disciplined Graphic Designer with a passion for creating innovative design solutions no matter what the brief. Aesthetically appealing design that is simple and clean is the most effective way to communicate for your business. Less is more! I have worked in both the United Kingdom and Australia. I currently reside in Queensland, Australia. A selection of my projects can be viewed on my website upon request. Thank you for taking time to look at my profile.</p>
+            </div>
+            <div class="profile-other-banner-body-sections">
+              <p><span class="banner-section-heading">Certificates</span><br><br>
+                CIW Web Design Specialist
+                <br>
+                Brainbench Certified Web Developer
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+        <br>
+        <br>
+
+  <!-- Services Banner -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-other-banner">
+            <div class="profile-other-banner-header">
+              <p><span class="glyphicon glyphicon-lock"></span>&nbsp;Services</p>
+            </div>
+            <div class="profile-other-banner-body">
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
+                      Cost: Rs.800<br>
+                      Duration: 5 Days / Customizable
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="profile-other-get-service">
+                      <a href="#">Get It</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
+                      Cost: Rs.800<br>
+                      Duration: 5 Days / Customizable
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="profile-other-get-service">
+                      <a href="#">Get It</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
+                      Cost: Rs.800<br>
+                      Duration: 5 Days / Customizable
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="profile-other-get-service">
+                      <a href="#">Get It</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
+                      Cost: Rs.800<br>
+                      Duration: 5 Days / Customizable
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="profile-other-get-service">
+                      <a href="#">Get It</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+<!-- Reviews Banner-->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="profile-other-banner">
+            <div class="profile-other-banner-header">
+              <p><span class="glyphicon glyphicon-pencil"></span>&nbsp;Reviews</p>
+            </div>
+            <div class="profile-other-banner-body">
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Flat graphics for company presentation</span><br>
+                      I was very impressed with the work, was a very quick turn around and required only one edit after which it was ready to go. Will definitely be recruiting him in the future!
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="star-rating">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Flat graphics for company presentation</span><br>
+                      I was very impressed with the work, was a very quick turn around and required only one edit after which it was ready to go. Will definitely be recruiting him in the future!
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="star-rating">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Flat graphics for company presentation</span><br>
+                      I was very impressed with the work, was a very quick turn around and required only one edit after which it was ready to go. Will definitely be recruiting him in the future!
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="star-rating">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-other-banner-body-sections">
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><span class="banner-section-heading">Flat graphics for company presentation</span><br>
+                      I was very impressed with the work, was a very quick turn around and required only one edit after which it was ready to go. Will definitely be recruiting him in the future!
+                    </p>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="star-rating">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+      <hr class="hide-on-large">
+
+      <div class="col-md-3" id="profile-other-user-details">
+        <div class="fix-profile">
+        <div class="profile-other-user">
+          <div class="profile-other-user-details-holder">
+            <div class="row">
+              <div class="col-md-2 col-xs-2">
+                <div class="profile-other-user-image">
+                  <img src="../static/images/17.jpg" class="profile-other-banner-image">
+                </div>
+              </div>
+
+              <div class="col-md-10 col-xs-10">
+                <div class="profile-other-user-details">
+                  <p><span>{{result['data'][0]['name']}} </span><br>{{result['data'][0]['email']}}<br>{{result['data'][0]['address']}} </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+            <div class="gray-background profile-other-under-user-details">
+              <div class="row">
+
+                <div class="col-md-10 col-md-push-4">
+                  <p>Joined on 1st January 0001</p>
+                </div>
+              </div>
+            </div>
+            <div class="profile-other-user-projects">
+              <div class="row">
+                <div class="col-md-4">
+                  <p><span>42</span><br>Projects Done</p>
+                </div>
+                <div class="col-md-4 profile-other-user-project-mid-item">
+                  <p><span>2</span><br>Services</p>
+                </div>
+                <div class="col-md-4">
+                  <p><span>4.2</span><br>Average Rating</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="profile-other-contact">
+          <a href="#">Message</a>
+        </div>
+        <div class="profile-other-contact">
+          <a href="#">Invite To Job</a>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+
+  <!-- The Modal Begins-->
+  <div class="modal fade" id="Login-Signup" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header">
+          <!--This contains the Login/Signup Selection Buttons-->
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <div class="row">
+            <div class="col-md-3 col-xs-3"></div>
+            <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-login-holder">
+              <button type="button" class="form-control modal-header-button selected">Log In</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-header-button-holder" style="margin:0; padding:0;" id="modal-signup-holder">
+              <button type="button" class="form-control modal-header-button deselected">Sign Up</button>
+            </div>
+            <div class="col-md-3 col-xs-3"></div>
+          </div>
+        </div>
+        <!-- Modal Body-->
+        <div class="modal-body">
+          <!-- This is the Signup Form that is Invisible onload-->
+          <div class="Signup" style="display: none;">
+            <form name="signup" method="post" action="/signup" role="form">
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="name">Name</label>
+                  <input name="name" id="name" type="text" class="form-control">
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="emailID">Email Id</label>
+                  <input name="emailID" id="emailID" type="text" class="form-control">
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="username_signup">Username</label>
+                  <input name="username_signup" id="username_signup" type="text" class="form-control">
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="password_signup">Password</label>
+                  <input name="password_signup" id="password_signup" type="password" class="form-control">
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-5 col-xs-5">
+
+                </div>
+                <div class="col-md-5 col-xs-5 modal-body-button-holder">
+                  <p align="right">
+                    <button type="submit" class="btn selected">Let's Go</button>
+                  </p>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+            </form>
+          </div>
+          <!-- Signup Form Ends-->
+
+          <!-- This is the Login Form-->
+          <div class="Login">
+            <form name="login" method="post" action="/login" role="form">
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="username">Username</label>
+                  <input name="username" id="username" type="text" class="form-control">
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-10 col-xs-10">
+                  <label for="password">Password</label>
+                  <input name="password" id="password" type="password" class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-5 col-xs-5">
+                  <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                  </div>
+                </div>
+                <div class="col-md-5 col-xs-5 modal-body-button-holder" style="">
+                  <p align="right">
+                    <button type="submit" class="btn selected">Let Me In</button>
+                  </p>
+                </div>
+                <div class="col-md-1 col-xs-1"></div>
+              </div>
+            </form>
+          </div>
+          <!-- Login Form Ends-->
+        </div>
+        <!-- Modal Footer-->
+        <div class="modal-footer row bordered">
+          <!-- This contains the Down Arrow for the Signup Content-->
+          <div class="Signup" style="width: 64%; display: none;">
+            <br>
+            <span class="glyphicon glyphicon-menu-down" id="modal-scroll-icon"></span>
+          </div>
+          <!-- Facebook,Google and LinkedIn  -->
+          <div class="Login">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="facebook-btn-holder">
+              <button class="form-control  modal-footer-button deselected" id="facebook-btn">Facebook</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="google-btn-holder">
+              <button class="form-control modal-footer-button deselected" id="google-btn">Google</button>
+            </div>
+            <div class="col-md-3 col-xs-3 modal-footer-button-holder" id="linkedin-btn-holder">
+              <button class="form-control modal-footer-button deselected" id="linkedin-btn">LinkedIn</button>
+            </div>
+            <div class="col-md-1 col-xs-1"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+    </div>
+
+  <div class="footer-profile container-fluid" >
+    <div class="row">
+      <div class="col-md-4 col-xs-1"></div>
+      <div class="col-md-4 col-lg-4 col-xs-10">
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-xs-3">
+            <div class="footer-tabs"><a href="#">Privacy</a></div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xs-6">
+            <div class="footer-tabs"><a href="#">Terms &amp; Conditions</a></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xs-3">
+            <div class="footer-tabs"><a href="#">About Us</a></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="center">
+            <div class="footer-img"><img src="../static/images/gdg.png"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="center">
+            <div class="footer-credits"><p><span>Created By</span><br>Google Developers Group<br>VIT Vellore</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-1"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+
+<body id="profile-other">
+<div class="container-fluid gray-background">
+
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="row nav-brand-heading">
+          <div class="col-md-2 col-xs-1" style="padding:0;margin:0px;margin-top:5px;pointer:cursor">
+            <div class="btn-group">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="glyphicon glyphicon glyphicon-menu-hamburger"></span>
+              </a>
+              <ul class="dropdown-menu" id="homepage-menu">
+                <li><a href="#">Technical</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Management</a></li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-10 col-xs-10">
+            <div class="brand-name"><b>BRO</b>Source</div>
+          </div>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#"></a></li>
+        </ul>
+        <br>
+         <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
+           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+            <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="col-md-9">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="profile-add-banner">
+          <div class="profile-add-banner-body">
+            <div class="profile-add-banner-body-sections">
+              <p><span class="banner-section-heading">Project Description</span><br><br>Add a vivid description of your project with all the requirements<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+        <br>
+        <br>
+
+      <br>
+
+      </div>
+      <div class="col-md-3">
+        <div class="fix-profile">
+          <div class="profile-add-user-details-holder">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="profile-add-user-image">
+                  <img src="../static/images/17.jpg" class="profile-add-banner-image">
+                </div>
+              </div>
+
+              <div class="col-md-10 col-md-push-1">
+                <div class="profile-add-user-details">
+                  <p><span>{{result['data'][0]['name']}} </span><br>{{result['data'][0]['email']}}<br>{{result['data'][0]['address']}} </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        <div class="profile-add-contact">
+          <p align="left"><span class="glyphicon glyphicon-phone"></span>&nbsp&nbspAdd Contact Number</p>
+          <hr>
+          <p align="left"><span class="glyphicon glyphicon-envelope"></span>&nbsp&nbspAdd Email Address</p>
+        </div>
+
+        <div class="profile-add-contact">
+          <p><span>Add Date</span><br>Duration/Deadline</p>
+        </div>
+        <div class="profile-add-contact">
+          <p><span>Skills Required</span><br>Add Skills</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+    </div>
+  <!-- div class="footer-add-project" style="height: 239.222px;">
+    <div class="row">
+      <div class="col-md-4 col-xs-1"></div>
+      <div class="col-md-4 col-lg-4 col-xs-10">
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-xs-3">
+            <div class="footer-tabs"><a href="#">Privacy</a></div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xs-6">
+            <div class="footer-tabs"><a href="#">Terms &amp; Conditions</a></div>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xs-3">
+            <div class="footer-tabs"><a href="#">About Us</a></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="center">
+            <div class="footer-img"><img src="../static/images/gdg.png"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="center">
+            <div class="footer-credits"><p><span>Created By</span><br>Google Developers Group<br>VIT Vellore</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-1"></div>
+    </div>
+  </div-->
+
+  </body>
+  </html>

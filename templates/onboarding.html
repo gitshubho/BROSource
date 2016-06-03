@@ -1,0 +1,247 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/script.js"></script>
+
+<body id="onboarding-body">
+  <div class="onboarding-topbar" style="">
+    <p>Lets Get You Set Up, {{result['userInfo']['name']}} </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-top" id="onboarding-nav" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <div class="onboarding-carousel-indicators-holder">
+            <!-- Indicators -->
+          <ul class="" id="onboarding-carousel-indicators">
+            <li data-target="#carousel-generic" data-slide-to="0"><div><span class="glyphicon glyphicon-user"></span><br></div><p>Complete Profile</p></li>
+            <li data-target="#carousel-generic" data-slide-to="1"><div><span class="glyphicon glyphicon-lock"></span></div><p style="margin-left:-0.8%;">Add Services</p></li>
+            <li data-target="#carousel-generic" data-slide-to="2"><div><span class="glyphicon glyphicon-globe"></span></div><p>Social Accounts</p></li>
+          </ul>
+          </div>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id="carousel-generic" class="carousel slide onboarding-carousel" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="carousel-caption">
+        </div>
+
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <form method="post" action="/update" class="CustomForm" name="omboarding-profile">
+                <div class="row form-row">
+                  <div class="col-md-3">
+                    <div class="onboarding-image-holder">
+                      <img src="../static/images/user.jpg" class="onboarding-image img-responsive"><br><br>
+                      <input type="file" name="photo" id="onboarding-photo" class="upload-img-btn">
+                      <label for="onboarding-photo">Upload Picture</label>
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input type="text" class="form-control" id="onboarding-firstname" value ="{{ result['userInfo']['name'] }}">
+                    </div>
+                    <!--<div class="form-group">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control" id="onboarding-lastname" placeholder="">
+                    </div>-->
+                    <div class="form-group">
+                      <label>User Name</label>
+                      <input type="text" class="form-control" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Email Address</label>
+                      <input type="text" class="form-control" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
+                    </div>
+                    <div class="form-group">
+                      <label>Date Of Birth</label>
+                      {% if result['userInfo']['dob'] == '' %}
+                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="">
+                      {% else %}
+                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="{{ result['userInfo']['dob'] }}">
+                      {% end %}
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Address</label>
+                      {% if result['userInfo']['address'] == '' %}
+                        <input type="text" class="form-control" name = "address" id="onboarding-address" placeholder="">
+                      {% else %}
+                        <input type="text" class="form-control" name = "address" id="onboarding-address" value="{{ result['userInfo']['address'] }}">
+                      {% end %}
+                    </div><!--
+                    As of now , comma separated values of skills. Can change it to some other input types. -->
+                    <div class="form-group">
+                      <label>Skills(Comma separated)</label>
+                      {% if len(result['userInfo']['skills']) == 0 %}
+                        <input type="text" class="form-control" name = "skills" id="onboarding-skills" placeholder="" >
+                      {% else %}
+                        <input type="text" class="form-control" name = "skills" id="onboarding-skills" value="{{ result['userInfo']['skills'] }}" >
+                      {% end %}
+                    </div>
+
+                    <div class="form-group">
+                      <label>Mobile</label>
+                      {% if result['userInfo']['mobile'] == '' %}
+                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" placeholder="">
+                      {% else %}
+                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
+                      {% end %}
+                    </div>
+
+                    <div class="form-group">
+                      <label>Services(Comma separated)</label>
+                      {% if len(result['userInfo']['services']) == 0 %}
+                        <input type="text" class="form-control" name = "services" id="onboarding-services" placeholder="" >
+                      {% else %}
+                        <input type="text" class="form-control" name = "services" id="onboarding-services" value="{{ result['userInfo']['services'] }}" >
+                      {% end %}
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <select class="form-control" name = "category" id="onboarding-category" placeholder="Choose a Category">
+                        <option value=1>Technical</option>
+                        <option value=2>Management</option>
+                        <option value=4>Design</option>
+                        <option value=3>Technical and Management</option>
+                        <option value=5>Technical and Design</option>
+                        <option value=6>Design and Management</option>
+                        <option value=7>Technical, Design and Management</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>About Me</label>
+                      {% if result['userInfo']['aboutme'] == '' %}
+                        <textarea class="form-control" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!">
+                      {% else %}
+                        <textarea class="form-control" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}
+                      {% end %}
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Certification</label>
+                      {% if len(result['userInfo']['certifications']) == 0 %}
+                        <textarea class="form-control" name = "certifications" id="onboarding-cetifications" placeholder="">
+                      {% else %}
+                        <textarea class="form-control" name = "certifications" id="onboarding-cetifications">{{ result['userInfo']['certifications'] }}
+                      {% end %}
+                      </textarea>
+                    </div><!--
+                    As of now , comma separated values of skills. Can change it to some other input types. -->
+                    <div class="form-group">
+                      <label>Education</label>
+                      {% if len(result['userInfo']['education_details']) == 0 %}
+                        <textarea class="form-control" name = "education_details" id="onboarding-education" placeholder="" >
+                      {% else %}
+                        <textarea class="form-control" name = "education_details" id="onboarding-education">{{ result['userInfo']['education_details'] }}
+                      {% end %}
+                      </textarea>
+                    </div>
+                    <p align="center">
+ <button type = "submit" id="myButton" class="float-center submit-button" align = "center" >Update and explore</button>
+ </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="carousel-caption">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="CustomForm">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+              <div class="onboarding-work">
+                <div class="row">
+                  <div class="col-md-11" style="">
+                    <p>Create a minimal and responsive website</p>
+                  </div>
+                  <div class="col-md-1" style="">
+                    <p>$5</p>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <br>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <a href="#">
+              <div class="onboarding-added-work">
+                <p align="center"><span class="glyphicon glyphicon-lock"></span><br>Add Work</p>
+              </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+
+    <!-- Controls   -->
+    <div class="onboarding-carousel-control-holder">
+    <a class="right carousel-control onboarding-carousel-control" href="#carousel-generic" data-slide="next">
+      <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+    </div>
+  </div>
+
+
+</body>
+</HTML>
+
+
+
+</body>
+</HTML>
