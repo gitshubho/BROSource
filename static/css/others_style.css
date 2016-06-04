@@ -28,16 +28,16 @@
 }
 
 .msg-dismisser{
-    height: 100%; position: fixed; left: 0; top: 0; visibility: visible; background: rgba(248,54,38,0);
+    height: 100%; position: fixed; left: 0; top: 0; display: block;
 }
 
 .msg-view-dismisser{
-    height: 100%; position: fixed; left: 0; top: 90px; visibility: visible; background: rgba(39,48,168,0);
+    height: 100%; position: fixed; left: 0; top: 90px; display: block;
 }
 
 
 .msg-dismisser-display-none{
-    visibility: hidden;
+    display: none;
 }
 
 .msg{
@@ -78,5 +78,5 @@
 }
 
 .msg-view-z-index-adjust{
-    z-index: 6;
+    z-index: 11;
 }
