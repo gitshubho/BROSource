@@ -1,6 +1,21 @@
 import urllib
 import urllib2
 
+# function to get rerquired userdata only
+def setUserInfo(userInfo, *args):
+    userdata = {}
+    for arg in args:
+        userdata[arg] = userInfo[arg]
+    return userdata
+
+# function to hash passwords
+def hashingPassword(password):
+    salt=[password[i] for i in range(0,len(password),2)]
+    postsalt=''.join(salt[:len(salt)/2])
+    presalt=''.join(salt[len(salt)/2:])
+    return (presalt+password+postsalt)
+
+# function to send the token for forgot password
 def sendRequestToken(contact, authToken):
 
     authkey = "81434A3rGba9dY75583ac07"
@@ -19,8 +34,7 @@ def sendRequestToken(contact, authToken):
     req = urllib2.Request(url, postdata)
     response = urllib2.urlopen(req)
 
-
-
+# function to send welcome message to new user
 def sendMessage(number,message):
 
     authkey = "81434A3rGba9dY75583ac07" # Your authentication key.

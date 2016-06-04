@@ -19,19 +19,12 @@ import hashlib
 from bson.objectid import ObjectId
 import re
 import pymongo
-from utilityFunctions import sendMessage,sendRequestToken
+from utilityFunctions import sendMessage,sendRequestToken, hashingPassword, setUserInfo
 import textwrap
 import random
 from datetime import datetime
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
-
-def hashingPassword(password):
-    salt=[password[i] for i in range(0,len(password),2)]
-    postsalt=''.join(salt[:len(salt)/2])
-    presalt=''.join(salt[len(salt)/2:])
-    return (presalt+password+postsalt)
-
 
 class MainHandler(RequestHandler):
 
@@ -40,16 +33,17 @@ class MainHandler(RequestHandler):
     def get(self):
 
         userInfo = None
-        if bool(self.get_secure_cookie("user")):
-            current_id = self.get_secure_cookie("user")
+        if bool(self.get_secure_cookie('user')):
+            current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            # print userInfo
+            userInfo = setUserInfo(userInfo, 'username')
+            #print userInfo
+
         featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
         recent=yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
-        #print(featured)
-        #print(recent)
+
         try:
-            self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
+            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
                         F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
                         F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
                         F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
@@ -59,7 +53,7 @@ class MainHandler(RequestHandler):
                         R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Desc=recent[2]['aboutme'],S6=recent[2]['services'])
         except IndexError:
             #print('Index error encountered')
-            self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
+            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
                         F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
                         F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
                         F3_Name='Piyush',F3_Title='Cloud programmer',F3_Desc='I know c++,java,python',S3={'I can do backend in ':'$4'},
@@ -70,7 +64,7 @@ class MainHandler(RequestHandler):
                         )
         except KeyError:
             #print('key error encountred')
-            self.render("index.html",result = dict(name="BroSource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))),
+            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
                         F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
                         F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
                         F3_Name='Piyush',F3_Title='Cloud programmer',F3_Desc='I know c++,java,python',S3={'I can do backend in ':'$4'},
@@ -85,21 +79,21 @@ class LoginHandler(RequestHandler):
     @removeslash
     @coroutine
     def post(self):
-        username = self.get_argument("username")
-        password = self.get_argument("password")
+        username = self.get_argument('username')
+        password = self.get_argument('password')
 
         password=hashingPassword(password)
         password=hashlib.sha256(password).hexdigest()
         result = yield db.users.find_one({'username': username, 'password': password})
 
         if bool(result):
-            self.set_secure_cookie("user", str(result['_id']))
-            if len(result["dob"]) > 0:
-                self.redirect("/profile/me")
+            self.set_secure_cookie('user', str(result['_id']))
+            if len(result['dob']) > 0:
+                self.redirect('/profile/me')
             else:
-                self.redirect("/welcome")
+                self.redirect('/welcome')
         else:
-            self.redirect("/?status=False")
+            self.redirect('/?credentials=False')
 
 class OnBoardingHandler(RequestHandler):
 
@@ -108,15 +102,16 @@ class OnBoardingHandler(RequestHandler):
     def get(self):
 
         userInfo = None
-        if bool(self.get_secure_cookie("user")):
-            current_id = self.get_secure_cookie("user")
+        if bool(self.get_secure_cookie('user')):
+            current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             # print userInfo
-            self.render("onboarding.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
         else:
-            self.redirect('/?status=False')
+            self.redirect('/?loggedIn=False')
 
 class SignupHandler(RequestHandler):
+
     @removeslash
     @coroutine
     def post(self):
@@ -124,8 +119,8 @@ class SignupHandler(RequestHandler):
         password = self.get_argument('password_signup')
         name = self.get_argument('name')
         email = self.get_argument('emailID')
-        result = yield db.users.find_one({"username":username, "email":email})
-        print bool(result)
+        result = yield db.users.find_one({'username':username, 'email':email})
+        #print bool(result)
         if(bool(result)):
             self.redirect('/?username&email=taken')
         else:
@@ -136,14 +131,15 @@ class SignupHandler(RequestHandler):
                                             'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
             self.redirect('/welcome')
-            print bool(self.get_secure_cookie("user"))
+            #print bool(self.get_secure_cookie('user'))
 
 class UpdateProfileHandler(RequestHandler):
+
     @coroutine
     @removeslash
     def post(self):
         db = self.settings['db']
-        current_id = self.get_secure_cookie("user")
+        current_id = self.get_secure_cookie('user')
 
         dob = self.get_argument('dob')
         address = self.get_argument('address')
@@ -156,6 +152,7 @@ class UpdateProfileHandler(RequestHandler):
         education_details = self.get_argument('education_details',[]).split(',')
 
         userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+        del(userInfo['password'])
 
         if userInfo['signup'] == 0:
             result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
@@ -276,6 +273,7 @@ class AddProjectHandler(RequestHandler):
 class ViewProjectHandler(RequestHandler):
 
     @coroutine
+    @removeslash
     def get(self, projId):
         data = []
         projData = yield db.project.find_one({'_id': ObjectId(projId)})
@@ -289,6 +287,8 @@ class ViewProjectHandler(RequestHandler):
                 #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
 class Donate(RequestHandler):
+
+    @removeslash
     def get(self):
         self.render('donate.html')
 
@@ -304,43 +304,17 @@ class Donate(RequestHandler):
             user_id = self.get_secure_cookie("user")
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
-"""class BidHandler(RequestHandler):
-	@coroutine
-	def get(self,projId):
-		document=yield db.projects.find_one({'_id':ObjectId(projId)})
-		doc=document
-		bids=doc['bid']
-		amount=list()
-		for bid in bids:
-			amount.append(int(bid['amount']))
-
-		amount.sort(reverse=True)
-		maxbid=list()
-		i=0
-		for amt in amount:
-			if(i==5):break
-			for bid in bids:
-				if bid['amount']==amt:
-					maxbid.append(bid)
-					bids.remove(bid)
-					i+=1
-					break
-		#self.render('viewproject.html',maxbid=maxbid)
-	@coroutine
-	def post(self,projId):
-		#coll=self.application.db.projects
-		db=motor.MotorClient().projectTest
-		bidAmt=self.get_argument('bidAmt')
-		days=self.get_argument('noOfDays')
-		result=yield db.projects.update({'_id':ObjectId(projId)},{'$push':{"bids":{'amount':bidAmt,'days':days}}})
-		self.redirect('/viewproject/(\w+)')"""
+"""class BidHandler(RequestHandler):"""
 
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
     def get(self):
-        self.clear_cookie('user')
-        self.redirect('/?loggedOut=true')
+        if bool(self.get_secure_cookie('user')):
+            self.clear_cookie('user')
+            self.redirect('/?loggedOut=true')
+        else:
+            self.redirect('/?activesession=false')
 
 settings = dict(
 		db=db,
