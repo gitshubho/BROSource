@@ -80,3 +80,11 @@
 .msg-view-z-index-adjust{
     z-index: 11;
 }
+
+.donate-container{
+    padding: 0;
+}
+
+.donate-button{
+    width: 100%; margin: 0; border: 0; background: #36cf3c; color: #fff; padding: 10px;
+}
