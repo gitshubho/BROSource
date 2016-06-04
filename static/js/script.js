@@ -111,13 +111,14 @@
        $(".card-footer").css("top",card_height-50);
       /*Fixing the profile or profile_other*/
 
-      if(Wwt<800)
+        var fix_profile_bottom=$(".fix-profile").bottom;
+      if(Wwt<800 && fix_profile_bottom<Wht)
       {
         $(".fix-profile").removeClass("affix");
       }
       else
       {
-          $(".fix-profile").addClass("affix");
+          $(".fix-profile").removeClass("affix");
       }
 
       /* */
