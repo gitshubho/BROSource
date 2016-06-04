@@ -4,30 +4,42 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import pymongo
-from pymongo import MongoClient
 from bson.json_util import loads
 from bson.json_util import dumps
+from bson.objectid import ObjectId
+import motor
+from tornado.options import define, options
+from tornado.gen import coroutine,Task,engine
 
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
-
+db=motor.motor_tornado.MotorClient().projectTest
 class IndexHandler(tornado.web.RequestHandler):
+    @coroutine
     def get(self):
         self.render('enterRating.html')
 class RatingHandler(tornado.web.RequestHandler):
+	@coroutine
 	def post(self):
-		#self.write("inside post")
 		STRING=self.get_argument('string')
-		coll=self.application.db.profiles
-		doc=coll.find_one({"name":"shubham0704"})
-		curRating=doc['rating']
+		comments=self.get_argument('comments')
 		newRating=float(STRING)
-		UpdatedRating=(newRating+curRating)/2
-		coll.update({"name":"shubham0704"},{'$set':{'rating':UpdatedRating}})
-		coll=self.application.db.projects
-		coll.insert({'rating':newRating})
-		self.render('updateRate.html',personRating=UpdatedRating,projectRating=newRating)
-		#self.write(str(doc['rating']))
+		if newRating>5 or newRating<0:
+			self.write("Invalid rating!")
+			self.redirect('/')
+		else:
+			yield db.users.update({"username":"shubham0704"},{'$push':{'ratings':newRating}})
+			yield db.projects.update({"projectname":"website2"},{'$push':{'ratings':newRating,'comments':comments}})
+			doc=yield db.users.find_one({"username":"shubham0704"})
+			ratings=doc['ratings']
+			i=0
+			avg=0
+			for rating in ratings:
+				avg+=rating
+				i+=1
+			avg=avg/i
+			self.render('updateRate.html',personRating=avg,projectRating=newRating)
+		
 
 
 
@@ -45,3 +57,4 @@ if __name__ == "__main__":
     server = tornado.httpserver.HTTPServer(Application())
     server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
+
