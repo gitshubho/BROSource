@@ -246,12 +246,13 @@ class AddProjectHandler(RequestHandler):
         if not bool(self.get_secure_cookie("user")):
             self.redirect('/?login=False')
             return
-        now=datetime.now()
-        time=now.strftime("%d-%m-%Y %I:%M %p")
+        #now=datetime.now()
+        #time=now.strftime("%d-%m-%Y %I:%M %p")
         Id = ObjectId(self.get_secure_cookie("user"))
-        user=yield db.users.find_one(Id)
+        userInfo = yield db.users.find_one(Id)
+        userInfo = setUserInfo(userInfo, 'name', 'username', 'email')
 
-        self.render('addproject.html',time=time,user=user['username'])
+        self.render('add_project.html',data = userInfo)
 
     @coroutine
     @removeslash

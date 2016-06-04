@@ -61,7 +61,7 @@
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
            <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+            <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -109,7 +109,7 @@
 
               <div class="col-md-10 col-md-push-1">
                 <div class="profile-add-user-details">
-                  <p><span>{{result['data'][0]['name']}} </span><br>{{result['data'][0]['email']}}<br>{{result['data'][0]['address']}} </p>
+                  <p><span>{{ data['name'] }} </span><br>{{ data['email'] }}<br>{{result['data'][0]['address']}} </p>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@
 
         <div class="profile-add-contact">
           <p align="left"><span class="glyphicon glyphicon-phone col-md-2"></span>&nbsp&nbsp<input type="text" name="add-phone-number" placeholder="Add Contact Number" class="col-md-9 add-text"></p>
-          
+
         </div>
 
         <div class="profile-add-contact">
