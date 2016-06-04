@@ -1,6 +1,13 @@
 import urllib
 import urllib2
 
+# function to get rerquired userdata only
+def setUserInfo(userInfo, *args):
+    userdata = {}
+    for arg in args:
+        userdata[arg] = userInfo[arg]
+    return userdata
+
 # function to hash passwords
 def hashingPassword(password):
     salt=[password[i] for i in range(0,len(password),2)]
