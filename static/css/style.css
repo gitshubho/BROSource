@@ -614,6 +614,7 @@ font-size: 275%;
         .flip-container6 {
             perspective: 1000;
         }
+
         /* flip the pane when hovered */
         .flip-container-on-click .flipper, .flip-container.hover .flipper {
             transform: rotateY(180deg);
