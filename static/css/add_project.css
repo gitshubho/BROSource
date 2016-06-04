@@ -1,0 +1,40 @@
+body{
+    background: #f5f5f5;
+    font-family: Lato;
+}
+
+nav{
+    background: #3498db;
+}
+
+.navbar{
+    background: #3498db; color: #ffffff;
+}
+
+.add-card-container{
+    padding: 50px; padding-right: 100px; padding-left: 100px;
+}
+
+.add-card{
+    box-shadow: 0 0 5px 0 #cccccc; background: #ffffff; padding: 20px;
+}
+label{
+    width: 100%; padding: 10px; font-size: 20px;
+    font-weight: 400;
+}
+.add-text{
+    border: 1px solid #ccc; width: 100%;
+}
+
+.add-date{
+    text-align: left; width: auto;
+}
+
+.add-select-container{
+    font-size: 14px;
+}
+
+.add-textarea{
+    border: 1px solid #cccccc;
+}
+

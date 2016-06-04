@@ -3,6 +3,10 @@
     background:#3498DB;
      font-family: Montserrat, sans-serif;
   }
+
+ textarea {
+     resize:vertical;
+ }
   #profile-other
   {
     background: rgb(240,240,240);
