@@ -2072,3 +2072,12 @@ font-size: 275%;
 .add-project-title{
     width: 100%;border: 0; font-size: 24px; padding: 10px;
 }
+
+#forgot_modal, #verify_modal{
+  color: #fff;
+}
+
+#forgot_modal input, #verify_modal input{
+  color: #000;
+}
+

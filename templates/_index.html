@@ -182,6 +182,7 @@
                      <div class="row">
                        <div class="col-md-1 col-xs-1"></div>
                        <div class="col-md-5 col-xs-5">
+                         <a class="" data-toggle="modal" href='#forgot_modal' style="color:#fff; text-decoration:underline;">Forgot Password</a>
                          <div class="checkbox">
                            <label><input type="checkbox"> Remember me</label>
                          </div>
@@ -833,5 +834,56 @@
     <div class="col-md-4 col-xs-1"></div>
   </div>
 </div>
+
+
+
+
+<div class="modal fade" id="forgot_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Forgot Password</h4>
+      </div>
+      <div class="modal-body">
+        <form method = "POST" action = "/forgot/authToken">
+          <label class="col-md-4" style="text-align:right;">Enter username: </label>
+          <input type="text" name="username" class="forgot-password-text col-md-8">
+            
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type = "submit" value ="Get Authentication token" class="btn btn-default" href="#verify_modal"></input>
+        <a class="btn btn-default" data-toggle="modal" href='#verify_modal'>Open the Verify Modal</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="verify_modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Enter the OTP</h4>
+        </div>
+        <div class="modal-body">
+       <form method='POST' action='/forgot/verify'>
+          <label class="col-md-3" style="text-align:right;">Enter the OTP: </label>
+          <input type='text' name='otp' class="col-md-9">
+          
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-default" value="Verify"></input>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
