@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Messages</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/donate.css">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="donate-topbar row">
+		<div class="col-md-1 col-xs-1 donate-picture">
+		</div>
+		<div class="col-md-11 col-xs-11">
+			<div class="donating-to-placeholder">Donating To</div>
+			<div class="donating-to-name">William H. Gates</div>
+		</div>
+		</div>
+	<div class="row">
+			<div class="donate-img">
+				<img src="../static/images/donate.png">
+			</div>
+			<div class="donate-form col-md-12 col-xs-12 row">
+				<form method="post" action="#">
+					<p><i class="fa fa-rupee col-md-1 col-xs-1"></i><input type="text" name="amt" required placeholder="Amount" class="donate-text col-md-11 col-xs-11"></p>
+					<p><i class="fa fa-envelope col-md-1 col-xs-1"></i><input type="text" name="msg" placeholder="Message here" class="donate-text col-md-11 col-xs-11"></p>
+						<input name="anonymous" value=0 hidden=true>
+
+					<div class="donate-anonymous"><input type="checkbox" name="anonymous" value="Anonymous">Donate anonymously<br></div>
+					<input type="submit" value="Submit" class="col-xs-12 col-md-12 submit-button">
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

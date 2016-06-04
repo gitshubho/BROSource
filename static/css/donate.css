@@ -1,0 +1,41 @@
+body{
+	font-family:Montserrat;
+}
+
+.donating-to-placeholder{
+    color: #cccccc;
+    margin-bottom: -10px;
+    font-size: 20px;
+}
+
+.donating-to-name{
+    color: #3498DB; font-size: 24px;
+}
+
+.donate-img{
+    width: 100%; text-align: center; margin: 20px;
+}
+
+.donate-img img{
+    width: 40%;
+}
+
+.donate-form form{
+    width: 100%; margin: 10px;
+}
+
+.donate-text input{
+    width: 100%;
+}
+
+.donate-anonymous{
+    text-align: center;
+}
+
+.fa{
+    text-align: right;
+}
+
+.submit-button{
+    background: #3498DB; border: 0; color: #ffffff;
+}
