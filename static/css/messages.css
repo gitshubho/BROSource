@@ -1,0 +1,28 @@
+body{
+    font-family: Montserrat;
+}
+
+.msg-topbar{
+    padding:0 10px 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.msg-icons{
+    letter-spacing: 10px;
+}
+
+.msg-date{
+
+}
+
+.msg-body{
+    padding: 10px;
+}
+
+.msg-type{
+    background:#3498db; text-align: center; color: #ffffff; padding: 10px;
+    margin-left: 20px;
+}
+
+.msg-content{
+    padding: 20px;
+}
