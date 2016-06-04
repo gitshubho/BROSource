@@ -1,3 +1,10 @@
+.message-view{
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+}
+
+.msg-view{
+    background: #ffffff; height: 100%;
+}
 body{
     font-family: Montserrat;
 }

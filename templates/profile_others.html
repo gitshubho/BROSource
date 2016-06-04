@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/others_style.css">
     <script src="../static/js/others_script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/messages.css">
   </head>
 
 <script src="../static/js/jquery.min.js"></script>
@@ -67,8 +69,61 @@
     </div>
   </div>
 
+
+  <div class="row message-view">
+    <div class="col-md-7 msg-view-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none')"></div>
+    <div class="col-md-5 col-md-offset-12 msg-view not-in-view hidden-xs">
+      <div class="container-fluid">
+        <div class="msg-topbar">
+          <div class="row">
+            <div class="col-md-1 col-xs-1">
+              <div class="img-circle">
+
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-7">
+              <div class="sender-name"><h4>From Muhammad Ali</h4><small class="msg-date">4 June 2016, 2:00 PM</small></div>
+            </div>
+            <div class="col-md-5 col-xs-4 msg-icons">
+              <h3><i class="fa fa-reply"></i>
+                <i class="fa fa-bookmark-o"></i>
+                <i class="fa fa-flag"></i>
+                <i class="fa fa-trash"></i></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="msg-body">
+
+            <div class="col-md-12 col-xs-4">
+              <div class="msg-type">Direct Message</div>
+            </div>
+
+            <div class="col-md-12 col-xs-12">
+              <div class="msg-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="msg-footer row">
+          <div class="col-md-12">
+            Click here to close this message
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row messaging">
-    <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none')"></div>
     <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
       <h1>Messages</h1>
       <div class="row">
@@ -76,7 +131,7 @@
           <div class="col-md-3 msg-image">
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
-          <div class="col-md-9 msg-preview">
+          <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-9'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');">
             <h3>Sender Name</h3>
             <small>Content up here!</small>
           </div>
@@ -94,6 +149,8 @@
       </div>
     </div>
   </div>
+
+
 </div>
 
 <div class="container-fluid gray-background">
@@ -175,7 +232,7 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-      <div class="col-md-9">
+      <div class="col-md-8">
       <div class="row">
       <div class="col-md-12">
         <div class="profile-other-banner">
@@ -351,8 +408,8 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
 
       <hr class="hide-on-large">
 
-      <div class="col-md-3" id="profile-other-user-details">
-        <div class="fix-profile">
+      <div class="col-md-4" id="profile-other-user-details">
+        <div class="fix-profile" style="position: fixed;">
         <div class="profile-other-user">
           <div class="profile-other-user-details-holder">
             <div class="row">

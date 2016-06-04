@@ -28,12 +28,18 @@
 }
 
 .msg-dismisser{
-    height: 100%; position: fixed; left: 0; top: 0; visibility: visible;
+    height: 100%; position: fixed; left: 0; top: 0; visibility: visible; background: rgba(248,54,38,0);
 }
+
+.msg-view-dismisser{
+    height: 100%; position: fixed; left: 0; top: 90px; visibility: visible; background: rgba(39,48,168,0);
+}
+
 
 .msg-dismisser-display-none{
     visibility: hidden;
 }
+
 .msg{
     background: rgba(255,255,255,1); height: 100%; padding: 10; padding-top:0 !important; box-shadow: 0 0 10px 0 #c3c3c3;
 }
@@ -69,4 +75,8 @@
 
 .msg-image img{
     width:140%; margin: 0; padding: 0; left: -20px; position: relative;
+}
+
+.msg-view-z-index-adjust{
+    z-index: 6;
 }
