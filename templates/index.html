@@ -846,10 +846,10 @@
         <h4 class="modal-title">Forgot Password</h4>
       </div>
       <div class="modal-body">
-        <form method = "POST" action = "/forgot/authToken">
+        <form method = "POST" action = "/forgot/getToken">
           <label class="col-md-4" style="text-align:right;">Enter username: </label>
           <input type="text" name="username" class="forgot-password-text col-md-8">
-            
+
       </div>
 
       <div class="modal-footer">
@@ -870,11 +870,11 @@
           <h4 class="modal-title">Enter the OTP</h4>
         </div>
         <div class="modal-body">
-       <form method='POST' action='/forgot/verify'>
+       <form method='POST' action='/forgot/verifyToken'>
           <label class="col-md-3" style="text-align:right;">Enter the OTP: </label>
           <input type='text' name='otp' class="col-md-9">
-          
-        
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

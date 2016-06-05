@@ -13,7 +13,7 @@ from motor import MotorClient
 from bson import json_util
 import json
 import requests
-import os
+import os, uuid
 import urllib2
 import hashlib
 from bson.objectid import ObjectId
@@ -23,6 +23,9 @@ from utilityFunctions import sendMessage,sendRequestToken, hashingPassword, setU
 import textwrap
 import random
 from datetime import datetime
+
+__PROFILEPHOTOS__ = "uploads/profilePhotos"
+__FILES__ = "uploads/files"
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -95,7 +98,7 @@ class LoginHandler(RequestHandler):
         else:
             self.redirect('/?credentials=False')
 
-class OnBoardingHandler(RequestHandler):
+"""class OnBoardingHandler(RequestHandler):
 
     @removeslash
     @coroutine
@@ -109,7 +112,7 @@ class OnBoardingHandler(RequestHandler):
             self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
         else:
             self.redirect('/?loggedIn=False')
-
+"""
 class SignupHandler(RequestHandler):
 
     @removeslash
@@ -130,16 +133,35 @@ class SignupHandler(RequestHandler):
                                             'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
                                             'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
-            self.redirect('/welcome')
+            self.redirect('/profile/update')
             #print bool(self.get_secure_cookie('user'))
 
 class UpdateProfileHandler(RequestHandler):
+
+    @removeslash
+    @coroutine
+    def get(self):
+
+        userInfo = None
+        if bool(self.get_secure_cookie('user')):
+            current_id = self.get_secure_cookie('user')
+            userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+            # print userInfo
+            self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
+        else:
+            self.redirect('/?loggedIn=False')
 
     @coroutine
     @removeslash
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie('user')
+
+        photoInfo = self.request.files['photo'][0]
+        extn = os.path.splitext(photoInfo['filename'])[1]
+        cname = str(uuid.uuid4()) + extn
+        fh = open(__PROFILEPHOTOS__ + cname, 'w')
+        fh.write(fileinfo['body'])
 
         dob = self.get_argument('dob')
         address = self.get_argument('address')
@@ -197,9 +219,8 @@ class UserProfileHandler(RequestHandler):
 
 class ForgotPasswordHandler(RequestHandler):
 
-    def get(self):
-        self.render('forgot.html')
     @coroutine
+    @removeslash
     def post(self):
         userName = self.get_argument('username','')
         userInfo = yield db.users.find_one({'username': userName})
@@ -209,15 +230,14 @@ class ForgotPasswordHandler(RequestHandler):
             sendRequestToken(contact, authToken)
             self.set_secure_cookie("uid", str(userInfo['_id']))
             self.set_secure_cookie("authtoken", str(authToken))
-            self.redirect('/forgot/verify')
+            self.redirect('/')
         else:
             self.redirect('/forgot/authToken?username=False')
 
 class AuthTokenHandler(RequestHandler):
 
-    def get(self):
-        self.render('forgot_verify.html')
-
+    @coroutine
+    @removeslash
     def post(self):
         otp = self.get_argument('otp')
         if self.get_secure_cookie('authtoken') == otp:
@@ -235,7 +255,9 @@ class ChangePasswordHandler(RequestHandler):
         #userInfo = yield db.users.find_one({'_id':ObjectId()})
         print self.get_secure_cookie('uid')
         npswd = self.get_argument('npswd')
-        yield db.users.update({'_id': ObjectId(self.get_secure_cookie('uid'))}, {'$set': {'password': npswd}})
+        password=hashingPassword(npswd)
+        password=hashlib.sha256(password).hexdigest()
+        yield db.users.update({'_id': ObjectId(self.get_secure_cookie('uid'))}, {'$set': {'password': password}})
         self.redirect("/?changepassword=True")
 
 class AddProjectHandler(RequestHandler):
@@ -263,7 +285,7 @@ class AddProjectHandler(RequestHandler):
         time = now.strftime("%d-%m-%Y %I:%M %p")
         insert = yield db.project.insert({"user_id" : str(ObjectId(user_id)), "name" : self.get_argument('project_title'), "category" : self.get_argument('project_category'),
                                         "deadline" : self.get_argument('project_deadline'), "nop" : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
-                                        "urgent" : self.get_argument('urgent'), "time" : time,"skills" : self.get_argument('skills'), "description" : self.get_argument('project_description'),
+                                        "urgent" : self.get_argument('urgent'), "time" : time,"skills" : self.get_argument('skills[]'), "description" : self.get_argument('project_description'),
                                         "files" : [],"bids" : [],"userAwarded" : []})
         userId = ObjectId(user_id)
         yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
@@ -330,14 +352,14 @@ settings = dict(
 application = Application([
 	(r"/", MainHandler),
     (r"/signup", SignupHandler),
+    (r"/profile/update",UpdateProfileHandler),
     (r"/login", LoginHandler),
     (r"/logout",LogoutHandler),
     (r"/profile/me", SelfProfileHandler),
     (r"/profile/(\w+)",UserProfileHandler),
-    (r"/welcome",OnBoardingHandler),
-    (r"/update",UpdateProfileHandler),
-    (r"/forgot/authToken", ForgotPasswordHandler),
-    (r"/forgot/verify", AuthTokenHandler),
+    #(r"/welcome",OnBoardingHandler),
+    (r"/forgot/getToken", ForgotPasswordHandler),
+    (r"/forgot/verifyToken", AuthTokenHandler),
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
