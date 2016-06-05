@@ -24,8 +24,8 @@ import textwrap
 import random
 from datetime import datetime
 
-__PROFILEPHOTOS__ = "static/uploads/profilePhotos/"
-__FILES__ = "static/uploads/files"
+__PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
+__FILES__ = 'static/uploads/files'
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -94,7 +94,7 @@ class LoginHandler(RequestHandler):
             if len(result['dob']) > 0:
                 self.redirect('/profile/me')
             else:
-                self.redirect('/welcome')
+                self.redirect('/profile/update')
         else:
             self.redirect('/?credentials=False')
 
@@ -113,6 +113,7 @@ class LoginHandler(RequestHandler):
         else:
             self.redirect('/?loggedIn=False')
 """
+
 class SignupHandler(RequestHandler):
 
     @removeslash
@@ -123,7 +124,7 @@ class SignupHandler(RequestHandler):
         name = self.get_argument('name')
         email = self.get_argument('emailID')
         result = yield db.users.find_one({'username':username, 'email':email})
-        #print bool(result)
+
         if(bool(result)):
             self.redirect('/?username&email=taken')
         else:
@@ -134,7 +135,6 @@ class SignupHandler(RequestHandler):
                                             'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
             self.redirect('/profile/update')
-            #print bool(self.get_secure_cookie('user'))
 
 class UpdateProfileHandler(RequestHandler):
 
@@ -146,7 +146,7 @@ class UpdateProfileHandler(RequestHandler):
         if bool(self.get_secure_cookie('user')):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            # print userInfo
+            userInfo = setUserInfo(userInfo, 'photo_link', 'name', 'username', 'email', 'dob', 'address', 'skills', 'mobile', 'category', 'services', 'aboutme', 'certifications', 'education_details')
             self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
         else:
             self.redirect('/?loggedIn=False')
@@ -187,32 +187,35 @@ class UpdateProfileHandler(RequestHandler):
         self.redirect('/profile/me?update=True')
 
 class SelfProfileHandler(RequestHandler):
+
     @coroutine
     @removeslash
     def get(self):
         result_current = result_current_info = None
         userInfo = None
-        if bool(self.get_secure_cookie("user")):
-            current_id = self.get_secure_cookie("user")
+        if bool(self.get_secure_cookie('user')):
+            current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             print userInfo
-            self.render("profile_self.html",result = dict(name="Brosource",userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            self.render('profile_self.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
         else:
             self.redirect('/?loggedIn=False')
 
 class UserProfileHandler(RequestHandler):
 
     @coroutine
+    @removeslash
     def get(self, username):
         data = []
         userInfo = None
+
         # current_id = self.get_secure_cookie("user")
         # userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
         userData = yield db.users.find_one({'username':username})
         if bool(userData):
             data.append(json.loads(json_util.dumps(userData)))
-            print bool(self.get_secure_cookie("user")),"\n"
-            if bool(self.get_secure_cookie("user")):
+            #print bool(self.get_secure_cookie('user')),'\n'
+            if bool(self.get_secure_cookie('user')):
                 self.render('profile_others.html',result= dict(data=data,loggedIn = True))
             else:
                 self.render('profile_others.html',result= dict(data=data,loggedIn = False))
@@ -228,8 +231,8 @@ class ForgotPasswordHandler(RequestHandler):
             authToken = random.randint(10000,99999)
             contact = userInfo['mobile']
             sendRequestToken(contact, authToken)
-            self.set_secure_cookie("uid", str(userInfo['_id']))
-            self.set_secure_cookie("authtoken", str(authToken))
+            self.set_secure_cookie('uid', str(userInfo['_id']))
+            self.set_secure_cookie('authtoken', str(authToken))
             self.redirect('/')
         else:
             self.redirect('/forgot/authToken?username=False')
@@ -247,10 +250,12 @@ class AuthTokenHandler(RequestHandler):
 
 class ChangePasswordHandler(RequestHandler):
 
+    @removeslash
     def get(self):
         self.render('changepswd.html')
 
     @coroutine
+    @removeslash
     def post(self):
         #userInfo = yield db.users.find_one({'_id':ObjectId()})
         print self.get_secure_cookie('uid')
@@ -258,20 +263,20 @@ class ChangePasswordHandler(RequestHandler):
         password=hashingPassword(npswd)
         password=hashlib.sha256(password).hexdigest()
         yield db.users.update({'_id': ObjectId(self.get_secure_cookie('uid'))}, {'$set': {'password': password}})
-        self.redirect("/?changepassword=True")
+        self.redirect('/?changepassword=True')
 
 class AddProjectHandler(RequestHandler):
 
     @coroutine
     @removeslash
     def get(self):
-        if not bool(self.get_secure_cookie("user")):
+        if not bool(self.get_secure_cookie('user')):
             self.redirect('/?login=False')
             return
 
         #now=datetime.now()
         #time=now.strftime("%d-%m-%Y %I:%M %p")
-        Id = ObjectId(self.get_secure_cookie("user"))
+        Id = ObjectId(self.get_secure_cookie('user'))
         userInfo = yield db.users.find_one(Id)
         userInfo = setUserInfo(userInfo, 'username', 'email')
         self.render('add_project.html',data=userInfo)
@@ -280,15 +285,15 @@ class AddProjectHandler(RequestHandler):
     @removeslash
     def post(self):
 
-        user_id = self.get_secure_cookie("user")
+        user_id = self.get_secure_cookie('user')
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
-        insert = yield db.project.insert({"user_id" : str(ObjectId(user_id)), "name" : self.get_argument('project_title'), "category" : self.get_argument('project_category'),
-                                        "deadline" : self.get_argument('project_deadline'), "nop" : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
-                                        "urgent" : self.get_argument('urgent'), "time" : time,"skills" : self.get_argument('skills[]'), "description" : self.get_argument('project_description'),
-                                        "files" : [],"bids" : [],"userAwarded" : []})
+        insert = yield db.project.insert({'user_id' : str(ObjectId(user_id)), 'name' : self.get_argument('project_title'), 'category' : self.get_argument('project_category'),
+                                        'deadline' : self.get_argument('project_deadline'), 'nop' : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
+                                        'urgent' : self.get_argument('urgent'), 'time'  : time, 'skills' : self.get_argument('skills[]'), 'description' : self.get_argument('project_description'),
+                                        'files' : [],'bids' : [],'userAwarded' : []})
         userId = ObjectId(user_id)
-        yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
+        yield db.users.update({'_id': userId},{'$push':{'projects':str(insert)}})
         if bool (insert):
             pass
         self.redirect('/viewproject/'+str(insert))
@@ -320,12 +325,12 @@ class Donate(RequestHandler):
     @removeslash
     def post(self):
         anon=self.get_argument('anonymous')
-        if not bool(self.get_secure_cookie("user")):
-            anon= "Anonymous"
+        if not bool(self.get_secure_cookie('user')):
+            anon= 'Anonymous'
         if (anon=='Anonymous'):
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':anon,'payment received':0})
         else:
-            user_id = self.get_secure_cookie("user")
+            user_id = self.get_secure_cookie('user')
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
 """class BidHandler(RequestHandler):"""

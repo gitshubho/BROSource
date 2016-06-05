@@ -73,7 +73,7 @@
     <br><br><br>
     <div class="row add-card-container">
         <div class="col-md-12 add-card">
-                <form method="post" action="/addproj">
+                <form enctype="multipart/form-data" method="post" action="/addproj">
                     <label>
                         Project Title
                         <br><input type="text" name="project_title" placeholder="" class="add-text">
@@ -1077,7 +1077,7 @@
 
                     <label>
                         Project Files<br>
-                        <input type="file" name="project_file">
+                        <input type="file" name="project_file" multiple>
                     </label>
 
                     <label>
