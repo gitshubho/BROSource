@@ -68,7 +68,6 @@
 .msg-image h3{
     padding: 0; margin: 0;
 }
-
 .msg-preview{
     margin: auto; margin-top: -10px;   
 }
@@ -107,4 +106,100 @@
 
 .donate-sidebar{
     background: #ffffff; height: 100%;
+}
+.navbar
+  {
+    z-index: 2;
+  }
+     .navbar-container{
+       background: #fff; height: 57px;
+       position: fixed; top: 80px; left: 0px;
+       z-index: 1;
+       text-align: center;
+       font-size: 18px;
+       padding-bottom: 0px;
+   }
+   .navbar-container p{
+      margin-top: 2%; margin-bottom: 0px;
+   }
+   .navbar-container a{
+      color: #000; padding: 10px; z-index: -1; text-decoration: none; padding-bottom: 10px;
+      transition: all 0.1s; border-bottom: 4px solid rgba(1,1,1,0);
+   }
+   .navbar-container a:hover{
+      border-bottom: 4px solid #4285F4; text-decoration: none; color: #4285F4; padding-bottom:5px;
+      transition: all 0.3s;
+   }
+
+
+
+   .nav-fixed{
+      position: fixed;
+      top:80px;
+      left:0px;
+
+   }
+   .custom-navbar{
+    position: fixed; top: 55px; width: 100%; left: 0px; z-index: 1; background: #fff !important; padding-bottom: 0px !important; transition: all 0s; border-bottom: 10px #4285f4 solid !important; margin-bottom: 0px !important;
+   }
+
+.navbar-default .navbar-nav>li>a{
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color: #fff;
+}
+.self-nav{
+     background:#3498db;
+     color: #fff;
+     box-shadow: 0 0 5px 0 #000; border: 0;
+ }
+
+.custom-pull{
+  position: relative;; right: -200;
+}
+
+.left-stripes{
+  font-size:24px; margin: auto; top: 10px; color: #fff;
+}
+
+
+.nav-search-icon{
+  position: relative; top: 18px;
+}
+.nav-search{
+  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;
+}
+
+.nav-search input{
+  background: rgba(0,0,0,0);   width: 150%; border: 0; box-shadow: 0; border-radius: 0; padding: 10px; position: relative; left: 15px; top: -10px;
+}
+
+ @media (min-width: 0px) and (max-width:600px) {
+     .nav-search input {
+        width: 80%;
+     }
+ }
+
+.nav-search input:focus{
+  border: 0;
+}
+
+.nav-search input:active{
+  border: 0;
+}
+
+.nav-search input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: hsla(0, 0%, 100%, .7);
+}
+.nav-search input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: hsla(0, 0%, 100%, .7);
+   opacity:  1;
+}
+.nav-search input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: hsla(0, 0%, 100%, .7);
+   opacity:  1;
+}
+.nav-search input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: hsla(0, 0%, 100%, .7);
 }
