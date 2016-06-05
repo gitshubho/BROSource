@@ -24,8 +24,8 @@ import textwrap
 import random
 from datetime import datetime
 
-__PROFILEPHOTOS__ = "uploads/profilePhotos"
-__FILES__ = "uploads/files"
+__PROFILEPHOTOS__ = "static/uploads/profilePhotos/"
+__FILES__ = "static/uploads/files"
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -161,7 +161,7 @@ class UpdateProfileHandler(RequestHandler):
         extn = os.path.splitext(photoInfo['filename'])[1]
         cname = str(uuid.uuid4()) + extn
         fh = open(__PROFILEPHOTOS__ + cname, 'w')
-        fh.write(fileinfo['body'])
+        fh.write(photoInfo['body'])
 
         dob = self.get_argument('dob')
         address = self.get_argument('address')
@@ -177,12 +177,12 @@ class UpdateProfileHandler(RequestHandler):
         del(userInfo['password'])
 
         if userInfo['signup'] == 0:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : __PROFILEPHOTOS__ + cname,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
             message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
             sendMessage(contact,message)
         else:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : __PROFILEPHOTOS__ + cname,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
