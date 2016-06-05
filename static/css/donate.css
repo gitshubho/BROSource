@@ -21,11 +21,11 @@ body{
 }
 
 .donate-form form{
-    width: 100%; margin: 10px;
+    width: 100%; margin: 10px; font-size: 20px;
 }
 
 .donate-text input{
-    width: 100%;
+    width: 100%; border: 0.1px solid #cccccc;
 }
 
 .donate-anonymous{
@@ -33,9 +33,13 @@ body{
 }
 
 .fa{
-    text-align: right;
+    text-align: right; margin-top: 5px;
 }
 
 .submit-button{
-    background: #3498DB; border: 0; color: #ffffff;
+    background: #3498DB; border: 0; color: #ffffff; font-size: 20px;
+}
+
+.donate-topbar{
+    border-bottom: 1px solid #cccccc;
 }

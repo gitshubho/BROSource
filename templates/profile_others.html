@@ -13,6 +13,7 @@
     <script src="../static/js/others_script.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/messages.css">
+    <link rel="stylesheet" href="../static/css/donate.css">
   </head>
 
 <script src="../static/js/jquery.min.js"></script>
@@ -150,7 +151,37 @@
       </div>
     </div>
   </div>
+<!--
+  <div class="row donating">
+    <div class="col-md-8"></div>
+    <div class="col-md-4 col-md-offset-12 donate-sidebar in-view">
+      <div class="donate-topbar row">
+        <div class="col-md-1 col-xs-1 donate-picture">
+        </div>
+        <div class="col-md-11 col-xs-11">
+          <div class="donating-to-placeholder">Donating To</div>
+          <div class="donating-to-name">William H. Gates</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="donate-img">
+          <img src="../static/images/donate.png">
+        </div>
+        <div class="donate-form col-md-12 col-xs-12 row">
+          <form method="post" action="#">
+            <p><i class="fa fa-rupee col-md-1 col-xs-1"></i> <input type="text" name="amt" required placeholder="Amount" class="donate-text col-md-11 col-xs-11"></p>
+            <p><i class="fa fa-envelope col-md-1 col-xs-1"></i> <input type="text" name="msg" placeholder="Message here" class="donate-text col-md-11 col-xs-11"></p>
+            <input name="anonymous" value=0 hidden=true>
 
+            <div class="donate-anonymous"><input type="checkbox" name="anonymous" value="Anonymous">Donate anonymously<br></div>
+            <input type="submit" value="Submit" class="col-xs-12 col-md-12 submit-button">
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+-->
 
 </div>
 
@@ -458,7 +489,7 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
         </div>
 
         <div class="profile-other-contact donate-container">
-          <button class="donate-button">Donate</button>
+          <a href="donate_view.html" onclick="$('.donate-sidebar').toggleClass('col-md-offset-12 col-md-offset-8 not-in-view in-view');"> <button class="donate-button">Donate</button></a>
         </div>
       </div>
       </div>
@@ -635,5 +666,9 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
       <div class="col-md-4 col-xs-1"></div>
     </div>
   </div>
+
+
+
+
 </body>
 </html>
