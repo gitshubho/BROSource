@@ -64,7 +64,7 @@
                 <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
                     <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                    <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+                    <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -73,7 +73,7 @@
     <br><br><br>
     <div class="row add-card-container">
         <div class="col-md-12 add-card">
-                <form>
+                <form method="post" action="/addproj">
                     <label>
                         Project Title
                         <br><input type="text" name="project_title" placeholder="" class="add-text">
@@ -81,14 +81,15 @@
 
                     <label>
                         Project Category
-                        <br><input type="radio" name="project_category"> Technical
-                        <input type="radio" name="project_category"> Design
-                        <input type="radio" name="project_category"> Management
+                        <br>
+                        <input type="radio" value=1 name="project_category"> Technical
+                        <input type="radio" value=2 name="project_category"> Design
+                        <input type="radio" value=3 name="project_category"> Management
                     </label>
 
                     <label>
                         Project Deadline
-                        <br><input type="date" placeholder="" class="add-date">
+                        <br><input type="date" name="project_deadline" placeholder="" class="add-date">
                     </label>
 
                     <label>
@@ -99,7 +100,7 @@
                     <label>
                         Number of People Required
                         <br>
-                        <select class="add-select">
+                        <select name="nop" class="add-select">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -111,8 +112,10 @@
                     </label>
 
                     <label>
-                    Is it urgent?<br>
-                    <input type="radio" name="urgent">Yes<input type="radio" name="urgent">No
+                      Is it urgent?
+                      <br>
+                        <input type="radio" value=1 name="urgent">Yes
+                        <input type="radio" value=0 name="urgent">No
                     </label>
 
                     <label>
@@ -127,7 +130,7 @@
                             });
                         </script>
                         <div class="add-select-container">
-                            <select class="js-example-basic-multiple add-select" multiple="multiple">
+                             <select class="js-example-basic-multiple add-select" name="skills" multiple="multiple">
                                 <option value="320">C++ Programming</option>
                                 <option value="962">Programming</option>
                                 <option value="31">Linux</option>
@@ -1069,7 +1072,7 @@
 
                     <label>
                         Project Description<br>
-                        <textarea class="add-textarea"></textarea>
+                        <textarea style="resize:none" class="add-textarea" name="project_description"></textarea>
                     </label>
 
                     <label>
@@ -1079,7 +1082,9 @@
 
                     <label>
                         Display Contact Information<br>
-                        <input type="checkbox" name="display_contact">Email Address  <input type="checkbox" name="display_contact">Mobile Number    <input type="checkbox" name="display_contact">Direct Message
+                        <input type="checkbox" name="display_contact">Email Address
+                        <input type="checkbox" name="display_contact">Mobile Number
+                        <input type="checkbox" name="display_contact">Direct Message
                     </label>
 
                     <input type="submit" value="Add Project" class="btn custom-button">
@@ -1089,4 +1094,3 @@
 </div>
 </body>
 </html>
-

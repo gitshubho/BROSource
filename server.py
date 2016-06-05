@@ -246,12 +246,13 @@ class AddProjectHandler(RequestHandler):
         if not bool(self.get_secure_cookie("user")):
             self.redirect('/?login=False')
             return
-        now=datetime.now()
-        time=now.strftime("%d-%m-%Y %I:%M %p")
-        Id = ObjectId(self.get_secure_cookie("user"))
-        user=yield db.users.find_one(Id)
 
-        self.render('addproject.html',time=time,user=user['username'])
+        #now=datetime.now()
+        #time=now.strftime("%d-%m-%Y %I:%M %p")
+        Id = ObjectId(self.get_secure_cookie("user"))
+        userInfo = yield db.users.find_one(Id)
+        userInfo = setUserInfo(userInfo, 'username', 'email')
+        self.render('add_project.html',data=userInfo)
 
     @coroutine
     @removeslash
@@ -260,9 +261,10 @@ class AddProjectHandler(RequestHandler):
         user_id = self.get_secure_cookie("user")
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
-        insert = yield db.project.insert({"user_id":str(ObjectId(user_id)),"name":self.get_argument('name'),"category":self.get_argument('category'),
-                                        "skills" : self.get_argument('tags'),"nop":self.get_argument('nop'),"budget":self.get_argument('bid'),
-                                        "urgent":self.get_argument('IsUrg'),"time":time,"description":self.get_argument('description'),"bids" : []})
+        insert = yield db.project.insert({"user_id" : str(ObjectId(user_id)), "name" : self.get_argument('project_title'), "category" : self.get_argument('project_category'),
+                                        "deadline" : self.get_argument('project_deadline'), "nop" : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
+                                        "urgent" : self.get_argument('urgent'), "time" : time,"skills" : self.get_argument('skills'), "description" : self.get_argument('project_description'),
+                                        "files" : [],"bids" : [],"userAwarded" : []})
         userId = ObjectId(user_id)
         yield db.users.update({'_id': userId},{'$push':{"projects":str(insert)}})
         if bool (insert):
