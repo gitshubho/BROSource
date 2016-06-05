@@ -25,7 +25,7 @@ import random
 from datetime import datetime
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
-__FILES__ = 'static/uploads/files'
+__FILES__ = 'static/uploads/files/'
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -278,7 +278,7 @@ class AddProjectHandler(RequestHandler):
         #time=now.strftime("%d-%m-%Y %I:%M %p")
         Id = ObjectId(self.get_secure_cookie('user'))
         userInfo = yield db.users.find_one(Id)
-        userInfo = setUserInfo(userInfo, 'username', 'email')
+        userInfo = setUserInfo(userInfo, 'username', 'email', 'photo_link')
         self.render('add_project.html',data=userInfo)
 
     @coroutine
@@ -288,12 +288,27 @@ class AddProjectHandler(RequestHandler):
         user_id = self.get_secure_cookie('user')
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
+
+        files_data = []
+
+        for i in range(len(self.request.files['project_file'])):
+            fileinfo = self.request.files['project_file'][i]
+            fname = fileinfo['filename']
+            extn = os.path.splitext(fname)[1]
+            cname = str(uuid.uuid4()) + extn
+            fh = open(__FILES__ + cname, 'w')
+            fh.write(fileinfo['body'])
+            files_data.append({'fname' : fname, 'url' : __FILES__ + cname})
+
+        file_id = yield db.files.insert({'userId' : str(ObjectId(user_id)), 'projId' : "", "files" : files_data})
+
         insert = yield db.project.insert({'user_id' : str(ObjectId(user_id)), 'name' : self.get_argument('project_title'), 'category' : self.get_argument('project_category'),
                                         'deadline' : self.get_argument('project_deadline'), 'nop' : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
-                                        'urgent' : self.get_argument('urgent'), 'time'  : time, 'skills' : self.get_argument('skills[]'), 'description' : self.get_argument('project_description'),
-                                        'files' : [],'bids' : [],'userAwarded' : []})
+                                        'urgent' : self.get_argument('urgent'), 'time'  : time, 'skills' : self.get_argument('skills'), 'description' : self.get_argument('project_description'),
+                                        'files' : str(file_id),'bids' : [],'userAwarded' : []})
         userId = ObjectId(user_id)
-        yield db.users.update({'_id': userId},{'$push':{'projects':str(insert)}})
+        yield db.files.update({'_id': file_id},{'$set' : {'projId' : str(insert)}})
+        yield db.users.update({'_id': userId},{'$push': {'projects':str(insert)}})
         if bool (insert):
             pass
         self.redirect('/viewproject/'+str(insert))
