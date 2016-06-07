@@ -40,9 +40,32 @@ body{
 }
 
 .msg-footer{
-	position: fixed; bottom:0; text-align: center; 
-    border-top: 1px solid #ccc; padding:50px;
+	position: relative; bottom:0; text-align: center; 
+    border-top: 1px solid #ccc; 
+    padding: 5%;
 }
 .message-holder{
 	width: 10000px;
+}
+.form-group input
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group select
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group textarea
+{
+  margin-top: 20px;
+  height: 250px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
 }
