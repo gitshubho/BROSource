@@ -23,6 +23,8 @@ from utilityFunctions import sendMessage,sendRequestToken
 import textwrap
 import random
 from datetime import datetime
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -334,6 +336,66 @@ class Donate(RequestHandler):
 		days=self.get_argument('noOfDays')
 		result=yield db.projects.update({'_id':ObjectId(projId)},{'$push':{"bids":{'amount':bidAmt,'days':days}}})
 		self.redirect('/viewproject/(\w+)')"""
+class SearchHandler(RequestHandler):
+	@coroutine
+	def post(self):
+		STRING=self.get_argument('string')
+		word_doc=db.project.find()
+		choices=list()
+		while(yield word_doc.fetch_next):
+			doc=word_doc.next_object()
+			try:
+				choices.append(doc["name"])
+			except:
+				continue
+		probableMatch=process.extract(STRING,choices,limit=5)
+		choices=list(set(choices))
+		projlist=list()
+		for LIST in probableMatch:
+			if LIST[1]>70:
+				pname=LIST[0]
+				if pname in choices:
+					choices.remove(pname)
+					doc=db.project.find({"name":pname},{"name":1,"_id":1,"bids":1})
+					while(yield doc.fetch_next):
+						wdoc=doc.next_object()
+						l1=list()
+						l1.append(wdoc["name"])
+						l1.append(wdoc["_id"])
+						if "bids" in wdoc:
+							l1.append(wdoc["bids"])
+						projlist.append(l1)
+		userlist=list()
+		word_doc=db.users.find()
+		while(yield word_doc.fetch_next):
+			doc=word_doc.next_object()
+			try:
+				choices.append(doc["username"])
+			except:
+				continue
+		probableMatch=process.extract(STRING,choices,limit=5)
+		choices=list(set(choices))
+
+		for LIST in probableMatch:
+			if LIST[1]>70:
+				pname=LIST[0]
+				if pname in choices:
+					choices.remove(pname)
+					doc=db.users.find({"username":pname},{"username":1,"_id":1,"category":1,'skills':1})
+					while(yield doc.fetch_next):
+						wdoc=doc.next_object()
+						l2=list()
+						l2.append(wdoc["username"])
+						try:
+							l2.append(wdoc["category"])
+						except:
+							pass
+						try:
+							l2.append(wdoc["skills"])
+						except:
+							pass
+						userlist.append(l2)
+		self.render("searchresult.html",projlist=projlist,userlist=userlist)
 
 class LogoutHandler(RequestHandler):
     @removeslash
@@ -365,7 +427,8 @@ application = Application([
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
-    (r"/donate", Donate)
+    (r"/donate", Donate),
+    (r"/displayall",SearchHandler)
 ], **settings)
 
 #main init
