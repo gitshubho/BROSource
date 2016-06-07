@@ -4,6 +4,24 @@
       var Wht=$(window).height();
       var Wwt=$(window).width();
 
+
+
+        $(".onboarding-append-work").click(function()
+        {
+          $(".onboarding-work").append("<div class='form-group'>\
+            <div class='row'>\
+              <div class='col-md-9 col-xs-9'>\
+                <label>Service</label>\
+                <input type='text' class='form-control' name = 'work' placeholder='ex: Create a minimal and responsive website'>\
+              </div>\
+              <div class='col-md-3 col-xs-3'>\
+                <label>Price (USD)</label>\
+                <input type='text' class='form-control' name = 'workprice' placeholder='ex: 5'>\
+              </div>\
+            </div>\
+          </div>");
+        });
+
       $(".homepage-add-projects-button").css("top",Wht);
       if(Wht<Wwt)
       {
@@ -179,6 +197,10 @@
 
      var NavHt=$(".navbar").height();
       $(".bar").css("padding-top",NavHt);
+
+
+      /**//**//*Onboarding*/
+
 });
 
 $(window).resize(function()

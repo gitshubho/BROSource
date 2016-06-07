@@ -1286,7 +1286,6 @@ font-size: 275%;
 .profile-other-nav-image
 {
   height:15%;
-  width:15%;
   border-radius: 100%;
   margin-right: 10px;
   border: 2px solid white;
@@ -1652,6 +1651,7 @@ font-size: 275%;
   width: 60%;
   margin-top: 5%;
 }
+
 .upload-img-btn
 {
 
@@ -1778,6 +1778,14 @@ font-size: 275%;
   background: rgb(240,240,240);
 }
 
+.onboarding-skills-select select
+{
+  margin-top: 20px;
+  background: rgb(240,240,240);
+  width: 100%;
+  border-radius: 0;
+}
+
 .onboarding-added-skills-box
 {
   height: 40%;;
@@ -1807,15 +1815,7 @@ font-size: 275%;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   font-weight: lighter;
 }
-.onboarding-work
-{
-  margin-top: 30px;
-  text-decoration: none;
-  border-radius: 0;
-  border: 1px solid rgb(204,204,204);
-  background: rgb(240,240,240);
-  margin-bottom: 20px;
-}
+
 .onboarding-work .col-md-11
 {
   text-align:center;padding-top:2%;
@@ -1828,7 +1828,10 @@ font-size: 275%;
   color:white;
   font-size:150%;
 }
-
+.work
+{
+  padding: 2%;
+}
 .onboarding-added-work
 {
   height: 15%;
@@ -2080,4 +2083,3 @@ font-size: 275%;
 #forgot_modal input, #verify_modal input{
   color: #000;
 }
-
