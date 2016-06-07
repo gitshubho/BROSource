@@ -13,11 +13,11 @@ body{
 }
 
 .donate-img{
-    width: 100%; text-align: center; margin: 20px;
+    width: 94%; text-align: center; margin: 20px;
 }
 
 .donate-img img{
-    width: 40%;
+    width: 20%;
 }
 
 .donate-form form{
