@@ -59,7 +59,6 @@
   if(Wwt>Wht)
     {
       $(".homepage-image-active-carousel-image").css("height",Wht/1.64);
-      $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
         var card_height=Wht/6;
@@ -96,7 +95,6 @@
         $(".homepage-image-active-carousel-image").css("height",Wht/2.5);
         $(".homepage-image-active-carousel-image").css("width",Wwt);
         $(".footer").css("height",Wht/2.2);
-        $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
         $(".homepage-carousel").css("top",Wht/3);
@@ -238,7 +236,6 @@ $(window).resize(function()
     if(Wwt>Wht)
     {
       $(".homepage-image-active-carousel-image").css("height",Wht/1.64);
-      $(".fix-profile").addClass("affix");
       if(Wht>1000)
       {
         var card_height=Wht/6;
@@ -276,7 +273,6 @@ $(window).resize(function()
         $(".homepage-image-active-carousel-image").css("height",Wht/2.5);
         $(".homepage-image-active-carousel-image").css("width",Wwt);
         $(".footer").css("height",Wht/2.2);
-        $(".fix-profile").removeClass("affix");
         $(".homepage-add-projects-button").css("margin-top","50%");
         $(".cards").css("top",Wht/5);
         $(".homepage-carousel").css("top",Wht/3);

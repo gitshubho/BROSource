@@ -126,15 +126,15 @@
 
   <div class="row messaging">
     <div class="col-md-8 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-8'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view');"></div>
-    <div class="col-md-4 col-md-offset-12 msg not-in-view hidden-xs">
-      <h1>Messages</h1>
+    <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
+      <h2>Messages</h2>
       <div class="row">
         <div class="col-md-10 col-md-push-1 message">
           <div class="col-md-3 msg-image">
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
           <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
-            <h3>Sender Name</h3>
+            <h4>Sender Name</h4>
             <small>Content up here!</small>
           </div>
         </div>
@@ -144,7 +144,7 @@
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
           <div class="col-md-9 msg-preview">
-            <h3>Sender Name</h3>
+            <h4>Sender Name</h4>
             <small>Content up here!</small>
           </div>
         </div>
@@ -190,30 +190,32 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <div class="row nav-brand-heading">
-          <div class="col-md-2 col-xs-1" style="padding:0;margin:0px;margin-top:5px;pointer:cursor">
-            <div class="btn-group">
-              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <span class="glyphicon glyphicon glyphicon-menu-hamburger"></span>
-              </a>
-              <ul class="dropdown-menu" id="homepage-menu">
-                <li><a href="#">Technical</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Management</a></li>
-              </ul>
-            </div>
+          <div class="row nav-brand-heading">
+              <div class="col-md-10 col-xs-5">
+                  <div class="brand-name"><b>BRO</b>Source</div>
+              </div>
+              <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
+         {% if result['loggedIn'] == True %}
+                <ul class="center-align-on-small" id="other-nav-right">
+                  <li id="other-notification-trigger-small"><a href="#" ><span class="glyphicon glyphicon-comment"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+                   <li><img src="../static/images/17.jpg" class="img-responsive other-nav-image-small"></li>
+                </ul>
+        {% else %}
+                 <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+                  <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+                    <div class="row hide-on-large">
+                      <div class="col-xs-12 custom-push">
+                        <p>Login/SignUp&nbsp&nbsp<span class="glyphicon glyphicon-user"></span><p>
+                      </div>
+                    </div>
+                  </a>
+                </ul>
+             {% end %}
+              </div>
+
           </div>
-          <div class="col-md-10 col-xs-10">
-            <div class="brand-name"><b>BRO</b>Source</div>
-          </div>
-        </div>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"></a>
+          <a class="navbar-brand" href="#"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -224,8 +226,8 @@
         <br>
         {% if result['loggedIn'] == True %}
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-           <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-8 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+           <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
             <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
         </ul>
 
@@ -241,9 +243,6 @@
               <div class="col-md-6 col-xs-6 login-modal-toggle-text">
                 <p><h4>Login/SignUp</h4></p>
               </div>
-            </div>
-            <div class="row hide-on-large">
-              <span class="glyphicon glyphicon-user"></span>
             </div>
           </a>
             </div>
@@ -441,7 +440,7 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
       <hr class="hide-on-large">
 
       <div class="col-md-4" id="profile-other-user-details">
-        <div class="fix-profile" style="position: fixed;">
+        <div class="fix-profile">
         <div class="profile-other-user">
           <div class="profile-other-user-details-holder">
             <div class="row">
