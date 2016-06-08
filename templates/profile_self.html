@@ -222,7 +222,13 @@
                 <li><p align="right"><b>{{result['userInfo']['name']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
                 <li><a href="/logout">Logout</a></li>
 
-                <li><img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-self-nav-image"></li>
+                <li>
+                  {% if result['userInfo']['photo_link'] == "" %}
+                  <img src="../static/images/1754.jpg" class="login-modal-image">
+                  {% else %}
+                  <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-self-nav-image">
+                  {% end %}
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

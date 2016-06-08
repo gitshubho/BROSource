@@ -41,7 +41,7 @@ class MainHandler(RequestHandler):
         if bool(self.get_secure_cookie('user')):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            userInfo = setUserInfo(userInfo, 'username')
+            userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
         featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
