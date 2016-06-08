@@ -71,86 +71,78 @@
     </div>
 
 
-    <div class="row message-view">
-      <div class="col-md-7 msg-view-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none')"></div>
-      <div class="col-md-5 col-md-offset-12 msg-view not-in-view hidden-xs">
-        <div class="container-fluid">
-          <div class="msg-topbar">
-            <div class="row">
-              <div class="col-md-1 col-xs-1">
-                <div class="img-circle">
 
-                </div>
-              </div>
-              <div class="col-md-6 col-xs-7">
-                <div class="sender-name"><h4>From Muhammad Ali</h4><small class="msg-date">4 June 2016, 2:00 PM</small></div>
-              </div>
-              <div class="col-md-5 col-xs-4 msg-icons">
-                <h3><i class="fa fa-reply"></i>
-                  <i class="fa fa-bookmark-o"></i>
-                  <i class="fa fa-flag"></i>
-                  <i class="fa fa-trash"></i></h3>
-              </div>
-            </div>
-          </div>
-
+      <div class="row messaging">
+       <div class="col-md-8 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-8'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view');"></div>
+        <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
+       <div class="view-messages">
+          <h2>Messages</h2>
           <div class="row">
-            <div class="msg-body">
-
-              <div class="col-md-12 col-xs-4">
-                <div class="msg-type">Direct Message</div>
+            <div class="col-md-10 col-md-push-1 message">
+              <div class="col-md-3 msg-image">
+                <img src="../static/images/msg_head.jpeg" class="img-circle">
               </div>
-
-              <div class="col-md-12 col-xs-12">
-                <div class="msg-content">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
+              <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+                <h4>Sender Name</h4>
+                <small>Content up here!</small>
               </div>
+            </div>
 
+            <div class="col-md-10 col-md-push-1 message">
+              <div class="col-md-3 msg-image">
+                <img src="../static/images/msg_head.jpeg" class="img-circle">
+              </div>
+              <div class="col-md-9 msg-preview">
+                <h4>Sender Name</h4>
+                <small>Content up here!</small>
+              </div>
             </div>
           </div>
+          <div class="row">
+      		<div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;">
+      			<a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;">Compose Message</a>
+      		</div>
+      	</div>
+        </div>
 
-          <div class="msg-footer row">
-            <div class="col-md-12">
-              Click here to close this message
-            </div>
-          </div>
+        <!-- Sending Messages -->
+
+        <div class="container-fluid col-md-12 col-xs-12 col-sm-12 send-messages">
+        <form method="post" action="">
+        <div class="msg-topbar">
+        	<div class="row">
+        		<div class="col-lg-2 col-md-3">
+        			<div class="send-msg-img-holder">
+        				<img src="../static/images/17.jpg" class="send-msg-img">
+        			</div>
+        		</div>
+        		<div class="col-lg-5 col-md-4 col-md-push-1">
+        			<div class="sender-name"><h4>To Selena Gomez</h4><small class="msg-date">Direct Message</small></div>
+        		</div>
+        		<div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
+        			<button type="submit" class="msg-type sumbit-btn" style="float: right; text-align:center;"><b>Send</b></button>
+        		</div>
+        	</div>
+        </div>
+
+        	<div class="row">
+        			<div class="col-md-12 col-xs-12">
+        				<div class="msg-content">
+        					<div class="form-group">
+        					<textarea class="form-control" name = "message" placeholder="Enter the message here"></textarea>
+         				</div>
+         				</div>
+        			</div>
+        	</div>
+        </form>
+        <div class="msg-footer row">
+    		<div class="col-md-12">
+    			<a onclick="$('.view-messages').show();$('.send-messages').hide();" style="cursor:pointer;">Click here to close this message</a>
+    		</div>
+    	</div>
+        </div>
         </div>
       </div>
-    </div>
-
-    <div class="row messaging">
-
-      <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
-        <h2>Messages</h2>
-        <div class="row">
-          <div class="col-md-10 col-md-push-1 message">
-            <div class="col-md-3 msg-image">
-              <img src="../static/images/msg_head.jpeg" class="img-circle">
-            </div>
-            <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
-              <h4>Sender Name</h4>
-              <small>Content up here!</small>
-            </div>
-          </div>
-
-          <div class="col-md-10 col-md-push-1 message">
-            <div class="col-md-3 msg-image">
-              <img src="../static/images/msg_head.jpeg" class="img-circle">
-            </div>
-            <div class="col-md-9 msg-preview">
-              <h4>Sender Name</h4>
-              <small>Content up here!</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 <div class="container-fluid gray-background">

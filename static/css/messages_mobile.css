@@ -28,7 +28,7 @@ body{
 }
 
 .msg-type{
-    background:#3498db; text-align: center; color: #ffffff; 
+    background:#3498db; text-align: center; color: #ffffff;
     padding: 12px;
     margin: 4px;
     width: 50%;
@@ -40,9 +40,24 @@ body{
 }
 
 .msg-footer{
-	position: relative; bottom:0; text-align: center; 
-    border-top: 1px solid #ccc; 
+	position: relative; bottom:0; text-align: center;
+    border-top: 1px solid #ccc;
     padding: 5%;
+}
+.send-msg-img-holder{
+  padding-top: 10%;
+}
+.send-msg-img-holder img{
+  position: fixed;
+  border-radius: 100%;
+  height:9%;
+  width: auto
+}
+@media(min-width:1800px)
+{
+  .send-msg-img-holder img{
+    height:5%;
+  }
 }
 .message-holder{
 	width: 10000px;

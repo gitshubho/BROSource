@@ -4,6 +4,7 @@
       var Wht=$(window).height();
       var Wwt=$(window).width();
 
+      $('.view-messages').show();$('.send-messages').hide();
 
 
         $(".onboarding-append-work").click(function()

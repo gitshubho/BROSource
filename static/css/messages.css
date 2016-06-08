@@ -45,8 +45,51 @@ body{
 
 .msg-footer{
 	position: fixed; bottom:0; text-align: center;
-    border-top: 1px solid #ccc; padding:50px;
+    border-top: 1px solid #ccc; padding:5%;
+}
+.msg-footer a{
+  color:black;
 }
 .message-holder{
 	width: 10000px;
+}
+.send-msg-img-holder{
+  padding-top: 10%;
+}
+.send-msg-img-holder img{
+  position: fixed;
+  border-radius: 100%;
+  height:9%;
+  width: auto
+}
+@media(min-width:1800px)
+{
+  .send-msg-img-holder img{
+    height:5%;
+  }
+}
+.message-holder{
+	width: 10000px;
+}
+.form-group input
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group select
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group textarea
+{
+  margin-top: 20px;
+  height: 250px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
 }
