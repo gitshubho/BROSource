@@ -23,27 +23,21 @@
 
 /*For Messaging*/
 
-.slidebar-in-view{
-  z-index: 5;
-}
-
 .messaging{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
 }
-
-
 
 .msg-dismisser{
     height: 100%; position: fixed; left: 0; top: 0; display: block;
 }
 
 .msg-view-dismisser{
-    height: 100%; position: fixed; left: 0; top: 90px; visibility: visible;
+    height: 100%; position: fixed; left: 0; top: 90px; display: block;
 }
 
 
 .msg-dismisser-display-none{
-    visibility: hidden;
+    display: none;
 }
 
 .msg{
@@ -59,8 +53,8 @@
 }
 
 .message{
-    border-top:1px solid #c3c3c3;
     border-bottom:1px solid #c3c3c3;
+    padding-bottom: 20px;
 }
 
 .message:hover{
@@ -71,15 +65,15 @@
     margin: auto; margin-top: 3%;
 }
 
-.msg-image h3{
-    padding: 0; margin: 0;
+.msg-image h4{
+    padding: 2%; margin: 0;
 }
 .msg-preview{
-    margin: auto; margin-top: -10px;
+    margin: auto;
 }
 
 .msg-image img{
-    width:140%; margin: 0; padding: 0; left: -20px; position: relative;
+    width:150%; margin: 0; padding: 0; left: -20px; position: relative;
 }
 
 .msg-view-z-index-adjust{
@@ -88,6 +82,20 @@
 
 .fix-profile{
     z-index: 5;
+    position: fixed;
+}
+@media(max-width:600px)
+{
+  .fix-profile
+  {
+    position: relative;
+    z-index: 0;
+  }
+
+}
+
+.z-index-high{
+  z-index: 10;
 }
 
 .donate-container{
@@ -208,4 +216,50 @@
 }
 .nav-search input:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: hsla(0, 0%, 100%, .7);
+}
+
+
+#other-nav-right li
+{
+    list-style-type: none;
+    float: left;
+    margin-left: 2px;
+}
+
+.other-nav-image-small
+{
+  margin: 0;
+  margin-top: -5px;
+  height: 7%;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+#other-notification-trigger-small
+{
+  margin-right: 5%;;
+}
+
+@media(max-width:430px)
+{
+  .custom-push
+  {
+    left: 45%;
+  }
+}
+
+@media(max-width:390px)
+{
+  .custom-push
+  {
+    left: 40%;
+  }
+}
+
+@media(max-width:321px)
+{
+  .custom-push
+  {
+    left: 20%;
+  }
 }
