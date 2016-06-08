@@ -23,8 +23,8 @@ from utilityFunctions import sendMessage,sendRequestToken, hashingPassword, setU
 import textwrap
 import random
 from datetime import datetime
-#from fuzzywuzzy import fuzz
-#from fuzzywuzzy import process
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
 __FILES__ = 'static/uploads/files/'
