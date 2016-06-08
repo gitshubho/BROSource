@@ -72,7 +72,7 @@
 
 
     <div class="row message-view">
-      <div class="col-md-7 msg-view-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none')"></div>
+      <div class="col-md-7 msg-view-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none'); $('.message-view').removeClass('slidebar-in-view');"></div>
       <div class="col-md-5 col-md-offset-12 msg-view not-in-view hidden-xs">
         <div class="container-fluid">
           <div class="msg-topbar">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="row messaging">
-      <div class="col-md-8 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view');"></div>
+      <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.messaging').removeClass('slidebar-in-view');"></div>
       <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
         <h2>Messages</h2>
         <div class="row">
@@ -133,7 +133,7 @@
             <div class="col-md-3 msg-image">
               <img src="../static/images/msg_head.jpeg" class="img-circle">
             </div>
-            <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+            <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-9'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view slidebar-in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('slidebar-in-view'); $('.messaging').removeClass('slidebar-in-view');">
               <h4>Sender Name</h4>
               <small>Content up here!</small>
             </div>
@@ -176,8 +176,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="navbar-collapse" id="navbar">
               <ul class="hide-on-small nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-                <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-                <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+                <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');$('.messaging').toggleClass('slidebar-in-view');"><span class="glyphicon glyphicon-comment"></span></a></li>
+                <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');$('.notification').toggleClass('slidebar-in-view');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                  <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>
                   <li><img src="{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image"></li>
               </ul>
