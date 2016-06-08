@@ -71,22 +71,10 @@
     background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important;
 }
 
-.not-in-view{
-    transition: all 0.5s;
-}
-
-.in-view{
-    transition: all 0.5s;
-}
-
 /*For Messaging*/
 
-.slidebar-in-view{
-  z-index: 5 !important;
-}
-
 .messaging{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%; transition: all 2s;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
 }
 
 .msg-dismisser{
@@ -135,11 +123,11 @@
 }
 
 .msg-image img{
-    width:100%; margin: 0; padding: 0; left: -20px; position: relative;
+    width:150%; margin: 0; padding: 0; left: -20px; position: relative;
 }
 
 .msg-view-z-index-adjust{
-    
+    z-index: 11;
 }
 
 
@@ -147,7 +135,22 @@
     z-index: 5;
     width: 120%; padding: 10px;
 }
-
+.apply-project-image
+{
+  position: relative;
+  height:20%;
+  margin-right: 3%;
+}
+.green-amount p
+{
+  font-weight: bold;
+  color:green;
+  font-size: 130%;
+}
+.z-index-high
+{
+  z-index: 5;
+}
 @media(max-width:600px)
 {
   .fix-profile
