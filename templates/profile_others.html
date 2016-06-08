@@ -99,8 +99,8 @@
         </div>
       </div>
       <div class="row">
-  		<div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;">
-  			<a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;">Compose Message</a>
+  		<div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;text-align:center">
+  			<a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;;">Compose Message</a>
   		</div>
   	</div>
     </div>
@@ -187,10 +187,10 @@
                   <div class="brand-name"><b>BRO</b>Source</div>
               </div>
               <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
-         {% if result['loggedIn'] == True %}
+  <!--  {% if result['loggedIn'] == True %}  -->
                 <ul class="center-align-on-small" id="other-nav-right">
-                  <li id="other-notification-trigger-small"><a href="#" ><span class="glyphicon glyphicon-comment"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+                  <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
+                  <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                    <li><img src="../static/images/17.jpg" class="img-responsive other-nav-image-small"></li>
                 </ul>
         {% else %}

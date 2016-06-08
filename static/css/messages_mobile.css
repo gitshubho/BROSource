@@ -84,3 +84,8 @@ body{
   border-radius: 0;
   background: rgb(240,240,240);
 }
+.msg-image img
+{
+  position: relative;
+    height: 50px;
+}
