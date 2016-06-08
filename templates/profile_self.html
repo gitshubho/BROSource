@@ -209,7 +209,11 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
                 <li class="left-stripes"><a href="#"><span class="glyphicon glyphicon glyphicon-align-justify"></span> BROSource</a></li>
-                <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span><input type='' class='' placeholder='Search for Projects or People'></li>
+                <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
+                  <form action="/search" method="post">
+                    <input type="" class="" name="string" placeholder="Search for Projects or People">
+                  </form>
+                </li>
             </ul>
             <br>
             <ul class="nav navbar-nav navbar-right custom-pull" id="profile-self-nav-right">
