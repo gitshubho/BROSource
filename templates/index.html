@@ -52,7 +52,9 @@
                <span class="glyphicon glyphicon-search" id="homepage-search-icon"></span>
              </div>
              <div class="col-md-11 col-xs-12 center">
-               <input type="text" class="search " placeholder="">
+               <form action="/search" method="post">
+                 <input type="text" class=" search " name="string" placeholder="">
+               </form>
              </div>
           </div>
          </div>
@@ -76,7 +78,11 @@
         <a type="button" class="login-modal-toggle" href="/profile/me">
            <div class="row">
             <div class="col-md-4 col-xs-4">
+              {% if result['userInfo']['photo_link'] == "" %}
+              <img src="../static/images/Login-Icon.png" class="login-modal-image">
+              {% else %}
               <img src="../{{ result['userInfo']['photo_link'] }}" class="login-modal-image">
+              {% end %}
             </div>
             <div class="col-md-6 col-xs-6 login-modal-toggle-text">
 

@@ -23,6 +23,8 @@ from utilityFunctions import sendMessage,sendRequestToken, hashingPassword, setU
 import textwrap
 import random
 from datetime import datetime
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
 __FILES__ = 'static/uploads/files/'
@@ -39,7 +41,7 @@ class MainHandler(RequestHandler):
         if bool(self.get_secure_cookie('user')):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            userInfo = setUserInfo(userInfo, 'username')
+            userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
         featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
@@ -350,6 +352,67 @@ class Donate(RequestHandler):
 
 """class BidHandler(RequestHandler):"""
 
+class SearchHandler(RequestHandler):
+	@coroutine
+	def post(self):
+		STRING=self.get_argument('string')
+		word_doc=db.project.find()
+		choices=list()
+		while(yield word_doc.fetch_next):
+			doc=word_doc.next_object()
+			try:
+				choices.append(doc["name"])
+			except:
+				continue
+		probableMatch=process.extract(STRING,choices,limit=5)
+		choices=list(set(choices))
+		projlist=list()
+		for LIST in probableMatch:
+			if LIST[1]>70:
+				pname=LIST[0]
+				if pname in choices:
+					choices.remove(pname)
+					doc=db.project.find({"name":pname},{"name":1,"_id":1,"bids":1})
+					while(yield doc.fetch_next):
+						wdoc=doc.next_object()
+						l1=list()
+						l1.append(wdoc["name"])
+						l1.append(wdoc["_id"])
+						if "bids" in wdoc:
+							l1.append(wdoc["bids"])
+						projlist.append(l1)
+		userlist=list()
+		word_doc=db.users.find()
+		while(yield word_doc.fetch_next):
+			doc=word_doc.next_object()
+			try:
+				choices.append(doc["username"])
+			except:
+				continue
+		probableMatch=process.extract(STRING,choices,limit=5)
+		choices=list(set(choices))
+
+		for LIST in probableMatch:
+			if LIST[1]>70:
+				pname=LIST[0]
+				if pname in choices:
+					choices.remove(pname)
+					doc=db.users.find({"username":pname},{"username":1,"_id":1,"category":1,'skills':1})
+					while(yield doc.fetch_next):
+						wdoc=doc.next_object()
+						l2=list()
+						l2.append(wdoc["username"])
+						try:
+							l2.append(wdoc["category"])
+						except:
+							pass
+						try:
+							l2.append(wdoc["skills"])
+						except:
+							pass
+						userlist.append(l2)
+		self.render("searchresult.html",projlist=projlist,userlist=userlist)
+
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
@@ -383,7 +446,8 @@ application = Application([
     (r"/changepswd", ChangePasswordHandler),
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
-    (r"/donate", Donate)
+    (r"/donate", Donate),
+    (r"/search",SearchHandler)
 ], **settings)
 
 #main init

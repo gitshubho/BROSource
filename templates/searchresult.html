@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Search Results</title>
+</head>
+<body>
+<p>
+		<h4>Displaying Search Results:</h4>
+{%if not(projlist or userlist)%}
+	<li>{{"No results found"}}</li>
+			
+
+{%else%}
+<h5>According to Projectname:</h5>		
+{%for proj in projlist%}
+	<a href="/viewproject/{{(proj[1])}}">{{str(proj[0])}}</a>
+	<li>{{str(proj[1])}}</li>
+	{%if len(proj)>2%}
+		<li>{{str(proj[2])}}</li>
+	{%end%}
+{%end%}
+</p>
+<p>
+<h5>According to Username:</h5>		
+{%for user in userlist%}
+<a href="/profile/{{(user[0])}}">{{str(user[0])}}</a>
+	<li>{{str(user[1])}}</li>
+	<li>{{str(user[2])}}</li>
+{%end%}
+</p>
+{%end%}
+</body>
+</html>
