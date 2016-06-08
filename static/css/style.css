@@ -30,6 +30,10 @@
     text-decoration: none;
     color:white;
   }
+  .navbar span
+  {
+    color: white;
+  }
 .gray-background
 {
   background: rgb(240,240,240);
