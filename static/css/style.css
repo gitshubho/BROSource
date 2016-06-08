@@ -30,6 +30,10 @@
     text-decoration: none;
     color:white;
   }
+  .navbar span
+  {
+    color: white;
+  }
 .gray-background
 {
   background: rgb(240,240,240);
@@ -203,6 +207,13 @@
      margin-left: -10px;
      padding-left: 0;
      font-size: 130%;
+   }
+   @media(min-width:1800px)
+   {
+     .brand-name
+     {
+       margin-top: 15px;
+     }
    }
    @media(max-width:600px)
    {
