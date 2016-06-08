@@ -208,6 +208,13 @@
      padding-left: 0;
      font-size: 130%;
    }
+   @media(min-width:1800px)
+   {
+     .brand-name
+     {
+       margin-top: 15px;
+     }
+   }
    @media(max-width:600px)
    {
      .brand-name

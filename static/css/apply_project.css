@@ -1,3 +1,90 @@
 .fix-profile{
     width: 120%; padding: 10px;
 }
+
+
+.notification{
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+}
+
+.bar-dismisser{
+    height: 100%; position: fixed; left: 0; top: 0; visibility: visible;
+}
+
+.bar-dismisser-display-none{
+    visibility: hidden;
+}
+.bar{
+    background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important;
+}
+
+.not-in-view{
+    transition: all 0.5s;
+}
+
+.in-view{
+    transition: all 0.5s;
+}
+
+/*For Messaging*/
+
+.messaging{
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+}
+
+.msg-dismisser{
+    height: 100%; position: fixed; left: 0; top: 0; display: block;
+}
+
+.msg-view-dismisser{
+    height: 100%; position: fixed; left: 0; top: 90px; display: block;
+}
+
+
+.msg-dismisser-display-none{
+    display: none;
+}
+
+.msg{
+    background: rgba(255,255,255,1); height: 100%; padding: 10; padding-top:0 !important; box-shadow: 0 0 10px 0 #c3c3c3;
+}
+
+.not-in-view{
+    transition: all 0.5s;
+}
+
+.in-view{
+    transition: all 0.5s;
+}
+
+.message{
+    border-bottom:1px solid #c3c3c3;
+    padding-bottom: 20px;
+}
+
+.message:hover{
+    background: #f0f0f0;
+}
+
+.msg-image{
+    margin: auto; margin-top: 3%;
+}
+
+.msg-image h4{
+    padding: 2%; margin: 0;
+}
+.msg-preview{
+    margin: auto;
+}
+
+.msg-image img{
+    width:100%; margin: 0; padding: 0; left: -20px; position: relative;
+}
+
+.msg-view-z-index-adjust{
+    z-index: 11;
+}
+
+.fix-profile{
+    z-index: 5;
+}

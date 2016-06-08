@@ -28,7 +28,7 @@ body{
 }
 
 .msg-type{
-    background:#3498db; text-align: center; color: #ffffff; 
+    background:#3498db; text-align: center; color: #ffffff;
     padding: 12px;
     margin: 4px;
     width: 50%;
@@ -40,7 +40,7 @@ body{
 }
 
 .msg-footer{
-	position: fixed; bottom:0; text-align: center; 
+	position: fixed; bottom:0; text-align: center;
     border-top: 1px solid #ccc; padding:50px;
 }
 .message-holder{

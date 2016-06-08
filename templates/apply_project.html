@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BroSOURCE</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/messages.css">
+    <link rel="stylesheet" href="../static/css/donate.css">
+    <link rel="stylesheet" href="../static/css/apply_project.css">
   </head>
 
 <script src="../static/js/jquery.min.js"></script>
@@ -18,6 +22,138 @@
 
 
 <body id="profile-other">
+
+  <div class="container-fluid">
+    <div class="row notification">
+      <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none')"></div>
+      <div class="col-md-3 col-md-offset-12 bar not-in-view hidden-xs" style="hidden">
+
+      <section class="comments">
+    <article class="comment">
+      <a class="comment-img" href="#non">
+        <p>16 March 2016<br><span>10:30pm</span></p>
+      </a>
+
+      <div class="comment-body">
+        <div class="text">
+          <p>Hello, this is an example comment</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="comment">
+      <a class="comment-img" href="#non">
+      <p>16 March 2016<br><span>10:30pm</span></P>
+      </a>
+
+      <div class="comment-body">
+        <div class="text">
+          <p>This is a much longer one that will go on for a few lines.</p>
+          <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="comment">
+      <a class="comment-img" href="#non">
+      <p>16 March 2016<br><span>10:30pm</span></p>
+      </a>
+
+      <div class="comment-body">
+        <div class="text">
+          <p>this presentation has been updated
+          to looks more precisely to the facebook timeline</p>
+        </div>
+      </div>
+    </article>
+    </section>​
+
+      </div>
+    </div>
+
+
+    <div class="row message-view">
+      <div class="col-md-7 msg-view-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none')"></div>
+      <div class="col-md-5 col-md-offset-12 msg-view not-in-view hidden-xs">
+        <div class="container-fluid">
+          <div class="msg-topbar">
+            <div class="row">
+              <div class="col-md-1 col-xs-1">
+                <div class="img-circle">
+
+                </div>
+              </div>
+              <div class="col-md-6 col-xs-7">
+                <div class="sender-name"><h4>From Muhammad Ali</h4><small class="msg-date">4 June 2016, 2:00 PM</small></div>
+              </div>
+              <div class="col-md-5 col-xs-4 msg-icons">
+                <h3><i class="fa fa-reply"></i>
+                  <i class="fa fa-bookmark-o"></i>
+                  <i class="fa fa-flag"></i>
+                  <i class="fa fa-trash"></i></h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="msg-body">
+
+              <div class="col-md-12 col-xs-4">
+                <div class="msg-type">Direct Message</div>
+              </div>
+
+              <div class="col-md-12 col-xs-12">
+                <div class="msg-content">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="msg-footer row">
+            <div class="col-md-12">
+              Click here to close this message
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row messaging">
+      <div class="col-md-8 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-8'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view');"></div>
+      <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
+        <h2>Messages</h2>
+        <div class="row">
+          <div class="col-md-10 col-md-push-1 message">
+            <div class="col-md-3 msg-image">
+              <img src="../static/images/msg_head.jpeg" class="img-circle">
+            </div>
+            <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+              <h4>Sender Name</h4>
+              <small>Content up here!</small>
+            </div>
+          </div>
+
+          <div class="col-md-10 col-md-push-1 message">
+            <div class="col-md-3 msg-image">
+              <img src="../static/images/msg_head.jpeg" class="img-circle">
+            </div>
+            <div class="col-md-9 msg-preview">
+              <h4>Sender Name</h4>
+              <small>Content up here!</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="container-fluid gray-background">
 
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -57,8 +193,8 @@
         </ul>
         <br>
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-           <li><a href="#"><span class="glyphicon glyphicon-comment"></span></a></li>
-           <li><a href="#"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+           <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
             <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>          <li><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
         </ul>
 
