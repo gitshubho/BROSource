@@ -272,6 +272,7 @@
               <img src="../{{result['data'][0]['photo_link']}}" class="img-responsive profile-other-nav-image">
               {% else %}
               <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+              {% end %}
             </li>
         </ul>
 
@@ -467,6 +468,7 @@
                   <img src="../{{result['data'][1]['photo_link']}}" class="profile-other-banner-image">
                   {% else %}
                   <img src="../static/images/17.jpg" class="profile-other-banner-image">
+                  {% end %}
                 </div>
               </div>
 
@@ -482,7 +484,7 @@
               <div class="row">
 
                 <div class="col-md-10 col-md-push-4">
-                  <p>Joined on 1st January 0001</p>
+                  <p>Joined on {{ result['data'][1]['joined_on'].split(' ')[0] }}</p>
                 </div>
               </div>
             </div>
