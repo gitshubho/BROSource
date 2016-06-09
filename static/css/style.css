@@ -16,6 +16,12 @@
     background: #3498DB;
     color: white;
   }
+  #profile-self .navbar
+  {
+    background: #3498DB;
+    color: white;
+    border-bottom: none;
+  }
   #profile-other .navbar span
   {
     color: white;
@@ -920,11 +926,17 @@ font-size: 275%;
 {
   text-align: center;
   width:100%;
-  cursor pointer;
+  cursor: pointer;
   background:white;
   padding:5%;
   margin-top:5%;
   margin-bottom:5%;
+  color: black;
+  font-weight: bold;
+}
+.profile-self-findproject-holder a
+{
+  color: black;
 }
 .profile-self-aboutme-header
 {
@@ -956,6 +968,15 @@ font-size: 275%;
 {
   text-align: center;
   margin-top:2%;
+  overflow: hidden;
+}
+.profile-self-aboutme-footer .CustomBadge
+{
+  padding-top:2%;
+  padding-bottom: 2%;
+  padding-left: 1%;
+  padding-right:1%;
+  margin: 1%;
 }
 .profile-self-info-body
 {
@@ -964,13 +985,21 @@ font-size: 275%;
 }
 .profile-self-info-footer-tab
 {
-  padding:2%;
+  text-align: center;
   margin:0;
   float:left;
   width:25%;
+  height: 15%;
   border: 1px solid rgb(204,204,204);
   border-bottom:none;
   border-top: none;
+}
+
+.profile-self-info-footer-tab span
+{
+  color: #3498DB;
+  font-size: 180%;
+  font-weight: bold;
 }
 .topborder-visible
 {
@@ -1699,6 +1728,23 @@ Edit Profile
   color: white;
 }
 .search-mobile-topbar-in-view
+{
+  height: 50px;
+  transition:all 0.3s;
+  display: block;
+}
+
+#profile-self .search-mobile-topbar
+{
+  position: absolute;
+  background: white;
+  width: 92%;
+  height: 0;
+  transition:all 0.3s;
+  display: none;
+  color: #3498DB;
+}
+#profile-self .search-mobile-topbar-in-view
 {
   height: 50px;
   transition:all 0.3s;
