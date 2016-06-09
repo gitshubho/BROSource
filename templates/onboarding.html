@@ -13,6 +13,7 @@
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/script.js"></script>
 <link href="../static/select2-4.0.3/dist/css/select2.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="../static/select2-4.0.3/dist/js/select2.full.js"></script>
 
 <body id="onboarding-body">
@@ -113,14 +114,14 @@
                          Skills<br>
                       </label>
                           <script type="text/javascript">
-                              $(document).ready(function() {
-                                  $(".js-example-basic-multiple").select2();
+                          $(document).ready(function() {
+                              $(".js-example-basic-multiple").select2();
 
-                                  $(".js-example-basic-multiple").select2({
-                                      placeholder: "Start typing or click to select skills"
-                                  });
+                              $(".js-example-basic-multiple").select2({
+                                  placeholder: "Start typing or click to select skills"
                               });
-                            </script>
+                          });
+                          </script>
                           <div class="onboarding-skills-select">
                                <select class="js-example-basic-multiple add-select" name="skills" multiple="multiple">
                                   <option value="320">C++ Programming</option>

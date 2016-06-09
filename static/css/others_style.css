@@ -263,3 +263,9 @@
     left: 20%;
   }
 }
+
+.nav-search
+{
+  margin-top: -30px;
+  width: 100%;
+}
