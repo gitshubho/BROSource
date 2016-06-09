@@ -13,7 +13,7 @@ from motor import MotorClient
 from bson import json_util
 import json
 import requests
-import os, uuid
+import os, uuid, sys
 import urllib2
 import hashlib
 from bson.objectid import ObjectId
@@ -25,9 +25,11 @@ import random
 from datetime import datetime
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+import Image
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
 __FILES__ = 'static/uploads/files/'
+__SIZE__ = 300, 300
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
 
@@ -100,22 +102,6 @@ class LoginHandler(RequestHandler):
         else:
             self.redirect('/?credentials=False')
 
-"""class OnBoardingHandler(RequestHandler):
-
-    @removeslash
-    @coroutine
-    def get(self):
-
-        userInfo = None
-        if bool(self.get_secure_cookie('user')):
-            current_id = self.get_secure_cookie('user')
-            userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-            # print userInfo
-            self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
-        else:
-            self.redirect('/?loggedIn=False')
-"""
-
 class SignupHandler(RequestHandler):
 
     @removeslash
@@ -162,6 +148,7 @@ class UpdateProfileHandler(RequestHandler):
         photoInfo = self.request.files['photo'][0]
         extn = os.path.splitext(photoInfo['filename'])[1]
         cname = str(uuid.uuid4()) + extn
+        print '\n',__PROFILEPHOTOS__ + cname,'\n'
         fh = open(__PROFILEPHOTOS__ + cname, 'w')
         fh.write(photoInfo['body'])
 
@@ -237,7 +224,7 @@ class ForgotPasswordHandler(RequestHandler):
             self.set_secure_cookie('authtoken', str(authToken))
             self.redirect('/')
         else:
-            self.redirect('/forgot/authToken?username=False')
+            self.redirect('/?username=False')
 
 class AuthTokenHandler(RequestHandler):
 
@@ -248,7 +235,7 @@ class AuthTokenHandler(RequestHandler):
         if self.get_secure_cookie('authtoken') == otp:
             self.redirect('/changepswd')
         else:
-            self.redirect('/forgot/verify?otp=False')
+            self.redirect('/?otp=False')
 
 class ChangePasswordHandler(RequestHandler):
 
