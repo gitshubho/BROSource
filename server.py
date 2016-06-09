@@ -46,18 +46,18 @@ class MainHandler(RequestHandler):
             userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
-        featured= yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
-        recent=yield db.users.find({},{'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
+        featured= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
+        recent=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
 
         try:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
-                        F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
-                        F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
+                        F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
+                        F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured[1]['username'],F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
+                        F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Uname=featured[2]['username'],F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
 
-                        R1_Name=recent[0]['name'],R1_Title='Cloud programmer',R1_Desc=recent[0]['aboutme'],S4=recent[0]['services'],
-                        R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
-                        R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Desc=recent[2]['aboutme'],S6=recent[2]['services'])
+                        R1_Name=recent[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent[0]['username'],R1_Desc=recent[0]['aboutme'],S4=recent[0]['services'],
+                        R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Uname=recent[1]['username'],R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
+                        R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Uname=recent[2]['username'],R3_Desc=recent[2]['aboutme'],S6=recent[2]['services'])
         except IndexError:
             #print('Index error encountered')
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
@@ -260,7 +260,7 @@ class AddProjectHandler(RequestHandler):
     @removeslash
     def get(self):
         if not bool(self.get_secure_cookie('user')):
-            self.redirect('/?login=False')
+            self.redirect('/?loggedIn=False')
             return
 
         #now=datetime.now()
