@@ -1,0 +1,157 @@
+.cards1{
+  margin-left: 9.5%;
+
+}
+.gray-background
+{
+  background: rgb(240,240,240);
+}
+.custom-long-card{
+/*    box-shadow: #0f0f0f 0px 0px 1px 0px; 
+*/    padding: 10px; padding-top: 0;font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.new-cards{
+    position:relative; padding: 10px; width: 100%;
+
+    
+}
+.new-cards-section {
+     width: 100%;
+}
+
+.all-new-cards-margin{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    
+}
+.new-cards-margin{
+	  padding-left: 5px;
+    padding-right:5px;
+    margin-left:5px;
+margin-right:5px;}
+.long-card-container{
+    padding-left: 10px;
+    padding-right:10px;
+    background: white;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 
+     0 6px 6px 0 rgba(0, 0, 0, 0.19);
+     margin: 0.5%;
+ }
+.long-card-heading{
+  padding: 5px;
+
+
+}
+.long-card-title{
+  padding-left: 5%;
+  padding-top: 2%;
+  color: white;
+}
+.long-card-title span{
+  font-weight: bold;
+  font-size: 120%;
+}
+.long-card-desc{
+	border:1px solid #3498DB;; padding:8px; color:#3498DB;;
+  margin-top: 20px;
+}
+.long-card-title{
+    position: relative;
+}
+.long-card-tag-row{
+   padding-left: 5px;
+   padding-right:5px;  
+}
+.long-card-tags{
+  background: white;
+  font-size: 85%;
+  color:#3498DB;
+  padding: 5px;
+  margin: 2px;
+  border: 0.2px gray;
+}
+.box1{
+	border:0.5px solid #C8C8C8 ;
+}
+.long-card-body{
+	display: inline;
+}
+.profile-image img{
+	width: 60px; position: relative;
+}
+.badge{
+  background: #3498DB;
+  color: #fff;
+}
+.badge
+{
+  background: white;
+  border-radius: 0;
+  color:gray;
+  padding: 15%;
+  padding-right: 15%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  font-weight: lighter;
+}
+.accept{
+	background:#3498db; text-align: center; color: #ffffff;
+    padding: 12px;
+    margin: 4px;
+    width: 8%;
+    font-size:14px;
+    float: right;
+}
+@media (max-width: 900px){
+	
+	.accept{
+		width: 30%;
+		
+	}
+
+}
+.decline{
+	background:red; text-align: center; color: #ffffff;
+    padding: 12px;
+    margin: 4px;
+    width: 8%;
+    font-size:14px;
+    float: right;
+}
+@media(max-width:900px)
+{
+.decline{
+	width:30%;
+}
+}
+.due-date{
+	background:  #cceeff;
+}
+.price{
+	float:right;
+	color:#00CC00;
+	padding-right:2%;
+}
+@media(max-width:600px)
+{
+	.price{
+		float:left;
+	}
+	}
+
+.box2{
+	margin-top:1px;
+
+margin-bottom:1px;	border:0.5px solid #C8C8C8 ;
+	background: rgb(240,240,240);
+	text-align:center;
+	width: 25%;
+	float: left;	
+}
+.normal{
+	color: #3498DB;
+	float: left;
+	width: 25%;
+}

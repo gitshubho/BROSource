@@ -1680,4 +1680,100 @@ font-size: 275%;
 }
 
 .comment:hover:before { background: #3b5998 }
+.slidebar-in-view{
+  z-index: 5 !important;
+}
+
+.message-view{
+    position: fixed; top: 93px; left: 0px; width: 100%;
+     z-index:5; margin: 0; height: 100%;
+}
+
+.msg-view{
+    background: #ffffff; height: 100%;
+}
+body{
+    font-family: Montserrat;
+}
+
+.msg-topbar{
+    padding:0 10px 10px 0;
+    border-bottom: 1px solid #ccc;
+
+}
+.msg-icons{
+    letter-spacing: 10px;
+}
+
+.msg-date{
+
+}
+
+.msg-body{
+    padding: 10px;
+}
+
+.msg-type{
+    background:#3498db; text-align: center; color: #ffffff;
+    padding: 12px;
+    margin: 4px;
+    width: 50%;
+}
+
+.msg-content{
+    padding: 20px;
+    border-top: 1px solid #ccc;
+
+}
+
+.msg-footer{
+  position: fixed; bottom:0; text-align: center;
+    border-top: 1px solid #ccc; padding:5%;
+}
+.msg-footer a{
+  color:black;
+}
+.message-holder{
+  width: 10000px;
+}
+.send-msg-img-holder{
+  padding-top: 10%;
+}
+.send-msg-img-holder img{
+  position: fixed;
+  border-radius: 100%;
+  height:9%;
+  width: auto
+}
+@media(min-width:1800px)
+{
+  .send-msg-img-holder img{
+    height:5%;
+  }
+}
+.message-holder{
+  width: 10000px;
+}
+.form-group input
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group select
+{
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
+.form-group textarea
+{
+  margin-top: 20px;
+  height: 250px;
+  text-decoration: none;
+  border-radius: 0;
+  background: rgb(240,240,240);
+}
 
