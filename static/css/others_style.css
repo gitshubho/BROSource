@@ -1,5 +1,5 @@
 .notification{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
 }
 
 .bar-dismisser{
@@ -9,6 +9,15 @@
 .bar-dismisser-display-none{
     visibility: hidden;
 }
+
+.dash-dismisser{
+    height: 100%; position: fixed; left: 0; top: 0; visibility: visible;
+}
+
+.dash-dismisser-display-none{
+    visibility: hidden;
+}
+
 .bar{
     background: rgba(0,0,0,1); height: 100%; padding: 10; padding-top:0 !important;
 }
@@ -24,7 +33,7 @@
 /*For Messaging*/
 
 .messaging{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:5; margin: 0; height: 100%;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
 }
 
 .msg-dismisser{
@@ -95,7 +104,7 @@
 }
 
 .z-index-high{
-  z-index: 10;
+  z-index: 10 !important;
 }
 
 .donate-container{
@@ -179,10 +188,10 @@
 
 
 .nav-search-icon{
-  position: relative; top: 18px;
+  position: relative; top: 18px;  
 }
 .nav-search{
-  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;
+  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;list-style-type: none;width:100%; margin-top:-30px;
 }
 
 .nav-search input{
@@ -191,7 +200,12 @@
 
  @media (min-width: 0px) and (max-width:600px) {
      .nav-search input {
-        width: 80%;
+        width: 100%;
+     }
+     .nav-search
+     {
+       margin-top: -10px;
+       margin-left: -20px;
      }
  }
 
@@ -264,8 +278,10 @@
   }
 }
 
-.nav-search
-{
-  margin-top: -30px;
-  width: 100%;
+.dash-container{
+  position: fixed; top: 93px; left: 0px; width: 100%;  margin: 0; height: 100%; z-index: 0; transition: all 0.1s;
+}
+
+.dash{
+  background: #fff;height: 90%;
 }
