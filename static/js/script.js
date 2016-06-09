@@ -6,18 +6,17 @@
 
       $('.view-messages').show();$('.send-messages').hide();
 
-
         $(".onboarding-append-work").click(function()
         {
           $(".onboarding-work").append("<div class='form-group'>\
             <div class='row'>\
               <div class='col-md-9 col-xs-9'>\
                 <label>Service</label>\
-                <input type='text' class='form-control' name = 'work' placeholder='ex: Create a minimal and responsive website'>\
+                <input type='text' class='form-control service-name' name = 'work' placeholder='ex: Create a minimal and responsive website'>\
               </div>\
               <div class='col-md-3 col-xs-3'>\
                 <label>Price (USD)</label>\
-                <input type='text' class='form-control' name = 'workprice' placeholder='ex: 5'>\
+                <input type='text' class='form-control service-price' name = 'workprice' placeholder='ex: 5'>\
               </div>\
             </div>\
           </div>");

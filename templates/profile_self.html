@@ -37,10 +37,10 @@
 
 </style>
 <body id="profile-self">
-<div class="container-fluid nav-on-top">
+<div class="container-fluid">
 
   <div class="row dash-container">
-    <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none')"></div>
+    <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
         <a href='/addproj'>
@@ -68,7 +68,6 @@
           <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
         </div>
         </a>
-
       </div>
 
       <div class="row logout">
@@ -81,8 +80,8 @@
     </div>
   </div>
 
-    <div class="row notification">
-    <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none')"></div>
+  <div class="row notification">
+    <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none'); $('.notification').removeClass('z-index-high')"></div>
     <div class="col-md-3 col-md-offset-12 bar not-in-view hidden-xs" style="hidden">
 
     <section class="comments">
@@ -128,8 +127,10 @@
     </div>
   </div>
 
-  <div class="row messaging">
 
+
+  <div class="row messaging">
+   <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismi(sser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.messaging').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
    <div class="view-messages">
       <h2>Messages</h2>
@@ -230,8 +231,10 @@
     </div>
   </div>
 -->
+
 </div>
 
+<<<<<<< HEAD
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -260,13 +263,85 @@
                        <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
                        {% end %}
                 </li>
-                </ul>
+||||||| merged common ancestors
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <div class="row nav-brand-heading">
+            <div class="col-md-2 col-xs-4">
+                <div class="brand-name"><b>BRO</b>Source</div>
             </div>
+           <div class="col-md-10 col-md-push-2 hide-on-small">
+              <ul class="nav navbar-nav">
+                  <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
+                    <form action="/search" method="post">
+                      <input type="" class="" name="string" placeholder="Search for Projects or People">
+                    </form>
+                  </li>
+              </ul>
+            </div>
+            <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
+              <ul class="center-align-on-small" id="other-nav-right">
+                <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
+                <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+                <li>
+                       {% if result['userInfo']['photo_link'] == "" %}
+                       <img src="../static/images/17.jpg" class="img-responsive other-nav-image-small">
+                       {% else %}
+                       <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
+                       {% end %}
+                </li>
+=======
+<div class="container-fluid gray-background">
+<style type="text/css">
+  .navbar-default{
+    background: #3498DB;
+  }
+</style>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <div class="row nav-brand-heading">
+              <div class="col-md-2 col-xs-4">
+                  <div class="brand-name"><b>BRO</b>Source</div>
+              </div>
+             <div class="col-md-10 col-md-push-2 hide-on-small">
+                <ul class="nav navbar-nav">
+                    <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
+                      <form action="/search" method="post">
+                        <input type="" class="" name="string" placeholder="Search for Projects or People">
+                      </form>
+                    </li>
+>>>>>>> 698465770e5f86421bcd5bfdaf60e7897cd6cc23
+                </ul>
+              </div>
+              <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
+  {% if result['loggedIn'] == True %}
+                <ul class="center-align-on-small" id="other-nav-right">
+                  <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
+                  <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
+                  <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+                   <li><img src="../static/images/17.jpg" class="img-responsive other-nav-image-small"></li>
+                </ul>
+        {% else %}
+                 <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+                  <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+                    <div class="row hide-on-large">
+                      <div class="col-xs-12 custom-push">
+                        <p>Login/SignUp&nbsp&nbsp<span class="glyphicon glyphicon-user"></span><p>
+                      </div>
+                    </div>
+                  </a>
+                </ul>
+         {% end %}
+              </div>
 
-        </div>
-        <a class="navbar-brand" href="#"></a>
-    </div>
+          </div>
+          <a class="navbar-brand" href="#"></a>
+      </div>
 
+<<<<<<< HEAD
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar">
       <br>
@@ -295,9 +370,81 @@
             </form>
           </li>
       </ul>
+||||||| merged common ancestors
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar">
+      <br>
+       <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
+         <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+         <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+          <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
+          <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
+                 {% if result['userInfo']['photo_link'] == "" %}
+                 <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+                 {% else %}
+                 <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
+                 {% end %}
+               </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="search-mobile-topbar container-fluid hide-on-large">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <ul class="">
+          <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
+            <form action="/search" method="post">
+              <input type="" class="" name="string" placeholder="Search for Projects or People">
+            </form>
+          </li>
+      </ul>
+=======
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <br>
+        {% if result['loggedIn'] == True %}
+         <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
+           <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+            <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
+            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');"><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+        </ul>
+
+        <!-- Login button to appear if not logged in.-->
+        {% else %}
+         <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
+          <div class="col-md-4 col-xs-2 col-md-push-8">
+          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
+            <div class="row hide-on-small">
+              <div class="col-md-4 col-xs-4">
+                <img src="../static/images/Login-Icon.png" class="login-modal-image-profile">
+              </div>
+              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
+                <p><h4>Login/SignUp</h4></p>
+              </div>
+            </div>
+          </a>
+            </div>
+        </ul>
+        {% end %}
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="search-mobile-topbar container-fluid hide-on-large">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <ul class="">
+            <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
+              <form action="/search" method="post">
+                <input type="" class="" name="string" placeholder="Search for Projects or People">
+              </form>
+            </li>
+        </ul>
+      </div>
+>>>>>>> 698465770e5f86421bcd5bfdaf60e7897cd6cc23
     </div>
   </div>
-</div>
 <br>
 <br>
 <br>
