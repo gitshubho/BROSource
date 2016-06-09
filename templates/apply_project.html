@@ -158,7 +158,13 @@
                     <ul class="center-align-on-small" id="apply-nav-right">
                       <li id="apply-notification-trigger-small"><a href="notifications_mobile.html" target="_blank" ><span class="glyphicon glyphicon-comment"></span></a></li>
                       <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                       <li><img src="{{ data['photo_link'] }}" class="img-responsive apply-nav-image-small"></li>
+                       <li>
+                         {% if data[0]['photo_link'] != '' %}
+                         <img src="../{{ data[0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
+                         {% else %}
+                         <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
+                         {% end %}
+                       </li>
                     </ul>
                   </div>
               </div>
@@ -170,8 +176,14 @@
               <ul class="hide-on-small nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
                 <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
                 <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                 <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>
-                  <li><img src="{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image"></li>
+                 <li><p align="right"><b>{{ data[0]['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data[0]['email'] }}&nbsp&nbsp</a></p></li>
+                  <li>
+                    {% if data[0]['photo_link'] != '' %}
+                    <img src="../{{ data[0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
+                    {% else %}
+                    <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
+                    {% end %}
+                  </li>
               </ul>
           </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -194,9 +206,13 @@
             <div class="profile-add-banner-body-sections">
               <p><span class="banner-section-heading">Project Files</span><br><br></p>
               <div class="apply-project-image-holder">
-                <img src="../static/images/project.png" class="apply-project-image">
-                <img src="../static/images/project.png" class="apply-project-image">
-                <img src="../static/images/project.png" class="apply-project-image">
+                {% if len(data[3]) == 0%}
+                  <p>No files uploaded</p>
+                {% else %}
+                  {% for file in data[3] %}
+                    <img src="../{{ file['url'] }}" class="apply-project-image">
+                  {% end %}
+                {% end %}
               </div>
             </div>
           </div>
@@ -205,10 +221,8 @@
         <div class="profile-add-banner">
           <div class="profile-add-banner-body">
             <div class="profile-add-banner-body-sections">
-              <p><span class="banner-section-heading">Project Description</span><br><br>Hello people,
-Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website. Dribbble is looking for a person with expertise in for a person with expertise in custom graphics and animation to revamp our home page and some other components of our website.
-<br><br>
-Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.Also we'll be launching  the official dribbble app for android and ios. Thus graphics will be required to showcase the walkthrough and the overall design.<br>
+              <p><span class="banner-section-heading">Project Description</span><br><br>
+                {{ data[1]['description'] }}
               </p>
             </div>
           </div>
@@ -219,12 +233,10 @@ Also we'll be launching  the official dribbble app for android and ios. Thus gra
             <div class="profile-add-banner-body-sections">
               <p><span class="banner-section-heading">Required Skills</span><br><br></p>
               <div class="apply-skills">
-                <span class="CustomBadge">Adobe After Effects</span>
-                <span class="CustomBadge">Adobe After Effects</span>
-                <span class="CustomBadge">Adobe After Effects</span>
-                <span class="CustomBadge">Adobe After Effects</span>
-                <span class="CustomBadge">Adobe After Effects</span>
-                <span class="CustomBadge">Adobe After Effects</span>
+                {% for skill in data[1]['skills']%}}
+                <span class="CustomBadge">{{ skill }}</span>
+                {% end %}
+
               </div>
             </div>
           </div>
@@ -249,7 +261,7 @@ Also we'll be launching  the official dribbble app for android and ios. Thus gra
 
               <div class="col-md-10 col-md-push-1">
                 <div class="profile-add-user-details">
-                  <p><span>{{result['data'][0]['name']}} </span><br>{{result['data'][0]['email']}}<br>{{result['data'][0]['address']}} </p>
+                  <p><span>{{ data[2]['name'] }} </span><br>{{ data[2]['email'] }}<br>{{ data[2]['address'] }} </p>
                 </div>
               </div>
             </div>
@@ -259,7 +271,7 @@ Also we'll be launching  the official dribbble app for android and ios. Thus gra
                   <strong>Bid Amount</strong>
                 </div>
                 <div class="col-md-2 col-xs-2 green-amount">
-                  <p>$15</p>
+                  <p>{{ data[1]['budget'] }}</p>
                 </div>
               </div>
             </div>
@@ -279,15 +291,15 @@ Also we'll be launching  the official dribbble app for android and ios. Thus gra
           </div>
 
         <div class="profile-apply-contact">
-          <p align="left"><span class="glyphicon glyphicon-phone"></span>&nbsp&nbsp+91-9021404060</p>
+          <p align="left"><span class="glyphicon glyphicon-phone"></span>&nbsp&nbsp{{ data[2]['mobile'] }}</p>
           <hr>
-          <p align="left"><span class="glyphicon glyphicon-envelope"></span>&nbsp&nbspuser@gmail.com</p>
+          <p align="left"><span class="glyphicon glyphicon-envelope"></span>&nbsp&nbspdata[2]['email']</p>
           <hr>
           <a href="#" style="color:black;"><p align="left"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspSend Message</p></a>
         </div>
 
         <div class="profile-add-contact">
-          <p><span>31 December, 2012</span><br>Duration/Deadline</p>
+          <p><span>{{ data][1]['deadline'] }}</span><br>Duration/Deadline</p>
         </div>
       </div>
       </div>

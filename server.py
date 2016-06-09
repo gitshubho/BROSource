@@ -301,8 +301,8 @@ class AddProjectHandler(RequestHandler):
 
         files_data = []
 
-        for i in range(len(self.request.files['project_file'])):
-            fileinfo = self.request.files['project_file'][i]
+        for i in range(len(self.request.files['project_files'])):
+            fileinfo = self.request.files['project_files'][i]
             fname = fileinfo['filename']
             extn = os.path.splitext(fname)[1]
             cname = str(uuid.uuid4()) + extn
@@ -331,14 +331,25 @@ class ViewProjectHandler(RequestHandler):
     def get(self, projId):
         data = []
         projData = yield db.project.find_one({'_id': ObjectId(projId)})
-        userData = yield db.users.find_one({'_id' : ObjectId(projData['user_id'])})
+
         if bool(projData):
+            userData = yield db.users.find_one({'_id': ObjectId(self.get_secure_cookie('user'))})
+            userData = setUserInfo(userData, 'username', 'email', 'photo_link')
+            data.append(json.loads(json_util.dumps(userData)))
+
             data.append(json.loads(json_util.dumps(projData)))
-            #print bool(self.get_secure_cookie("user")),"\n"
-            #if bool(self.get_secure_cookie("user")):
-            self.render('viewproject.html',result= dict(data=data, user = userData['username'],loggedIn = True))
-            #else:
-                #self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+
+            userData = yield db.users.find_one({'_id' : ObjectId(projData['user_id'])})
+            userData = setUserInfo(userData, 'name', 'email', 'address')
+            data.append(json.loads(json_util.dumps(userData)))
+
+            fileData = yield db.files.find_one({'_id' : ObjectId(projData['files'])})
+            data.append(json.loads(json_util.dumps(fileData)))
+
+            if bool(data[0]):
+                self.render('viewproject.html',result= dict(data=data,loggedIn = True))
+            else:
+                self.render('profile_others.html',result= dict(data=data,loggedIn = False))
 
 class Donate(RequestHandler):
 
