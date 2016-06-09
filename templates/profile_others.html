@@ -29,21 +29,31 @@
     <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
-        <div class="col-md-12 col-xs-12 dash-cols add-dash-col">
-          <div class="add-button">Add Project</div>
-        </div>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Dashboard
-        </div>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-briefcase" aria-hidden="true"></i> Projects
-        </div>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-pencil" aria-hidden="true"></i> Reviews
-        </div>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
-        </div>
+        
+        <a href="add_project.html"><div class="col-md-12 col-xs-12 dash-cols add-dash-col">
+                  <div class="add-button">Add Project</div>
+                </div></a>
+        
+        <a href="profile_self.html"><div class="col-md-12 col-xs-12 dash-cols">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Dashboard
+                </div></a>
+
+
+        <a href=""><div class="col-md-12 col-xs-12 dash-cols">
+                  <i class="fa fa-briefcase" aria-hidden="true"></i> Projects
+                </div></a>
+
+
+        <a href="reviews.html"><div class="col-md-12 col-xs-12 dash-cols">
+                  <i class="fa fa-pencil" aria-hidden="true"></i> Reviews
+                </div></a>
+
+
+        <a href="editProfile.html"><div class="col-md-12 col-xs-12 dash-cols">
+                  <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
+                </div></a>
+
+
       </div>
 
       <div class="row logout">
