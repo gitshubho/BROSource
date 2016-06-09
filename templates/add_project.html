@@ -172,7 +172,13 @@
                   <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
                   <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                    <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>
-                    <li><img src="{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image"></li>
+                    <li>
+                      {% if data['photo_link'] != "" %}
+                      <img src="../{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image">
+                      {% else %}
+                      <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+                      {% end %}
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -1189,12 +1195,12 @@
                         <input type="file" name="project_file" multiple>
                     </label>
 
-                    <label>
+                    <!--<label>
                         Display Contact Information<br>
                         <input type="checkbox" name="display_contact">Email Address
                         <input type="checkbox" name="display_contact">Mobile Number
                         <input type="checkbox" name="display_contact">Direct Message
-                    </label>
+                    </label>-->
 
                     <input type="submit" value="Add Project" class="btn custom-button">
                 </form>

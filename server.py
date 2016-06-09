@@ -286,8 +286,6 @@ class AddProjectHandler(RequestHandler):
             self.redirect('/?loggedIn=False')
             return
 
-        #now=datetime.now()
-        #time=now.strftime("%d-%m-%Y %I:%M %p")
         Id = ObjectId(self.get_secure_cookie('user'))
         userInfo = yield db.users.find_one(Id)
         userInfo = setUserInfo(userInfo, 'username', 'email', 'photo_link')
