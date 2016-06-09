@@ -1798,6 +1798,10 @@ Edit Profile
 {
   text-align: center;
 }
+.onboarding-image-img-responsive{
+  object-fit: cover;
+}
+
 .onboarding-image-holder label
 {
   cursor: pointer;
