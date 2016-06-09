@@ -46,40 +46,48 @@ class MainHandler(RequestHandler):
             userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
-        featured= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
-        recent=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
+        featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
+        recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
 
-        try:
+        if len(featured_user) == 0:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
+                        F1_Name='Dummy',F1_Title='Dummy',F1_Uname='Dummy',F1_Desc='Dummy',S1={'Dummy ':'$0'},
+                        F2_Name='Dummy',F2_Title='Dummy',F2_Uname='Dummy',F2_Desc='Dummy',S2={'Dummy ':'$0'},
+                        F3_Name='Dummy',F3_Title='Dummy',F3_Uname='Dummy',F3_Desc='Dummy',S3={'Dummy ':'$0'},
+
+                        R1_Name='Dummy',R1_Title='Dummy',R1_Uname='Dummy',R1_Desc='Dummy',S4={'Dummy' : '$0'},
+                        R2_Name='Dummy',R2_Title='Dummy',R2_Uname='Dummy',R2_Desc='Dummy',S5={'Dummy' : '$0'},
+                        R3_Name='Dummy',R3_Title='Dummy',R3_Uname='Dummy',R3_Desc='Dummy',S6={'Dummy':'$0'})
+
+        elif len(featured_user) == 1:
+            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
+                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
+                        F2_Name='Dummy',F2_Title='Dummy',F2_Uname='Dummy',F2_Desc='Dummy',S2={'Dummy ':'$0'},
+                        F3_Name='Dummy',F3_Title='Dummy',F3_Uname='Dummy',F3_Desc='Dummy',S3={'Dummy ':'$0'},
+
+                        R1_Name=recent_user[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
+                        R2_Name='Dummy',R2_Title='Dummy',R2_Uname='Dummy',R2_Desc='Dummy',S5={'Dummy' : '$0'},
+                        R3_Name='Dummy',R3_Title='Dummy',R3_Uname='Dummy',R3_Desc='Dummy',S6={'Dummy':'$0'})
+
+        elif len(featured_user) == 2:
+            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
+                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
                         F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured[1]['username'],F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
-                        F3_Name=featured[2]['name'],F3_Title='Cloud programmer',F3_Uname=featured[2]['username'],F3_Desc=featured[2]['aboutme'],S3=featured[2]['services'],
+                        F3_Name='Dummy',F3_Title='Dummy',F3_Uname='Dummy',F3_Desc='Dummy',S3={'Dummy ':'$0'},
 
-                        R1_Name=recent[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent[0]['username'],R1_Desc=recent[0]['aboutme'],S4=recent[0]['services'],
-                        R2_Name=recent[1]['name'],R2_Title='Cloud programmer',R2_Uname=recent[1]['username'],R2_Desc=recent[1]['aboutme'],S5=recent[1]['services'],
-                        R3_Name=recent[2]['name'],R3_Title='Cloud programmer',R3_Uname=recent[2]['username'],R3_Desc=recent[2]['aboutme'],S6=recent[2]['services'])
-        except IndexError:
-            #print('Index error encountered')
+                        R1_Name=recent_user[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
+                        R2_Name=recent_user[1]['name'],R2_Title='Cloud programmer',R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
+                        R3_Name='Dummy',R3_Title='Dummy',R3_Uname='Dummy',R3_Desc='Dummy',S6={'Dummy':'$0'})
+
+        else:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
-                        F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
-                        F3_Name='Piyush',F3_Title='Cloud programmer',F3_Desc='I know c++,java,python',S3={'I can do backend in ':'$4'},
+                        F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
+                        F2_Name=featured_user[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
+                        F3_Name=featured_user[2]['name'],F3_Title='Cloud programmer',F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],
 
-                        R1_Name='Piyush',R1_Title='Cloud programmer',R1_Desc='I know c++,java,python',S4={'I can do backend in ':'$4'},
-                        R2_Name='Piyush',R2_Title='Cloud programmer',R2_Desc='I know c++,java,python',S5={'I can do backend in ':'$4'},
-                        R3_Name='Piyush',R3_Title='Cloud programmer',R3_Desc='I know c++,java,python',S6={'I can do backend in ':'$4'}
-                        )
-        except KeyError:
-            #print('key error encountred')
-            self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name='Piyush',F1_Title='Cloud programmer',F1_Desc='I know c++,java,python',S1={'I can do backend in ':'$4'},
-                        F2_Name='Piyush',F2_Title='Cloud programmer',F2_Desc='I know c++,java,python',S2={'I can do backend in ':'$4'},
-                        F3_Name='Piyush',F3_Title='Cloud programmer',F3_Desc='I know c++,java,python',S3={'I can do backend in ':'$4'},
-
-                        R1_Name='Piyush',R1_Title='Cloud programmer',R1_Desc='I know c++,java,python',S4={'I can do backend in ':'$4'},
-                        R2_Name='Piyush',R2_Title='Cloud programmer',R2_Desc='I know c++,java,python',S5={'I can do backend in ':'$4'},
-                        R3_Name='Piyush',R3_Title='Cloud programmer',R3_Desc='I know c++,java,python',S6={'I can do backend in ':'$4'}
-                        )
+                        R1_Name=recent_user[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
+                        R2_Name=recent_user[1]['name'],R2_Title='Cloud programmer',R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
+                        R3_Name=recent_user[2]['name'],R3_Title='Cloud programmer',R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'])
 
 class LoginHandler(RequestHandler):
 
@@ -118,9 +126,11 @@ class SignupHandler(RequestHandler):
         else:
             password=hashingPassword(password)
             password=hashlib.sha256(password).hexdigest()
+            now=datetime.now()
+            time=now.strftime("%d-%m-%Y %I:%M %p")
             result = yield db.users.insert({'photo_link' : '','username' : username, 'password' : password, 'email' : email, 'name' : name, 'mobile' : '',
                                             'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
-                                            'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : 0, 'services' : [], 'social_accounts' : {}})
+                                            'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : 0, 'services' : [], 'social_accounts' : {}, 'joined_on' : time})
             self.set_secure_cookie('user',str(result))
             self.redirect('/profile/update')
 
@@ -156,7 +166,12 @@ class UpdateProfileHandler(RequestHandler):
         address = self.get_argument('address')
         skills = self.get_argument('skills',[]).split(',')
         contact = self.get_argument('mobile')
-        services = self.get_argument('services',[]).split(',')
+
+        services = []
+        for service in self.get_argument('services',[]).split('|'):
+            temp = service.split(':')
+            services.append({'service' : temp[0], 'cost' : temp[1]})
+
         category = self.get_argument('category')
         aboutme = self.get_argument('aboutme')
         certifications = self.get_argument('certifications',[]).split(',')
@@ -197,17 +212,25 @@ class UserProfileHandler(RequestHandler):
     def get(self, username):
         data = []
         userInfo = None
+        userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
+        data.append(setUserInfo(userInfo,'username','email','photo_link'))
+        userInfo = None
 
-        # current_id = self.get_secure_cookie("user")
-        # userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-        userData = yield db.users.find_one({'username':username})
-        if bool(userData):
-            data.append(json.loads(json_util.dumps(userData)))
-            #print bool(self.get_secure_cookie('user')),'\n'
-            if bool(self.get_secure_cookie('user')):
-                self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+        if username != 'Dummy':
+
+            userInfo = yield db.users.find_one({'username':username})
+            if bool(userInfo):
+                data.append(json.loads(json_util.dumps(userInfo)))
+
+                if bool(self.get_secure_cookie('user')):
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+                else:
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = False))
             else:
-                self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+                self.redirect('/?username=False')
+        else:
+            userInfo = {}
+            self.render('profile_others.html',result= dict(data=data,loggedIn = True))
 
 class ForgotPasswordHandler(RequestHandler):
 

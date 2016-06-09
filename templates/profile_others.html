@@ -29,27 +29,35 @@
     <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
+        <a href='/addproj'>
         <div class="col-md-12 col-xs-12 dash-cols add-dash-col">
           <div class="add-button">Add Project</div>
         </div>
+        </a>
+        <a href='/profile/me'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Dashboard
         </div>
+        </a>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-briefcase" aria-hidden="true"></i> Projects
         </div>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-pencil" aria-hidden="true"></i> Reviews
         </div>
+        <a href='/profile/update'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
         </div>
+        </a>
       </div>
 
       <div class="row logout">
+        <a href='/logout'>
         <div class="col-md-12 col-xs-12">
           <i class="fa fa-power-off" aria-hidden="true"></i> Log Out
         </div>
+      </a>
       </div>
     </div>
   </div>
@@ -259,7 +267,12 @@
            <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
             <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
-            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');"><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
+              {% if result['data'][0]['photo_link'] != "" %}
+              <img src="../{{result['data'][0]['photo_link']}}" class="img-responsive profile-other-nav-image">
+              {% else %}
+              <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+            </li>
         </ul>
 
         <!-- Login button to appear if not logged in.-->
@@ -313,17 +326,20 @@
         <div class="profile-other-banner">
           <div class="profile-other-banner-body">
             <div class="profile-other-banner-body-sections">
-              <p><span class="banner-section-heading">Skills</span><br><br><span class="CustomBadge">{{result['data'][0]['skills']}} </span></p>
+              <p><span class="banner-section-heading">Skills</span><br><br>
+                {% for skill in result['data'][1]['skills'] %}
+                <span class="CustomBadge">{{ skill }} </span>
+                {% end %}
+                </p>
             </div>
             <div class="profile-other-banner-body-sections">
-              <p><span class="banner-section-heading">About Me</span><br><br>SIMPLE, FUNCTIONAL &amp; VIBRANT DESIGN SOLUTIONS<br>
-A creative professional for over 15 years. I am a dynamic and multi-disciplined Graphic Designer with a passion for creating innovative design solutions no matter what the brief. Aesthetically appealing design that is simple and clean is the most effective way to communicate for your business. Less is more! I have worked in both the United Kingdom and Australia. I currently reside in Queensland, Australia. A selection of my projects can be viewed on my website upon request. Thank you for taking time to look at my profile.</p>
+              <p><span class="banner-section-heading">About Me</span><br><br>{{ result['data'][1]['aboutme'] }}</p>
             </div>
             <div class="profile-other-banner-body-sections">
               <p><span class="banner-section-heading">Certificates</span><br><br>
-                CIW Web Design Specialist
-                <br>
-                Brainbench Certified Web Developer
+                {% for certificate in result['data'][1]['certifications'] %}
+                {{ certificate }} <br>
+                {% end %}
               </p>
             </div>
           </div>
@@ -341,12 +357,12 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
               <p><span class="glyphicon glyphicon-lock"></span>&nbsp;Services</p>
             </div>
             <div class="profile-other-banner-body">
+              {% for service in result['data'][1]['services'] %}
               <div class="profile-other-banner-body-sections">
                 <div class="row">
                   <div class="col-md-10">
-                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
-                      Cost: Rs.800<br>
-                      Duration: 5 Days / Customizable
+                    <p><span class="banner-section-heading">{{ service['service'] }}</span><br>
+                      Cost: {{ service['cost'] }}
                     </p>
                   </div>
                   <div class="col-md-2">
@@ -356,51 +372,8 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
                   </div>
                 </div>
               </div>
-              <div class="profile-other-banner-body-sections">
-                <div class="row">
-                  <div class="col-md-10">
-                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
-                      Cost: Rs.800<br>
-                      Duration: 5 Days / Customizable
-                    </p>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="profile-other-get-service">
-                      <a href="#">Get It</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="profile-other-banner-body-sections">
-                <div class="row">
-                  <div class="col-md-10">
-                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
-                      Cost: Rs.800<br>
-                      Duration: 5 Days / Customizable
-                    </p>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="profile-other-get-service">
-                      <a href="#">Get It</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="profile-other-banner-body-sections">
-                <div class="row">
-                  <div class="col-md-10">
-                    <p><span class="banner-section-heading">Create a clean &amp; minimal website or blog</span><br>
-                      Cost: Rs.800<br>
-                      Duration: 5 Days / Customizable
-                    </p>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="profile-other-get-service">
-                      <a href="#">Get It</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% end %}
+
             </div>
           </div>
         </div>
@@ -490,13 +463,16 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
             <div class="row">
               <div class="col-md-2 col-xs-2">
                 <div class="profile-other-user-image">
+                  {% if result['data'][1]['photo_link'] != "" %}
+                  <img src="../{{result['data'][1]['photo_link']}}" class="profile-other-banner-image">
+                  {% else %}
                   <img src="../static/images/17.jpg" class="profile-other-banner-image">
                 </div>
               </div>
 
               <div class="col-md-10 col-xs-10">
                 <div class="profile-other-user-details">
-                  <p><span>{{result['data'][0]['name']}} </span><br>{{result['data'][0]['email']}}<br>{{result['data'][0]['address']}} </p>
+                  <p><span>{{result['data'][1]['name']}} </span><br>{{result['data'][1]['email']}}<br>{{result['data'][1]['address']}} </p>
                 </div>
               </div>
             </div>
@@ -513,13 +489,13 @@ A creative professional for over 15 years. I am a dynamic and multi-disciplined 
             <div class="profile-other-user-projects">
               <div class="row">
                 <div class="col-md-4">
-                  <p><span>42</span><br>Projects Done</p>
+                  <p><span>{{ len(result['data'][1]['projects']) }}</span><br>Projects Done</p>
                 </div>
                 <div class="col-md-4 profile-other-user-project-mid-item">
-                  <p><span>2</span><br>Services</p>
+                  <p><span>{{ len(result['data'][1]['services']) }}</span><br>Services</p>
                 </div>
                 <div class="col-md-4">
-                  <p><span>4.2</span><br>Average Rating</p>
+                  <p><span>{{ result['data'][1]['ratings'] }}</span><br>Average Rating</p>
                 </div>
               </div>
             </div>
