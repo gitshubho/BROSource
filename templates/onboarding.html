@@ -7,14 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BroSOURCE</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-  <style type="text/css">
-	img{
-		width: 300px;
-		height: 300px;
-		border-radius: 100%;
-	}
-
-  </style>
   </head>
 
 <script src="../static/js/jquery.min.js"></script>
@@ -25,6 +17,30 @@
 <script src="../static/select2-4.0.3/dist/js/select2.full.js"></script>
 
 <body id="onboarding-body">
+
+<script type="text/javascript">
+  function next()
+  {
+    var inputs= document.getElementsByClassName('compulsory');
+    for (var i=0; i<inputs.length; i++) {
+      if(inputs[i].value=="")
+      {
+        break;
+      }
+    }
+    if(i==inputs.length)
+    {
+      $('#carousel-generic').carousel('next');
+    }
+    else
+    {
+      var x=document.getElementById('unfilled-form-'+i);
+      x.innerHTML="Please Fill This Field";
+      window.scrollTo(0,0);
+    }
+  }
+</script>
+
   <div class="onboarding-topbar" style="">
     <p>Lets Get You Set Up, {{result['userInfo']['name']}} </div>
   </div>
@@ -76,24 +92,27 @@
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">
-                      <label>Name</label>
-                      <input type="text" class="form-control" id="onboarding-firstname" value ="{{ result['userInfo']['name'] }}">
+                      <label>Name <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
+                      <input type="text" class="form-control compulsory" id="onboarding-firstname" value ="{{ result['userInfo']['name'] }}">
+                      <div id="unfilled-form-0" style="color:red;"></div>
                     </div>
                     <!--<div class="form-group">
                       <label>Last Name</label>
                       <input type="text" class="form-control" id="onboarding-lastname" placeholder="">
                     </div>-->
                     <div class="form-group">
-                      <label>User Name</label>
-                      <input type="text" class="form-control" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
+                      <label>User Name <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
+                      <input type="text" class="form-control  compulsory" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
+                      <div id="unfilled-form-1" style="color:red;"></div>
                     </div>
                   </div>
                 </div>
                 <div class="row form-row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Email Address</label>
-                      <input type="text" class="form-control" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
+                      <label>Email Address <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
+                      <input type="text" class="form-control  compulsory" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
+                      <div id="unfilled-form-2" style="color:red;"></div>
                     </div>
                     <div class="form-group">
                       <label>Date Of Birth</label>
@@ -110,7 +129,7 @@
                     <div class="form-group">
                       <label>Address</label>
                       {% if result['userInfo']['address'] == '' %}
-                        <input type="text" class="form-control" name = "address" id="onboarding-address" placeholder="">
+                        <input type="text" class="form-control " name = "address" id="onboarding-address" placeholder="">
                       {% else %}
                         <input type="text" class="form-control" name = "address" id="onboarding-address" value="{{ result['userInfo']['address'] }}">
                       {% end %}
@@ -119,7 +138,7 @@
                     <div class="form-group">
 
                       <label>
-                         Skills<br>
+                         Skills <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span><br>
                       </label>
                           <script type="text/javascript">
                           $(document).ready(function() {
@@ -131,7 +150,7 @@
                           });
                           </script>
                           <div class="onboarding-skills-select">
-                               <select class="js-example-basic-multiple add-select" name="skills" multiple="multiple">
+                               <select class="js-example-basic-multiple add-select  compulsory" name="skills" multiple="multiple">
                                   <option value="320">C++ Programming</option>
                                   <option value="962">Programming</option>
                                   <option value="31">Linux</option>
@@ -1068,6 +1087,7 @@
                                   <option value="765">Zendesk</option>
                                   <option value="566">Zoho</option>
                               </select>
+                              <div id="unfilled-form-3" style="color:red;"></div>
                           </div>
                     </div>
 
@@ -1079,22 +1099,13 @@
                         <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
                       {% end %}
                     </div>
-
-                    <div class="form-group">
-                      <label>Services(Comma separated)</label>
-                      {% if len(result['userInfo']['services']) == 0 %}
-                        <input type="text" class="form-control" name = "services" id="onboarding-services" placeholder="" >
-                      {% else %}
-                        <input type="text" class="form-control" name = "services" id="onboarding-services" value="{{ result['userInfo']['services'] }}" >
-                      {% end %}
-                    </div>
                   </div>
                 </div>
                 <div class="row form-row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Category</label>
-                      <select class="form-control" name = "category" id="onboarding-category" placeholder="Choose a Category">
+                      <label>Category <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
+                      <select class="form-control  compulsory" name = "category" id="onboarding-category" placeholder="Choose a Category">
                         <option value="1">Technical</option>
                         <option value="2">Management</option>
                         <option value="3">Design</option>
@@ -1103,6 +1114,7 @@
                         <option value="6">Design and Management</option>
                         <option value="7">Technical, Design and Management</option>
                       </select>
+                      <div id="unfilled-form-4" style="color:red;"></div>
                     </div>
                     <div class="form-group">
                       <label>About Me</label>
@@ -1120,7 +1132,7 @@
                     <div class="form-group">
                       <label>Certification</label>
                       {% if len(result['userInfo']['certifications']) == 0 %}
-                        <textarea class="form-control"rows="10" cols="100" name = "certifications" id="onboarding-cetifications" placeholder=""></textarea>
+                        <textarea class="form-control"rows="10" cols="100" name = "certifications" id="onboarding-cetifications" placeholder="ex: Research on Artificial Intelligence, Certified Doctor"></textarea>
                       {% else %}
                         <textarea class="form-control" rows="10" cols="100" name = "certifications" id="onboarding-cetifications">{{ result['userInfo']['certifications'] }}</textarea>
                       {% end %}
@@ -1130,13 +1142,13 @@
                     <div class="form-group">
                       <label>Education</label>
                       {% if len(result['userInfo']['education_details']) == 0 %}
-                        <textarea class="form-control" rows="10" cols="100" name = "education_details" id="onboarding-education" placeholder="" ></textarea>
+                        <textarea class="form-control" rows="10" cols="100" name = "education_details" id="onboarding-education" placeholder="ex: B.Tech in Computer Science, M.S. in Artificial Intelligence" ></textarea>
                       {% else %}
                         <textarea class="form-control" rows="10" cols="100" name = "education_details" id="onboarding-education">{{ result['userInfo']['education_details'] }}</textarea>
                       {% end %}
                     </div>
                     <p align="center">
- <a id="myButton" class="float-center" onclick=" $('#carousel-generic').carousel('next');" align = "center" >Next</a>
+ <a id="myButton" class="float-center" onclick="next();" align = "center" >Next</a>
  </p>
                   </div>
                 </div>
@@ -1184,8 +1196,8 @@
 
     <!-- Controls   -->
     <div class="onboarding-carousel-control-holder">
-    <a class="right carousel-control onboarding-carousel-control" href="#carousel-generic" data-slide="next">
-      <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    <a class="right carousel-control onboarding-carousel-control" onclick="next();" >
+      <span class="glyphicon glyphicon-circle-arrow-right" ></span>
     </a>
     </div>
   </div>
