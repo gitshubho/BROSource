@@ -19,9 +19,13 @@
 <body id="onboarding-body">
 
 <script type="text/javascript">
+
+  var skills;
+
   function next()
   {
     var inputs= document.getElementsByClassName('compulsory');
+    var select = document.getElementById('onboarding-skill');
     for (var i=0; i<inputs.length; i++) {
       if(inputs[i].value=="")
       {
@@ -30,6 +34,7 @@
     }
     if(i==inputs.length)
     {
+      skills=""+$('#onboarding-skill').select2('val');
       $('#carousel-generic').carousel('next');
     }
     else
@@ -39,6 +44,26 @@
       window.scrollTo(0,0);
     }
   }
+
+  function stringify()
+  {
+      var ser_name=document.getElementsByClassName('service-name');
+      var ser_price=document.getElementsByClassName('service-price');
+      var str="";
+      for (var i=0; i<ser_name.length; i++)
+      {
+        if(ser_name[i].value=="")
+        {
+          break;
+        }
+        str=str+'|'+ser_name[i].value+':'+ser_price[i].value;
+      }
+        str=str.slice(1);
+        alert(str);
+        document.getElementById('send-services').value=str;
+        document.forms["onboarding-profile"].submit();
+  }
+
 </script>
 
   <div class="onboarding-topbar" style="">
@@ -81,7 +106,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-              <form enctype="multipart/form-data" method="post" action="/profile/update" class="CustomForm" name="omboarding-profile">
+              <form enctype="multipart/form-data" method="post" action="/profile/update" class="CustomForm" name="onboarding-profile">
                 <div class="row form-row">
                   <div class="col-md-3">
                     <div class="onboarding-image-holder">
@@ -150,7 +175,7 @@
                           });
                           </script>
                           <div class="onboarding-skills-select">
-                               <select class="js-example-basic-multiple add-select  compulsory" name="skills" multiple="multiple">
+                               <select class="js-example-basic-multiple add-select  compulsory" name="" multiple="multiple" id="onboarding-skill">
                                   <option value="320">C++ Programming</option>
                                   <option value="962">Programming</option>
                                   <option value="31">Linux</option>
@@ -1167,7 +1192,11 @@
               <div class="col-md-1"></div>
               <div class="col-md-10">
               <div class="onboarding-work">
-
+                <div id="unfilled-services" style="color:red;"></div>
+                <div class="form-group" style="display:none;">
+                  <input type="text" class="form-control" id="send-services" name="services">
+                  <div id="unfilled-form-0" style="color:red;"></div>
+                </div>
 
               </div>
             </div>
@@ -1176,14 +1205,14 @@
             <div class="row">
               <div class="col-md-1"></div>
               <div class="col-md-10">
-              <div class="onboarding-append-work" style="cursor:pointer;">
+              <div class="onboarding-append-work" onclck="addService();" style="cursor:pointer;">
                 <div class="onboarding-added-work">
                   <p align="center"><span class="glyphicon glyphicon-lock"></span><br>Add Service</p>
                 </div>
               </div>
 
                 <p align="center">
-                  <button id="myButton" type="submit" class="float-center submit-button" align = "center" >Update and explore</button>
+                  <a onclick="stringify();" id="update-onboarding-btn" style="cursor:pointer" class="float-center" align = "center" >Update and explore</a>
                 </p>
               </div>
             </div>

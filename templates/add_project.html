@@ -26,6 +26,15 @@
 </head>
 
 <body>
+  <script type="text/javascript">
+  var skills;
+  function update()
+  {
+    var select = document.getElementById('onboarding-skill');
+    skills=""+$('#add_proj_skills').select2('val');
+    alert(skills);
+  }
+  </script>
 <div class="container-fluid">
   <div class="row notification">
     <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none')"></div>
@@ -239,7 +248,7 @@
                             });
                         </script>
                         <div class="add-select-container">
-                             <select class="js-example-basic-multiple add-select" name="skills" multiple="multiple">
+                             <select class="js-example-basic-multiple add-select" name="" id="add_proj_skills" multiple="multiple">
                                 <option value="320">C++ Programming</option>
                                 <option value="962">Programming</option>
                                 <option value="31">Linux</option>
@@ -1196,7 +1205,7 @@
                         <input type="checkbox" name="display_contact">Direct Message
                     </label>
 
-                    <input type="submit" value="Add Project" class="btn custom-button">
+                    <input onclick="update();" type="submit" value="Add Project" class="btn custom-button">
                 </form>
         </div>
     </div>
