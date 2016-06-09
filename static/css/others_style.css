@@ -182,7 +182,7 @@
   position: relative; top: 18px;
 }
 .nav-search{
-  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;
+  font-size: 16px; margin: auto; top:10px; left: 20px; padding: 10px;list-style-type: none;width:100%; margin-top:-30px;
 }
 
 .nav-search input{
@@ -191,7 +191,12 @@
 
  @media (min-width: 0px) and (max-width:600px) {
      .nav-search input {
-        width: 80%;
+        width: 100%;
+     }
+     .nav-search
+     {
+       margin-top: -10px;
+       margin-left: -20px;
      }
  }
 
@@ -244,7 +249,7 @@
 {
   .custom-push
   {
-    left: 45%;
+    left: 60%;
   }
 }
 
@@ -262,10 +267,4 @@
   {
     left: 20%;
   }
-}
-
-.nav-search
-{
-  margin-top: -30px;
-  width: 100%;
 }

@@ -121,7 +121,7 @@
   {
     font-size: 120%;
     margin-left: -10px;
-    margin-top: -5px;
+    margin-top: 18px;
   }
 }
 @media(min-width:1400px)
@@ -220,7 +220,7 @@
      .brand-name
      {
        text-align: left;
-       margin-top: 0;
+       margin-top: 17px;
        margin-left: 0;
        padding-left: 0;
        font-size: 130%;
@@ -376,7 +376,7 @@ padding-bottom: 1.5%;
 
 #homepage-search-icon
 {
-  margin-top: 65%;
+  margin-top: 100%;
   font-size: 150%;
   padding: 0;
 }
@@ -384,7 +384,7 @@ padding-bottom: 1.5%;
 {
   #homepage-search-icon
   {
-    margin-top: 35%;
+    margin-top: 45%;
     font-size: 150%;
     padding: 0;
   }
@@ -1313,7 +1313,7 @@ font-size: 275%;
   background:#3498DB;
   padding: 3%;
   color: white;
-  box-shadow: inset 0 -30px 0 rgb(240,240,240);
+  box-shadow: inset 0 -20px 0 rgb(240,240,240);
 }
 
 .profile-other-user-details span
@@ -1684,6 +1684,41 @@ Edit Profile
 {
   font-size: 100%;
 }
+#mobile-search
+{
+  margin-right: 5px;
+}
+.search-mobile-topbar
+{
+  position: absolute;
+  background: #3498DB;
+  width: 92%;
+  height: 0;
+  transition:all 0.3s;
+  display: none;
+  color: white;
+}
+.search-mobile-topbar-in-view
+{
+  height: 50px;
+  transition:all 0.3s;
+  display: block;
+}
+/**/
+/*Reviews*/
+/**/
+.reviews .profile-other-banner
+{
+  background: none;
+  box-shadow: none;
+}
+.reviews .profile-other-banner-body-sections
+{
+  background: white;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
 /*Onboarding*/
 /**/
 /**/

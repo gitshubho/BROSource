@@ -196,6 +196,7 @@
 
      var NavHt=$(".navbar").height();
       $(".bar").css("padding-top",NavHt);
+      $('.search-mobile-topbar').css('top',NavHt);
 
 
       /**//**//*Onboarding*/
