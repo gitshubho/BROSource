@@ -120,7 +120,7 @@ class SignupHandler(RequestHandler):
             password=hashlib.sha256(password).hexdigest()
             result = yield db.users.insert({'photo_link' : '','username' : username, 'password' : password, 'email' : email, 'name' : name, 'mobile' : '',
                                             'address' : '', 'skills' : [], 'dob': '', 'category' : '', 'certifications' : [], 'education_details' : [],
-                                            'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : [], 'services' : [], 'social_accounts' : {}})
+                                            'signup' : 0, 'aboutme' : '', 'ratings' : 0, 'projects' : [], 'views' : 0, 'services' : [], 'social_accounts' : {}})
             self.set_secure_cookie('user',str(result))
             self.redirect('/profile/update')
 
@@ -342,7 +342,7 @@ class SearchHandler(RequestHandler):
 	@coroutine
     	@removeslash
 	def post(self):
-		STRING = self.get_argument('string')
+		STRING = self.get_argument('query')
 		word_doc = db.project.find()
 		choices = list()
 		while(yield word_doc.fetch_next):

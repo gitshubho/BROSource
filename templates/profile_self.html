@@ -230,7 +230,7 @@
               <ul class="nav navbar-nav">
                   <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
                     <form action="/search" method="post">
-                      <input type="" class="" name="string" placeholder="Search for Projects or People">
+                      <input type="" class="" name="query" placeholder="Search for Projects or People">
                     </form>
                   </li>
               </ul>
@@ -311,8 +311,11 @@
                                 <p>{{result['userInfo']['address']}}<br>{{result['userInfo']['email']}}</p>
                             </div>
                         </div>
-                        <div class="profile-self-aboutme-footer">
-                            <p><span class="badge CustomBadge">{{result['userInfo']['skills']}}</span><br><span class="badge CustomBadge">C++</span><br></p>
+                        <div class="profile-self-aboutme-footer"><p>
+                          {% for skill in result['userInfo']['skills'] %}
+                            <span class="badge CustomBadge">{{ skill }}</span>
+                          <br></p>
+
                         </div>
                     </div>
                     <div class="profile-self-findproject-holder">
@@ -325,16 +328,16 @@
                         </div>
                         <div class="profile-self-info-footer">
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views">
-                                <p><span>4.2k</span><br>Views</p>
+                                <p><span>{{ result['userInfo']['views'] }}</span><br>Views</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed">
-                                <p><span>40</span><br>Projects</p>
+                                <p><span>{{ len(result['userInfo']['projects']) }}</span><br>Projects</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing">
-                                <p><span>12</span><br>Skills</p>
+                                <p><span>{{ len(result['userInfo']['skills']) }}</span><br>Skills</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill">
-                                <p><span>4.8</span><br>Rating</p>
+                                <p><span>{{ result['userInfo']['ratings'] }}</span><br>Rating</p>
                             </div>
                         </div>
                     </div>
@@ -357,7 +360,9 @@
                         <p>Project For Your Skills</p>
                     </div>
                     <div class="col-md-9 col-xs-6 profile-search-bar-holder">
-                        <input type="text" name="profile-search-bar" class="profile-search-bar">
+                      <form action="/search" method="post">
+                        <input type="text" class="profile-search-bar" name="query">
+                      </form>
                     </div>
                     <div class="col-md-1 col-xs-2">
                         <a href="#"><img src="../static/images/search.png" class="search-icon img-resronsive"></a>
