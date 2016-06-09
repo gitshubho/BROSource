@@ -43,27 +43,40 @@
     <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none')"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
+        <a href='/addproj'>
         <div class="col-md-12 col-xs-12 dash-cols add-dash-col">
           <div class="add-button">Add Project</div>
         </div>
+        </a>
+        <a href='/profile/me'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Dashboard
         </div>
+        </a>
+        <a href='#'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-briefcase" aria-hidden="true"></i> Projects
         </div>
+        </a>
+        <a href='#'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-pencil" aria-hidden="true"></i> Reviews
         </div>
+        </a>
+        <a href='/profile/update'>
         <div class="col-md-12 col-xs-12 dash-cols">
           <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
         </div>
+        </a>
+
       </div>
 
       <div class="row logout">
+        <a href='/logout'>
         <div class="col-md-12 col-xs-12">
           <i class="fa fa-power-off" aria-hidden="true"></i> Log Out
         </div>
+      </a>
       </div>
     </div>
   </div>
@@ -260,7 +273,7 @@
        <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
          <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
          <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
+          <li><p align="right"><b>{{result['userInfo']['username']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
           <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
                  {% if result['userInfo']['photo_link'] == "" %}
                  <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
@@ -304,7 +317,11 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
+                              {% if result['userInfo']['photo_link'] != '' %}
                                 <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
+                              {% else %}
+                                <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
+                              {% end %}
                             </div>
                             <div class="profile-self-name-holder">
                                 <p><b>{{result['userInfo']['name']}}</b></p>
