@@ -26,7 +26,7 @@
 <div class="container-fluid">
 
   <div class="row dash-container">
-    <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none')"></div>
+    <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
         <div class="col-md-12 col-xs-12 dash-cols add-dash-col">
@@ -104,7 +104,7 @@
 
 
   <div class="row messaging">
-   <div class="col-md-8 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-8'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view');"></div>
+   <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismi(sser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.messaging').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
    <div class="view-messages">
       <h2>Messages</h2>
