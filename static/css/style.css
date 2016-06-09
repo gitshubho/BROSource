@@ -1611,6 +1611,79 @@ font-size: 275%;
   }
 }
 
+
+
+/**/
+/*
+Edit Profile
+*/
+
+.edit-options-holder
+{
+  background:white;
+  width:100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.edit-options-holder ul
+{
+  padding: 2%;
+}
+.edit-options-holder li
+{
+  list-style-type: none;
+  padding: 10%;
+  cursor: pointer;
+  transition: all 0.05s;
+  font-size: 120%;
+  font-weight: bold;
+}
+.edit-image
+{
+  border-radius: 100%;
+  display: inline-block;
+  border:0.5px solid;
+  height: 21%;
+  width: 90%;
+  margin-top: 5%;
+}
+@media(min-width:1800px)
+{
+  .edit-image
+  {
+    height: 12%;
+    width: 50%;
+  }
+}
+@media(max-width:600px)
+{
+  .edit-image
+  {
+    height: 40%;
+    width: 50%;
+  }
+}
+#edit-details label
+{
+  color:#3498DB;
+}
+#edit-details input
+{
+  background: rgb(243,249,253);
+  color: rgb(147,156,164);
+}
+.update-button
+{
+  background: #3498DB;
+  padding: 1%;
+  color: white;
+  font-weight: bold;
+  padding-left: 6%;
+  padding-right: 6%;
+  font-size: 100%;
+}
+{
+  font-size: 100%;
+}
 /*Onboarding*/
 /**/
 /**/
@@ -1662,7 +1735,22 @@ font-size: 275%;
   width: 60%;
   margin-top: 5%;
 }
-
+@media(min-width:1800px)
+{
+  .onboarding-image
+  {
+    height: 12%;
+    width: 50%;
+  }
+}
+@media(max-width:600px)
+{
+  .onboarding-image
+  {
+    height: 40%;
+    width: 50%;
+  }
+}
 .upload-img-btn
 {
 
