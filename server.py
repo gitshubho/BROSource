@@ -353,7 +353,7 @@ class ViewProjectHandler(RequestHandler):
             data.append(json.loads(json_util.dumps(projData)))
 
             userData = yield db.users.find_one({'_id' : ObjectId(projData['user_id'])})
-            userData = setUserInfo(userData, 'name', 'email', 'address', 'mobile')
+            userData = setUserInfo(userData, 'name', 'email', 'address', 'mobile', 'photo_link')
             data.append(json.loads(json_util.dumps(userData)))
 
             fileData = yield db.files.find_one({'_id' : ObjectId(projData['files'])})

@@ -255,7 +255,11 @@
             <div class="row">
               <div class="col-md-2">
                 <div class="profile-add-user-image">
+                  {% if result['data'][2]['photo_link'] == "" %}
                   <img src="../static/images/17.jpg" class="profile-add-banner-image">
+                  {% else %}
+                  <img src="../{{result['data'][2]['photo_link']}}" class="profile-add-banner-image">
+                  {% end %}
                 </div>
               </div>
 
@@ -287,7 +291,7 @@
             </div>
           </div>
           <div class="profile-apply-user-details-underbar">
-            <a href="#">Apply Now</a>
+            <a href="/placeBid">Apply Now</a>
           </div>
 
         <div class="profile-apply-contact">
