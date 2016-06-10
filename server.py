@@ -440,6 +440,7 @@ class SearchHandler(RequestHandler):
 					while(yield doc.fetch_next):
 						wdoc = doc.next_object()
 						l2 = list()
+						l2.append(wdoc["username"])
 						try:
 							l2.append(wdoc['category'])
 						except:
