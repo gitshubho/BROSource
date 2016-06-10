@@ -234,71 +234,10 @@
 
 </div>
 
-<<<<<<< HEAD
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <div class="row nav-brand-heading">
-            <div class="col-md-2 col-xs-4">
-                <div class="brand-name"><b>BRO</b>Source</div>
-            </div>
-           <div class="col-md-10 col-md-push-2 hide-on-small">
-              <ul class="nav navbar-nav">
-                  <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-                    <form action="/search" method="post">
-                      <input type="" class="" name="query" placeholder="Search for Projects or People">
-                    </form>
-                  </li>
-              </ul>
-            </div>
-            <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
-              <ul class="center-align-on-small" id="other-nav-right">
-                <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
-                <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                <li>
-                       {% if result['userInfo']['photo_link'] == "" %}
-                       <img src="../static/images/17.jpg" class="img-responsive other-nav-image-small">
-                       {% else %}
-                       <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                       {% end %}
-                </li>
-||||||| merged common ancestors
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <div class="row nav-brand-heading">
-            <div class="col-md-2 col-xs-4">
-                <div class="brand-name"><b>BRO</b>Source</div>
-            </div>
-           <div class="col-md-10 col-md-push-2 hide-on-small">
-              <ul class="nav navbar-nav">
-                  <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-                    <form action="/search" method="post">
-                      <input type="" class="" name="string" placeholder="Search for Projects or People">
-                    </form>
-                  </li>
-              </ul>
-            </div>
-            <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
-              <ul class="center-align-on-small" id="other-nav-right">
-                <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
-                <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                <li>
-                       {% if result['userInfo']['photo_link'] == "" %}
-                       <img src="../static/images/17.jpg" class="img-responsive other-nav-image-small">
-                       {% else %}
-                       <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                       {% end %}
-                </li>
-=======
+
+
 <div class="container-fluid gray-background">
-<style type="text/css">
-  .navbar-default{
-    background: #3498DB;
-  }
-</style>
+
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -310,124 +249,45 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
                       <form action="/search" method="post">
-                        <input type="" class="" name="string" placeholder="Search for Projects or People">
+                        <input type="" class="" name="query" placeholder="Search for Projects or People">
                       </form>
                     </li>
->>>>>>> 698465770e5f86421bcd5bfdaf60e7897cd6cc23
                 </ul>
               </div>
               <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
-  {% if result['loggedIn'] == True %}
                 <ul class="center-align-on-small" id="other-nav-right">
                   <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
                   <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
                   <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                   <li><img src="../static/images/17.jpg" class="img-responsive other-nav-image-small"></li>
+                   <li>
+                     {% if data['photo_link'] != "" %}
+                     <img src="../{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image">
+                     {% else %}
+                     <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+                     {% end %}
+                   </li>
                 </ul>
-        {% else %}
-                 <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
-                  <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-                    <div class="row hide-on-large">
-                      <div class="col-xs-12 custom-push">
-                        <p>Login/SignUp&nbsp&nbsp<span class="glyphicon glyphicon-user"></span><p>
-                      </div>
-                    </div>
-                  </a>
-                </ul>
-         {% end %}
               </div>
 
           </div>
           <a class="navbar-brand" href="#"></a>
       </div>
 
-<<<<<<< HEAD
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar">
-      <br>
-       <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-         <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-         <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>{{result['userInfo']['username']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
-          <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
-                 {% if result['userInfo']['photo_link'] == "" %}
-                 <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-                 {% else %}
-                 <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                 {% end %}
-               </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<div class="search-mobile-topbar container-fluid hide-on-large">
-  <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <ul class="">
-          <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-            <form action="/search" method="post">
-              <input type="" class="" name="string" placeholder="Search for Projects or People">
-            </form>
-          </li>
-      </ul>
-||||||| merged common ancestors
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar">
-      <br>
-       <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-         <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-         <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-          <li><p align="right"><b>{{result['userInfo']['username']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
-          <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
-                 {% if result['userInfo']['photo_link'] == "" %}
-                 <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-                 {% else %}
-                 <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                 {% end %}
-               </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<div class="search-mobile-topbar container-fluid hide-on-large">
-  <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <ul class="">
-          <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-            <form action="/search" method="post">
-              <input type="" class="" name="string" placeholder="Search for Projects or People">
-            </form>
-          </li>
-      </ul>
-=======
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <br>
-        {% if result['loggedIn'] == True %}
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
            <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b>{{result['userInfo']['username']}}&nbsp&nbsp</b><br><a href="#">{{result['userInfo']['email']}}&nbsp&nbsp</a></p></li>
-            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');"><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+            <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>
+            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
+              {% if data['photo_link'] != "" %}
+              <img src="../{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image">
+              {% else %}
+              <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+              {% end %}
+            </li>
         </ul>
-
-        <!-- Login button to appear if not logged in.-->
-        {% else %}
-         <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
-          <div class="col-md-4 col-xs-2 col-md-push-8">
-          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-            <div class="row hide-on-small">
-              <div class="col-md-4 col-xs-4">
-                <img src="../static/images/Login-Icon.png" class="login-modal-image-profile">
-              </div>
-              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
-                <p><h4>Login/SignUp</h4></p>
-              </div>
-            </div>
-          </a>
-            </div>
-        </ul>
-        {% end %}
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
@@ -437,15 +297,13 @@
         <ul class="">
             <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
               <form action="/search" method="post">
-                <input type="" class="" name="string" placeholder="Search for Projects or People">
+                <input type="" class="" name="query" placeholder="Search for Projects or People">
               </form>
             </li>
         </ul>
       </div>
->>>>>>> 698465770e5f86421bcd5bfdaf60e7897cd6cc23
     </div>
-  </div>
-<br>
+  </div><br>
 <br>
 <br>
 <br>
