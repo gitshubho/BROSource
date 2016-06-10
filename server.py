@@ -154,16 +154,6 @@ class UpdateProfileHandler(RequestHandler):
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie('user')
-        try:
-            photoInfo = self.request.files['photo'][0]
-            extn = os.path.splitext(photoInfo['filename'])[1]
-            cname = str(uuid.uuid4()) + extn
-            photo_link = __PROFILEPHOTOS__ + cname
-            fh = open(__PROFILEPHOTOS__ + cname, 'w')
-            fh.write(photoInfo['body'])
-        except:
-            photo_link = ''
-
         dob = self.get_argument('dob')
         address = self.get_argument('address')
         skills = self.get_argument('skills').split(',')
@@ -189,6 +179,16 @@ class UpdateProfileHandler(RequestHandler):
 
         userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
         del(userInfo['password'])
+
+        try:
+            photoInfo = self.request.files['photo'][0]
+            extn = os.path.splitext(photoInfo['filename'])[1]
+            cname = str(uuid.uuid4()) + extn
+            photo_link = __PROFILEPHOTOS__ + cname
+            fh = open(__PROFILEPHOTOS__ + cname, 'w')
+            fh.write(photoInfo['body'])
+        except:
+            photo_link = ''
 
         if userInfo['signup'] == 0:
             result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
