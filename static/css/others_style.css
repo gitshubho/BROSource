@@ -1,5 +1,5 @@
 .notification{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%; transition:all 1s;
 }
 
 .bar-dismisser{
@@ -33,7 +33,7 @@
 /*For Messaging*/
 
 .messaging{
-    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%;
+    position: fixed; top: 93px; left: 0px; width: 100%; z-index:0; margin: 0; height: 100%; transition:all 1s;
 }
 
 .msg-dismisser{
@@ -104,7 +104,7 @@
 }
 
 .z-index-high{
-  z-index: 10 !important;
+  z-index: 10 !important; transition: all 1s;
 }
 
 .donate-container{
@@ -279,7 +279,7 @@
 }
 
 .dash-container{
-  position: fixed; top: 93px; left: 0px; width: 100%;  margin: 0; height: 100%; z-index: 0; transition: all 0.1s;
+  position: fixed; top: 93px; left: 0px; width: 100%;  margin: 0; height: 96%; z-index: 0; transition: all 1s;
 }
 
 .dash{
