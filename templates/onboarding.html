@@ -20,11 +20,17 @@
 
 <script type="text/javascript">
 
+  var check_service;
 
   function next()
   {
     var inputs= document.getElementsByClassName('compulsory');
     var select = document.getElementById('onboarding-skill');
+/* Removing red tags of filled inputs */
+    for (var j=0; j<inputs.length; j++) {
+      document.getElementById('unfilled-form-'+j).innerHTML="";
+    }
+
     for (var i=0; i<inputs.length; i++) {
       if(inputs[i].value=="")
       {
@@ -41,7 +47,7 @@
     {
       var x=document.getElementById('unfilled-form-'+i);
       x.innerHTML="Please Fill This Field";
-      window.scrollTo(0,0);
+      window.scroll(0,findPos(inputs[i]));
     }
   }
 
@@ -59,9 +65,27 @@
         str=str+'|'+ser_name[i].value+':'+ser_price[i].value;
       }
         str=str.slice(1);
+        check_service=str;
+        if(str=="")
+        {
+          document.getElementById('unfilled-services').innerHTML="Atleast One Service is Compulsory";
+          window.scrollTo(0,0);
+          return 0;
+        }
         document.getElementById('send-services').value=str;
         document.forms["onboarding-profile"].submit();
   }
+
+//Finds y value of given object
+function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+    return [curtop -250];
+    }
+}
 
 </script>
 
@@ -126,7 +150,7 @@
                     </div>-->
                     <div class="form-group">
                       <label>User Name <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      <input type="text" class="form-control  compulsory" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
+                      <input type="text" class="form-control compulsory" id="onboarding-username" value="{{ result['userInfo']['username'] }}" >
                       <div id="unfilled-form-1" style="color:red;"></div>
                     </div>
                   </div>
@@ -135,16 +159,17 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Email Address <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      <input type="text" class="form-control  compulsory" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
+                      <input type="text" class="form-control compulsory" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
                       <div id="unfilled-form-2" style="color:red;"></div>
                     </div>
                     <div class="form-group">
-                      <label>Date Of Birth</label>
+                      <label>Date Of Birth<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
                       {% if result['userInfo']['dob'] == '' %}
-                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="">
+                        <input type="date" class="form-control compulsory" id="onboarding-DOB" name="dob" value="">
                       {% else %}
                         <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="{{ result['userInfo']['dob'] }}">
                       {% end %}
+                      <div id="unfilled-form-3" style="color:red;"></div>
                     </div>
                   </div>
                 </div>
@@ -1111,7 +1136,7 @@
                                   <option value="765">Zendesk</option>
                                   <option value="566">Zoho</option>
                               </select>
-                              <div id="unfilled-form-3" style="color:red;"></div>
+                              <div id="unfilled-form-4" style="color:red;"></div>
                           </div>
                     </div>
 
@@ -1120,12 +1145,13 @@
                     </div>
 
                     <div class="form-group">
-                      <label>Mobile</label>
+                      <label>Mobile<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
                       {% if result['userInfo']['mobile'] == '' %}
-                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" placeholder="">
+                        <input type="text" class="form-control compulsory" name = "mobile" id="onboarding-mobile" placeholder="">
                       {% else %}
                         <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
                       {% end %}
+                      <div id="unfilled-form-5" style="color:red;"></div>
                     </div>
                   </div>
                 </div>
@@ -1133,7 +1159,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Category <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      <select class="form-control  compulsory" name = "category" id="onboarding-category" placeholder="Choose a Category">
+                      <select class="form-control compulsory" name = "category" id="onboarding-category" placeholder="Choose a Category">
                         <option value="1">Technical</option>
                         <option value="2">Management</option>
                         <option value="3">Design</option>
@@ -1142,16 +1168,16 @@
                         <option value="6">Design and Management</option>
                         <option value="7">Technical, Design and Management</option>
                       </select>
-                      <div id="unfilled-form-4" style="color:red;"></div>
+                      <div id="unfilled-form-6" style="color:red;"></div>
                     </div>
                     <div class="form-group">
-                      <label>About Me</label>
+                      <label>About Me<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
                       {% if result['userInfo']['aboutme'] == '' %}
-                        <textarea class="form-control" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!"></textarea>
+                        <textarea class="form-control compulsory" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!"></textarea>
                       {% else %}
                         <textarea class="form-control" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}</textarea>
                       {% end %}
-
+                      <div id="unfilled-form-7" style="color:red;"></div>
                     </div>
                   </div>
                 </div>
@@ -1198,12 +1224,13 @@
                 <div class="form-group" style="display:none;">
                   <input type="text" class="form-control" id="send-services" name="services">
                 </div>
+                <div id="unfilled-services" style="color:red;"></div><br>
                 {% if len(result['userInfo']['services']) == 0%}
                 <div class='form-group'>
                   <div class='row'>
                     <div class='col-md-9 col-xs-9'>
-                      <label>Service</label>
-                      <input type='text' class='form-control service-name' name = 'work' placeholder='ex: Create a minimal and responsive website'>
+                      <label>Service<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
+                      <input type='text' id="compulsory-service" class='form-control service-name' name = 'work' placeholder='ex: Create a minimal and responsive website'>
                     </div>
                     <div class='col-md-3 col-xs-3'>
                       <label>Price (USD)</label>
@@ -1237,7 +1264,7 @@
             <div class="row">
               <div class="col-md-1"></div>
               <div class="col-md-10">
-              <div class="onboarding-append-work" onclck="addService();" style="cursor:pointer;">
+              <div class="onboarding-append-work" onclck="" style="cursor:pointer;">
                 <div class="onboarding-added-work">
                   <p align="center"><span class="glyphicon glyphicon-lock"></span><br>Add Service</p>
                 </div>
