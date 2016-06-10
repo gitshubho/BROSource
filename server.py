@@ -71,8 +71,8 @@ class MainHandler(RequestHandler):
 
         elif len(featured_user) == 2:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured[0]['aboutme'],S1=featured[0]['services'],
-                        F2_Name=featured[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured[1]['username'],F2_Desc=featured[1]['aboutme'],S2=featured[1]['services'],
+                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
+                        F2_Name=featured_user[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
                         F3_Name='Dummy',F3_Title='Dummy',F3_Uname='Dummy',F3_Desc='Dummy',S3=[{'service' :'Dummy ','cost':'$0'}],
 
                         R1_Name=recent_user[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
@@ -356,8 +356,12 @@ class ViewProjectHandler(RequestHandler):
             userData = setUserInfo(userData, 'name', 'email', 'address', 'mobile', 'photo_link')
             data.append(json.loads(json_util.dumps(userData)))
 
-            fileData = yield db.files.find_one({'_id' : ObjectId(projData['files'])})
-            data.append(json.loads(json_util.dumps(fileData)))
+            try:
+                fileData = yield db.files.find_one({'_id' : ObjectId(projData['files'])})
+                data.append(json.loads(json_util.dumps(fileData)))
+            except:
+                fileData = {}
+                data.append(fileData)
 
             if bool(data[0]):
                 self.render('apply_project.html',result= dict(data=data,loggedIn = True))
