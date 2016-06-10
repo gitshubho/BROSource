@@ -81,7 +81,7 @@ class MainHandler(RequestHandler):
 
         else:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
+                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
                         F2_Name=featured_user[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
                         F3_Name=featured_user[2]['name'],F3_Title='Cloud programmer',F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],
 
