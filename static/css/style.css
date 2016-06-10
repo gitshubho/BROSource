@@ -323,6 +323,14 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+.customcard p
+{
+  font-size: 120%;
+}
+.customcard a
+{
+  font-size: 120%;
+}
 .card-holder:hover .customcard
 {
     transition: all 0.3s;
@@ -475,6 +483,24 @@ font-size: 275%;
     background:#3498DB;
     color:white;
   }
+
+  .search::-webkit-input-placeholder {
+  color: rgb(250,250,250)  !important;
+  }
+
+  .search:-moz-placeholder { /* Firefox 18- */
+  color: rgb(250,250,250) !important;
+  }
+
+  .search::-moz-placeholder {  /* Firefox 19+ */
+  color: rgb(250,250,250)  !important;
+  }
+
+  .search:-ms-input-placeholder {
+  color: rgb(250,250,250) !important;
+  }
+
+
 
   .topbar .search-col input[type=text]:focus
   {
@@ -1090,6 +1116,12 @@ font-size: 275%;
 }
 .long-card-container{
     padding: 5px;
+}
+.long-card-container p{
+    font-size: 120%;
+}
+.long-card-container a{
+    font-size: 120%;
 }
 .long-card-heading{
   background: #3498DB;
@@ -1783,6 +1815,10 @@ Edit Profile
 {
     background: rgb(240,240,240);
 }
+#onboarding-body .form-group label
+{
+  margin-bottom: -2%;
+}
 #onboarding-nav
 {
   background:rgb(47,71,87);
@@ -1834,7 +1870,8 @@ Edit Profile
   .onboarding-image
   {
     height: 12%;
-    width: 50%;
+    width: 42%;
+    margin-top: -2%;
   }
 }
 @media(max-width:600px)
