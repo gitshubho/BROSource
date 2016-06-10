@@ -754,6 +754,9 @@ font-size: 275%;
   border-top:0px;
   transition: 0.2s all;
 }
+#profile-self-nav-right{
+  font-size: 24px;
+}
 #profile-self-nav-right li p
 {
   padding:1%;

@@ -260,11 +260,11 @@
                   <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
                   <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                    <li>
-                     {% if result['userInfo']['photo_link'] != "" %}
+                     <!-- {% if result['userInfo']['photo_link'] != "" %}
                      <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                     {% else %}
+                     {% else %}-->
                      <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-                     {% end %}
+                     <!-- {% end %} -->
                    </li>
                 </ul>
               </div>
@@ -279,13 +279,13 @@
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
            <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b>{{ result['userInfo']['username'] }}&nbsp&nbsp</b><br><a href="#">{{ result['userInfo']['email'] }}&nbsp&nbsp</a></p></li>
+            <li><p align="right"><b><!-- {{ result['userInfo']['username'] }} -->Krishnasree Menon&nbsp&nbsp</b><br><a href="#"><!-- {{ result['userInfo']['email'] }} -->krishnasreemenon@gmail.com&nbsp&nbsp</a></p></li>
             <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
-              {% if result['userInfo']['photo_link'] != "" %}
+              <!-- {% if result['userInfo']['photo_link'] != "" %} 
               <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-              {% else %}
+              {% else %}-->
               <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-              {% end %}
+              <!-- {% end %} -->
             </li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -322,11 +322,11 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
-                              {% if result['userInfo']['photo_link'] != '' %}
+                              <!-- {% if result['userInfo']['photo_link'] != '' %}
                                 <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
-                              {% else %}
+                              {% else %} -->
                                 <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
-                              {% end %}
+                              <!-- {% end %} -->
                             </div>
                             <div class="profile-self-name-holder">
                                 <p><b>{{result['userInfo']['name']}}</b></p>

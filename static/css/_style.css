@@ -50,11 +50,6 @@
   background: rgb(47,60,68);
   height:20%;
 }
-.footer-row
-{
-  padding-top: 2%;
-  width: 100%;
-}
   .hello-image
   {
     float:left;
@@ -473,7 +468,11 @@ font-size: 275%;
     left: 20px;
     font-weight: bold;
     background:#3498DB;
-    color:white;
+    color:#fff;
+  }
+  
+  .search::-webkit-input-placeholder{
+    color: #fff;
   }
 
   .topbar .search-col input[type=text]:focus
@@ -1016,9 +1015,6 @@ font-size: 275%;
 {
   border-top:0px;
   transition: 0.2s all;
-}
-.glyphicon{
-  font-size: 24px;
 }
 #profile-self-nav-right li p
 {
