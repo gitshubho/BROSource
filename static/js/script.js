@@ -4,6 +4,12 @@
       var Wht=$(window).height();
       var Wwt=$(window).width();
 
+
+      $(".homepage-get-service").click(function()
+      {
+          $(this).closest("form").submit();
+      });
+
       $('.view-messages').show();$('.send-messages').hide();
 
         $(".onboarding-append-work").click(function()
