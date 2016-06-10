@@ -476,7 +476,6 @@ class ServiceRequestHandler(RequestHandler):
         else:
             self.redirect('/?sendrequest=False')
 
-
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
