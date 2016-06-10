@@ -1198,7 +1198,7 @@
                 <div class="form-group" style="display:none;">
                   <input type="text" class="form-control" id="send-services" name="services">
                 </div>
-<!-- If services are already present
+                {% if len(result['userInfo']['services']) == 0%}
                 <div class='form-group'>
                   <div class='row'>
                     <div class='col-md-9 col-xs-9'>
@@ -1210,7 +1210,24 @@
                       <input type='text' class='form-control service-price' name = 'workprice' placeholder='ex: 5'>
                     </div>
                   </div>
-                </div>   -->
+                </div>
+                {% else %}
+                  {% for service in result['userInfo']['services'] %}
+                  <div class='form-group'>
+                    <div class='row'>
+                      <div class='col-md-9 col-xs-9'>
+                        <label>Service</label>
+                        <input type='text' class='form-control service-name' name = 'work' value='{{ service['service'] }}'>
+                      </div>
+                      <div class='col-md-3 col-xs-3'>
+                        <label>Price (USD)</label>
+                        <input type='text' class='form-control service-price' name = 'workprice' value='{{ service['cost'] }}'>
+                      </div>
+                    </div>
+                  </div>
+                  {% end %}
+                {% end %}
+
 
 
               </div>
