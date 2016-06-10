@@ -279,7 +279,7 @@
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
            <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b><!-- {{ result['userInfo']['username'] }} -->Krishnasree Menon&nbsp&nbsp</b><br><a href="#"><!-- {{ result['userInfo']['email'] }} -->krishnasreemenon@gmail.com&nbsp&nbsp</a></p></li>
+            <li><p align="right"><b><!-- {{ result['userInfo']['username'] }} -->Osama Bin Laden&nbsp&nbsp</b><br><a href="#"><!-- {{ result['userInfo']['email'] }} -->osama@ozma.com&nbsp&nbsp</a></p></li>
             <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
               <!-- {% if result['userInfo']['photo_link'] != "" %} 
               <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
@@ -333,10 +333,12 @@
                                 <p>{{result['userInfo']['address']}}<br>{{result['userInfo']['email']}}</p>
                             </div>
                         </div>
-                        <div class="profile-self-aboutme-footer"><p>
+                        <div class="profile-self-aboutme-footer">
+                        <p style="overflow-y:scroll; height:40%;">
                           {% for skill in result['userInfo']['skills'] %}
                             <span class="badge CustomBadge">{{ skill }}</span>
                             {% end %}
+                            
                           <br></p>
 
                         </div>

@@ -917,9 +917,11 @@ font-size: 275%;
   background:white;
   width:100%;
   min-height:40%;
+  max-height: 50%;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
   cursor: pointer;
   display: inline-block;
+ 
 }
 
 .profile-self-info
