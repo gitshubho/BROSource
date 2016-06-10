@@ -25,7 +25,7 @@ import random
 from datetime import datetime
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
-import Image
+from PIL import Image
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
 __FILES__ = 'static/uploads/files/'
