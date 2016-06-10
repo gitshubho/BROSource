@@ -132,11 +132,11 @@
    <div class="view-messages">
       <h2>Messages</h2>
       <div class="row">
-        <div class="col-md-10 col-md-push-1 message">
+        <div class="col-md-10 col-md-push-1 message" onclick="$('.msg').removeClass('col-md-offset-9'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view z-index-high'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust'); $('.messaging').removeClass('z-index-high');">
           <div class="col-md-3 msg-image">
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
-          <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+          <div class="col-md-9 msg-preview" >
             <h4>Sender Name</h4>
             <small>Content up here!</small>
           </div>
@@ -165,7 +165,7 @@
     <form method="post" action="">
     <div class="msg-topbar">
     	<div class="row">
-    		<div class="col-lg-2 col-md-3">
+    		<div class="col-lg-2 col-md-2">
     			<div class="send-msg-img-holder">
     				<img src="../static/images/17.jpg" class="send-msg-img">
     			</div>
