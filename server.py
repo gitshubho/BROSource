@@ -447,6 +447,36 @@ class SearchHandler(RequestHandler):
 						userlist.append(l2)
 		self.render('searchresult.html', projlist = projlist, userlist = userlist)
 
+class ServiceRequestHandler(RequestHandler):
+
+    @coroutine
+    @removeslash
+    def get(self):
+
+        if not bool(self.get_secure_cookie('user')):
+            self.redirect('/?loggedIn=False')
+            return
+        service = self.get_argument('service')
+        cost = self.get_argument('cost')
+        user = self.get_argument('user')
+
+        self.render('servicerequest.html', result = {'user' : user, 'service' : service, 'cost' : cost})
+
+    @coroutine
+    @removeslash
+    def post(self):
+
+        service = self.get_argument('service')
+        cost = self.get_argument('cost')
+        user = self.get_argument('user')
+
+        srequest = yield db.serviceRequests.insert({'From' : self.get_secure_cookie('user'), 'To' : user, 'Service' : {'service' : service, 'cost' : cost}})
+        if bool(srequest):
+            self.redirect('/?sendrequest=True')
+        else:
+            self.redirect('/?sendrequest=False')
+
+
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
@@ -480,7 +510,8 @@ application = Application([
     (r"/addproj", AddProjectHandler),
     (r"/viewproject/(\w+)", ViewProjectHandler),
     (r"/donate", Donate),
-    (r"/search",SearchHandler)
+    (r"/search",SearchHandler),
+    (r"/serviceRequest", ServiceRequestHandler)
 ], **settings)
 
 #main init

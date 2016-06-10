@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Request </title>
+</head>
+<body>
+  <div align='center'>
+  <form action="/serviceRequest", method="post">
+    <h2> Confirm Send Service request </h2>
+    <input type="hidden" name="service" value="{{ result['service'] }}">
+      Service : {{ result['service'] }}<br><br><br>
+      <input type="hidden" name="cost" value="{{ result['cost'] }}">
+      Cost : {{ result['cost'] }}<br><br><br>
+    <input type="hidden" name="user" value="{{ result['user'] }}">
+      User : {{ result['user'] }}<br><br>
+    <input type="submit" value="Confirm">
+  </form>
+</div>
+</body>
+</html>

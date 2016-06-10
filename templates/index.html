@@ -551,13 +551,16 @@
 
             <!--Card Back-->
 
-
-
             <div class="back">
               <div class="row back-card">
                   {% for i in S1 %}
-                    <div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
-                    <div class="col-md-12 gap"></div>
+                  <form name='service_request' method="get" action="/serviceRequest">
+                    <input type="hidden" name="service" value="{{ i['service'] }}">
+                    <input type="hidden" name="cost" value="{{ i['cost'] }}">
+                    <input type="hidden" name="user" value="{{ F1_Name }}">
+                    <a onclick="document.forms['service_request'].submit()"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <div class="col-md-12 gap"></div></a>
+                  </form>
                   {% end %}
               </div>
             </div>
