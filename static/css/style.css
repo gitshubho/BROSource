@@ -2,6 +2,7 @@
   {
     background:#3498DB;
      font-family: Montserrat, sans-serif;
+     x-overflow:hidden;
   }
 
  textarea {
@@ -2275,4 +2276,11 @@ Edit Profile
 
 #forgot_modal input, #verify_modal input{
   color: #000;
+}
+
+
+.card-container-fluid-custom{
+  margin: 0;
+  margin-right: -20px;
+  padding: 0;
 }
