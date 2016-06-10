@@ -50,6 +50,11 @@
   background: rgb(47,60,68);
   height:20%;
 }
+.footer-row
+{
+  padding-top: 2%;
+  width: 100%;
+}
   .hello-image
   {
     float:left;
