@@ -248,7 +248,7 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
                       <form action="/search" method="post">
-                        <input type="" class="" name="string" placeholder="Search for Projects or People">
+                        <input type="" class="" name="query" placeholder="Search for Projects or People">
                       </form>
                     </li>
                 </ul>
@@ -279,7 +279,13 @@
            <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
             <li><p align="right"><b>{{ data['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data['email'] }}&nbsp&nbsp</a></p></li>
-            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');"><img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image"></li>
+            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
+              {% if data['photo_link'] != "" %}
+              <img src="../{{ data['photo_link'] }}" class="img-responsive profile-other-nav-image">
+              {% else %}
+              <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+              {% end %}
+            </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -290,7 +296,7 @@
         <ul class="">
             <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
               <form action="/search" method="post">
-                <input type="" class="" name="string" placeholder="Search for Projects or People">
+                <input type="" class="" name="query" placeholder="Search for Projects or People">
               </form>
             </li>
         </ul>

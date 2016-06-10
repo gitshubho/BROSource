@@ -154,23 +154,33 @@ class UpdateProfileHandler(RequestHandler):
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie('user')
-
-        photoInfo = self.request.files['photo'][0]
-        extn = os.path.splitext(photoInfo['filename'])[1]
-        cname = str(uuid.uuid4()) + extn
-        print '\n',__PROFILEPHOTOS__ + cname,'\n'
-        fh = open(__PROFILEPHOTOS__ + cname, 'w')
-        fh.write(photoInfo['body'])
+        try:
+            photoInfo = self.request.files['photo'][0]
+            extn = os.path.splitext(photoInfo['filename'])[1]
+            cname = str(uuid.uuid4()) + extn
+            photo_link = __PROFILEPHOTOS__ + cname
+            fh = open(__PROFILEPHOTOS__ + cname, 'w')
+            fh.write(photoInfo['body'])
+        except:
+            photo_link = ''
 
         dob = self.get_argument('dob')
         address = self.get_argument('address')
-        skills = self.get_argument('skills',[]).split(',')
+        skills = self.get_argument('skills').split(',')
+        print skills
+        skill_data = []
+        for skill in skills:
+            temp = yield db.skills.find_one({skill :{'$exists':1}})
+            skill_data.append(temp[skill])
         contact = self.get_argument('mobile')
 
         services = []
-        for service in self.get_argument('services',[]).split('|'):
-            temp = service.split(':')
-            services.append({'service' : temp[0], 'cost' : temp[1]})
+        try:
+            for service in self.get_argument('services').split('|'):
+                temp = service.split(':')
+                services.append({'service' : temp[0], 'cost' : temp[1]})
+        except IndexError:
+            services = []
 
         category = self.get_argument('category')
         aboutme = self.get_argument('aboutme')
@@ -181,12 +191,12 @@ class UpdateProfileHandler(RequestHandler):
         del(userInfo['password'])
 
         if userInfo['signup'] == 0:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : __PROFILEPHOTOS__ + cname,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
             message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
             sendMessage(contact,message)
         else:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : __PROFILEPHOTOS__ + cname,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
@@ -301,20 +311,23 @@ class AddProjectHandler(RequestHandler):
 
         files_data = []
 
-        for i in range(len(self.request.files['project_files'])):
-            fileinfo = self.request.files['project_files'][i]
-            fname = fileinfo['filename']
-            extn = os.path.splitext(fname)[1]
-            cname = str(uuid.uuid4()) + extn
-            fh = open(__FILES__ + cname, 'w')
-            fh.write(fileinfo['body'])
-            files_data.append({'fname' : fname, 'url' : __FILES__ + cname})
+        try:
+            for i in range(len(self.request.files['project_files'])):
+                fileinfo = self.request.files['project_files'][i]
+                fname = fileinfo['filename']
+                extn = os.path.splitext(fname)[1]
+                cname = str(uuid.uuid4()) + extn
+                fh = open(__FILES__ + cname, 'w')
+                fh.write(fileinfo['body'])
+                files_data.append({'fname' : fname, 'url' : __FILES__ + cname})
 
-        file_id = yield db.files.insert({'userId' : str(ObjectId(user_id)), 'projId' : "", "files" : files_data})
+            file_id = yield db.files.insert({'userId' : str(ObjectId(user_id)), 'projId' : "", "files" : files_data})
+        except:
+            file_id = ''
 
         insert = yield db.project.insert({'user_id' : str(ObjectId(user_id)), 'name' : self.get_argument('project_title'), 'category' : self.get_argument('project_category'),
                                         'deadline' : self.get_argument('project_deadline'), 'nop' : self.get_argument('nop'), "budget" : self.get_argument('bid_amount'),
-                                        'urgent' : self.get_argument('urgent'), 'time'  : time, 'skills' : self.get_argument('skills'), 'description' : self.get_argument('project_description'),
+                                        'urgent' : self.get_argument('urgent'), 'time'  : time, 'skills' : self.get_argument('skills').split(','), 'description' : self.get_argument('project_description'),
                                         'files' : str(file_id),'bids' : [],'userAwarded' : []})
         userId = ObjectId(user_id)
         yield db.files.update({'_id': file_id},{'$set' : {'projId' : str(insert)}})
@@ -340,16 +353,19 @@ class ViewProjectHandler(RequestHandler):
             data.append(json.loads(json_util.dumps(projData)))
 
             userData = yield db.users.find_one({'_id' : ObjectId(projData['user_id'])})
-            userData = setUserInfo(userData, 'name', 'email', 'address')
+            userData = setUserInfo(userData, 'name', 'email', 'address', 'mobile')
             data.append(json.loads(json_util.dumps(userData)))
 
             fileData = yield db.files.find_one({'_id' : ObjectId(projData['files'])})
             data.append(json.loads(json_util.dumps(fileData)))
 
             if bool(data[0]):
-                self.render('viewproject.html',result= dict(data=data,loggedIn = True))
+                self.render('apply_project.html',result= dict(data=data,loggedIn = True))
             else:
-                self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+                self.render('apply_project.html',result= dict(data=data,loggedIn = False))
+
+        else:
+            self.redirect('/?prjoect=False')
 
 class Donate(RequestHandler):
 

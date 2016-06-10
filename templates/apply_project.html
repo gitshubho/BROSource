@@ -159,8 +159,8 @@
                       <li id="apply-notification-trigger-small"><a href="notifications_mobile.html" target="_blank" ><span class="glyphicon glyphicon-comment"></span></a></li>
                       <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                        <li>
-                         {% if data[0]['photo_link'] != '' %}
-                         <img src="../{{ data[0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
+                         {% if result['data'][0]['photo_link'] != '' %}
+                         <img src="../{{ result['data'][0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
                          {% else %}
                          <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
                          {% end %}
@@ -176,10 +176,10 @@
               <ul class="hide-on-small nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
                 <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
                 <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                 <li><p align="right"><b>{{ data[0]['username'] }}&nbsp&nbsp</b><br><a href="#">{{ data[0]['email'] }}&nbsp&nbsp</a></p></li>
+                 <li><p align="right"><b>{{ result['data'][0]['username'] }}&nbsp&nbsp</b><br><a href="#">{{ result['data'][0]['email'] }}&nbsp&nbsp</a></p></li>
                   <li>
-                    {% if data[0]['photo_link'] != '' %}
-                    <img src="../{{ data[0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
+                    {% if result['data'][0]['photo_link'] != '' %}
+                    <img src="../{{ result['data'][0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
                     {% else %}
                     <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
                     {% end %}
@@ -206,10 +206,10 @@
             <div class="profile-add-banner-body-sections">
               <p><span class="banner-section-heading">Project Files</span><br><br></p>
               <div class="apply-project-image-holder">
-                {% if len(data[3]) == 0%}
+                {% if len(result['data'][3]) == 0%}
                   <p>No files uploaded</p>
                 {% else %}
-                  {% for file in data[3] %}
+                  {% for file in result['data'][3]['files'] %}
                     <img src="../{{ file['url'] }}" class="apply-project-image">
                   {% end %}
                 {% end %}
@@ -222,7 +222,7 @@
           <div class="profile-add-banner-body">
             <div class="profile-add-banner-body-sections">
               <p><span class="banner-section-heading">Project Description</span><br><br>
-                {{ data[1]['description'] }}
+                {{ result['data'][1]['description'] }}
               </p>
             </div>
           </div>
@@ -233,7 +233,7 @@
             <div class="profile-add-banner-body-sections">
               <p><span class="banner-section-heading">Required Skills</span><br><br></p>
               <div class="apply-skills">
-                {% for skill in data[1]['skills']%}}
+                {% for skill in result['data'][1]['skills']%}
                 <span class="CustomBadge">{{ skill }}</span>
                 {% end %}
 
@@ -261,7 +261,7 @@
 
               <div class="col-md-10 col-md-push-1">
                 <div class="profile-add-user-details">
-                  <p><span>{{ data[2]['name'] }} </span><br>{{ data[2]['email'] }}<br>{{ data[2]['address'] }} </p>
+                  <p><span>{{ result['data'][2]['name'] }} </span><br>{{ result['data'][2]['email'] }}<br>{{ result['data'][2]['address'] }} </p>
                 </div>
               </div>
             </div>
@@ -271,7 +271,7 @@
                   <strong>Bid Amount</strong>
                 </div>
                 <div class="col-md-2 col-xs-2 green-amount">
-                  <p>{{ data[1]['budget'] }}</p>
+                  <p>{{ result['data'][1]['budget'] }}</p>
                 </div>
               </div>
             </div>
@@ -291,15 +291,15 @@
           </div>
 
         <div class="profile-apply-contact">
-          <p align="left"><span class="glyphicon glyphicon-phone"></span>&nbsp&nbsp{{ data[2]['mobile'] }}</p>
+          <p align="left"><span class="glyphicon glyphicon-phone"></span>&nbsp&nbsp{{ result['data'][2]['mobile'] }}</p>
           <hr>
-          <p align="left"><span class="glyphicon glyphicon-envelope"></span>&nbsp&nbspdata[2]['email']</p>
+          <p align="left"><span class="glyphicon glyphicon-envelope"></span>&nbsp&nbsp{{ result['data'][2]['email'] }}</p>
           <hr>
           <a href="#" style="color:black;"><p align="left"><span class="glyphicon glyphicon-comment"></span>&nbsp&nbspSend Message</p></a>
         </div>
 
         <div class="profile-add-contact">
-          <p><span>{{ data][1]['deadline'] }}</span><br>Duration/Deadline</p>
+          <p><span>{{ result['data'][1]['deadline'] }}</span><br>Duration/Deadline</p>
         </div>
       </div>
       </div>
