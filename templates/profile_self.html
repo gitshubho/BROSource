@@ -21,14 +21,23 @@
 <script>
     $(document).ready(function () {
         var window_height=$(window).height();
-        console.log("The Window Height is "+window_height);
+        var z=$('.nav').height();
+        var x=$('.navbar-nav').height();
+        var y=$('.collapse').height();
+        console.log(x);
+        console.log(y);
+        var diff=window_height-y;
+        console.log(z);
         $('.notification').css({
             height:window_height
         });
         $('.not-outside').css({
             height:window_height
         });
-
+        $('.sliding').css({
+            top:y
+        })
+        
         console.log('Hello World!');
     });
 
@@ -40,7 +49,7 @@
 <body id="profile-self">
 <div class="container-fluid">
 
-  <div class="row dash-container">
+  <div class="row sliding dash-container">
     <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
       <div class="row">
@@ -81,7 +90,7 @@
     </div>
   </div>
 
-  <div class="row notification">
+  <div class="row sliding notification">
     <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none'); $('.notification').removeClass('z-index-high')"></div>
     <div class="col-md-3 col-md-offset-12 bar not-in-view hidden-xs" style="hidden">
 
@@ -130,7 +139,7 @@
 
 
 
-  <div class="row messaging">
+  <div class="row sliding messaging">
    <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismi(sser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.messaging').removeClass('z-index-high');"></div>
     <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
    <div class="view-messages">
@@ -165,7 +174,7 @@
 
     <!-- Sending Messages -->
 
-    <div class="container-fluid col-md-12 col-xs-12 col-sm-12 send-messages">
+    <div class="container-fluid sliding col-md-12 col-xs-12 col-sm-12 send-messages">
     <form method="post" action="">
     <div class="msg-topbar">
       <div class="row">
@@ -261,9 +270,9 @@
                   <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
                   <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                    <li>
-                     <!-- {% if result['userInfo']['photo_link'] != "" %}
+                      {% if result['userInfo']['photo_link'] != "" %}
                      <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                     {% else %}-->
+                     {% else %}
                      <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
                      <!-- {% end %} -->
                    </li>
