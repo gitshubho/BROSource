@@ -184,6 +184,8 @@
   .topbar
   {
       padding-top: 1%;
+      font-size: 150%;
+      padding-bottom: 6.5%;
   }
 }
    .topbar span
@@ -354,13 +356,13 @@
   cursor: pointer;
   transition: all 0.3s;
   padding: 5%;
-  min-height: 30vh;
+  min-height: 195px;
 }
 @media(min-width:1900px)
 {
   .customcard
   {
-    min-height: 20vh;
+    min-height: 220px;
   }
 }
 .customcard p
@@ -435,35 +437,47 @@ border-top: 0.5px solid;
 border-bottom: 0.5px solid;
 border-color: rgb(217,217,217);
 overflow-y: hidden;
-min-height: 14vh;
-max-height: 14vh;
+min-height: 93px;
+max-height: 93px;
 }
 @media(min-width:1800px)
 {
   .card-body
   {
-    min-height: 9.2vh;
-    max-height: 9.2vh;
+    min-height: 105px;
+    max-height: 105px;
   }
 }
 @media(min-width:1400px) and (max-width:1600px)
 {
   .card-body
   {
-    min-height: 9.5vh;
-    max-height: 9.5vh;
+    min-height: 85px;
+    max-height: 85px;
   }
   .customcard
   {
-    min-height: 21vh;
+    min-height: 185px;
   }
 }
 @media(max-width:600px)
 {
   .card-body
   {
-    min-height: 12.5vh;
-    max-height: 12.5vh;
+    min-height: 100px;
+    max-height: 100px;
+  }
+}
+@media(min-width:2000px)
+{
+  .customcard
+  {
+    min-height: 250px;
+  }
+  .card-body
+  {
+    min-height: 105px;
+    max-height: 105px;
   }
 }
 .card-footer
@@ -492,13 +506,13 @@ max-height: 14vh;
 {
   #homepage-search-row
   {
-    margin-left: -47%;
+    margin-left: -38%;
   }
   #homepage-search-icon
   {
     margin-top: 25%;
     font-size: 150%;
-      margin-left: 110%;
+      margin-left: 100%;
     padding: 0;
     color: rgb(173,214,241);
   }
@@ -595,9 +609,9 @@ color:  rgb(173,214,241) !important;
   .search{
     width: 100%;
     transition: all 0.5s;
-    font-size:13px;
+    font-size:15px;
     position: absolute;
-    margin-top: 15px;
+    margin-top: 14px;
     border: 0px;
     padding: 5px;
     font-weight: bold;
@@ -614,6 +628,13 @@ color:  rgb(173,214,241) !important;
     outline: none;
   }
 
+}
+@media(min-width:1800px)
+{
+  .search
+  {
+    font-size: 20px;
+  }
 }
 @media(max-width: 600px){
   .carousel-caption{
@@ -1042,10 +1063,6 @@ color:  rgb(173,214,241) !important;
 }
 @media(min-width:1800px)
 {
-  .homepage-add-projects-button
-  {
-    margin-top: -16%;
-  }
   .green-button p
   {
     font-size: 150%;
