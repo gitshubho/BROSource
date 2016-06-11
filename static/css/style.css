@@ -503,7 +503,15 @@ max-height: 14vh;
     color: rgb(173,214,241);
   }
 }
-
+@media(min-width:1000px) and (max-width:1200px)
+{
+  #homepage-search-icon
+  {
+      margin-top: 100%;
+      margin-left: 150%;
+      font-size: 120%;
+  }
+}
 
 a:hover
 {
@@ -713,10 +721,6 @@ color:  rgb(173,214,241) !important;
   {
     width:50%;
     margin-top: -5px;
-  }
-  .search
-  {
-
   }
 }
 /*Animation For the Card By Editing Animated.css*/
