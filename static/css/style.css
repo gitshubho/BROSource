@@ -4,9 +4,17 @@
      font-family: Montserrat, sans-serif;
      x-overflow:hidden;
   }
-
+ input
+ {
+   outline: 0 !important;
+ }
  textarea {
      resize:vertical;
+     outline:  0 !important;
+ }
+ select
+ {
+   outline: 0 !important;
  }
   #profile-other
   {
@@ -220,6 +228,7 @@
      padding-left: 0;
      font-size: 130%;
    }
+
    @media(min-width:1800px)
    {
      .brand-name
@@ -947,7 +956,7 @@ font-size: 275%;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
   cursor: pointer;
   display: inline-block;
- 
+
 }
 
 .profile-self-info
@@ -1054,6 +1063,13 @@ font-size: 275%;
 #profile-self-nav-right li p
 {
   padding:5px;
+}
+@media(min-width:1200px) and (max-width:1400px)
+{
+  #profile-self-nav-right
+  {
+    margin-top:-9px;
+  }
 }
 .profile-self-nav-image
 {
@@ -1575,7 +1591,7 @@ font-size: 275%;
 }
 .nav-brand-heading .brand-name
 {
-  margin-top: 0px;
+  margin-top: 2.4px;
 }
 .CustomBadge
 {
