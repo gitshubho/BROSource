@@ -16,7 +16,10 @@
  {
    outline: 0 !important;
  }
-
+.pointer
+{
+  cursor:pointer;
+}
   #profile-other
   {
     background: rgb(240,240,240);
@@ -112,6 +115,8 @@
   {
     position: absolute;
   }
+
+
 @media(min-width:600px)
 {
   .homepage-image-active-carousel-image
@@ -168,13 +173,19 @@
       width: 100%;
       text-align: center;
       z-index: 2;
-      padding-bottom: 4.25%;
+      padding-bottom: 5%;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       top: -20px;
       background: #3498DB;
       color: white;
    }
-
+@media(min-width:1800px)
+{
+  .topbar
+  {
+      padding-top: 1%;
+  }
+}
    .topbar span
    {
      font-size: 200%;
@@ -314,6 +325,12 @@
 .cards{
   margin-top: 5.5%;
 }
+.cards-holder
+{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background:rgb(84,95,102);
+}
 @media(min-height: 1000px)
 {
   .cards
@@ -386,12 +403,22 @@
 {
   padding:0;
   margin:0;
+  padding-top: 0;
+  padding-bottom: 0.5%;
 }
 .card-heading
 {
   text-align: left;
   padding:0;
   padding-top: 10px;
+  margin-left: -10px;
+}
+@media(min-width:1800px)
+{
+  .card-heading
+  {
+    margin-left: -20px;
+  }
 }
 .card-heading span
 {
@@ -408,8 +435,8 @@ border-top: 0.5px solid;
 border-bottom: 0.5px solid;
 border-color: rgb(217,217,217);
 overflow-y: hidden;
-min-height: 14.5vh;
-max-height: 14.5vh;
+min-height: 14vh;
+max-height: 14vh;
 }
 @media(min-width:1800px)
 {
@@ -451,19 +478,33 @@ max-height: 14.5vh;
 
 #homepage-search-icon
 {
-  margin-top: 100%;
+  margin-top: 52%;
   font-size: 150%;
+  margin-left: 110%;
   padding: 0;
+  color: rgb(173,214,241);
+}
+#homepage-search-row
+{
+  margin-left: -38%;
 }
 @media(min-width:1400px)
 {
+  #homepage-search-row
+  {
+    margin-left: -47%;
+  }
   #homepage-search-icon
   {
-    margin-top: 45%;
+    margin-top: 25%;
     font-size: 150%;
+      margin-left: 110%;
     padding: 0;
+    color: rgb(173,214,241);
   }
 }
+
+
 a:hover
 {
   text-decoration: none;
@@ -503,24 +544,24 @@ font-size: 275%;
 }
 
 .search::-webkit-input-placeholder {
-color: rgb(250,250,250)  !important;
+color: rgb(173,214,241)  !important;
 }
 
 .search:-moz-placeholder { /* Firefox 18- */
-color: rgb(250,250,250) !important;
+color:  rgb(173,214,241) !important;
 }
 
 .search::-moz-placeholder {  /* Firefox 19+ */
-color: rgb(250,250,250)  !important;
+color:  rgb(173,214,241)  !important;
 }
 
 .search:-ms-input-placeholder {
-color: rgb(250,250,250) !important;
+color:  rgb(173,214,241) !important;
 }
 
 .homepage-carousel
 {
-  min-height: 82vh;
+  min-height: 100vh;
 }
 
 @media(min-width: 600px){
@@ -549,8 +590,7 @@ color: rgb(250,250,250) !important;
     font-size:13px;
     position: absolute;
     margin-top: 15px;
-    border: 0px rgba(0,0,0,0.5) solid;
-    box-shadow: 0px 0px 0.01px 0px;
+    border: 0px;
     padding: 5px;
     font-weight: bold;
     visibility: visible;
@@ -599,8 +639,7 @@ color: rgb(250,250,250) !important;
     font-size:13px;
     position: absolute;
     margin-top: 15px;
-    border: 0px rgba(0,0,0,0.5) solid;
-    box-shadow: 0px 0px 0.01px 0px;
+    border: 0px;
     padding: 5px;
     font-weight: bold;
     visibility: visible;
@@ -622,8 +661,8 @@ color: rgb(250,250,250) !important;
     right: 11px;
     padding-top:1%;
     padding-bottom: 1%;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 3%;
+    padding-right: 3%;
     background-color: #3498DB;
     color: white;
     float: right;
@@ -674,6 +713,10 @@ color: rgb(250,250,250) !important;
   {
     width:50%;
     margin-top: -5px;
+  }
+  .search
+  {
+
   }
 }
 /*Animation For the Card By Editing Animated.css*/
@@ -972,16 +1015,18 @@ color: rgb(250,250,250) !important;
     display: none;
   }
 }
-
-
+.homepage-add-projects-button
+{
+  margin-top: -14%;
+  padding-top: 5%;
+}
 .green-button
 {
   background: rgb(46,204,113);
   color: white;
-  padding: 0.1%;
+  padding: 0%;
   padding-left: 6%;
   padding-right: 6%;
-  font-size: 90%;
   border: 0.5px solid white;
 }
 .green-button p
@@ -989,7 +1034,20 @@ color: rgb(250,250,250) !important;
   text-align: center;
   padding: 0;
   padding-top: 10px;
+  font-size: 120%;
 }
+@media(min-width:1800px)
+{
+  .homepage-add-projects-button
+  {
+    margin-top: -16%;
+  }
+  .green-button p
+  {
+    font-size: 150%;
+  }
+}
+
 
 /*Modal CSS Ends*/
 
