@@ -34,3 +34,6 @@ body{
 .logout{
 	position: absolute; bottom: 0; text-align: center; width: 100%; background: #2f3c44; color: #fff; padding: 10px;
 }
+.sliding{
+  min-height: 100vh;
+}
