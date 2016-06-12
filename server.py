@@ -25,7 +25,7 @@ import random
 from datetime import datetime
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
-from PIL import Image
+#from PIL import Image
 
 __PROFILEPHOTOS__ = 'static/uploads/profilePhotos/'
 __FILES__ = 'static/uploads/files/'
@@ -46,9 +46,9 @@ class MainHandler(RequestHandler):
             userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
-        featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('rating', -1)]).to_list(length=3)
-        recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
-
+        featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('ratings', -1)]).to_list(length=3)
+        recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
+        d={'':"",'1':"Technical",'2':"Management",'3':"Design",'4':"Technical and Management",'5':"Technical and Design",'6':"Design and Management",'7':"Technical, Design and Management"}
         if len(featured_user) == 0:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
                         F1_Name='Dummy',F1_Title='Dummy',F1_Uname='Dummy',F1_Desc='Dummy',S1=[{'service' :'Dummy ','cost':'$0'}],
@@ -81,13 +81,13 @@ class MainHandler(RequestHandler):
 
         else:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured_user[0]['name'],F1_Title='Cloud programmer',F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
-                        F2_Name=featured_user[1]['name'],F2_Title='Cloud programmer',F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
-                        F3_Name=featured_user[2]['name'],F3_Title='Cloud programmer',F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],
+                        F1_Name=featured_user[0]['name'],F1_Title=d[featured_user[0]['category']],F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
+                        F2_Name=featured_user[1]['name'],F2_Title=d[featured_user[1]['category']],F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
+                        F3_Name=featured_user[2]['name'],F3_Title=d[featured_user[2]['category']],F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],
 
-                        R1_Name=recent_user[0]['name'],R1_Title='Cloud programmer',R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
-                        R2_Name=recent_user[1]['name'],R2_Title='Cloud programmer',R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
-                        R3_Name=recent_user[2]['name'],R3_Title='Cloud programmer',R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'])
+                        R1_Name=recent_user[0]['name'],R1_Title=d[recent_user[0]['category']],R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
+                        R2_Name=recent_user[1]['name'],R2_Title=d[recent_user[0]['category']],R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
+                        R3_Name=recent_user[2]['name'],R3_Title=d[recent_user[0]['category']],R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'])
 
 class LoginHandler(RequestHandler):
 
@@ -119,8 +119,11 @@ class SignupHandler(RequestHandler):
         password = self.get_argument('password_signup')
         name = self.get_argument('name')
         email = self.get_argument('emailID')
-        result = yield db.users.find_one({'username':username, 'email':email})
+        if not(bool(username) and bool(password) and bool(name) and bool(re.search(r".+@\w+\.(com|co\.in)",email))):
+            self.redirect('/?username&email=empty')
+            return
 
+        result = yield db.users.find_one({'username':username, 'email':email})
         if(bool(result)):
             self.redirect('/?username&email=taken')
         else:
@@ -390,67 +393,66 @@ class Donate(RequestHandler):
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
 class SearchHandler(RequestHandler):
+    @coroutine
+    @removeslash
+    def post(self):
+        STRING = self.get_argument('query')
+        word_doc = db.project.find()
+        choices = list()
+        while (yield word_doc.fetch_next):
+            doc = word_doc.next_object()
+            try:
+                choices.append(doc['name'])
+            except:
+                continue
+        probableMatch = process.extract(STRING, choices, limit=5)
+        choices = list(set(choices))
+        projlist = list()
+        for LIST in probableMatch:
+            if LIST[1] > 70:
+                pname = LIST[0]
+                if pname in choices:
+                    choices.remove(pname)
+                    doc = db.project.find({'name': pname}, {'name': 1, '_id': 1, 'bids': 1})
+                    while (yield doc.fetch_next):
+                        wdoc = doc.next_object()
+                        l1 = list()
+                        l1.append(wdoc['name'])
+                        l1.append(wdoc['_id'])
+                        if 'bids' in wdoc:
+                            l1.append(wdoc['bids'])
+                        projlist.append(l1)
+        userlist = list()
+        word_doc = db.users.find()
+        while (yield word_doc.fetch_next):
+            doc = word_doc.next_object()
+            try:
+                choices.append(doc['username'])
+            except:
+                continue
+        probableMatch = process.extract(STRING, choices, limit=5)
+        choices = list(set(choices))
 
-	@coroutine
-    	@removeslash
-	def post(self):
-		STRING = self.get_argument('query')
-		word_doc = db.project.find()
-		choices = list()
-		while(yield word_doc.fetch_next):
-			doc = word_doc.next_object()
-			try:
-				choices.append(doc['name'])
-			except:
-				continue
-		probableMatch = process.extract(STRING, choices, limit = 5)
-		choices = list(set(choices))
-		projlist = list()
-		for LIST in probableMatch:
-			if LIST[1] > 70:
-				pname = LIST[0]
-				if pname in choices:
-					choices.remove(pname)
-					doc = db.project.find({'name' : pname}, {'name' : 1,'_id' : 1,'bids' : 1})
-					while(yield doc.fetch_next):
-						wdoc = doc.next_object()
-						l1 = list()
-						l1.append(wdoc['name'])
-						l1.append(wdoc['_id'])
-						if 'bids' in wdoc:
-							l1.append(wdoc['bids'])
-						projlist.append(l1)
-		userlist = list()
-		word_doc = db.users.find()
-		while(yield word_doc.fetch_next):
-			doc = word_doc.next_object()
-			try:
-				choices.append(doc['username'])
-			except:
-				continue
-		probableMatch = process.extract(STRING, choices, limit = 5)
-		choices = list(set(choices))
-
-		for LIST in probableMatch:
-			if LIST[1]>70:
-				pname = LIST[0]
-				if pname in choices:
-					choices.remove(pname)
-					doc = db.users.find({'username' : pname}, {'username' : 1, '_id' : 1, 'category' : 1, 'skills' : 1})
-					while(yield doc.fetch_next):
-						wdoc = doc.next_object()
-						l2 = list()
-						l2.append(wdoc["username"])
-						try:
-							l2.append(wdoc['category'])
-						except:
-							pass
-						try:
-							l2.append(wdoc['skills'])
-						except:
-							pass
-						userlist.append(l2)
-		self.render('searchresult.html', projlist = projlist, userlist = userlist)
+        for LIST in probableMatch:
+            if LIST[1] > 70:
+                pname = LIST[0]
+                if pname in choices:
+                    choices.remove(pname)
+                    doc = db.users.find({'username': pname}, {'username': 1, '_id': 1, 'category': 1, 'skills': 1})
+                    while (yield doc.fetch_next):
+                        wdoc = doc.next_object()
+                        l2 = list()
+                        l2.append(wdoc["username"])
+                        try:
+                            l2.append(wdoc['category'])
+                        except:
+                            pass
+                        try:
+                            l2.append(wdoc['skills'])
+                        except:
+                            pass
+                        userlist.append(l2)
+        self.render('searchresult.html', projlist=projlist, userlist=userlist)
 
 class ServiceRequestHandler(RequestHandler):
 
