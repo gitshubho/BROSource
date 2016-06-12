@@ -2012,7 +2012,18 @@ Edit Profile
   height: 20%;
   margin-top:2%;
 }
-
+#onboarding-next
+{
+  font-size: 100%;
+}
+@media(max-width:1200px) and (min-width:1000px)
+{
+  #onboarding-next
+  {
+    font-size: 100%;
+    top:-17px;
+  }
+}
 .CustomForm
 {
   background: white;
