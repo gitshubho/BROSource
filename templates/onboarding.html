@@ -1193,7 +1193,7 @@ function ValidateEmail(mail)
                       <label>About Me<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
                     {% if result['userInfo']['aboutme'] == '' %}
                         <textarea class="form-control compulsory" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!"></textarea>
-                      {% else %}  
+                      {% else %}
                         <textarea class="form-control compulsory" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}</textarea>
                       {% end %}
                       <div id="unfilled-form-7" style="color:red;"></div>

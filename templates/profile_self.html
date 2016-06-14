@@ -166,7 +166,7 @@
         </div>
       </div>
       <div class="row">
-      <div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;text-align:center">
+      <div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:65px;text-align:center">
         <a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;;">Compose Message</a>
       </div>
     </div>
@@ -186,7 +186,7 @@
         <div class="col-lg-5 col-md-4 col-md-push-1">
           <div class="sender-name"><h4>To Selena Gomez</h4><small class="msg-date">Direct Message</small></div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
+        <div class="col-lg-5 col-md-5">
           <button type="submit" class="msg-type sumbit-btn" style="float: right; text-align:center;"><b>Send</b></button>
         </div>
       </div>
@@ -252,7 +252,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
           <div class="row nav-brand-heading">
-              <div class="col-md-2 col-xs-4">
+              <div class="col-md-2 col-xs-3">
                   <div class="brand-name"><b>BRO</b>Source</div>
               </div>
              <div class="col-md-10 col-md-push-2 hide-on-small">
@@ -264,7 +264,7 @@
                     </li>
                 </ul>
               </div>
-              <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
+              <div class="col-xs-9 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
                 <ul class="center-align-on-small" id="other-nav-right">
                   <li id="mobile-search"><a onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
                   <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
@@ -333,11 +333,11 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
-                              {% if result['userInfo']['photo_link'] != '' %}
+              <!--                {% if result['userInfo']['photo_link'] != '' %}
                                 <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
-                              {% else %}
+                              {% else %}  -->
                                 <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
-                            {% end %}
+                  <!--          {% end %}  -->
                             </div>
                             <div class="profile-self-name-holder">
                                 <p><b>{{result['userInfo']['name']}}</b></p>
@@ -364,16 +364,16 @@
                         </div>
                         <div class="profile-self-info-footer">
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views">
-                                <p><span>{{ result['userInfo']['views'] }}</span><br>Views</p>
+                                <p><span><!--{{ result['userInfo']['views'] }} --></span><br>Views</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed">
-                                <p><span>{{ len(result['userInfo']['projects']) }}</span><br>Projects</p>
+                                <p><span><!--{{ len(result['userInfo']['projects']) }} --></span><br>Projects</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing">
-                                <p><span>{{ len(result['userInfo']['skills']) }}</span><br>Skills</p>
+                                <p><span><!--{{ len(result['userInfo']['skills']) }} --></span><br>Skills</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill">
-                                <p><span>{{ result['userInfo']['ratings'] }}</span><br>Rating</p>
+                                <p><span><!-- {{ result['userInfo']['ratings'] }}  --></span><br>Rating</p>
                             </div>
                         </div>
                     </div>
@@ -393,8 +393,8 @@
             <div class="col-md-1 col-xs-0"></div>
             <div class="col-md-10 col-xs-12">
                 <div class="row" id="profile-self-search-bar-row">
-                    <div class="col-md-2 col-xs-4">
-                        <p>Project For Your Skills</p>
+                    <div class="col-md-2 col-xs-4 project-for-your-skills">
+                        <p class="">Project For Your Skills</p>
                     </div>
                     <div class="col-md-9 col-xs-6 profile-search-bar-holder">
                       <form action="/search" method="post">
@@ -595,7 +595,6 @@
                                       </div>
                                     </div>
     </div>
-</div>
 </div>
 
 <div class="footer-profile container-fluid" >

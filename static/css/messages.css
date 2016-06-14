@@ -36,6 +36,15 @@ body{
     padding: 12px;
     margin: 4px;
     width: 50%;
+    border: none;
+}
+@media(min-width:1200px) and (max-width:1400px)
+{
+  .msg-type
+    {
+      padding: 12px;
+      padding-left: 7px;
+    }
 }
 
 .msg-content{
@@ -46,7 +55,7 @@ body{
 
 .msg-footer{
 	position: fixed; bottom:0; text-align: center;
-    border-top: 1px solid #ccc; padding:5%;
+    border-top: 1px solid #ccc; padding:20px;width:25%;
 }
 .msg-footer a{
   color:black;
