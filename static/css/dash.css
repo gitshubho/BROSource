@@ -8,7 +8,7 @@ body{
 
 .dash-cols{
   padding: 20px; color: rgba(51, 51, 51, .6);
-  border-top: rgba(51,51,51,0.2) solid 2px;
+  border-top: rgba(51,51,51,0.2) solid 1px;
 }
 
 .dash-cols:hover{
@@ -33,6 +33,18 @@ body{
 
 .logout{
 	position: absolute; bottom: 0; text-align: center; width: 100%; background: #2f3c44; color: #fff; padding: 10px;
+  bottom:11.3%; color: white;
+}
+.logout a
+{
+  color: white;
+}
+@media(min-width:1800px)
+{
+  .logout
+  {
+    bottom:7.5%;
+  }
 }
 .sliding{
   min-height: 100vh;

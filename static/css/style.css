@@ -846,11 +846,13 @@ color:  rgb(173,214,241) !important;
         }
 
         .back-card{
-          padding: 10px;
+          padding: 15px;
         }
 
         .back-content{
-          border: #000 1px solid;
+          border: rgb(204,204,204) 1px solid;
+          font-size: 90%;
+          transition: all 0.3s;
         }
         .gap{
           height: 5px;
@@ -867,11 +869,18 @@ color:  rgb(173,214,241) !important;
 }
 .login-modal-toggle-text
 {
-  margin-top:2%;
+  margin-top:2.4%;
   margin-left: -13%;
   text-align: left;
   visibility: visible;
   color: white;
+}
+@media(min-width:1800px)
+{
+  .login-modal-toggle-text
+  {
+    margin-top: 2%;
+  }
 }
 .login-modal-image
 {
@@ -1049,11 +1058,11 @@ color:  rgb(173,214,241) !important;
 .green-button
 {
   background: rgb(46,204,113);
-  color: white;
+  color: rgb(240,240,240);
   padding: 0%;
   padding-left: 6%;
   padding-right: 6%;
-  border: 0.5px solid white;
+  border: 0.5px solid rgb(204,204,204);
 }
 .green-button p
 {
@@ -1113,8 +1122,7 @@ color:  rgb(173,214,241) !important;
   padding:5%;
   margin-top:5%;
   margin-bottom:5%;
-  color: black;
-  font-weight: bold;
+  color: rgb(40,40,40);
   position: relative;
   box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
@@ -1127,6 +1135,8 @@ color:  rgb(173,214,241) !important;
   height:30vh;
   border-bottom: 1px solid rgb(204,204,204);
   text-align: center;
+  margin-left: 5%;
+  margin-right:5%;
 }
 .profile-self-image-holder
 {
@@ -1155,8 +1165,8 @@ color:  rgb(173,214,241) !important;
   overflow-y: scroll;
   min-height: 17vh;
   max-height: 17vh;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .profile-self-aboutme-footer::-webkit-scrollbar {
    width: 0.4em;
@@ -1526,17 +1536,17 @@ color:  rgb(173,214,241) !important;
 
 .comments:before {
     width: 3px;
-    left: 105px;
+    left: 110px;
     bottom: 0px;
     background: rgba(240,240,240,0.3);
 }
 
 .comment:before {
-    width: 9px;
-    height: 9px;
-    border: 3px solid #fff;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #fff;
     border-radius: 100px;
-    margin: 16px 0 0 -6px;
+    margin: 16px 0 0 1.2px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
     background: #3498DB;
 }
@@ -2300,9 +2310,31 @@ Edit Profile
   color:white;
   font-size:150%;
 }
+.homepage-get-service
+{
+  text-decoration: none;
+  color:black;
+}
+.homepage-get-service:hover
+{
+  color:black;
+}
+.back-content:hover
+{
+  transform:scale(1.02);
+  transition:all 0.3s;
+}
 .work
 {
   padding: 2%;
+  border-right: 1px solid rgb(204,204,204);
+}
+.money
+{
+  padding: 0.5%;
+  font-size: 120%;
+  color:green;
+
 }
 .onboarding-added-work
 {

@@ -60,7 +60,7 @@
          </div>
          <div class="col-md-4 col-xs-2 col-md-push-1">
          <!-- The Login Modal Toggle Button -->
-         {% if result['loggedIn'] == False %}
+    <!--     {% if result['loggedIn'] == False %} -->
          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
            <div class="row hide-on-small">
             <div class="col-md-4 col-xs-4">
@@ -74,7 +74,7 @@
             <span class="glyphicon glyphicon-user"></span>
           </div>
         </a>
-        {%else%}
+    <!--    {%else%}
         <a type="button" class="login-modal-toggle" href="/profile/me">
            <div class="row">
             <div class="col-md-4 col-xs-4">
@@ -90,7 +90,7 @@
             </div>
           </div>
         </a>
-        {%end%}
+        {%end%}  -->
        </div>
        </div>
      </div>
@@ -562,7 +562,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ F1_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
@@ -611,7 +611,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ F2_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
@@ -663,7 +663,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ F3_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
@@ -736,7 +736,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ R1_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
@@ -785,7 +785,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ R2_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
@@ -836,7 +836,7 @@
                     <input type="hidden" name="service" value="{{ i['service'] }}">
                     <input type="hidden" name="cost" value="{{ i['cost'] }}">
                     <input type="hidden" name="user" value="{{ R3_Name }}">
-                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }} in {{ i['cost']}}</div><!--<div class="col-md-2 money"></div>--></div>
+                    <a class="homepage-get-service"><div class="back-content col-md-12"><div class="col-md-10 work">{{ i['service'] }}</div><div class="col-md-2 money">{{i['cost']}}</div></div>
                     <div class="col-md-12 gap"></div></a>
                   </form>
                   {% end %}
