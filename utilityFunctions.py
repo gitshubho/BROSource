@@ -6,6 +6,8 @@ def setUserInfo(userInfo, *args):
     userdata = {}
     for arg in args:
         userdata[arg] = userInfo[arg]
+        if (arg=='certifications' or arg=='education_details'):
+            userdata[arg]=str(','.join(userdata[arg]))
     return userdata
 
 # function to hash passwords

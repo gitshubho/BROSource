@@ -157,6 +157,10 @@ class UpdateProfileHandler(RequestHandler):
     def post(self):
         db = self.settings['db']
         current_id = self.get_secure_cookie('user')
+        email=self.get_argument('email')
+        if not bool(re.search(r".+@\w+\.(com|co\.in)",email)):
+            self.redirect('/onboarding.html?email=invalid')
+            return
         dob = self.get_argument('dob')
         address = self.get_argument('address')
         skills = self.get_argument('skills').split(',')
@@ -194,12 +198,12 @@ class UpdateProfileHandler(RequestHandler):
             photo_link = ''
 
         if userInfo['signup'] == 0:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
             message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
             sendMessage(contact,message)
         else:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
