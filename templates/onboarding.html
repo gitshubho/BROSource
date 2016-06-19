@@ -41,7 +41,16 @@
     {
       var sk=""+$('#onboarding-skill').select2('val');
       document.getElementById('send-skills').value=sk;
-      $('#carousel-generic').carousel('next');
+      if(ValidateEmail(document.getElementById('onboarding-email').value))
+      {
+          $('#carousel-generic').carousel('next');
+      }
+      else
+      {
+          var z=document.getElementById('unfilled-form-2')
+          z.innerHTML="Please Enter A Valid Email Address"
+          window.scroll(0,findPos(z));
+      }
     }
     else
     {
@@ -85,6 +94,16 @@ function findPos(obj) {
         } while (obj = obj.offsetParent);
     return [curtop -250];
     }
+}
+
+function ValidateEmail(mail)
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid email address!")
+    return (false)
 }
 
 </script>
@@ -159,15 +178,15 @@ function findPos(obj) {
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Email Address <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      <input type="text" class="form-control compulsory" id="onboarding-email" value="{{ result['userInfo']['email'] }}">
+                      <input type="text" class="form-control compulsory" id="onboarding-email" name="email" value="{{ result['userInfo']['email'] }}">
                       <div id="unfilled-form-2" style="color:red;"></div>
                     </div>
                     <div class="form-group">
                       <label>Date Of Birth<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      {% if result['userInfo']['dob'] == '' %}
+                     {% if result['userInfo']['dob'] == '' %}
                         <input type="date" class="form-control compulsory" id="onboarding-DOB" name="dob" value="">
                       {% else %}
-                        <input type="date" class="form-control" id="onboarding-DOB" name="dob" value="{{ result['userInfo']['dob'] }}">
+                        <input type="date" class="form-control compulsory" id="onboarding-DOB" name="dob" value="{{ result['userInfo']['dob'] }}">
                       {% end %}
                       <div id="unfilled-form-3" style="color:red;"></div>
                     </div>
@@ -186,9 +205,9 @@ function findPos(obj) {
                     As of now , comma separated values of skills. Can change it to some other input types. -->
                     <div class="form-group">
 
-                      <label>
+                      <p style="font-weight:700;">
                          Skills <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span><br>
-                      </label>
+                      </p>
                           <script type="text/javascript">
                           $(document).ready(function() {
                               $(".js-example-basic-multiple").select2();
@@ -1146,10 +1165,10 @@ function findPos(obj) {
 
                     <div class="form-group">
                       <label>Mobile<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      {% if result['userInfo']['mobile'] == '' %}
+                   {% if result['userInfo']['mobile'] == '' %}
                         <input type="text" class="form-control compulsory" name = "mobile" id="onboarding-mobile" placeholder="">
                       {% else %}
-                        <input type="text" class="form-control" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
+                        <input type="text" class="form-control compulsory" name = "mobile" id="onboarding-mobile" value="{{ result['userInfo']['mobile'] }}">
                       {% end %}
                       <div id="unfilled-form-5" style="color:red;"></div>
                     </div>
@@ -1172,10 +1191,10 @@ function findPos(obj) {
                     </div>
                     <div class="form-group">
                       <label>About Me<span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span></label>
-                      {% if result['userInfo']['aboutme'] == '' %}
+                    {% if result['userInfo']['aboutme'] == '' %}
                         <textarea class="form-control compulsory" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme" placeholder="Tell Us About You!"></textarea>
                       {% else %}
-                        <textarea class="form-control" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}</textarea>
+                        <textarea class="form-control compulsory" rows="10" cols="100" name = "aboutme" id="onboarding-aboutme">{{ result['userInfo']['aboutme'] }}</textarea>
                       {% end %}
                       <div id="unfilled-form-7" style="color:red;"></div>
                     </div>
@@ -1285,7 +1304,7 @@ function findPos(obj) {
     <!-- Controls   -->
     <div class="onboarding-carousel-control-holder">
     <a class="right carousel-control onboarding-carousel-control" onclick="next();" >
-      <span class="glyphicon glyphicon-circle-arrow-right" ></span>
+      <span class="glyphicon glyphicon-circle-arrow-right" id="onboarding-next"></span>
     </a>
     </div>
   </div>

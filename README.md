@@ -1,19 +1,40 @@
 # BROSource
 
-The project is hosted <a href="http://13.76.243.123:5000">here</a><br>
-Don't push backend in master branch, as it is connected with server.<br>
-
-##Things to be done:
-1. Add a project
-2. Bid Module
-3. View projects
-4. Add skills(onboarding)
+## Description
 
 
-##Things done:
-1. User Signup
-2. User Login
-3. Onboarding on signup
-4. Profile (self)
+## Dependencies
++ Front-end
+  + Jquery
+  + Bootstrap
+  + Font-Awesome
+  + Select2
++ Back-end
+  + Tornado (Python)
+  + MongoDB
 
-###Please add more changes to be done and when any of the module is done, add it in <i>'Things done'</i> section.
+## Installation on local machine
+        python server.py
+## Known Issues
++ Search doesn't work
++ Firefox bug.
+
+## Authors
++ Ankur Sarode
+  + http://github.com/AnkurSarode
++ Ashwini Purohith
+  + http://
++ Piyush Goyal
+  + http://
++ Rahul Krishna
+  + http://rahulakrishna.github.io
++ Rajat Mukati
+  + http://
++ Rishi Raj
+  + http://
++ Shubham Bharadwaj
+  + http://
++ Ujjwal Werma
+  + http://
+
+## License

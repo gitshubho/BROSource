@@ -1,9 +1,9 @@
 .notification{
-    position: fixed; left: 0px; 
+    position: fixed; left: 0px;
     width: 100%; z-index:5; margin: 0; height: 100%;
 }
 .bar{
-    background: rgba(0,0,0,1); height: 100%; 
+    background: rgba(0,0,0,1); height: 100%;
     padding: 10; padding-top:0 !important;
 }
 
@@ -86,14 +86,14 @@
     height: 9px;
     border: 3px solid #fff;
     border-radius: 100px;
-    margin: 16px 0 0 -6px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.2), 
+    margin: 16px 0 0 -2px !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2),
     inset 0 1px 1px rgba(0,0,0,0.1);
     background: #3498DB;
 }
 
 .comment:hover {
-    /*  cursor: url('../images/FB_CUR.cur');  
+    /*  cursor: url('../images/FB_CUR.cur');
     See the result on http://lab.web-gate.fr/timeline/ */
     cursor: cell; /* This line is for the cursor */
 }
@@ -101,10 +101,10 @@
 .comment:hover:before { background: #3b5998 }
 
 
-.notification article,.notification  aside, 
-.notification figure,.notification footer, 
-.notification header, .notification hgroup, 
-.notification menu, .notification nav, 
+.notification article,.notification  aside,
+.notification figure,.notification footer,
+.notification header, .notification hgroup,
+.notification menu, .notification nav,
 .notification section { display: block }
 
 .notification a {

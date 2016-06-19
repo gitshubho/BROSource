@@ -4,14 +4,29 @@
      font-family: Montserrat, sans-serif;
      x-overflow:hidden;
   }
-
+ input
+ {
+   outline: 0 !important;
+ }
  textarea {
      resize:vertical;
+     outline:  0 !important;
  }
+<<<<<<< HEAD
 
  input{
    outline: 0 !important;
  }
+=======
+ select
+ {
+   outline: 0 !important;
+ }
+.pointer
+{
+  cursor:pointer;
+}
+>>>>>>> 4c2cf8dbe79a4b15dca13d3baa21b713ada1d630
   #profile-other
   {
     background: rgb(240,240,240);
@@ -20,6 +35,10 @@
   {
     background: #3498DB;
     color: white;
+  }
+  #profile-self
+  {
+    background: #3498DB;
   }
   #profile-self .navbar
   {
@@ -103,6 +122,8 @@
   {
     position: absolute;
   }
+
+
 @media(min-width:600px)
 {
   .homepage-image-active-carousel-image
@@ -159,13 +180,21 @@
       width: 100%;
       text-align: center;
       z-index: 2;
-      padding-bottom: 4.25%;
+      padding-bottom: 5%;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       top: -20px;
       background: #3498DB;
       color: white;
    }
-
+@media(min-width:1800px)
+{
+  .topbar
+  {
+      padding-top: 1%;
+      font-size: 150%;
+      padding-bottom: 6.5%;
+  }
+}
    .topbar span
    {
      font-size: 200%;
@@ -224,6 +253,7 @@
      padding-left: 0;
      font-size: 130%;
    }
+
    @media(min-width:1800px)
    {
      .brand-name
@@ -304,6 +334,12 @@
 .cards{
   margin-top: 5.5%;
 }
+.cards-holder
+{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background:rgb(84,95,102);
+}
 @media(min-height: 1000px)
 {
   .cards
@@ -326,6 +362,15 @@
   box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: all 0.3s;
+  padding: 5%;
+  min-height: 195px;
+}
+@media(min-width:1900px)
+{
+  .customcard
+  {
+    min-height: 220px;
+  }
 }
 .customcard p
 {
@@ -365,16 +410,24 @@
 }
 .card-header
 {
-  border-bottom:0.5px solid;
   padding:0;
   margin:0;
-  border-color: rgb(217,217,217);
+  padding-top: 0;
+  padding-bottom: 0.5%;
 }
 .card-heading
 {
   text-align: left;
   padding:0;
   padding-top: 10px;
+  margin-left: -10px;
+}
+@media(min-width:1800px)
+{
+  .card-heading
+  {
+    margin-left: -20px;
+  }
 }
 .card-heading span
 {
@@ -383,16 +436,62 @@
 }
 .card-body
 {
+margin-left: 2%;
+margin-right: 2%;
 padding-top: 1.5%;
 padding-bottom: 1.5%;
+border-top: 0.5px solid;
+border-bottom: 0.5px solid;
+border-color: rgb(217,217,217);
+overflow-y: hidden;
+min-height: 93px;
+max-height: 93px;
+}
+@media(min-width:1800px)
+{
+  .card-body
+  {
+    min-height: 105px;
+    max-height: 105px;
+  }
+}
+@media(min-width:1400px) and (max-width:1600px)
+{
+  .card-body
+  {
+    min-height: 85px;
+    max-height: 85px;
+  }
+  .customcard
+  {
+    min-height: 185px;
+  }
+}
+@media(max-width:600px)
+{
+  .card-body
+  {
+    min-height: 100px;
+    max-height: 100px;
+  }
+}
+@media(min-width:2000px)
+{
+  .customcard
+  {
+    min-height: 250px;
+  }
+  .card-body
+  {
+    min-height: 105px;
+    max-height: 105px;
+  }
 }
 .card-footer
   {
   position: absolute;
   right: 0;
   width: 100%;
-  border-top: 0.5px solid;
-  border-color: rgb(217,217,217);
   padding:0;
   margin:0;
   padding-top: 1%;
@@ -400,19 +499,41 @@ padding-bottom: 1.5%;
 
 #homepage-search-icon
 {
-  margin-top: 100%;
+  margin-top: 52%;
   font-size: 150%;
+  margin-left: 110%;
   padding: 0;
+  color: rgb(173,214,241);
+}
+#homepage-search-row
+{
+  margin-left: -38%;
 }
 @media(min-width:1400px)
 {
+  #homepage-search-row
+  {
+    margin-left: -38%;
+  }
   #homepage-search-icon
   {
-    margin-top: 45%;
+    margin-top: 25%;
     font-size: 150%;
+      margin-left: 100%;
     padding: 0;
+    color: rgb(173,214,241);
   }
 }
+@media(min-width:1000px) and (max-width:1200px)
+{
+  #homepage-search-icon
+  {
+      margin-top: 100%;
+      margin-left: 150%;
+      font-size: 120%;
+  }
+}
+
 a:hover
 {
   text-decoration: none;
@@ -451,6 +572,27 @@ font-size: 275%;
   padding-bottom: 10%;
 }
 
+.search::-webkit-input-placeholder {
+color: rgb(173,214,241)  !important;
+}
+
+.search:-moz-placeholder { /* Firefox 18- */
+color:  rgb(173,214,241) !important;
+}
+
+.search::-moz-placeholder {  /* Firefox 19+ */
+color:  rgb(173,214,241)  !important;
+}
+
+.search:-ms-input-placeholder {
+color:  rgb(173,214,241) !important;
+}
+
+.homepage-carousel
+{
+  min-height: 100vh;
+}
+
 @media(min-width: 600px){
   .carousel-caption{
     font-size: 250%;
@@ -474,11 +616,10 @@ font-size: 275%;
   .search{
     width: 100%;
     transition: all 0.5s;
-    font-size:13px;
+    font-size:15px;
     position: absolute;
-    margin-top: 15px;
-    border: 0px rgba(0,0,0,0.5) solid;
-    box-shadow: 0px 0px 0.01px 0px;
+    margin-top: 14px;
+    border: 0px;
     padding: 5px;
     font-weight: bold;
     visibility: visible;
@@ -488,23 +629,6 @@ font-size: 275%;
     color:white;
   }
 
-  .search::-webkit-input-placeholder {
-  color: rgb(250,250,250)  !important;
-  }
-
-  .search:-moz-placeholder { /* Firefox 18- */
-  color: rgb(250,250,250) !important;
-  }
-
-  .search::-moz-placeholder {  /* Firefox 19+ */
-  color: rgb(250,250,250)  !important;
-  }
-
-  .search:-ms-input-placeholder {
-  color: rgb(250,250,250) !important;
-  }
-
-
 
   .topbar .search-col input[type=text]:focus
   {
@@ -512,12 +636,24 @@ font-size: 275%;
   }
 
 }
+@media(min-width:1800px)
+{
+  .search
+  {
+    font-size: 20px;
+  }
+}
 @media(max-width: 600px){
   .carousel-caption{
     font-size: 150%;
   }
   #carousel-generic{
     height: 50%;
+  }
+
+  #homepage-carousel-holder
+  {
+    min-height: 100vh;
   }
   .card-profile-image
   {
@@ -538,9 +674,8 @@ font-size: 275%;
     transition: all 0.5s;
     font-size:13px;
     position: absolute;
-    margin-top: 15px;
-    border: 0px rgba(0,0,0,0.5) solid;
-    box-shadow: 0px 0px 0.01px 0px;
+    margin-top: 17px;
+    border: 0px;
     padding: 5px;
     font-weight: bold;
     visibility: visible;
@@ -548,6 +683,7 @@ font-size: 275%;
     font-weight: bold;
     background:#3498DB;
     color:white;
+    margin-left: 35px;
   }
 }
 
@@ -559,11 +695,11 @@ font-size: 275%;
   .card-button
   {
     position: absolute;
-    right: 5px;
+    right: 11px;
     padding-top:1%;
     padding-bottom: 1%;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 3%;
+    padding-right: 3%;
     background-color: #3498DB;
     color: white;
     float: right;
@@ -583,7 +719,7 @@ font-size: 275%;
   .card-button
   {
     position: absolute;
-    right: 5px;
+    right: 10px;
     padding-top:0.5%;
     padding-bottom: 0.5%;
     padding-left: 7%;
@@ -717,11 +853,13 @@ font-size: 275%;
         }
 
         .back-card{
-          padding: 10px;
+          padding: 15px;
         }
 
         .back-content{
-          border: #000 1px solid;
+          border: rgb(204,204,204) 1px solid;
+          font-size: 90%;
+          transition: all 0.3s;
         }
         .gap{
           height: 5px;
@@ -738,11 +876,18 @@ font-size: 275%;
 }
 .login-modal-toggle-text
 {
-  margin-top:2%;
+  margin-top:2.4%;
   margin-left: -13%;
   text-align: left;
   visibility: visible;
   color: white;
+}
+@media(min-width:1800px)
+{
+  .login-modal-toggle-text
+  {
+    margin-top: 2%;
+  }
 }
 .login-modal-image
 {
@@ -912,27 +1057,35 @@ font-size: 275%;
     display: none;
   }
 }
-
 .homepage-add-projects-button
 {
-  margin-top: 10%;
+  margin-top: -14%;
+  padding-top: 5%;
 }
 .green-button
 {
   background: rgb(46,204,113);
-  color: white;
-  padding: 0.1%;
+  color: rgb(240,240,240);
+  padding: 0%;
   padding-left: 6%;
   padding-right: 6%;
-  font-size: 90%;
-  border: 0.5px solid white;
+  border: 0.5px solid rgb(204,204,204);
 }
 .green-button p
 {
   text-align: center;
   padding: 0;
   padding-top: 10px;
+  font-size: 120%;
 }
+@media(min-width:1800px)
+{
+  .green-button p
+  {
+    font-size: 150%;
+  }
+}
+
 
 /*Modal CSS Ends*/
 
@@ -954,6 +1107,11 @@ font-size: 275%;
 
 }
 
+#profile-self-top-section
+  {
+    min-height: 100vh;
+  }
+
 .profile-self-info
 {
   background:white;
@@ -971,9 +1129,9 @@ font-size: 275%;
   padding:5%;
   margin-top:5%;
   margin-bottom:5%;
-  color: black;
-  font-weight: bold;
+  color: rgb(40,40,40);
   position: relative;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
 .profile-self-findproject-holder a
 {
@@ -981,9 +1139,11 @@ font-size: 275%;
 }
 .profile-self-aboutme-header
 {
-  height:60%;
+  height:30vh;
   border-bottom: 1px solid rgb(204,204,204);
   text-align: center;
+  margin-left: 5%;
+  margin-right:5%;
 }
 .profile-self-image-holder
 {
@@ -1005,11 +1165,27 @@ font-size: 275%;
 {
   margin:0;
 }
-.profile-self-aboutme-footer
-{
+.profile-self-aboutme-footer{
+  padding-top:2%;
   text-align: center;
   margin-top:2%;
-  overflow: hidden;
+  overflow-y: scroll;
+  min-height: 17vh;
+  max-height: 17vh;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.profile-self-aboutme-footer::-webkit-scrollbar {
+   width: 0.4em;
+}
+
+.profile-self-aboutme-footer::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.profile-self-aboutme-footer::-webkit-scrollbar-thumb {
+ background-color: darkgrey;
+ outline: 1px solid slategrey;
 }
 .profile-self-aboutme-footer .CustomBadge
 {
@@ -1059,6 +1235,13 @@ font-size: 275%;
 {
   padding:5px;
 }
+@media(min-width:1200px) and (max-width:1400px)
+{
+  #profile-self-nav-right
+  {
+    margin-top:-9px;
+  }
+}
 .profile-self-nav-image
 {
   height:15%;
@@ -1088,6 +1271,9 @@ font-size: 275%;
   border: 0;
   width:100%;
   height:6%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 120%;
 }
 .profile-search-bar-holder
 {
@@ -1098,6 +1284,11 @@ font-size: 275%;
 {
   height: 4%;
   width: auto;
+  margin-top: 16%;
+}
+.project-for-your-skills
+{
+    margin-top: 0.7%;
 }
 
 /*Cards On Self View profile*/
@@ -1127,11 +1318,12 @@ font-size: 275%;
     padding: 5px;
 }
 .long-card-container p{
-    font-size: 120%;
+    font-size: 130%;
 }
 .long-card-container a{
-    font-size: 120%;
+    font-size: 130%;
 }
+
 .long-card-heading{
   background: #3498DB;
   padding: 5px;
@@ -1148,8 +1340,16 @@ font-size: 275%;
   font-size: 120%;
 }
 .long-card-desc{
-	border:1px solid #3498DB;; padding:8px; color:#3498DB;;
-  margin-top: 20px;
+	border:1px solid #3498DB; padding:8px; color:#3498DB;;
+  margin-top: 20px;transition: 0.3s all;cursor: pointer;
+}
+.long-card-desc:hover{
+  background:#3498DB;
+  transition: 0.3s all;
+}
+.long-card-desc:hover a{
+  color:white;
+  transition: 0.3s all;
 }
 .long-card-title{
     position: relative;
@@ -1165,6 +1365,9 @@ font-size: 275%;
   padding: 5px;
   margin: 2px;
   border: 0.5px solid #3498DB;
+}
+.long-card-tags{
+  font-size: 110%;
 }
 .long-card-body{
   padding-top: 10px;
@@ -1244,7 +1447,7 @@ font-size: 275%;
 }
 @media (max-width: 600px) and (max-height: 600px){
   .new-cards-section{
-  height: 510%;
+  height: 580%;
  }
 }
 
@@ -1340,17 +1543,17 @@ font-size: 275%;
 
 .comments:before {
     width: 3px;
-    left: 105px;
+    left: 110px;
     bottom: 0px;
     background: rgba(240,240,240,0.3);
 }
 
 .comment:before {
-    width: 9px;
-    height: 9px;
-    border: 3px solid #fff;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #fff;
     border-radius: 100px;
-    margin: 16px 0 0 -6px;
+    margin: 16px 0 0 1.2px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
     background: #3498DB;
 }
@@ -1380,6 +1583,33 @@ font-size: 275%;
   margin-right: 10px;
   border: 2px solid white;
 }
+@media(max-width:600px)
+{
+  #other-nav-right span
+  {
+    font-size: 115%;
+    margin-top: 5px;
+  }
+  .profile-other-nav-image
+  {
+    height: 7%;
+    margin-top: -5px;
+  }
+  .profile-self-info-footer
+  {
+    margin-top: -55px;
+    border-top: 1px solid rgb(204,204,204);
+  }
+  .profile-search-bar
+  {
+    height: 70%;
+  }
+  .profile-self-search-bar-row
+  {
+    margin-bottom: -120px;
+  }
+}
+
 .profile-other-user
 {
   background:white;
@@ -1579,7 +1809,7 @@ font-size: 275%;
 }
 .nav-brand-heading .brand-name
 {
-  margin-top: 0px;
+  margin-top: 2.4px;
 }
 .CustomBadge
 {
@@ -1835,7 +2065,18 @@ Edit Profile
   height: 20%;
   margin-top:2%;
 }
-
+#onboarding-next
+{
+  font-size: 100%;
+}
+@media(max-width:1200px) and (min-width:1000px)
+{
+  #onboarding-next
+  {
+    font-size: 100%;
+    top:-17px;
+  }
+}
 .CustomForm
 {
   background: white;
@@ -2076,9 +2317,31 @@ Edit Profile
   color:white;
   font-size:150%;
 }
+.homepage-get-service
+{
+  text-decoration: none;
+  color:black;
+}
+.homepage-get-service:hover
+{
+  color:black;
+}
+.back-content:hover
+{
+  transform:scale(1.02);
+  transition:all 0.3s;
+}
 .work
 {
   padding: 2%;
+  border-right: 1px solid rgb(204,204,204);
+}
+.money
+{
+  padding: 0.5%;
+  font-size: 120%;
+  color:green;
+
 }
 .onboarding-added-work
 {

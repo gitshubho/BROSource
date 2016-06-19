@@ -37,7 +37,7 @@
         $('.sliding').css({
             top:y
         })
-        
+
         console.log('Hello World!');
     });
 
@@ -166,7 +166,7 @@
         </div>
       </div>
       <div class="row">
-      <div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;text-align:center">
+      <div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:65px;text-align:center">
         <a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;;">Compose Message</a>
       </div>
     </div>
@@ -186,7 +186,7 @@
         <div class="col-lg-5 col-md-4 col-md-push-1">
           <div class="sender-name"><h4>To Selena Gomez</h4><small class="msg-date">Direct Message</small></div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
+        <div class="col-lg-5 col-md-5">
           <button type="submit" class="msg-type sumbit-btn" style="float: right; text-align:center;"><b>Send</b></button>
         </div>
       </div>
@@ -246,13 +246,13 @@
 
 
 
-<div class="container-fluid gray-background">
+<div class="container-fluid" id="profile-self-top-section">
 
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
           <div class="row nav-brand-heading">
-              <div class="col-md-2 col-xs-4">
+              <div class="col-md-2 col-xs-3">
                   <div class="brand-name"><b>BRO</b>Source</div>
               </div>
              <div class="col-md-10 col-md-push-2 hide-on-small">
@@ -264,17 +264,17 @@
                     </li>
                 </ul>
               </div>
-              <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
+              <div class="col-xs-9 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
                 <ul class="center-align-on-small" id="other-nav-right">
-                  <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
+                  <li id="mobile-search"><a onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
                   <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
                   <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                    <li>
-                      {% if result['userInfo']['photo_link'] != "" %}
+        <!--             {% if result['userInfo']['photo_link'] != "" %}
                      <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-                     {% else %}
+                     {% else %}  -->
                      <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-                     <!-- {% end %} -->
+              <!--        {% end %}  --->
                    </li>
                 </ul>
               </div>
@@ -287,15 +287,15 @@
       <div class="collapse navbar-collapse" id="navbar">
         <br>
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-           <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b>{{ result['userInfo']['username'] }}&nbsp&nbsp</b><br><a href="#">{{ result['userInfo']['email'] }}&nbsp&nbsp</a></p></li>
+           <li><a class="pointer" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
+           <li><a class="pointer" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+            <li><p align="right"><b>{{ result['userInfo']['username'] }}&nbsp&nbsp</b><br><a class="pointer">{{ result['userInfo']['email'] }}&nbsp&nbsp</a></p></li>
             <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
-               {% if result['userInfo']['photo_link'] != "" %} 
+    <!--          {% if result['userInfo']['photo_link'] != "" %}
               <img src="../{{ result['userInfo']['photo_link'] }}" class="img-responsive profile-other-nav-image">
-              {% else %}
+              {% else %}  -->
               <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-              {% end %}
+        <!--      {% end %}  -->
             </li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -333,11 +333,11 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
-                              {% if result['userInfo']['photo_link'] != '' %}
+              <!--                {% if result['userInfo']['photo_link'] != '' %}
                                 <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
-                              {% else %}
+                              {% else %}  -->
                                 <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
-                              {% end %}
+                  <!--          {% end %}  -->
                             </div>
                             <div class="profile-self-name-holder">
                                 <p><b>{{result['userInfo']['name']}}</b></p>
@@ -345,11 +345,11 @@
                             </div>
                         </div>
                         <div class="profile-self-aboutme-footer">
-                        <p style="overflow-y:scroll; height:40%;">
+                        <p>
                           {% for skill in result['userInfo']['skills'] %}
                             <span class="badge CustomBadge">{{ skill }}</span>
                             {% end %}
-                            
+
                           <br></p>
 
                         </div>
@@ -364,16 +364,16 @@
                         </div>
                         <div class="profile-self-info-footer">
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views">
-                                <p><span>{{ result['userInfo']['views'] }}</span><br>Views</p>
+                                <p><span><!--{{ result['userInfo']['views'] }} --></span><br>Views</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed">
-                                <p><span>{{ len(result['userInfo']['projects']) }}</span><br>Projects</p>
+                                <p><span><!--{{ len(result['userInfo']['projects']) }} --></span><br>Projects</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing">
-                                <p><span>{{ len(result['userInfo']['skills']) }}</span><br>Skills</p>
+                                <p><span><!--{{ len(result['userInfo']['skills']) }} --></span><br>Skills</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill">
-                                <p><span>{{ result['userInfo']['ratings'] }}</span><br>Rating</p>
+                                <p><span><!-- {{ result['userInfo']['ratings'] }}  --></span><br>Rating</p>
                             </div>
                         </div>
                     </div>
@@ -383,17 +383,18 @@
         <div class="col-md-1 col-xs-1"></div>
     </div>
 </div>
+</div>
 <br>
 <!-- CARDS  -->
 
-<div class="gray-background new-cards-section">
+<div class="gray-background new-cards-section container-fluid">
     <div class="container all-new-cards-margin">
         <div class="row">
             <div class="col-md-1 col-xs-0"></div>
             <div class="col-md-10 col-xs-12">
                 <div class="row" id="profile-self-search-bar-row">
-                    <div class="col-md-2 col-xs-4">
-                        <p>Project For Your Skills</p>
+                    <div class="col-md-2 col-xs-4 project-for-your-skills">
+                        <p class="">Project For Your Skills</p>
                     </div>
                     <div class="col-md-9 col-xs-6 profile-search-bar-holder">
                       <form action="/search" method="post">
@@ -594,7 +595,6 @@
                                       </div>
                                     </div>
     </div>
-</div>
 </div>
 
 <div class="footer-profile container-fluid" >
