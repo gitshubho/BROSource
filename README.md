@@ -1,7 +1,7 @@
 # BROSource
 
 ## Description
-
+The description will go here.
 
 ## Dependencies
 + Front-end
@@ -15,6 +15,7 @@
 
 ## Installation on local machine
         python server.py
+
 ## Known Issues
 + Search doesn't work
 + Firefox bug.
@@ -27,7 +28,7 @@
 + Piyush Goyal
   + http://
 + Rahul Krishna
-  + http://rahulakrishna.github.io
+  + http://github.com/rahulakrishna
 + Rajat Mukati
   + http://
 + Rishi Raj
