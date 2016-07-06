@@ -229,8 +229,9 @@ class UserProfileHandler(RequestHandler):
     def get(self, username):
         data = []
         userInfo = None
-        userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
-        data.append(setUserInfo(userInfo,'username','email','photo_link'))
+        if bool(self.get_secure_cookie('user')):
+            userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
+            data.append(setUserInfo(userInfo,'username','email','photo_link'))
         userInfo = None
 
         if username != 'Dummy':
@@ -238,11 +239,11 @@ class UserProfileHandler(RequestHandler):
             userInfo = yield db.users.find_one({'username':username})
             if bool(userInfo):
                 data.append(json.loads(json_util.dumps(userInfo)))
-
+                print(data)
                 if bool(self.get_secure_cookie('user')):
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = True),l=0)#l is the variable which is used in html page to get correct list index of data
                 else:
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = False),l=1)
             else:
                 self.redirect('/?username=False')
         else:
