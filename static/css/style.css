@@ -359,12 +359,17 @@
   background:white;
   width:100%;
   right:10%;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: all 0.3s;
   padding: 5%;
   min-height: 195px;
 }
+.customcard:hover {
+  box-shadow: 0 0 24px rgba(0,0,0,0.28);
+  transition: all 0.3s;
+}
+
 @media(min-width:1900px)
 {
   .customcard
@@ -394,8 +399,8 @@
 .card-padding
 {
   padding-top:3%;
-  padding-left: 9%;
-  padding-right: 9%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .topcard
 {
@@ -705,6 +710,7 @@ color:  rgb(173,214,241) !important;
     float: right;
     text-align: center;
     margin-top: 0.45%;
+    border-radius: 2px;
   }
   .card-button a
   {
@@ -729,6 +735,7 @@ color:  rgb(173,214,241) !important;
     float: right;
     text-align: center;
     margin-top:0;
+    border-radius:2px;
   }
   .card-button a
   {
@@ -842,7 +849,20 @@ color:  rgb(173,214,241) !important;
             padding:5px;
 
         }
-
+        @media(min-width:1900px)
+        {
+          .front{
+            padding-top: 10px;
+          }
+          .card-footer
+          {
+            margin-top: -12px !important;
+          }
+          .card-button
+          {
+            margin-top: 12px;
+          }
+        }
 
 
         /* back, initially hidden pane */
@@ -1294,8 +1314,8 @@ color:  rgb(173,214,241) !important;
 /*Cards On Self View profile*/
 
 .custom-long-card{
-    background: #ffffff; box-shadow: #0f0f0f 0px 0px 1px 0px; padding: 15px;padding-top: 0;font-size: 11px;
-    font-family: 'Montserrat', sans-serif;
+    background: #ffffff; box-shadow:0 0 2px rgba(0,0,0,0.2); padding: 15px;padding-top: 0;font-size: 11px;
+    font-family: 'Montserrat', sans-serif;transition: all 0.3s;
 }
 
 .new-cards{
@@ -1323,6 +1343,10 @@ color:  rgb(173,214,241) !important;
 .long-card-container a{
     font-size: 130%;
 }
+.long-card-container:hover .custom-long-card{
+  box-shadow: 0 0 24px rgba(0,0,0,0.32);
+  transition: all 0.3s;
+}
 
 .long-card-heading{
   background: #3498DB;
@@ -1335,9 +1359,13 @@ color:  rgb(173,214,241) !important;
   padding-top: 2%;
   color: white;
 }
+.long-card-title p{
+  color: rgba(240,240,240,0.85);
+}
 .long-card-title span{
   font-weight: bold;
   font-size: 120%;
+  color: rgba(240,240,240,1);
 }
 .long-card-desc{
 	border:1px solid #3498DB; padding:8px; color:#3498DB;;
@@ -1360,17 +1388,19 @@ color:  rgb(173,214,241) !important;
 }
 .long-card-tags{
   background: white;
-  font-size: 85%;
+  font-size: 120%;
+  font-weight: 500;
   color:#3498DB;
-  padding: 5px;
+  padding: 9px;
   margin: 2px;
-  border: 0.5px solid #3498DB;
-}
-.long-card-tags{
-  font-size: 110%;
+  border: 0.5px solid rgb(220,220,250);
+  border-radius: 20px;
 }
 .long-card-body{
   padding-top: 10px;
+}
+.long-card-body p{
+  font-weight: lighter;
 }
  .apply    {
      padding: 0px;
