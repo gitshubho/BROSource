@@ -12,12 +12,11 @@
      resize:vertical;
      outline:  0 !important;
  }
-<<<<<<< HEAD
 
  input{
    outline: 0 !important;
  }
-=======
+
  select
  {
    outline: 0 !important;
@@ -26,7 +25,7 @@
 {
   cursor:pointer;
 }
->>>>>>> 4c2cf8dbe79a4b15dca13d3baa21b713ada1d630
+
   #profile-other
   {
     background: rgb(240,240,240);
@@ -173,14 +172,14 @@
 
    .topbar{
 
-      height: 80px;
+      min-height: 80px;
       background: #fff;
       position: fixed;
       left: 0px;
       width: 100%;
       text-align: center;
       z-index: 2;
-      padding-bottom: 5%;
+      padding:15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       top: -20px;
       background: #3498DB;
@@ -504,7 +503,7 @@ max-height: 93px;
 
 #homepage-search-icon
 {
-  margin-top: 52%;
+  margin-top: 20px;
   font-size: 150%;
   margin-left: 110%;
   padding: 0;
@@ -522,7 +521,7 @@ max-height: 93px;
   }
   #homepage-search-icon
   {
-    margin-top: 25%;
+    margin-top: 17px;
     font-size: 150%;
       margin-left: 100%;
     padding: 0;
@@ -913,6 +912,7 @@ color:  rgb(173,214,241) !important;
 {
   position: relative;
   width:50%;
+  margin-top: 5px;
   height: auto;
   display: inline-block;
 }
