@@ -46,6 +46,7 @@ class MainHandler(RequestHandler):
             userInfo = setUserInfo(userInfo, 'username', 'photo_link')
             #print userInfo
 
+        projects= yield db.project.find({},{'name':1,'description':1,'skills':1,'_id':1}).sort([('$natural',-1)]).to_list(length=6)
         featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('ratings', -1)]).to_list(length=3)
         recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
         d={'':"",'1':"Technical",'2':"Management",'3':"Design",'4':"Technical and Management",'5':"Technical and Design",'6':"Design and Management",'7':"Technical, Design and Management"}
@@ -87,7 +88,8 @@ class MainHandler(RequestHandler):
 
                         R1_Name=recent_user[0]['name'],R1_Title=d[recent_user[0]['category']],R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
                         R2_Name=recent_user[1]['name'],R2_Title=d[recent_user[0]['category']],R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
-                        R3_Name=recent_user[2]['name'],R3_Title=d[recent_user[0]['category']],R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'])
+                        R3_Name=recent_user[2]['name'],R3_Title=d[recent_user[0]['category']],R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'],
+                        projects=projects)
 
 class LoginHandler(RequestHandler):
 
@@ -377,7 +379,7 @@ class ViewProjectHandler(RequestHandler):
                 self.render('apply_project.html',result= dict(data=data,loggedIn = False))
 
         else:
-            self.redirect('/?prjoect=False')
+            self.redirect('/?project=False')
 
 class Donate(RequestHandler):
 
