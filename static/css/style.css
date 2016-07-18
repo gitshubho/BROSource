@@ -2,7 +2,6 @@
   {
     background:#3498DB;
      font-family: Montserrat, sans-serif;
-     x-overflow:hidden;
   }
  input
  {
@@ -181,9 +180,11 @@
       z-index: 2;
       padding:15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      top: -20px;
+      top: -40px;
       background: #3498DB;
       color: white;
+      padding-bottom: 0;
+      overflow-x: hidden !important;
    }
 @media(min-width:1800px)
 {
@@ -191,7 +192,8 @@
   {
       padding-top: 1%;
       font-size: 150%;
-      padding-bottom: 6.5%;
+      margin-top: -10px;
+
   }
 }
    .topbar span
@@ -201,6 +203,9 @@
      margin-right: 30%;
      color: white;
    }
+
+  #recent
+
    .rounded-box{
       width: 100%; border-radius: 50px; border: 0px;
    }
@@ -247,7 +252,7 @@
    .brand-name
    {
      text-align: left;
-     margin-top: 15px;
+     margin-top: 22px;
      margin-left: -10px;
      padding-left: 0;
      font-size: 130%;
@@ -411,7 +416,9 @@
   padding-right:3%;
   padding-bottom: 2%;
   background:rgb(84,95,102);;
+  overflow-x: hidden;
 }
+
 .card-header
 {
   padding:0;
@@ -512,6 +519,7 @@ max-height: 93px;
 #homepage-search-row
 {
   margin-left: -38%;
+  margin-top: 4px;
 }
 @media(min-width:1400px)
 {
@@ -895,7 +903,7 @@ color:  rgb(173,214,241) !important;
 }
 .login-modal-toggle-text
 {
-  margin-top:2.4%;
+  margin-top:3.5%;
   margin-left: -13%;
   text-align: left;
   visibility: visible;
@@ -905,7 +913,7 @@ color:  rgb(173,214,241) !important;
 {
   .login-modal-toggle-text
   {
-    margin-top: 2%;
+    margin-top: 2.8%;
   }
 }
 .login-modal-image
@@ -1398,6 +1406,8 @@ color:  rgb(173,214,241) !important;
 }
 .long-card-body{
   padding-top: 10px;
+  overflow-y: hidden;
+  height: 140px;
 }
 .long-card-body p{
   font-weight: lighter;
