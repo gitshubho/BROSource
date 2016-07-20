@@ -1417,7 +1417,7 @@ color:  rgb(173,214,241) !important;
 }
 
 .profile-image img{
-	width: 60px; position: relative;
+	width: 50px; position: relative; top:6px;
 }
 
 .apply{
