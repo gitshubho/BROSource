@@ -132,6 +132,9 @@ $(document).ready(function()
        $(this).toggleClass("topborder-invisible");
        $(this).toggleClass("topborder-visible");
    });
+
+   $('.views-section').hide();
+
    var NavHtOnboard=$("#onboarding-nav").height();
      $("#onboarding-carousel-indicators div").css("height",NavHtOnboard/2);
      $("#onboarding-carousel-indicators div").css("width",NavHtOnboard/2);

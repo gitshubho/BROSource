@@ -14,12 +14,15 @@
 
 
 </head>
+
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/js/profile.js"></script>
-  <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script src="../static/frameworks/Chart.js/Chart.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/self_script.js"></script>
 <script>
     $(document).ready(function () {
+        $('.projects-section').hide();
         var window_height=$(window).height();
         var z=$('.nav').height();
         var x=$('.navbar-nav').height();
@@ -36,11 +39,8 @@
         });
         $('.sliding').css({
             top:y
-        })
-
-        console.log('Hello World!');
-    });
-
+        });
+      });
 </script>
 <style>
 
@@ -114,12 +114,113 @@
                 <div class="col-md-9 col-xs-12">
                     <div class="profile-self-info">
                         <div class="profile-self-info-body">
+                          <div class="views-section">
+                            <div class="row">
+                            <div class="col-md-6">
+                              <div class="views-holder" style="">
+                                <span>Your profile was viewed by:<br></span>
+                                <p>John Doe</p>
+                                <p>Hillary Clinton</p>
+                                <p>Selena Gommez</p>
+                                <p>Larry Page</p>
+                                <p>Diego Costa</p>
+                              </div>
+                            </div>
+                            <div class="col-md-6 hide-on-small">
+                              <canvas id="viewsChart" height="250" style="padding-right:50px;padding-top:50px;"></canvas>
+                              <script>
+                                var view_chart=$('#viewsChart');
+                                var lineChart= new Chart(view_chart, {
+                                     type:'line',
+                                     data: {
+                              labels: ['Hi', "February", "March", "April", "May"],
+                              datasets: [
+                                {
+                                    label: "Views",
+                                    fill: false,
+                                    lineTension: 0.1,
+                                    backgroundColor: "rgba(75,192,192,0.4)",
+                                    borderColor: "rgba(75,192,192,1)",
+                                    borderCapStyle: 'butt',
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    borderJoinStyle: 'miter',
+                                    pointBorderColor: "rgba(75,192,192,1)",
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                                    pointHoverBorderWidth: 2,
+                                    pointRadius: 1,
+                                    pointHitRadius: 10,
+                                    data: [65, 59, 80, 81, 56, 55, 40],
+                                    spanGaps: false,
+                                }
+                              ]
+                              }
+                                  });
+                              </script>
+                            </div>
+                          </div>
+                        </div>
+                          <div class="projects-section" style="">
+                            <div class="row project-heading-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Project Name
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                Project Price
+                              </div>
+                            </div>
+                            <div class="row project-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Design A Responsive Website
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                $6
+                              </div>
+                            </div>
+                            <div class="row project-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Design A Responsive Website
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                $6
+                              </div>
+                            </div>
+                            <div class="row project-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Design A Responsive Website
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                $6
+                              </div>
+                            </div>
+                            <div class="row project-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Design A Responsive Website
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                $6
+                              </div>
+                            </div>
+                            <div class="row project-row" style="">
+                              <div class="col-md-5 col-md-push-1">
+                                Design A Responsive Website
+                              </div>
+                              <div class="col-md-5 col-md-push-1">
+                                $6
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                         <div class="profile-self-info-footer">
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views" onclick="$('.views-section').show();$('.projects-section').hide();">
                                 <p><span><!--{{ result['userInfo']['views'] }} --></span><br>Views</p>
                             </div>
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed" onclick="$('.views-section').hide();$('.projects-section').show();">
                                 <p><span><!--{{ len(result['userInfo']['projects']) }} --></span><br>Projects</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing">
@@ -175,7 +276,7 @@
                                       <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                     </div>
                                     <div class="col-md-10 col-lg-10 col-sm-10">
-                                      <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                      <div class="long-card-title"><p><span>{{ projects[0]['name'] }}</span><br>Web Developers</p></div>
 
                                     </div>
                                   </div>
@@ -186,8 +287,7 @@
                                     </div>
                                   </div>
                                   <div class="long-card-body">
-                                    <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                    </p>
+                                    <p>{{projects[0]['description']}}</p>
                                   </div>
                                   <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                 </div>
@@ -204,7 +304,7 @@
                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                       </div>
                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                        <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                        <div class="long-card-title"><p><span>{{projects[1]['name']}}</span><br>Web Developers</p></div>
 
                                       </div>
                                     </div>
@@ -215,8 +315,7 @@
                                       </div>
                                     </div>
                                     <div class="long-card-body">
-                                      <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                      </p>
+                                      <p>{{projects[1]['description']}}</p>
                                     </div>
                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                   </div>
@@ -232,7 +331,7 @@
                                           <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                         </div>
                                         <div class="col-md-10 col-lg-10 col-sm-10">
-                                          <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                          <div class="long-card-title"><p><span>{{projects[2]['name']}}</span><br>Web Developers</p></div>
 
                                         </div>
                                       </div>
@@ -243,8 +342,7 @@
                                         </div>
                                       </div>
                                       <div class="long-card-body">
-                                        <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                        </p>
+                                        <p>{{projects[2]['description']}}</p>
                                       </div>
                                       <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                     </div>
@@ -268,7 +366,7 @@
                                                     <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                   </div>
                                                   <div class="col-md-10 col-lg-10 col-sm-10">
-                                                    <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                                    <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
 
                                                   </div>
                                                 </div>
@@ -279,8 +377,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="long-card-body">
-                                                  <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                                  </p>
+                                                  <p>{{projects[3]['description']}}</p>
                                                 </div>
                                                 <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                               </div>
@@ -297,7 +394,7 @@
                                                       <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                     </div>
                                                     <div class="col-md-10 col-lg-10 col-sm-10">
-                                                      <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                                      <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
 
                                                     </div>
                                                   </div>
@@ -308,8 +405,7 @@
                                                     </div>
                                                   </div>
                                                   <div class="long-card-body">
-                                                    <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                                    </p>
+                                                    <p>{{projects[4]['description']}}</p>
                                                   </div>
                                                   <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                 </div>
@@ -325,7 +421,7 @@
                                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                       </div>
                                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                                        <div class="long-card-title"><p><span>BroSource</span><br>Web Developers</p></div>
+                                                        <div class="long-card-title"><p><span>{{projects[5]['name']}}</span><br>Web Developers</p></div>
 
                                                       </div>
                                                     </div>
@@ -336,8 +432,7 @@
                                                       </div>
                                                     </div>
                                                     <div class="long-card-body">
-                                                      <p>We want to get a animated video and header image made for our newly launched website!<br><br>The video should used colours from our logo and should be light to load. The header image should should show the benefits of being a freelancer and urge the user to sign up on our website.
-                                                      </p>
+                                                      <p>{{projects[5]['description']}}</p>
                                                     </div>
                                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                   </div>
@@ -379,7 +474,5 @@
     <div class="col-md-4 col-xs-1"></div>
   </div>
 </div>
-
-
 </body>
 </html>

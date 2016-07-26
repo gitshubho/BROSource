@@ -1238,11 +1238,10 @@ color:  rgb(173,214,241) !important;
   padding-top:2%;
   text-align: center;
   margin-top:2%;
-  overflow-y: scroll;
+  overflow-y: auto;
   min-height: 17vh;
   max-height: 17vh;
   margin-left: 5%;
-  margin-right: 5%;
 }
 .profile-self-aboutme-footer::-webkit-scrollbar {
    width: 0.4em;
@@ -1266,8 +1265,13 @@ color:  rgb(173,214,241) !important;
 }
 .profile-self-info-body
 {
-  height:85%;
+
+  min-height: 85%;
   border-bottom:1px solid rgb(204,204,204);
+  background: white;
+  max-height: 150%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .profile-self-info-footer-tab
 {
@@ -1279,6 +1283,7 @@ color:  rgb(173,214,241) !important;
   border: 1px solid rgb(204,204,204);
   border-bottom:none;
   border-top: none;
+  background: white;
 }
 
 .profile-self-info-footer-tab span
@@ -1678,8 +1683,9 @@ color:  rgb(173,214,241) !important;
   }
   .profile-self-info-footer
   {
-    margin-top: -55px;
     border-top: 1px solid rgb(204,204,204);
+    background: white;
+
   }
   .profile-search-bar
   {
@@ -2681,4 +2687,46 @@ Edit Profile
   margin: 0;
   margin-right: -20px;
   padding: 0;
+}
+.views-holder
+{
+  padding-top:50px !important;padding-left:50px !important;
+}
+.views-holder span
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+.views-holder p
+{
+  margin-top: 20px;
+}
+@media(max-width:600px)
+{
+  .views-holder
+  {
+    padding-top: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .profile-self-info-body
+  {
+
+  }
+}
+.projects-section
+{
+    text-align:center; padding-top:20px;
+}
+.project-heading-row
+{
+  font-size:150%;font-weight:bold;
+  border-bottom: 1px solid rgb(204,204,204);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 10px;
+}
+.project-row
+{
+  font-size:120%; padding-top:30px !important;
 }
