@@ -15,15 +15,37 @@
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="../static/js/script.js"></script>
-<link href="../static/select2-4.0.3/dist/css/select2.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<script src="../static/select2-4.0.3/dist/js/select2.full.js"></script>
+
+<script>
+  $(document).ready(function()
+  {
+      $('#search-result-row').hide();
+      $('.search').on('keyup',function()
+      {
+          var search_item=$(this).val();
+          if(search_item==null)
+          {
+            $('#search-result-row').hide();
+            return;
+          }
+          $.ajax(
+            {
+              url: '#',
+              data: search_item,
+              success: function(result){
+                $('#search-result-row').show();
+              }
+            }
+          )
+      });
+  });
+</script>
 
 <body>
 
 <!--Title Bar with the title and hidden search field which appears on scroll-->
 <div class="container-fluid">
-   <div class="topbar col-md-12">
+   <div class="topbar col-md-12" style="overflow-y:visible;">
      <br>
        <div class="row">
          <div class="col-md-3 col-xs-3">
@@ -62,7 +84,7 @@
          </div>
          <div class="col-md-4 col-xs-2 col-md-push-1">
          <!-- The Login Modal Toggle Button -->
-         {% if result['loggedIn'] == False %}
+<!--         {% if result['loggedIn'] == False %} -->
          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
            <div class="row hide-on-small">
             <div class="col-md-4 col-xs-4">
@@ -76,7 +98,7 @@
             <img src="../static/images/Login-Icon.png" class="login-modal-image" style="margin-left:-50px">
           </div>
         </a>
-        {%else%}
+    <!--    {%else%}
         <a type="button" class="login-modal-toggle" href="/profile/me">
            <div class="row">
             <div class="col-md-4 col-xs-4">
@@ -92,7 +114,7 @@
             </div>
           </div>
         </a>
-        {%end%}
+        {%end%}  -->
        </div>
        </div>
      </div>
@@ -234,8 +256,31 @@
                </div>
            <!-- Login Modal Ends-->
 
+<div class="coltainer-fluid hide-on-small" id="search-result-row">
+  <div class="row">
+    <div class="col-md-5 col-md-push-2">
+      <div class="row search-result">
+          <div class="col-md-2">
+            <img src="../static/images/17.jpg" class="search-result-image">
+          </div>
+          <div class="col-md-10">
+            <p>John Doe</p>
+          </div>
+      </div>
+      <div class="row search-result">
+          <div class="col-md-2">
+            <img src="../static/images/17.jpg" class="search-result-image">
+          </div>
+          <div class="col-md-10">
+            <p>John Doe</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container-fluid" id="homepage-carousel-holder">
 <div id="carousel-generic" class="carousel slide  homepage-carousel" data-ride="carousel">
+
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
