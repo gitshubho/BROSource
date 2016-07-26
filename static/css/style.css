@@ -1712,7 +1712,7 @@ color:  rgb(173,214,241) !important;
   }
   .profile-other-banner-image
   {
-    height: 30%;
+    height: 15px;
   }
   .profile-other-user-projects
   {
@@ -1723,7 +1723,7 @@ color:  rgb(173,214,241) !important;
   .profile-other-user-projects span
   {
       font-weight: bold;
-      font-size: %;
+      height: 200px;
   }
 }
 @media(max-width:600px)
@@ -1794,7 +1794,7 @@ color:  rgb(173,214,241) !important;
 .profile-other-banner-image
 {
   border-radius: 100%;
-  margin-top: -22%;
+  margin-top: 10px;
   margin-left: 5%;
   height:45%;
   width:auto;

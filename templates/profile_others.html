@@ -47,296 +47,9 @@
 
 <body id="profile-other">
 
-<div class="container-fluid">
 
-  <div class="row sliding dash-container">
-    <div class="col-md-9 dash-dismisser dash-dismisser-display-none hidden-xs" onclick="$('.dash').addClass('col-md-offset-12'); $('.dash').removeClass('col-md-offset-9'); $('.dash').toggleClass('not-in-view in-view'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none'); $('.dash-container').removeClass('z-index-high');"></div>
-    <div class="col-md-3 col-md-offset-12 dash not-in-view hidden-xs">
-      <div class="row">
-        <a href='/addproj'>
-        <div class="col-md-12 col-xs-12 dash-cols add-dash-col">
-          <div class="add-button">Add Project</div>
-        </div>
-        </a>
-        <a href='/profile/me'>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Dashboard
-        </div>
-        </a>
-        <a href='#'>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-briefcase" aria-hidden="true"></i> Projects
-        </div>
-        </a>
-        <a href='#'>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-pencil" aria-hidden="true"></i> Reviews
-        </div>
-        </a>
-        <a href='/profile/update'>
-        <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
-        </div>
-        </a>
-      </div>
-
-      <div class="row logout">
-        <a href='/logout'>
-        <div class="col-md-12 col-xs-12">
-          <i class="fa fa-power-off" aria-hidden="true"></i> Log Out
-        </div>
-      </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="row sliding notification">
-    <div class="col-md-9 bar-dismisser bar-dismisser-display-none hidden-xs" onclick="$('.bar').addClass('col-md-offset-12'); $('.bar').removeClass('col-md-offset-9'); $('.bar').toggleClass('not-in-view in-view'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none'); $('.notification').removeClass('z-index-high')"></div>
-    <div class="col-md-3 col-md-offset-12 bar not-in-view hidden-xs" style="hidden">
-
-    <section class="comments">
-	<article class="comment">
-		<a class="comment-img" href="#non">
-			<p>16 March 2016<br><span>10:30pm</span></p>
-		</a>
-
-		<div class="comment-body">
-			<div class="text">
-			  <p>Hello, this is an example comment</p>
-			</div>
-		</div>
-	</article>
-
-	<article class="comment">
-		<a class="comment-img" href="#non">
-		<p>16 March 2016<br><span>10:30pm</span></P>
-		</a>
-
-		<div class="comment-body">
-			<div class="text">
-			  <p>This is a much longer one that will go on for a few lines.</p>
-			  <p>It has multiple paragraphs and is full of waffle to pad out the comment. Usually, you just wish these sorts of comments would come to an end.</p>
-			</div>
-		</div>
-	</article>
-
-	<article class="comment">
-		<a class="comment-img" href="#non">
-		<p>16 March 2016<br><span>10:30pm</span></p>
-		</a>
-
-		<div class="comment-body">
-			<div class="text">
-				<p>this presentation has been updated
-				to looks more precisely to the facebook timeline</p>
-			</div>
-		</div>
-	</article>
-</section>​
-
-    </div>
-  </div>
-
-
-
-  <div class="row sliding messaging">
-   <div class="col-md-9 msg-dismisser msg-dismisser-display-none hidden-xs" onclick="$('.msg').addClass('col-md-offset-12'); $('.msg').removeClass('col-md-offset-9'); $('.msg').toggleClass('not-in-view in-view'); $('.msg-dismisser').toggleClass('msg-dismi(sser-display-none'); $('.msg-view').addClass('col-md-offset-12'); $('.msg-view').removeClass('col-md-offset-7'); $('.msg-view').toggleClass('not-in-view in-view'); $('.messaging').removeClass('z-index-high');"></div>
-    <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
-   <div class="view-messages">
-      <h2>Messages</h2>
-      <div class="row">
-        <div class="col-md-10 col-md-push-1 message">
-          <div class="col-md-3 msg-image">
-            <img src="../static/images/msg_head.jpeg" class="img-circle">
-          </div>
-          <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
-            <h4>Sender Name</h4>
-            <small>Content up here!</small>
-          </div>
-        </div>
-
-        <div class="col-md-10 col-md-push-1 message">
-          <div class="col-md-3 msg-image">
-            <img src="../static/images/msg_head.jpeg" class="img-circle">
-          </div>
-          <div class="col-md-9 msg-preview">
-            <h4>Sender Name</h4>
-            <small>Content up here!</small>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-  		<div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;text-align:center">
-  			<a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;;">Compose Message</a>
-  		</div>
-  	</div>
-    </div>
-
-    <!-- Sending Messages -->
-
-    <div class="container-fluid col-md-12 col-xs-12 col-sm-12 send-messages">
-    <form method="post" action="">
-    <div class="msg-topbar">
-    	<div class="row">
-    		<div class="col-lg-2 col-md-3">
-    			<div class="send-msg-img-holder">
-    				<img src="../static/images/17.jpg" class="send-msg-img">
-    			</div>
-    		</div>
-    		<div class="col-lg-5 col-md-4 col-md-push-1">
-    			<div class="sender-name"><h4>To Selena Gomez</h4><small class="msg-date">Direct Message</small></div>
-    		</div>
-    		<div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
-    			<button type="submit" class="msg-type sumbit-btn" style="float: right; text-align:center;"><b>Send</b></button>
-    		</div>
-    	</div>
-    </div>
-
-    	<div class="row">
-    			<div class="col-md-12 col-xs-12">
-    				<div class="msg-content">
-    					<div class="form-group">
-    					<textarea class="form-control" name = "message" placeholder="Enter the message here"></textarea>
-     				</div>
-     				</div>
-    			</div>
-    	</div>
-    </form>
-    <div class="msg-footer row">
-		<div class="col-md-12">
-			<a onclick="$('.view-messages').show();$('.send-messages').hide();" style="cursor:pointer;">Click here to close this message</a>
-		</div>
-	</div>
-    </div>
-    </div>
-  </div>
-<!--
-  <div class="row donating">
-    <div class="col-md-8"></div>
-    <div class="col-md-4 col-md-offset-12 donate-sidebar in-view">
-      <div class="donate-topbar row">
-        <div class="col-md-1 col-xs-1 donate-picture">
-        </div>
-        <div class="col-md-11 col-xs-11">
-          <div class="donating-to-placeholder">Donating To</div>
-          <div class="donating-to-name">William H. Gates</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="donate-img">
-          <img src="../static/images/donate.png">
-        </div>
-        <div class="donate-form col-md-12 col-xs-12 row">
-          <form method="post" action="#">
-            <p><i class="fa fa-rupee col-md-1 col-xs-1"></i> <input type="text" name="amt" required placeholder="Amount" class="donate-text col-md-11 col-xs-11"></p>
-            <p><i class="fa fa-envelope col-md-1 col-xs-1"></i> <input type="text" name="msg" placeholder="Message here" class="donate-text col-md-11 col-xs-11"></p>
-            <input name="anonymous" value=0 hidden=true>
-
-            <div class="donate-anonymous"><input type="checkbox" name="anonymous" value="Anonymous">Donate anonymously<br></div>
-            <input type="submit" value="Submit" class="col-xs-12 col-md-12 submit-button">
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
--->
-
-</div>
 
 <div class="container-fluid gray-background">
-
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <div class="row nav-brand-heading">
-              <div class="col-md-2 col-xs-4">
-                  <div class="brand-name"><b>BRO</b>Source</div>
-              </div>
-             <div class="col-md-10 col-md-push-2 hide-on-small">
-                <ul class="nav navbar-nav">
-                    <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-                      <form action="/search" method="post">
-                        <input type="text" class="" name="query" placeholder="Search for Projects or People">
-                      </form>
-                    </li>
-                </ul>
-              </div>
-              <div class="col-xs-7 custom-push hide-on-large" style="padding:0;margin:0px;margin-top:5px;">
-  {% if result['loggedIn'] == True %}
-                <ul class="center-align-on-small" id="other-nav-right">
-                  <li id="mobile-search"><a href="#" onclick="$('.search-mobile-topbar').toggleClass('search-mobile-topbar-in-view');"><span class="glyphicon glyphicon-search"></span></a></li>
-                  <li id="other-notification-trigger-small"><a href="notifications_mobile.html" target="_blank"><span class="glyphicon glyphicon-comment"></span></a></li>
-                  <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                   <li><img src="../static/images/17.jpg" class="img-responsive other-nav-image-small"></li>
-                </ul>
-        {% else %}
-                 <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
-                  <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-                    <div class="row hide-on-large">
-                      <div class="col-xs-12 custom-push">
-                        <p>Login/SignUp&nbsp&nbsp<span class="glyphicon glyphicon-user"></span><p>
-                      </div>
-                    </div>
-                  </a>
-                </ul>
-         {% end %}
-              </div>
-
-          </div>
-          <a class="navbar-brand" href="#"></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <br>
-        {% if result['loggedIn'] == True %}
-         <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
-           <li><a href="#" onclick="  $('.view-messages').show();$('.send-messages').hide();$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
-           <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-            <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
-            <li  onclick="$('.dash').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view');$('.dash-container').toggleClass('z-index-high'); $('.dash-dismisser').toggleClass('dash-dismisser-display-none');">
-              {% if result['data'][0]['photo_link'] != "" %}
-              <img src="../{{result['data'][0]['photo_link']}}" class="img-responsive profile-other-nav-image">
-              {% else %}
-              <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-              {% end %}
-            </li>
-        </ul>
-
-        <!-- Login button to appear if not logged in.-->
-        {% else %}
-         <ul class="nav navbar-nav navbar-right" id="profile-self-nav-right">
-          <div class="col-md-4 col-xs-2 col-md-push-8">
-          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
-            <div class="row hide-on-small">
-              <div class="col-md-4 col-xs-4">
-                <img src="../static/images/Login-Icon.png" class="login-modal-image-profile">
-              </div>
-              <div class="col-md-6 col-xs-6 login-modal-toggle-text">
-                <p><h4>Login/SignUp</h4></p>
-              </div>
-            </div>
-          </a>
-            </div>
-        </ul>
-        {% end %}
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-  <div class="search-mobile-topbar container-fluid hide-on-large">
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <ul class="">
-            <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-              <form action="/search" method="post">
-                <input type="" class="" name="string" placeholder="Search for Projects or People">
-              </form>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <br>
   <br>
   <br>
@@ -362,13 +75,13 @@
                 </p>
             </div>
             <div class="profile-other-banner-body-sections">
-              <p><span class="banner-section-heading">About Me</span><br><br>{{ result['data'][1-l]['aboutme'] }}</p>
+              <p><span class="banner-section-heading">About Me</span><br><br><!--{{ result['data'][1-l]['aboutme'] }}--></p>
             </div>
             <div class="profile-other-banner-body-sections">
               <p><span class="banner-section-heading">Certificates</span><br><br>
-                {% for certificate in result['data'][1-l]['certifications'] %}
+                <!--{% for certificate in result['data'][1-l]['certifications'] %}
                 {{ certificate }} <br>
-                {% end %}
+                {% end %}-->
               </p>
             </div>
           </div>
@@ -492,11 +205,11 @@
             <div class="row">
               <div class="col-md-2 col-xs-2">
                 <div class="profile-other-user-image">
-                  {% if result['data'][1-l]['photo_link'] != "" %}
-                  <img src="../{{result['data'][1-l]['photo_link']}}" class="profile-other-banner-image">
-                  {% else %}
+                  <!--{% if result['data'][1-l]['photo_link'] != "" %}-->
+                  <!--<img src="../{{result['data'][1-l]['photo_link']}}" class="profile-other-banner-image">-->
+                  <!--{% else %}-->
                   <img src="../static/images/17.jpg" class="profile-other-banner-image">
-                  {% end %}
+                  <!--{% end %}-->
                 </div>
               </div>
 
@@ -512,20 +225,20 @@
               <div class="row">
 
                 <div class="col-md-10 col-md-push-4">
-                  <p>Joined on {{ result['data'][1-l]['joined_on'].split(' ')[0] }}</p>
+                  <p><!--Joined on {{ result['data'][1-l]['joined_on'].split(' ')[0] }}-->26-07-16</p>
                 </div>
               </div>
             </div>
             <div class="profile-other-user-projects">
               <div class="row">
                 <div class="col-md-4">
-                  <p><span>{{ len(result['data'][1-l]['projects']) }}</span><br>Projects Done</p>
+                  <p><span><!--{{ len(result['data'][1-l]['projects']) }}-->15</span><br>Projects Done</p>
                 </div>
                 <div class="col-md-4 profile-other-user-project-mid-item">
-                  <p><span>{{ len(result['data'][1-l]['services']) }}</span><br>Services</p>
+                  <p><span><!--{{ len(result['data'][1-l]['services']) }}-->10</span><br>Services</p>
                 </div>
                 <div class="col-md-4">
-                  <p><span>{{ result['data'][1-l]['ratings'] }}</span><br>Average Rating</p>
+                  <p><span><!--{{ result['data'][1-l]['ratings'] }}-->3.5</span><br>Average Rating</p>
                 </div>
               </div>
             </div>

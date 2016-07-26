@@ -692,7 +692,7 @@ font-size: 275%;
 {
   text-align: center;
   width:100%;
-  cursor pointer;
+  cursor: pointer;
   background:white;
   padding:5%;
   margin-top:5%;
