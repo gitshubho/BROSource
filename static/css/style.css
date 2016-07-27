@@ -20,11 +20,52 @@
  {
    outline: 0 !important;
  }
+
 .pointer
 {
   cursor:pointer;
 }
-
+#search-result-row
+{
+  position: fixed;
+  width: 100%;
+  z-index: 12000;
+  margin-top:8vh;
+}
+@media(min-width:1900px) {
+  #search-result-row
+  {
+    margin-top: 6.5vh;
+  }
+}
+.search-result
+{
+  background: white;
+  width: 100%;
+  height: 100%;
+  margin-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgb(204,204,204);
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.search-result:hover
+{
+  background: rgb(240,240,240);
+  transition: 0.3s all;
+}
+.search-result-image
+{
+  width: 70%;
+  border-radius: 100%;
+}
+.search-result p
+{
+  margin-left: -20px;
+  margin-top: 1.6vh;
+  font-size: 120%;
+}
   #profile-other
   {
     background: rgb(240,240,240);
@@ -1197,11 +1238,10 @@ color:  rgb(173,214,241) !important;
   padding-top:2%;
   text-align: center;
   margin-top:2%;
-  overflow-y: scroll;
+  overflow-y: auto;
   min-height: 17vh;
   max-height: 17vh;
   margin-left: 5%;
-  margin-right: 5%;
 }
 .profile-self-aboutme-footer::-webkit-scrollbar {
    width: 0.4em;
@@ -1225,8 +1265,13 @@ color:  rgb(173,214,241) !important;
 }
 .profile-self-info-body
 {
-  height:85%;
+
+  min-height: 85%;
   border-bottom:1px solid rgb(204,204,204);
+  background: white;
+  max-height: 150%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .profile-self-info-footer-tab
 {
@@ -1238,6 +1283,7 @@ color:  rgb(173,214,241) !important;
   border: 1px solid rgb(204,204,204);
   border-bottom:none;
   border-top: none;
+  background: white;
 }
 
 .profile-self-info-footer-tab span
@@ -1637,8 +1683,9 @@ color:  rgb(173,214,241) !important;
   }
   .profile-self-info-footer
   {
-    margin-top: -55px;
     border-top: 1px solid rgb(204,204,204);
+    background: white;
+
   }
   .profile-search-bar
   {
@@ -1712,7 +1759,7 @@ color:  rgb(173,214,241) !important;
   }
   .profile-other-banner-image
   {
-    height: 30%;
+    height: 15px;
   }
   .profile-other-user-projects
   {
@@ -1723,7 +1770,7 @@ color:  rgb(173,214,241) !important;
   .profile-other-user-projects span
   {
       font-weight: bold;
-      font-size: %;
+      height: 200px;
   }
 }
 @media(max-width:600px)
@@ -1794,7 +1841,7 @@ color:  rgb(173,214,241) !important;
 .profile-other-banner-image
 {
   border-radius: 100%;
-  margin-top: -22%;
+  margin-top: 10px;
   margin-left: 5%;
   height:45%;
   width:auto;
@@ -2640,4 +2687,46 @@ Edit Profile
   margin: 0;
   margin-right: -20px;
   padding: 0;
+}
+.views-holder
+{
+  padding-top:50px !important;padding-left:50px !important;
+}
+.views-holder span
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+.views-holder p
+{
+  margin-top: 20px;
+}
+@media(max-width:600px)
+{
+  .views-holder
+  {
+    padding-top: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .profile-self-info-body
+  {
+
+  }
+}
+.projects-section
+{
+    text-align:center; padding-top:20px;
+}
+.project-heading-row
+{
+  font-size:150%;font-weight:bold;
+  border-bottom: 1px solid rgb(204,204,204);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 10px;
+}
+.project-row
+{
+  font-size:120%; padding-top:30px !important;
 }

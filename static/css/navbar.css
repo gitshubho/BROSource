@@ -1,0 +1,94 @@
+nav
+{
+  background: #3498DB !important;
+}
+#profile-self-nav-right p
+{
+    color: white;
+}
+nav .brand-name
+{
+  color: white;
+  margin-top: -1px !important;
+}
+#profile-self-nav-right li a span
+{
+  margin-top: -3px;
+}
+.nav-search
+{
+  margin-top: -31px;
+}
+.sliding
+{
+  margin-top:-22px;
+}
+.search-mobile-topbar
+{
+  margin-top: 2px;
+}
+.nav-search input[type=text]
+{
+  color: white;
+}
+.search-mobile-topbar .nav-search
+{
+  margin-top: -16px;
+}
+#mesg-bar-toggle
+{
+  z-index: 1000 !important;
+}
+#search-result-row
+{
+  position: fixed;
+  width: 100%;
+  z-index: 12000;
+  margin-top:9vh;
+  margin-left: 80px;
+}
+#dash-toggle
+{
+  cursor: pointer;
+}
+@media(min-width:1900px) {
+  #search-result-row
+  {
+    margin-top: 6.5vh;
+  }
+  #search-result-row img
+  {
+    width: 50%;
+  }
+  #search-result-row p
+  {
+    margin-left: -50px;
+    font-size: 150%;
+  }
+}
+.msg-dismisser
+{
+  top: 8vh !important;
+}
+.bar-dismisser
+{
+  top:8vh;
+}
+.dash-dismisser
+{
+  top:8vh;
+}
+@media(min-width:1000px) and (max-width:1300px)
+{
+  .sliding
+  {
+    margin-top: -12px;
+  }
+}
+@media(min-width:1400px)
+{
+  .sliding
+  {
+    margin-top: -13px !important;
+  }
+}
