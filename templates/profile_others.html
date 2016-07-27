@@ -395,9 +395,15 @@
                     </p>
                   </div>
                   <div class="col-md-2">
-                    <div class="profile-other-get-service">
-                      <a href="#">Get It</a>
-                    </div>
+                    <form name='service_request' method="get" action="/serviceRequest">
+                        <input type="hidden" name="service" value="{{ service['service'] }}">
+                        <input type="hidden" name="cost" value="{{ service['cost'] }}">
+                        <input type="hidden" name="user" value="{{ result['data'][1-l]['name'] }}">
+                      <div class="profile-other-get-service">
+                      <!--<a href="#">Get It</a>-->
+                        <input type="submit" value="Get It">
+                        </div>
+                        </form>
                   </div>
                 </div>
               </div>

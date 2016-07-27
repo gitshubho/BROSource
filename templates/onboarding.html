@@ -209,12 +209,14 @@ function ValidateEmail(mail)
                          Skills <span style="font-size:80%;color:rgb(204,204,204);">(compulsory)</span><br>
                       </p>
                           <script type="text/javascript">
+                              var populator={%raw (result['userInfo']['skills'])%}
                           $(document).ready(function() {
                               $(".js-example-basic-multiple").select2();
 
-                              $(".js-example-basic-multiple").select2({
+                              $(".js-example-basic-multiple").val(populator).select2({
                                   placeholder: "Start typing or click to select skills"
                               });
+
                           });
                           </script>
                           <div class="onboarding-skills-select">
