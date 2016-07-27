@@ -25,17 +25,44 @@
 {
   cursor:pointer;
 }
+.search-overlay
+{
+  position: fixed;
+  z-index: 1;
+  height: 0px;
+  width: 0px;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.0);
+}
+.search-overlay-triggered
+{
+  height: 100vh;
+  width: 100vw;
+}
 #search-result-row
 {
   position: fixed;
   width: 100%;
   z-index: 12000;
   margin-top:8vh;
+  margin-left: -28px;
 }
 @media(min-width:1900px) {
   #search-result-row
   {
     margin-top: 6.5vh;
+    margin-left: -35px;
+  }
+  .search-result-image
+  {
+    width: 50% !important;
+  }
+  .search-result p
+  {
+    margin-left: -50px !important;
+    margin-top: 11px !important;
+    font-size: 150% !important;
   }
 }
 .search-result
@@ -2729,4 +2756,16 @@ Edit Profile
 .project-row
 {
   font-size:120%; padding-top:30px !important;
+}
+.skills-section
+{
+  padding-top: 30px;
+  padding-left: 30px;
+  line-height: 50px;
+  font-size: 130%;
+}
+.skills-section span
+{
+  margin-left: 5px;
+  margin-right: 5px;
 }

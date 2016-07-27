@@ -23,6 +23,8 @@
 <script>
     $(document).ready(function () {
         $('.projects-section').hide();
+        $('.skills-section').hide();
+        $('.rating-section').hide();
         var window_height=$(window).height();
         var z=$('.nav').height();
         var x=$('.navbar-nav').height();
@@ -214,19 +216,28 @@
                               </div>
                             </div>
                           </div>
+                          <div class="skills-section">
+                            {% for skill in result['userInfo']['skills'] %}
+                              <span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span>
+                              {% end %}
+                          </div>
+                          <div class="rating-section">
+                            <div class="rating-holder">
 
+                            </div>
+                          </div>
                         </div>
                         <div class="profile-self-info-footer">
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views" onclick="$('.views-section').show();$('.projects-section').hide();">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views" onclick="$('.views-section').show();$('.projects-section').hide();$('.skills-section').hide();$('.rating-section').hide();">
                                 <p><span><!--{{ result['userInfo']['views'] }} --></span><br>Views</p>
                             </div>
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed" onclick="$('.views-section').hide();$('.projects-section').show();">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed" onclick="$('.views-section').hide();$('.projects-section').show();$('.skills-section').hide();$('.rating-section').hide();">
                                 <p><span><!--{{ len(result['userInfo']['projects']) }} --></span><br>Projects</p>
                             </div>
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing" onclick="$('.views-section').hide();$('.projects-section').hide();$('.skills-section').show();$('.rating-section').hide();">
                                 <p><span><!--{{ len(result['userInfo']['skills']) }} --></span><br>Skills</p>
                             </div>
-                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill">
+                            <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill" onclick="$('.views-section').hide();$('.projects-section').hide();$('.skills-section').hide();$('.rating-section').show();">
                                 <p><span><!-- {{ result['userInfo']['ratings'] }}  --></span><br>Rating</p>
                             </div>
                         </div>
@@ -421,7 +432,7 @@
                                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                       </div>
                                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                                        <div class="long-card-title"><p><span>{{projects[5]['name']}}</span><br>Web Developers</p></div>
+                                                        <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
 
                                                       </div>
                                                     </div>
@@ -432,7 +443,7 @@
                                                       </div>
                                                     </div>
                                                     <div class="long-card-body">
-                                                      <p>{{projects[5]['description']}}</p>
+                                                      <p>{{projects[3]['description']}}</p>
                                                     </div>
                                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                   </div>
