@@ -138,9 +138,9 @@
                               labels: ['Hi', "February", "March", "April", "May"],
                               datasets: [
                                 {
-                                    label: "Views",
-                                    fill: false,
-                                    lineTension: 0.1,
+                                    label: "Number Of Views",
+                                    fill: true,
+                                    lineTension: 0,
                                     backgroundColor: "rgba(75,192,192,0.4)",
                                     borderColor: "rgba(75,192,192,1)",
                                     borderCapStyle: 'butt',
@@ -149,8 +149,8 @@
                                     borderJoinStyle: 'miter',
                                     pointBorderColor: "rgba(75,192,192,1)",
                                     pointBackgroundColor: "#fff",
-                                    pointBorderWidth: 1,
-                                    pointHoverRadius: 5,
+                                    pointBorderWidth: 10,
+                                    pointHoverRadius: 11,
                                     pointHoverBackgroundColor: "rgba(75,192,192,1)",
                                     pointHoverBorderColor: "rgba(220,220,220,1)",
                                     pointHoverBorderWidth: 2,
@@ -218,7 +218,7 @@
                           </div>
                           <div class="skills-section">
                             {% for skill in result['userInfo']['skills'] %}
-                              <span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span><span class="badge CustomBadge">{{ skill }}</span>
+                              <span class="badge CustomBadge">{{ skill }}</span>
                               {% end %}
                           </div>
                           <div class="rating-section">
@@ -405,7 +405,7 @@
                                                       <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                     </div>
                                                     <div class="col-md-10 col-lg-10 col-sm-10">
-                                                      <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
+                                                      <div class="long-card-title"><p><span>{{projects[4]['name']}}</span><br>Web Developers</p></div>
 
                                                     </div>
                                                   </div>
@@ -432,7 +432,7 @@
                                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                       </div>
                                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                                        <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
+                                                        <div class="long-card-title"><p><span>{{projects[5]['name']}}</span><br>Web Developers</p></div>
 
                                                       </div>
                                                     </div>
@@ -443,7 +443,7 @@
                                                       </div>
                                                     </div>
                                                     <div class="long-card-body">
-                                                      <p>{{projects[3]['description']}}</p>
+                                                      <p>{{projects[5]['description']}}</p>
                                                     </div>
                                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                   </div>
