@@ -564,5 +564,5 @@ application = Application([
 #main init
 if __name__ == "__main__":
 	server = HTTPServer(application)
-	server.listen(8000)
+	server.listen(80)
 	IOLoop.current().start()
