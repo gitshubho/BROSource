@@ -150,6 +150,8 @@ class UpdateProfileHandler(RequestHandler):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             userInfo = setUserInfo(userInfo, 'photo_link', 'name', 'username', 'email', 'dob', 'address', 'skills', 'mobile', 'category', 'services', 'aboutme', 'certifications', 'education_details')
+            userInfo['skills']=json.dumps(userInfo['skills'])
+            print(userInfo)
             self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
         else:
             self.redirect('/?loggedIn=False')
@@ -167,10 +169,10 @@ class UpdateProfileHandler(RequestHandler):
         address = self.get_argument('address')
         skills = self.get_argument('skills').split(',')
         print skills
-        skill_data = []
-        for skill in skills:
-            temp = yield db.skills.find_one({skill :{'$exists':1}})
-            skill_data.append(temp[skill])
+        #skill_data = []
+        #for skill in skills:
+        #    temp = yield db.skills.find_one({skill :{'$exists':1}})
+        #    skill_data.append(temp[skill])
         contact = self.get_argument('mobile')
 
         services = []
@@ -200,12 +202,12 @@ class UpdateProfileHandler(RequestHandler):
             photo_link = ''
 
         if userInfo['signup'] == 0:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
             message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
             sendMessage(contact,message)
         else:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
