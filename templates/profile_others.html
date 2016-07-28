@@ -3,7 +3,7 @@
 
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
-    <!--<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
         $('.sliding').css({
             top:y
         })
-        
+
         console.log('Hello World!');
     });
 
@@ -99,7 +99,7 @@
               <p><span class="glyphicon glyphicon-lock"></span>&nbsp;Services</p>
             </div>
             <div class="profile-other-banner-body">
-              {% for service in result['data'][1-l]['services'] %}
+              {% for service in result['data'][1]['services'] %}
               <div class="profile-other-banner-body-sections">
                 <div class="row">
                   <div class="col-md-10">
@@ -108,8 +108,8 @@
                     </p>
                   </div>
                   <div class="col-md-2">
-                    <div class="profile-other-get-service">
-                      <a href="=/serviceRequest">Get It</a>
+                   <div class="--other-get-service">
+                      <a href="/serviceRequest?cost={{ service['cost'] }}&service={{ service['service'] }}&email={{result['data'][1]['email']}}">Get It</a>
                     </div>
                   </div>
                 </div>

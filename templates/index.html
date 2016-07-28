@@ -20,6 +20,11 @@
   $(document).ready(function()
   {
       $('#search-result-row').hide();
+      $('.search-overlay').on('click', function()
+      {
+        $('#search-result-row').hide();
+      $('.search-overlay').removeClass('search-overlay-triggered');
+      });
       $('.search').on('keyup',function()
       {
           var search_item=$(this).val();
@@ -34,6 +39,7 @@
               data: search_item,
               success: function(result){
                 $('#search-result-row').show();
+                $('.search-overlay').addClass('search-overlay-triggered');
               }
             }
           )
@@ -255,7 +261,7 @@
                </div>
                </div>
            <!-- Login Modal Ends-->
-
+<div class="search-overlay"></div>
 <div class="coltainer-fluid hide-on-small" id="search-result-row">
   <div class="row">
     <div class="col-md-5 col-md-push-2">

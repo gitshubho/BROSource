@@ -32,7 +32,6 @@ __FILES__ = 'static/uploads/files/'
 __SIZE__ = 300, 300
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
-
 class MainHandler(RequestHandler):
 
     @removeslash
@@ -150,6 +149,8 @@ class UpdateProfileHandler(RequestHandler):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
             userInfo = setUserInfo(userInfo, 'photo_link', 'name', 'username', 'email', 'dob', 'address', 'skills', 'mobile', 'category', 'services', 'aboutme', 'certifications', 'education_details')
+            userInfo['skills']=json.dumps(userInfo['skills'])
+            print(userInfo)
             self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
         else:
             self.redirect('/?loggedIn=False')
@@ -167,10 +168,10 @@ class UpdateProfileHandler(RequestHandler):
         address = self.get_argument('address')
         skills = self.get_argument('skills').split(',')
         print skills
-        skill_data = []
-        for skill in skills:
-            temp = yield db.skills.find_one({skill :{'$exists':1}})
-            skill_data.append(temp[skill])
+        #skill_data = []
+        #for skill in skills:
+        #    temp = yield db.skills.find_one({skill :{'$exists':1}})
+        #    skill_data.append(temp[skill])
         contact = self.get_argument('mobile')
 
         services = []
@@ -200,12 +201,12 @@ class UpdateProfileHandler(RequestHandler):
             photo_link = ''
 
         if userInfo['signup'] == 0:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details, 'signup' : '1'}})
             message = 'Hey'+userInfo['name']+', Welcome to BroSource! Develop, Work, Earn!'
             sendMessage(contact,message)
         else:
-            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skill_data, 'mobile' : contact, 'services' : services,
+            result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,
                                             'category' : category, 'aboutme' : aboutme, 'certifications' : certifications, 'education_details' : education_details}})
         self.redirect('/profile/me?update=True')
 
@@ -470,25 +471,57 @@ class ServiceRequestHandler(RequestHandler):
         if not bool(self.get_secure_cookie('user')):
             self.redirect('/?loggedIn=False')
             return
+
         service = self.get_argument('service')
         cost = self.get_argument('cost')
-        user = self.get_argument('user')
-
-        self.render('servicerequest.html', result = {'user' : user, 'service' : service, 'cost' : cost})
-
+        email = self.get_argument('email')
+        userInfo = yield db.users.find_one({'email':email})
+        #validation
+        for sinfo in userInfo['services']:
+			if sinfo['service']==service and sinfo['cost']==cost:	
+				self.render('servicerequest.html', result = {'user' : userInfo['username'], 'service' : service, 'cost' : cost})
+				
+        
+        self.redirect('/profile/'+user)
     @coroutine
     @removeslash
     def post(self):
-
         service = self.get_argument('service')
         cost = self.get_argument('cost')
-        user = self.get_argument('user')
-
-        srequest = yield db.serviceRequests.insert({'From' : self.get_secure_cookie('user'), 'To' : user, 'Service' : {'service' : service, 'cost' : cost}})
+        recvUser = self.get_argument('user')
+        s=self.get_secure_cookie('user')
+        
+        now = datetime.now()
+        time = now.strftime("%d-%m-%Y %I:%M %p")
+        userInfo=yield db.users.find_one({'_id':ObjectId(s)})
+        recvInfo=yield db.users.find_one({'username':recvUser})
+        #srequest = yield db.serviceRequests.insert({'From' : s, 'To' : recvUser, 'Service' : {'service' : service, 'cost' : cost,'accepted':0}})       
+        srequest = yield db.serviceRequests.insert({'aliases':[{'fromid':s},{'toid':recvInfo['_id']}],'Service':[{"accepted":0},{'service':service},{"sentby":userInfo["username"]},{"recievedby":recvInfo["username"]},{"time":time}]})
         if bool(srequest):
             self.redirect('/?sendrequest=True')
         else:
             self.redirect('/?sendrequest=False')
+class AcceptServicesHandler(RequestHandler):
+    @removeslash
+    @coroutine
+    def get(self):
+		msgs=list()
+		result=db.serviceRequests.find({'aliases':{'toid':ObjectId(self.get_secure_cookie('user'))}})
+		while(yield result.fetch_next):
+			doc=result.next_object()
+			print doc
+			msgs.append(doc)
+		self.render("view_services.html",msgs=msgs)
+    @removeslash
+    @coroutine
+    def post(self):
+		sid=self.get_argument('sid')
+		result=yield db.serviceRequests.find_one({'aliases':{'toid':ObjectId(self.get_secure_cookie('user'))},'_id':ObjectId(sid)})
+		if bool(result):
+			yield db.serviceRequests.update({'_id':ObjectId(sid)},{'$set':{'Service.0.accepted':1}})
+			self.redirect('/?acceptService=True')
+		else:
+			self.redirect('/?acceptService=False')
 
 class LogoutHandler(RequestHandler):
     @removeslash
@@ -524,11 +557,12 @@ application = Application([
     (r"/viewproject/(\w+)", ViewProjectHandler),
     (r"/donate", Donate),
     (r"/search",SearchHandler),
-    (r"/serviceRequest", ServiceRequestHandler)
+    (r"/serviceRequest", ServiceRequestHandler),
+     (r"/acceptService", AcceptServicesHandler)
 ], **settings)
 
 #main init
 if __name__ == "__main__":
 	server = HTTPServer(application)
-	server.listen(80)
+	server.listen(8000)
 	IOLoop.current().start()
