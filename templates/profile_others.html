@@ -69,17 +69,17 @@
           <div class="profile-other-banner-body">
             <div class="profile-other-banner-body-sections">
               <p><span class="banner-section-heading">Skills</span><br><br>
-                {% for skill in result['data'][1-l]['skills'] %}
+                {% for skill in result['data'][1]['skills'] %}
                 <span class="CustomBadge">{{ skill }} </span>
                 {% end %}
                 </p>
             </div>
             <div class="profile-other-banner-body-sections">
-              <p><span class="banner-section-heading">About Me</span><br><br><!--{{ result['data'][1-l]['aboutme'] }}--></p>
+              <p><span class="banner-section-heading">About Me</span><br><br><!--{{ result['data'][1]['aboutme'] }}--></p>
             </div>
             <div class="profile-other-banner-body-sections">
               <p><span class="banner-section-heading">Certificates</span><br><br>
-                <!--{% for certificate in result['data'][1-l]['certifications'] %}
+                <!--{% for certificate in result['data'][1]['certifications'] %}
                 {{ certificate }} <br>
                 {% end %}-->
               </p>
@@ -207,17 +207,17 @@
             <div class="row">
               <div class="col-md-2 col-xs-2">
                 <div class="profile-other-user-image">
-                  <!--{% if result['data'][1-l]['photo_link'] != "" %}-->
-                  <!--<img src="../{{result['data'][1-l]['photo_link']}}" class="profile-other-banner-image">-->
-                  <!--{% else %}-->
+                  {% if result['data'][1]['photo_link'] != "" %}
+                  <img src="../{{result['data'][1]['photo_link']}}" class="profile-other-banner-image">
+                    {% else %}
                   <img src="../static/images/17.jpg" class="profile-other-banner-image">
-                  <!--{% end %}-->
+                    {% end %}
                 </div>
               </div>
 
               <div class="col-md-10 col-xs-10">
                 <div class="profile-other-user-details">
-                  <p><span>{{result['data'][1-l]['name']}} </span><br>{{result['data'][1-l]['email']}}<br>{{result['data'][1-l]['address']}} </p>
+                  <p><span>{{result['data'][1]['name']}} </span><br>{{result['data'][1]['email']}}<br>{{result['data'][1]['address']}} </p>
                 </div>
               </div>
             </div>
@@ -227,20 +227,20 @@
               <div class="row">
 
                 <div class="col-md-10 col-md-push-4">
-                  <p><!--Joined on {{ result['data'][1-l]['joined_on'].split(' ')[0] }}-->26-07-16</p>
+                  <p><!--Joined on {{ result['data'][1]['joined_on'].split(' ')[0] }}-->26-07-16</p>
                 </div>
               </div>
             </div>
             <div class="profile-other-user-projects">
               <div class="row">
                 <div class="col-md-4">
-                  <p><span><!--{{ len(result['data'][1-l]['projects']) }}-->15</span><br>Projects Done</p>
+                  <p><span><!--{{ len(result['data'][1]['projects']) }}-->15</span><br>Projects Done</p>
                 </div>
                 <div class="col-md-4 profile-other-user-project-mid-item">
-                  <p><span><!--{{ len(result['data'][1-l]['services']) }}-->10</span><br>Services</p>
+                  <p><span><!--{{ len(result['data'][1]['services']) }}-->10</span><br>Services</p>
                 </div>
                 <div class="col-md-4">
-                  <p><span><!--{{ result['data'][1-l]['ratings'] }}-->3.5</span><br>Average Rating</p>
+                  <p><span><!--{{ result['data'][1]['ratings'] }}-->3.5</span><br>Average Rating</p>
                 </div>
               </div>
             </div>

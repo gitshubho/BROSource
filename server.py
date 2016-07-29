@@ -46,8 +46,8 @@ class MainHandler(RequestHandler):
             #print userInfo
 
         projects= yield db.project.find({},{'name':1,'description':1,'skills':1,'_id':1}).sort([('$natural',-1)]).to_list(length=6)
-        featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('ratings', -1)]).to_list(length=3)
-        recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
+        featured_user= yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'photo_link':1,'_id':0}).sort([('ratings', -1)]).to_list(length=3)
+        recent_user=yield db.users.find({},{'username':1,'name':1,'aboutme':1,'services':1,'category':1,'photo_link':1,'_id':0}).sort([('$natural',-1)]).to_list(length=3)
         d={'':"",'1':"Technical",'2':"Management",'3':"Design",'4':"Technical and Management",'5':"Technical and Design",'6':"Design and Management",'7':"Technical, Design and Management"}
         if len(featured_user) == 0:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
@@ -81,13 +81,13 @@ class MainHandler(RequestHandler):
 
         else:
             self.render('index.html',result = dict(name='BroSource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))),
-                        F1_Name=featured_user[0]['name'],F1_Title=d[featured_user[0]['category']],F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],
-                        F2_Name=featured_user[1]['name'],F2_Title=d[featured_user[1]['category']],F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],
-                        F3_Name=featured_user[2]['name'],F3_Title=d[featured_user[2]['category']],F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],
+                        F1_Name=featured_user[0]['name'],F1_Title=d[featured_user[0]['category']],F1_Uname=featured_user[0]['username'],F1_Desc=featured_user[0]['aboutme'],S1=featured_user[0]['services'],F1_photo=featured_user[0]['photo_link'],
+                        F2_Name=featured_user[1]['name'],F2_Title=d[featured_user[1]['category']],F2_Uname=featured_user[1]['username'],F2_Desc=featured_user[1]['aboutme'],S2=featured_user[1]['services'],F2_photo=featured_user[1]['photo_link'],
+                        F3_Name=featured_user[2]['name'],F3_Title=d[featured_user[2]['category']],F3_Uname=featured_user[2]['username'],F3_Desc=featured_user[2]['aboutme'],S3=featured_user[2]['services'],F3_photo=featured_user[2]['photo_link'],
 
-                        R1_Name=recent_user[0]['name'],R1_Title=d[recent_user[0]['category']],R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],
-                        R2_Name=recent_user[1]['name'],R2_Title=d[recent_user[0]['category']],R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],
-                        R3_Name=recent_user[2]['name'],R3_Title=d[recent_user[0]['category']],R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'],
+                        R1_Name=recent_user[0]['name'],R1_Title=d[recent_user[0]['category']],R1_Uname=recent_user[0]['username'],R1_Desc=recent_user[0]['aboutme'],S4=recent_user[0]['services'],R1_photo=recent_user[0]['photo_link'],
+                        R2_Name=recent_user[1]['name'],R2_Title=d[recent_user[0]['category']],R2_Uname=recent_user[1]['username'],R2_Desc=recent_user[1]['aboutme'],S5=recent_user[1]['services'],R2_photo=recent_user[1]['photo_link'],
+                        R3_Name=recent_user[2]['name'],R3_Title=d[recent_user[0]['category']],R3_Uname=recent_user[2]['username'],R3_Desc=recent_user[2]['aboutme'],S6=recent_user[2]['services'],R3_photo=recent_user[2]['photo_link'],
                         projects=projects)
 
 class LoginHandler(RequestHandler):
@@ -232,9 +232,11 @@ class UserProfileHandler(RequestHandler):
     def get(self, username):
         data = []
         userInfo = None
+        userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
         if bool(self.get_secure_cookie('user')):
-            userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
-            data.append(setUserInfo(userInfo,'username','email','photo_link'))
+            userInfo=setUserInfo(userInfo,'username','email','photo_link')
+        data.append(json.loads(json_util.dumps(userInfo)))
+
         userInfo = None
 
         if username != 'Dummy':
@@ -244,9 +246,9 @@ class UserProfileHandler(RequestHandler):
                 data.append(json.loads(json_util.dumps(userInfo)))
                 print(data)
                 if bool(self.get_secure_cookie('user')):
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = True),l=0)#l is the variable which is used in html page to get correct list index of data
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = True))
                 else:
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = False),l=1)
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = False))
             else:
                 self.redirect('/?username=False')
         else:
@@ -357,8 +359,10 @@ class ViewProjectHandler(RequestHandler):
         projData = yield db.project.find_one({'_id': ObjectId(projId)})
 
         if bool(projData):
+
             userData = yield db.users.find_one({'_id': ObjectId(self.get_secure_cookie('user'))})
-            userData = setUserInfo(userData, 'username', 'email', 'photo_link')
+            if bool(self.get_secure_cookie('user')):
+                userData = setUserInfo(userData, 'username', 'email', 'photo_link')
             data.append(json.loads(json_util.dumps(userData)))
 
             data.append(json.loads(json_util.dumps(projData)))
@@ -373,7 +377,7 @@ class ViewProjectHandler(RequestHandler):
             except:
                 fileData = {}
                 data.append(fileData)
-
+            print data
             if bool(data[0]):
                 self.render('apply_project.html',result= dict(data=data,loggedIn = True))
             else:
@@ -475,14 +479,14 @@ class ServiceRequestHandler(RequestHandler):
         service = self.get_argument('service')
         cost = self.get_argument('cost')
         email = self.get_argument('email')
-        userInfo = yield db.users.find_one({'email':email})
-        #validation
+        userInfo = yield db.users.find_one({'email': email})
+        # validation
         for sinfo in userInfo['services']:
-			if sinfo['service']==service and sinfo['cost']==cost:	
-				self.render('servicerequest.html', result = {'user' : userInfo['username'], 'service' : service, 'cost' : cost})
-				
-        
-        self.redirect('/profile/'+user)
+            if sinfo['service'] == service and sinfo['cost'] == cost:
+                self.render('servicerequest.html',
+                            result={'user': userInfo['username'], 'service': service, 'cost': cost})
+
+        self.redirect('/profile/' + user)
     @coroutine
     @removeslash
     def post(self):
@@ -505,23 +509,26 @@ class AcceptServicesHandler(RequestHandler):
     @removeslash
     @coroutine
     def get(self):
-		msgs=list()
-		result=db.serviceRequests.find({'aliases':{'toid':ObjectId(self.get_secure_cookie('user'))}})
-		while(yield result.fetch_next):
-			doc=result.next_object()
-			print doc
-			msgs.append(doc)
-		self.render("view_services.html",msgs=msgs)
+        msgs = list()
+        result = db.serviceRequests.find({'aliases': {'toid': ObjectId(self.get_secure_cookie('user'))}})
+        while (yield result.fetch_next):
+            doc = result.next_object()
+            print doc
+            msgs.append(doc)
+        self.render("view_services.html", msgs=msgs)
+
     @removeslash
     @coroutine
     def post(self):
-		sid=self.get_argument('sid')
-		result=yield db.serviceRequests.find_one({'aliases':{'toid':ObjectId(self.get_secure_cookie('user'))},'_id':ObjectId(sid)})
-		if bool(result):
-			yield db.serviceRequests.update({'_id':ObjectId(sid)},{'$set':{'Service.0.accepted':1}})
-			self.redirect('/?acceptService=True')
-		else:
-			self.redirect('/?acceptService=False')
+        sid = self.get_argument('sid')
+        result = yield db.serviceRequests.find_one(
+            {'aliases': {'toid': ObjectId(self.get_secure_cookie('user'))}, '_id': ObjectId(sid)})
+        if bool(result):
+            yield db.serviceRequests.update({'_id': ObjectId(sid)}, {'$set': {'Service.0.accepted': 1}})
+            self.redirect('/?acceptService=True')
+        else:
+            self.redirect('/?acceptService=False')
+
 
 class LogoutHandler(RequestHandler):
     @removeslash

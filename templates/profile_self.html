@@ -88,11 +88,11 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
-              <!--                {% if result['userInfo']['photo_link'] != '' %}
+                              {% if result['userInfo']['photo_link'] != '' %}
                                 <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
-                              {% else %}  -->
+                              {% else %}
                                 <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
-                  <!--          {% end %}  -->
+                            {% end %}
                             </div>
                             <div class="profile-self-name-holder">
                                 <p><b>{{result['userInfo']['name']}}</b></p>
@@ -287,7 +287,7 @@
                                       <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                     </div>
                                     <div class="col-md-10 col-lg-10 col-sm-10">
-                                      <div class="long-card-title"><p><span>{{ projects[0]['name'] }}</span><br>Web Developers</p></div>
+                                      <div class="long-card-title"><p><span><!--{ projects[0]['name'] }}--></span><br>Web Developers</p></div>
 
                                     </div>
                                   </div>
@@ -298,7 +298,7 @@
                                     </div>
                                   </div>
                                   <div class="long-card-body">
-                                    <p>{{projects[0]['description']}}</p>
+                                    <p><!--{projects[0]['description']}}--></p>
                                   </div>
                                   <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                 </div>
@@ -315,7 +315,7 @@
                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                       </div>
                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                        <div class="long-card-title"><p><span>{{projects[1]['name']}}</span><br>Web Developers</p></div>
+                                        <div class="long-card-title"><p><span><!--{projects[1]['name']}}--></span><br>Web Developers</p></div>
 
                                       </div>
                                     </div>
@@ -326,7 +326,7 @@
                                       </div>
                                     </div>
                                     <div class="long-card-body">
-                                      <p>{{projects[1]['description']}}</p>
+                                      <p><!--{projects[1]['description']}}--></p>
                                     </div>
                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                   </div>
@@ -342,7 +342,7 @@
                                           <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                         </div>
                                         <div class="col-md-10 col-lg-10 col-sm-10">
-                                          <div class="long-card-title"><p><span>{{projects[2]['name']}}</span><br>Web Developers</p></div>
+                                          <div class="long-card-title"><p><span><!--{projects[2]['name']}}--></span><br>Web Developers</p></div>
 
                                         </div>
                                       </div>
@@ -353,7 +353,7 @@
                                         </div>
                                       </div>
                                       <div class="long-card-body">
-                                        <p>{{projects[2]['description']}}</p>
+                                        <p><!--{projects[2]['description']}}--></p>
                                       </div>
                                       <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                     </div>
@@ -377,7 +377,7 @@
                                                     <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                   </div>
                                                   <div class="col-md-10 col-lg-10 col-sm-10">
-                                                    <div class="long-card-title"><p><span>{{projects[3]['name']}}</span><br>Web Developers</p></div>
+                                                    <div class="long-card-title"><p><span><!--{projects[3]['name']}}--></span><br>Web Developers</p></div>
 
                                                   </div>
                                                 </div>
@@ -388,7 +388,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="long-card-body">
-                                                  <p>{{projects[3]['description']}}</p>
+                                                  <p><!--{projects[3]['description']}}--></p>
                                                 </div>
                                                 <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                               </div>
@@ -405,7 +405,7 @@
                                                       <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                     </div>
                                                     <div class="col-md-10 col-lg-10 col-sm-10">
-                                                      <div class="long-card-title"><p><span>{{projects[4]['name']}}</span><br>Web Developers</p></div>
+                                                      <div class="long-card-title"><p><span><!--{projects[4]['name']}}--></span><br>Web Developers</p></div>
 
                                                     </div>
                                                   </div>
@@ -416,7 +416,7 @@
                                                     </div>
                                                   </div>
                                                   <div class="long-card-body">
-                                                    <p>{{projects[4]['description']}}</p>
+                                                    <p><!--{projects[4]['description']}}--></p>
                                                   </div>
                                                   <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                 </div>
@@ -432,7 +432,7 @@
                                                         <div class="img-circle profile-image"><img src="../static/images/gdg.png" class="image"></div>
                                                       </div>
                                                       <div class="col-md-10 col-lg-10 col-sm-10">
-                                                        <div class="long-card-title"><p><span>{{projects[5]['name']}}</span><br>Web Developers</p></div>
+                                                        <div class="long-card-title"><p><span><!--{projects[5]['name']}}--></span><br>Web Developers</p></div>
 
                                                       </div>
                                                     </div>
@@ -443,7 +443,7 @@
                                                       </div>
                                                     </div>
                                                     <div class="long-card-body">
-                                                      <p>{{projects[5]['description']}}</p>
+                                                      <p><!--{projects[5]['description']}}--></p>
                                                     </div>
                                                     <div class="long-card-desc text-center"><a  href="#">View Details</a></div>
                                                   </div>

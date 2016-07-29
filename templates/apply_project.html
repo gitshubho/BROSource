@@ -159,7 +159,7 @@
                       <li id="apply-notification-trigger-small"><a href="notifications_mobile.html" target="_blank" ><span class="glyphicon glyphicon-comment"></span></a></li>
                       <li><a href="message_mobile.html" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
                        <li>
-                         {% if result['data'][0]['photo_link'] != '' %}
+                         {% if result['loggedIn']==True and result['data'][0]['photo_link'] != '' %}
                          <img src="../{{ result['data'][0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
                          {% else %}
                          <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
@@ -176,11 +176,14 @@
               <ul class="hide-on-small nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
                 <li><a href="#" onclick="$('.msg').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.messaging').toggleClass('z-index-high'); $('.msg-dismisser').toggleClass('msg-dismisser-display-none');"><span class="glyphicon glyphicon-comment"></span></a></li>
                 <li><a href="#" onclick="$('.bar').toggleClass('col-md-offset-12 col-md-offset-9 not-in-view in-view'); $('.notification').toggleClass('z-index-high'); $('.bar-dismisser').toggleClass('bar-dismisser-display-none');"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
-                 <li><p align="right"><b>{{ result['data'][0]['username'] }}&nbsp&nbsp</b><br><a href="#">{{ result['data'][0]['email'] }}&nbsp&nbsp</a></p></li>
+                 <li>
+                     {% if result['loggedIn'] %}
+                     <p align="right"><b>{{ result['data'][0]['username'] }}&nbsp&nbsp</b><br><a href="#">{{ result['data'][0]['email'] }}&nbsp&nbsp</a></p></li>
+                    {% end %}
                   <li>
-                    {% if result['data'][0]['photo_link'] != '' %}
+                    {% if result['loggedIn'] and result['data'][0]['photo_link'] != '' %}
                     <img src="../{{ result['data'][0]['photo_link'] }}" class="img-responsive apply-nav-image-small">
-                    {% else %}
+                    {% else%}
                     <img src="../static/images/17.jpg" class="img-responsive apply-nav-image-small">
                     {% end %}
                   </li>
