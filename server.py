@@ -494,12 +494,12 @@ class ServiceRequestHandler(RequestHandler):
         cost = self.get_argument('cost')
         recvUser = self.get_argument('user')
         s=self.get_secure_cookie('user')
-        
+
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
         userInfo=yield db.users.find_one({'_id':ObjectId(s)})
         recvInfo=yield db.users.find_one({'username':recvUser})
-        #srequest = yield db.serviceRequests.insert({'From' : s, 'To' : recvUser, 'Service' : {'service' : service, 'cost' : cost,'accepted':0}})       
+        #srequest = yield db.serviceRequests.insert({'From' : s, 'To' : recvUser, 'Service' : {'service' : service, 'cost' : cost,'accepted':0}})
         srequest = yield db.serviceRequests.insert({'aliases':[{'fromid':s},{'toid':recvInfo['_id']}],'Service':[{"accepted":0},{'service':service},{"sentby":userInfo["username"]},{"recievedby":recvInfo["username"]},{"time":time}]})
         if bool(srequest):
             self.redirect('/?sendrequest=True')
