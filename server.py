@@ -155,7 +155,7 @@ class UpdateProfileHandler(RequestHandler):
 			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
 			userInfo = setUserInfo(userInfo, 'photo_link', 'name', 'username', 'email', 'dob', 'address', 'skills', 'mobile', 'category', 'services', 'aboutme', 'certifications', 'education_details')
 			userInfo['skills']=json.dumps(userInfo['skills'])
-			print(userInfo)
+			
 			self.render('onboarding.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie('user'))))
 		else:
 			self.redirect('/?loggedIn=False')
@@ -172,7 +172,7 @@ class UpdateProfileHandler(RequestHandler):
 		dob = self.get_argument('dob')
 		address = self.get_argument('address')
 		skills = self.get_argument('skills').split(',')
-		print skills
+		
 		#skill_data = []
 		#for skill in skills:
 		#    temp = yield db.skills.find_one({skill :{'$exists':1}})
@@ -196,14 +196,19 @@ class UpdateProfileHandler(RequestHandler):
 		del(userInfo['password'])
 
 		try:
+			import cStringIO
 			photoInfo = self.request.files['photo'][0]
 			extn = os.path.splitext(photoInfo['filename'])[1]
 			cname = str(uuid.uuid4()) + extn
 			photo_link = __PROFILEPHOTOS__ + cname
-			fh = open(__PROFILEPHOTOS__ + cname, 'w')
-			fh.write(photoInfo['body'])
+			imgstr = re.search(r'base64,(.*)', self.get_argument('profile_photo')).group(1)
+			tempimg = cStringIO.StringIO(imgstr.decode('base64'))
+			im = Image.open(tempimg)
+			im = im.resize((160,160),Image.ANTIALIAS)
+			print im.save(photo_link,optimize=True, quality=95)
 		except:
 			photo_link = ''
+
 
 		if userInfo['signup'] == 0:
 			result = yield db.users.update({'_id': ObjectId(current_id)}, {'$set':{'photo_link' : photo_link,'email':email,'dob' : dob, 'address' : address, 'skills' : skills, 'mobile' : contact, 'services' : services,

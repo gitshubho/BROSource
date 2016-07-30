@@ -221,7 +221,7 @@ function ValidateEmail(mail)
         document.querySelector('#btnCrop').addEventListener('click', function(){
             var img = cropper.getDataURL()
             // document.querySelector('.imageBox').innerHTML = '<img src="'+img+'">';
-            $(".imageBox").replaceWith('<img src="'+img+'">');
+            $(".imageBox").replaceWith('<img src="'+img+'"><input type="hidden" name="profile_photo" value="'+img+'">');
         })
         document.querySelector('#btnZoomIn').addEventListener('click', function(){
             cropper.zoomIn();
