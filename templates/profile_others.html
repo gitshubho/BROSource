@@ -227,30 +227,25 @@
               <div class="row">
 
                 <div class="col-md-10 col-md-push-4">
-                  <p><!--Joined on {{ result['data'][1]['joined_on'].split(' ')[0] }}-->26-07-16</p>
+                  <p>Joined on <!--{{ result['data'][1]['joined_on'].split(' ')[0] }}-->26-07-16</p>
                 </div>
               </div>
             </div>
             <div class="profile-other-user-projects">
               <div class="row">
-                <div class="col-md-4">
-                  <p><span><!--{{ len(result['data'][1]['projects']) }}-->15</span><br>Projects Done</p>
+                <div class="col-md-4 project">
+                  <p><div class="project-count"><!--{{ len(result['data'][1]['projects']) }}-->15</div><br><div class="project-count-desc">Projects Done</div></p>
                 </div>
-                <div class="col-md-4 profile-other-user-project-mid-item">
-                  <p><span><!--{{ len(result['data'][1]['services']) }}-->10</span><br>Services</p>
+                <div class="col-md-4 project profile-other-user-project-mid-item">
+                  <p><div class="project-count"><!--{{ len(result['data'][1]['services']) }}-->10</div><br><div class="project-count-desc">Services</div></p>
                 </div>
-                <div class="col-md-4">
-                  <p><span><!--{{ result['data'][1]['ratings'] }}-->3.5</span><br>Average Rating</p>
+                <div class="col-md-4 project">
+                  <p><div class="project-count"><!--{{ result['data'][1]['ratings'] }}-->3.5</div><br><div class="project-count-desc">Average Rating</div></p>
                 </div>
               </div>
             </div>
         </div>
-        <div class="profile-other-contact">
-          <a href="#">Message</a>
-        </div>
-        <div class="profile-other-contact">
-          <a href="#">Invite To Job</a>
-        </div>
+        
 
         <div class="profile-other-contact donate-container">
           <button class="donate-button" onclick="window.open('donate_view.html','donateWindow','width=500,height=350')">Donate</button>
