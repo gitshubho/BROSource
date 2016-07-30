@@ -362,6 +362,7 @@ class AddProjectHandler(RequestHandler):
 		self.redirect('/viewproject/'+str(insert))
 		return
 
+
 class ViewProjectHandler(RequestHandler):
 
 	@coroutine
@@ -371,7 +372,6 @@ class ViewProjectHandler(RequestHandler):
 		projData = yield db.project.find_one({'_id': ObjectId(projId)})
 
 		if bool(projData):
-
 			userData = yield db.users.find_one({'_id': ObjectId(self.get_secure_cookie('user'))})
 			if bool(self.get_secure_cookie('user')):
 				userData = setUserInfo(userData, 'username', 'email', 'photo_link')
@@ -399,7 +399,6 @@ class ViewProjectHandler(RequestHandler):
 			self.redirect('/?project=False')
 
 class Donate(RequestHandler):
-
 	@removeslash
 	def get(self):
 		self.render('donate.html')
@@ -552,7 +551,6 @@ class LogoutHandler(RequestHandler):
 			self.redirect('/?loggedOut=true')
 		else:
 			self.redirect('/?activesession=false')
-
 
 settings = dict(
     db=db,
