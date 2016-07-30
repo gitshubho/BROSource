@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>ServiceRequests Recieved</title>
+	<style>
+	#msg{
+			border:1px solid black;
+		
+		}
+		#hidden{
+			display:none;
+			}
+			</style>
+</head>
+<ul>
+{%if not msgs%}
+<li>"no current Requests"</li>
+{%else%}	
+{%for doc in msgs%}
+	<div id="msg">
+	<form action="/acceptService" method="post">
+	<a href="/profile/{{(doc['Service'][2]['sentby'])}}">{{(doc['Service'][2]["sentby"])}}</a></br>	
+	<li>{{(doc['Service'][1]['service'])}}</li></br>
+	<input type="text" name="sid" id="hidden" value="{{(doc['_id'])}}">
+	<input type="submit" value="accept" name="submit"/> 	
+	</form>
+	</div>
+{%end%}
+{%end%}
+</ul>
+</html>

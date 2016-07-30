@@ -1441,7 +1441,7 @@ font-size: 275%;
 }
 
 .msg-preview{
-    margin: auto; margin-top: -10px;   
+    margin: auto; margin-top: -10px;
 }
 
 .msg-image img{
@@ -1779,4 +1779,3 @@ body{
   border-radius: 0;
   background: rgb(240,240,240);
 }
-
