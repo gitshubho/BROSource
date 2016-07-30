@@ -310,3 +310,27 @@
   background: #fff;height: 100%;
   color: rgb(204,204,204);
 }
+
+.profile-other-banner-image{
+  width: 85px !important; height: 85px; border-radius: 100%; border: 5px solid #fff;
+}
+
+.profile-other-banner-image img{
+  width: 100%;
+}
+
+.project-count{
+  text-align: center; font-size: 36px; font-weight: bold; position: relative;
+}
+
+.project-count-desc{
+  text-align: center; font-size: 12px;  position: relative; top: -30px;
+}
+
+.project{
+
+}
+
+.profile-other-user-project-mid-item{
+  box-shadow: 5px 0 15px -4px #a0a0a0, -6px 0 8px -4px #a0a0a0;
+}
