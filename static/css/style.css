@@ -1479,8 +1479,11 @@ color:  rgb(173,214,241) !important;
 }
 .long-card-body{
   padding-top: 10px;
-  overflow-y: hidden;
-  height: 140px;
+
+    white-space: pre-wrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    height: 140px;
 }
 .long-card-body p{
   font-weight: lighter;
@@ -1784,9 +1787,10 @@ color:  rgb(173,214,241) !important;
       margin-top: -5%;
       font-size: 80%;
   }
-  .profile-other-banner-image
+  .profile-other-banner-image img
   {
-    height: 15px;
+    height: 20px;
+    width: auto;
   }
   .profile-other-user-projects
   {
@@ -1799,6 +1803,8 @@ color:  rgb(173,214,241) !important;
       font-weight: bold;
       height: 200px;
   }
+  .profile-other-user-projects .row{
+
 }
 @media(max-width:600px)
 {
@@ -1870,7 +1876,7 @@ color:  rgb(173,214,241) !important;
   border-radius: 100%;
   margin-top: 10px;
   margin-left: 5%;
-  height:45%;
+  height:5px !important;
   width:auto;
   border: 3px solid white;
 }
@@ -2026,7 +2032,7 @@ color:  rgb(173,214,241) !important;
   {
     margin-left: 10%;
     margin-top: -10%;
-    height: 22%;
+
   }
   .profile-other-card-row .badge
   {
