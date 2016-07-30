@@ -221,49 +221,56 @@ class UpdateProfileHandler(RequestHandler):
 		self.redirect('/profile/me?update=True')
 
 class SelfProfileHandler(RequestHandler):
-
-	@coroutine
-	@removeslash
-	def get(self):
-		result_current = result_current_info = None
-		userInfo = None
-		if bool(self.get_secure_cookie('user')):
-			current_id = self.get_secure_cookie('user')
-			userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
-			print userInfo
-			self.render('profile_self.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
-		else:
-			self.redirect('/?loggedIn=False')
+    @coroutine
+    @removeslash
+    def get(self):
+        result_current = result_current_info = None
+        userInfo = None
+        if bool(self.get_secure_cookie('user')):
+            current_id = self.get_secure_cookie('user')
+            userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
+            print userInfo
+            views= yield db.views.aggregate([{'$match':{'profileId':ObjectId(current_id)}},{'$group':{'_id':'$date','count':{'$sum':1}}}]).to_list(length=10)
+            print(views)
+            self.render('profile_self.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+        else:
+            self.redirect('/?loggedIn=False')
 
 class UserProfileHandler(RequestHandler):
 
-	@coroutine
-	@removeslash
-	def get(self, username):
-		data = []
-		userInfo = None
-		userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
-		if bool(self.get_secure_cookie('user')):
-			userInfo=setUserInfo(userInfo,'username','email','photo_link')
-		data.append(json.loads(json_util.dumps(userInfo)))
+    @coroutine
+    @removeslash
+    def get(self, username):
+        data = []
+        userInfo = None
+        userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
+        if bool(self.get_secure_cookie('user')):
+            userInfo=setUserInfo(userInfo,'username','email','photo_link')
+        data.append(json.loads(json_util.dumps(userInfo)))
 
-		userInfo = None
+        userInfo = None
 
-		if username != 'Dummy':
+        if username != 'Dummy':
 
-			userInfo = yield db.users.find_one({'username':username})
-			if bool(userInfo):
-				data.append(json.loads(json_util.dumps(userInfo)))
-				print(data)
-				if bool(self.get_secure_cookie('user')):
-					self.render('profile_others.html',result= dict(data=data,loggedIn = True))
-				else:
-					self.render('profile_others.html',result= dict(data=data,loggedIn = False))
-			else:
-				self.redirect('/?username=False')
-		else:
-			userInfo = {}
-			self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+            userInfo = yield db.users.find_one({'username':username})
+            if bool(userInfo):
+                data.append(json.loads(json_util.dumps(userInfo)))
+                #print(data)
+                now=datetime.now()
+                date=now.strftime("%d-%m-%Y")
+                if bool(self.get_secure_cookie('user')):
+                    if (data[0]['username']!= data[1]['username']):
+
+                        viewinsert= yield db.views.update({'profileId':ObjectId(data[1]['_id']['$oid']),'viewerId':self.get_secure_cookie('user'),'date':date},{'profileId':ObjectId(data[1]['_id']['$oid']),'viewerId':self.get_secure_cookie('user'),'date':date},upsert=True)
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+                else:
+                    self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+            else:
+                self.redirect('/?username=False')
+        else:
+            userInfo = {}
+            self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+
 
 class ForgotPasswordHandler(RequestHandler):
 
@@ -360,6 +367,7 @@ class AddProjectHandler(RequestHandler):
 		self.redirect('/viewproject/'+str(insert))
 		return
 
+
 class ViewProjectHandler(RequestHandler):
 
 	@coroutine
@@ -369,7 +377,6 @@ class ViewProjectHandler(RequestHandler):
 		projData = yield db.project.find_one({'_id': ObjectId(projId)})
 
 		if bool(projData):
-
 			userData = yield db.users.find_one({'_id': ObjectId(self.get_secure_cookie('user'))})
 			if bool(self.get_secure_cookie('user')):
 				userData = setUserInfo(userData, 'username', 'email', 'photo_link')
@@ -397,7 +404,6 @@ class ViewProjectHandler(RequestHandler):
 			self.redirect('/?project=False')
 
 class Donate(RequestHandler):
-
 	@removeslash
 	def get(self):
 		self.render('donate.html')
@@ -552,14 +558,14 @@ class LogoutHandler(RequestHandler):
 			self.redirect('/?activesession=false')
 
 settings = dict(
-		db=db,
-		template_path = os.path.join(os.path.dirname(__file__), "templates"),
-		static_path = os.path.join(os.path.dirname(__file__), "static"),
-		debug=True,
-		cookie_secret="35an18y3-u12u-7n10-4gf1-102g23ce04n6"
-	)
+    db=db,
+    template_path=os.path.join(os.path.dirname(__file__), "templates"),
+    static_path=os.path.join(os.path.dirname(__file__), "static"),
+    debug=True,
+    cookie_secret="35an18y3-u12u-7n10-4gf1-102g23ce04n6"
+)
 
-#Application initialization
+# Application initialization
 application = Application([
 	(r"/", MainHandler),
 	(r"/signup", SignupHandler),
@@ -579,8 +585,9 @@ application = Application([
 	 (r"/acceptService", AcceptServicesHandler)
 ], **settings)
 
-#main init
+# main init
 if __name__ == "__main__":
 	server = HTTPServer(application)
 	server.listen(5000)
 	IOLoop.current().start()
+
