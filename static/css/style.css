@@ -2835,7 +2835,9 @@ Edit Profile
   border:none;
   margin: 1%;
   padding: 6px;
-  border-radius: 5%;
+  border-radius: 3%;
+  width: 50%;
+  font-weight: bold;
 }
 #btnZoomIn{
   background-color: #3498DB;
@@ -2844,17 +2846,34 @@ Edit Profile
   border:none;
   margin: 1%;
   padding: 6px;
-/*  border-radius: 50%;
-*/}
+  border-radius: 25%;
+  width: 10%;
+  font-weight: bold;
+
+}
 #btnZoomOut{
   background-color: #3498DB;
   color: white;
   border-style: none;
   border:none;
   margin: 1%;
-  padding: 6px;
-/*  border-radius: 50%;
-*/}
+  padding: 6px;;
+  border-radius: 25%;
+  width: 10%;
+  font-weight: bold;
+
+}
 .none{
 display: none;
+}
+#file{
+  margin: 3%;
+  font-weight: bold;
+}
+.container1 img{
+  border:1px  solid #000000;
+  border-width: 5px;
+  border-radius: 3%;
+  margin-bottom: 2%;
+  margin-left: 0px;
 }
