@@ -72,10 +72,15 @@
                 {% for skill in result['data'][1]['skills'] %}
                 <span class="CustomBadge">{{ skill }} </span>
                 {% end %}
-                </p>
+              </p>
             </div>
             <div class="profile-other-banner-body-sections">
-              <p><span class="banner-section-heading">About Me</span><br><br><!--{{ result['data'][1]['aboutme'] }}--></p>
+              <p><span class="banner-section-heading">About Me</span><br><br><!--{{ result['data'][1]['aboutme'] }}-->Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="profile-other-banner-body-sections">
               <p><span class="banner-section-heading">Certificates</span><br><br>
@@ -246,6 +251,9 @@
             </div>
         </div>
         
+        <div class="profile-other-button-container">
+          <button class="btn custom-other-button">Invite to Job</button>
+        </div>
 
         <div class="profile-other-contact donate-container">
           <button class="donate-button" onclick="window.open('donate_view.html','donateWindow','width=500,height=350')">Donate</button>

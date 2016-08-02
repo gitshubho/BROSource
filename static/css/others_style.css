@@ -328,9 +328,36 @@
 }
 
 .project{
-
+  
 }
 
 .profile-other-user-project-mid-item{
   box-shadow: 5px 0 15px -4px #a0a0a0, -6px 0 8px -4px #a0a0a0;
+}
+
+.profile-other-banner{
+  padding: 20px;
+}
+
+.profile-other-banner-body-sections{
+  font-weight: normal;
+}
+
+.banner-section-heading{
+  font-weight: bold;  
+}
+
+.profile-other-button-container{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.custom-other-button{
+  width: 100%;
+  background: #fff;
+  transition: all 0.5s;
+}
+
+.custom-other-button:hover{
+  box-shadow: 0 0 10px 0 #0a0a0a; transition: all 0.5s;
 }
