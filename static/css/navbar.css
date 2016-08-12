@@ -1,7 +1,9 @@
 nav
 {
   background: #3498DB !important;
+  height: 11.3vh;
 }
+
 #profile-self-nav-right p
 {
     color: white;
@@ -9,7 +11,8 @@ nav
 nav .brand-name
 {
   color: white;
-  margin-top: -1px !important;
+  margin-top: 22px;
+  margin-left: 20px;
 }
 #profile-self-nav-right li a span
 {
@@ -17,7 +20,7 @@ nav .brand-name
 }
 .nav-search
 {
-  margin-top: -31px;
+  margin-top: -10px;
 }
 .sliding
 {
@@ -66,6 +69,10 @@ nav .brand-name
     margin-left: -50px;
     font-size: 150%;
   }
+  nav
+  {
+    height: 8.4vh;
+  }
 }
 .msg-dismisser
 {
@@ -93,7 +100,14 @@ nav .brand-name
     margin-top: -13px !important;
   }
 }
-
+@media(max-width:600px)
+{
+  .other-nav-image-small
+  {
+    height: 50%;
+    margin-top: 1px;
+  }
+}
 .search-overlay
 {
   position: fixed;
@@ -108,4 +122,8 @@ nav .brand-name
 {
   height: 100vh;
   width: 100vw;
+}
+.profile-other-nav-image
+{
+  height: 60%;
 }
