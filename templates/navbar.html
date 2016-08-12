@@ -1,4 +1,27 @@
-<link rel="stylesheet" href="../static/css/navbar.css">
+<html>
+
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BroSOURCE</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/others_style.css">
+    <script src="../static/js/others_script.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/messages.css">
+    <link rel="stylesheet" href="../static/css/donate.css">
+    <link rel="stylesheet" href="../static/css/dash.css">
+      <link rel="stylesheet" href="../static/css/navbar.css">
+  </head>
+
+<script src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/script.js"></script>
 <script>
   $(document).ready(function()
   {
@@ -393,13 +416,26 @@
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
            <li><a href="#" id="mesg-bar-toggle" style="z-index:1000 !important;"><span class="glyphicon glyphicon-comment"></span></a></li>
            <li><a href="#" id="notfn-bar-toggle" style="z-index:1000 !important;"><span class="glyphicon glyphicon-bell"></span>&nbsp&nbsp</a></li>
+            {% try %}
             <li><p align="right"><b>{{result['data'][0]['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data'][0]['email']}}&nbsp&nbsp</a></p></li>
             <li  id="dash-toggle">
+            {% except %}
+             <li><p align="right"><b>{{result['data']['username']}}&nbsp&nbsp</b><br><a href="#">{{result['data']['email']}}&nbsp&nbsp</a></p></li>
+            <li  id="dash-toggle">
+            {% end %}
+            {% try %}
               {% if result['data'][0]['photo_link'] != "" %}
               <img src="../{{result['data'][0]['photo_link']}}" class="img-responsive profile-other-nav-image">
               {% else %}
               <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
-              {% end %} -
+              {% end %}
+            {% except %}
+            {% if result['data']['photo_link'] != "" %}
+              <img src="../{{result['data']['photo_link']}}" class="img-responsive profile-other-nav-image">
+              {% else %}
+              <img src="../static/images/17.jpg" class="img-responsive profile-other-nav-image">
+              {% end %}
+            {% end %}
             </li>
         </ul>
 
@@ -484,3 +520,5 @@
       </div>
     </div>
   </div>
+{% block body %}
+{% end %}

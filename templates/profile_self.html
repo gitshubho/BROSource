@@ -48,6 +48,9 @@
 
 
 </style>
+
+{% extends "navbar.html" %}
+{% block body %}
 <body id="profile-self">
 
 
@@ -88,20 +91,20 @@
                     <div class="profile-self-aboutme-holder">
                         <div class="profile-self-aboutme-header">
                             <div class="profile-self-image-holder">
-                              {% if result['userInfo']['photo_link'] != '' %}
-                                <img src="../{{ result['userInfo']['photo_link'] }}" class="profile-self-image img-responsive">
+                              {% if result['data']['photo_link'] != '' %}
+                                <img src="../{{ result['data']['photo_link'] }}" class="profile-self-image img-responsive">
                               {% else %}
                                 <img src="../static/images/17.jpg" class="profile-self-image img-responsive">
                             {% end %}
                             </div>
                             <div class="profile-self-name-holder">
-                                <p><b>{{result['userInfo']['name']}}</b></p>
-                                <p>{{result['userInfo']['address']}}<br>{{result['userInfo']['email']}}</p>
+                                <p><b>{{result['data']['name']}}</b></p>
+                                <p>{{result['data']['address']}}<br>{{result['data']['email']}}</p>
                             </div>
                         </div>
                         <div class="profile-self-aboutme-footer">
                         <p>
-                          {% for skill in result['userInfo']['skills'] %}
+                          {% for skill in result['data']['skills'] %}
                             <span class="badge CustomBadge">{{ skill }}</span>
                             {% end %}
 
@@ -217,7 +220,7 @@
                             </div>
                           </div>
                           <div class="skills-section">
-                            {% for skill in result['userInfo']['skills'] %}
+                            {% for skill in result['data']['skills'] %}
                               <span class="badge CustomBadge">{{ skill }}</span>
                               {% end %}
                           </div>
@@ -229,16 +232,16 @@
                         </div>
                         <div class="profile-self-info-footer">
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-views" onclick="$('.views-section').show();$('.projects-section').hide();$('.skills-section').hide();$('.rating-section').hide();">
-                                <p><span><!--{{ result['userInfo']['views'] }} --></span><br>Views</p>
+                                <p><span><!--{{ result['data']['views'] }} --></span><br>Views</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-completed" onclick="$('.views-section').hide();$('.projects-section').show();$('.skills-section').hide();$('.rating-section').hide();">
-                                <p><span><!--{{ len(result['userInfo']['projects']) }} --></span><br>Projects</p>
+                                <p><span><!--{{ len(result['data']['projects']) }} --></span><br>Projects</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-ongoing" onclick="$('.views-section').hide();$('.projects-section').hide();$('.skills-section').show();$('.rating-section').hide();">
-                                <p><span><!--{{ len(result['userInfo']['skills']) }} --></span><br>Skills</p>
+                                <p><span><!--{{ len(result['data']['skills']) }} --></span><br>Skills</p>
                             </div>
                             <div class="profile-self-info-footer-tab topborder-invisible" id="profile-self-footer-tab-skill" onclick="$('.views-section').hide();$('.projects-section').hide();$('.skills-section').hide();$('.rating-section').show();">
-                                <p><span><!-- {{ result['userInfo']['ratings'] }}  --></span><br>Rating</p>
+                                <p><span><!-- {{ result['data']['ratings'] }}  --></span><br>Rating</p>
                             </div>
                         </div>
                     </div>
@@ -486,4 +489,5 @@
   </div>
 </div>
 </body>
+{% end %}
 </html>

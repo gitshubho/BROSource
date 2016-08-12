@@ -233,7 +233,7 @@ class SelfProfileHandler(RequestHandler):
             print userInfo
             views= yield db.views.aggregate([{'$match':{'profileId':ObjectId(current_id)}},{'$group':{'_id':'$date','count':{'$sum':1}}}]).to_list(length=10)
             print(views)
-            self.render('profile_self.html',result = dict(name='Brosource',userInfo=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            self.render('profile_self.html',result = dict(name='Brosource',data=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
         else:
             self.redirect('/?loggedIn=False')
 
