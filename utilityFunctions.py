@@ -6,15 +6,21 @@ db=MongoClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['broso
 def setUserInfo(userInfo, *args):
     userdata = {}
     for arg in args:
-        userdata[arg] = userInfo[arg]
-        if (arg=='certifications' or arg=='education_details'):
-            userdata[arg]=str(','.join(userdata[arg]))
+		try:
+			userdata[arg] = userInfo[arg]
+		except:
+			pass
+		if (arg=='certifications' or arg=='education_details'):
+			userdata[arg]=str(','.join(userdata[arg]))
     return userdata
 
 def getSkills(userSkills):
     skills=[]
     for skill in userSkills:
-        skills.append(db.skills.find({skill:{'$exists':1}},{skill:1})[0][skill])
+		try:
+			skills.append(db.skills.find({skill:{'$exists':1}},{skill:1})[0][skill])
+		except:
+			pass
     return skills
 # function to hash passwords
 def hashingPassword(password):

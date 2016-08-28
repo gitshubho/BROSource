@@ -32,7 +32,7 @@ __FILES__ = 'static/uploads/files/'
 __SIZE__ = 300, 300
 
 db = MotorClient('mongodb://brsrc:brsrc@ds028559.mlab.com:28559/brosource')['brosource']
-
+#db=MotorClient().brosource
 class MainHandler(RequestHandler):
 
     @removeslash
@@ -226,6 +226,8 @@ class SelfProfileHandler(RequestHandler):
     def get(self):
         result_current = result_current_info = None
         userInfo = None
+        validppl=list()
+        validppl1=list()
         if bool(self.get_secure_cookie('user')):
             current_id = self.get_secure_cookie('user')
             userInfo = yield db.users.find_one({'_id':ObjectId(current_id)})
@@ -233,7 +235,33 @@ class SelfProfileHandler(RequestHandler):
             print userInfo
             views= yield db.views.aggregate([{'$match':{'profileId':ObjectId(current_id)}},{'$group':{'_id':'$date','count':{'$sum':1}}}]).to_list(length=10)
             print(views)
-            self.render('profile_self.html',result = dict(name='Brosource',data=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
+            validmsg=db.serviceRequests.find({'aliases':{'toid':ObjectId(current_id)},'Service.0.accepted':1})
+            if validmsg:
+             while (yield validmsg.fetch_next):
+                         wdoc = validmsg.next_object()
+                         print '\nrecieved requests'
+                         print wdoc
+                         if wdoc not in validppl1:
+                          validppl.append(wdoc)
+            validmsg=db.serviceRequests.find({'aliases.0.fromid':ObjectId(current_id),'Service.0.accepted':1})
+            if validmsg:
+             while (yield validmsg.fetch_next):
+                         wdoc = validmsg.next_object()
+                         print '\nsent requests'
+                         print wdoc
+                         if wdoc not in validppl1:
+                          validppl1.append(wdoc) 
+            msgsReceived=list()
+            result=db.messages.find({'aliases':{'toid':ObjectId(current_id)}})
+            while(yield result.fetch_next):
+                doc=result.next_object()
+                msgsReceived.append(doc)
+            msgsSent=list()
+            result=db.messages.find({'aliases':{'fromid':ObjectId(current_id)}})
+            while(yield result.fetch_next):
+                doc=result.next_object()
+                msgsSent.append(doc)    
+            self.render('profile_self.html',msgsReceived=msgsReceived,msgsSent=msgsSent,validppl1=validppl1,validppl=validppl,result = dict(name='Brosource',data=userInfo,loggedIn = bool(self.get_secure_cookie("user"))))
         else:
             self.redirect('/?loggedIn=False')
 
@@ -244,7 +272,10 @@ class UserProfileHandler(RequestHandler):
     def get(self, username):
         data = []
         userInfo = None
+        validppl=list()
+        validppl1=list()
         userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
+        current_id=userInfo['_id']
         if bool(self.get_secure_cookie('user')):
             userInfo=setUserInfo(userInfo,'username','email','photo_link')
         data.append(json.loads(json_util.dumps(userInfo)))
@@ -264,9 +295,37 @@ class UserProfileHandler(RequestHandler):
                     if (data[0]['username']!= data[1]['username']):
 
                         viewinsert= yield db.views.update({'profileId':ObjectId(data[1]['_id']['$oid']),'viewerId':self.get_secure_cookie('user'),'date':date},{'profileId':ObjectId(data[1]['_id']['$oid']),'viewerId':self.get_secure_cookie('user'),'date':date},upsert=True)
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = True))
+                    
+                    validmsg=db.serviceRequests.find({'aliases':{'toid':current_id},'Service.0.accepted':1})
+                    if validmsg:
+                     while (yield validmsg.fetch_next):
+                                 wdoc = validmsg.next_object()
+                                 print '\nrecieved requests'
+                                 print wdoc
+                                 if wdoc not in validppl:
+                                  validppl.append(wdoc)
+                    
+                    validmsg=db.serviceRequests.find({'aliases.0.fromid':current_id,'Service.0.accepted':1})
+                    if validmsg:
+                     while (yield validmsg.fetch_next):
+                                 wdoc = validmsg.next_object()
+                                 print '\nsent requests'
+                                 print wdoc
+                                 if wdoc not in validppl1:
+                                          validppl1.append(wdoc)
+                    msgsReceived=list()
+                    result=db.messages.find({'aliases':{'toid':ObjectId(current_id)}})
+                    while(yield result.fetch_next):
+                        doc=result.next_object()
+                        msgsReceived.append(doc)
+                    msgsSent=list()
+                    result=db.messages.find({'aliases':{'fromid':ObjectId(current_id)}})
+                    while(yield result.fetch_next):
+                        doc=result.next_object()
+                        msgsSent.append(doc)    
+                    self.render('profile_others.html',msgsReceived=msgsReceived,msgsSent=msgsSent,validppl1=validppl1,validppl=validppl,result= dict(data=data,loggedIn = True))
                 else:
-                    self.render('profile_others.html',result= dict(data=data,loggedIn = False))
+                    self.render('profile_others.html',validppl1=validppl1,validppl=validppl,result= dict(data=data,loggedIn = False))
             else:
                 self.redirect('/?username=False')
         else:
@@ -518,7 +577,10 @@ class ServiceRequestHandler(RequestHandler):
         userInfo = yield db.users.find_one({'_id':ObjectId(s)})
         recvInfo = yield db.users.find_one({'username':recvUser})
         #srequest = yield db.serviceRequests.insert({'From' : s, 'To' : recvUser, 'Service' : {'service' : service, 'cost' : cost,'accepted':0}})
-        srequest = yield db.serviceRequests.insert({'aliases':[{'fromid':s},{'toid':recvInfo['_id']}],'Service':[{"accepted":0},{'service':service},{"sentby":userInfo["username"]},{"recievedby":recvInfo["username"]},{"time":time}]})
+        result=db.serviceRequests.find({'aliases':[{'fromid':ObjectId(s)},{'toid':recvInfo['_id']}],'Service.1.service':service})
+        if result:
+            self.redirect('/?sendrequest=alreadyMade')
+        srequest = yield db.serviceRequests.insert({'aliases':[{'fromid':ObjectId(s)},{'toid':recvInfo['_id']}],'Service':[{"accepted":0},{'service':service},{"sentby":userInfo["username"]},{"recievedby":recvInfo["username"]},{"time":time}]})
         if bool(srequest):
             self.redirect('/?sendrequest=True')
         else:
@@ -529,7 +591,7 @@ class AcceptServicesHandler(RequestHandler):
     @coroutine
     def get(self):
         msgs = list()
-        result = db.serviceRequests.find({'aliases': {'toid': ObjectId(self.get_secure_cookie('user'))}})
+        result = db.serviceRequests.find({'aliases': {'toid': ObjectId(self.get_secure_cookie('user'))},'Service.0.accepted':0})
         while (yield result.fetch_next):
             doc = result.next_object()
             print doc
@@ -548,7 +610,31 @@ class AcceptServicesHandler(RequestHandler):
         else:
             self.redirect('/?acceptService=False')
 
-
+class MessageHandler(RequestHandler):
+    @removeslash
+    @coroutine
+    def post(self):
+        current_id = self.get_secure_cookie('user')
+    
+        obId=self.get_argument('obId')
+        txt=self.get_argument('message')   
+        #result=yield db.serviceRequests.find_one({'$or':[{'aliases':[{'fromid':ObjectId(current_id)},{'toid':ObjectId(obId)}]},{'aliases':[{'toid':ObjectId(current_id)},{'fromid':ObjectId(obId)}]}]})
+        #not using result for validation as it is very slow
+        userData = yield db.users.find_one({'_id':ObjectId(current_id)})
+        recvInfo = yield db.users.find_one({'_id':ObjectId(obId)})
+        if userData and recvInfo:
+            now = datetime.now()
+            time = now.strftime("%d-%m-%Y %I:%M %p")
+            print '\n\n\n',result
+            #db schema looks big but search will happen only on aliases if an index is created on aliases 
+            #and to remove the number of queries sentby and revieved by is added to db to faciltate visiting their profile
+            #from both sides.
+            
+            
+            result=yield db.messages.insert({'aliases':[{'fromid':ObjectId(current_id)},{'toid':ObjectId(obId)}],'msg':[{"isread":0},{'txt':txt},{"sentby":userData["username"]},{"recievedby":recvInfo["username"]},{"time":time}]})
+            self.redirect('/profile/me')
+        else:
+            print 'unsuccessful'
 class LogoutHandler(RequestHandler):
     @removeslash
     @coroutine
@@ -584,7 +670,8 @@ application = Application([
     (r"/donate", Donate),
     (r"/search",SearchHandler),
     (r"/serviceRequest", ServiceRequestHandler),
-     (r"/acceptService", AcceptServicesHandler)
+     (r"/acceptService", AcceptServicesHandler),
+     (r"/message", MessageHandler)
 ], **settings)
 
 # main init

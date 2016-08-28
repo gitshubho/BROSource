@@ -90,7 +90,7 @@
          </div>
          <div class="col-md-4 col-xs-2 col-md-push-1">
          <!-- The Login Modal Toggle Button -->
-<!--         {% if result['loggedIn'] == False %} -->
+<!--         {% if result['loggedIn'] == False %}{% end %} -->
          <a type="button" class="login-modal-toggle" data-toggle="modal" data-target="#Login-Signup">
            <div class="row hide-on-small">
             <div class="col-md-4 col-xs-4">
@@ -104,23 +104,7 @@
             <img src="../static/images/Login-Icon.png" class="login-modal-image" style="margin-left:-50px">
           </div>
         </a>
-    <!--    {%else%}
-        <a type="button" class="login-modal-toggle" href="/profile/me">
-           <div class="row">
-            <div class="col-md-4 col-xs-4">
-              {% if result['userInfo']['photo_link'] == "" %}
-              <img src="../static/images/Login-Icon.png" class="login-modal-image">
-              {% else %}
-              <img src="../{{ result['userInfo']['photo_link'] }}" class="login-modal-image">
-              {% end %}
-            </div>
-            <div class="col-md-6 col-xs-6 login-modal-toggle-text">
-
-              <p><h4>Hey, {{result['userInfo']['username']}}</h4></p>
-            </div>
-          </div>
-        </a>
-        {%end%}  -->
+   
        </div>
        </div>
      </div>

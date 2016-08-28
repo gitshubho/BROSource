@@ -266,38 +266,73 @@
     <div class="col-md-3 col-md-offset-12 msg not-in-view hidden-xs">
    <div class="view-messages">
       <h2>Messages</h2>
+     
+        <h3>Sent</h3>
       <div class="row">
+        {%for doc in msgsSent%}
         <div class="col-md-10 col-md-push-1 message">
           <div class="col-md-3 msg-image">
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
           <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
-            <h4>Sender Name</h4>
-            <small>Content up here!</small>
+            <h4><a href="/profile/{{(doc['msg'][3]['recievedby'])}}">{{(doc['msg'][3]['recievedby'])}}</a></h4>
+            <small>{{(doc['msg'][1]['txt'])}}</small>
           </div>
         </div>
-
+        {%end%}
+		  <h3>Recieved</h3>
+		{%for doc in msgsReceived%}  
         <div class="col-md-10 col-md-push-1 message">
           <div class="col-md-3 msg-image">
             <img src="../static/images/msg_head.jpeg" class="img-circle">
           </div>
           <div class="col-md-9 msg-preview">
-            <h4>Sender Name</h4>
-            <small>Content up here!</small>
+            <h4><a href="/profile/{{(doc['msg'][2]['sentby'])}}">{{(doc['msg'][2]["sentby"])}}</a></h4>
+            <small>{{(doc['msg'][1]['txt'])}}</small>
           </div>
         </div>
+        {%end%}
       </div>
+      <!--Contacts-->
+      <h2>Contacts</h2>
       <div class="row">
+		{% for  user in validppl%}  
+        <div class="col-md-10 col-md-push-1 message">
+          <div class="col-md-3 msg-image">
+            <img src="../static/images/msg_head.jpeg" class="img-circle">
+          </div>
+          <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+            <h4>{{user['Service'][2]['sentby']}}</h4>
+            <small><a onclick="$('.view-messages').hide();$('#form1').attr('action','/message?obId={{user['aliases'][0]['fromid']}}');$('.sender-name').find('h4').text('To {{user['Service'][2]['sentby']}}');$('.send-messages').show();" style="cursor:pointer;color:black;;">Send message</a></small>
+          </div>
+        </div>
+		{%end%}
+		
+		{% for  user in validppl1%}
+        <div class="col-md-10 col-md-push-1 message">
+          <div class="col-md-3 msg-image">
+            <img src="../static/images/msg_head.jpeg" class="img-circle">
+          </div>
+          <div class="col-md-9 msg-preview" onclick="$('.msg').removeClass('col-md-offset-8'); $('.msg').addClass('col-md-offset-12');;$('.msg-view').toggleClass('col-md-offset-12 col-md-offset-7 not-in-view in-view msg-view-z-index-adjust'); $('.msg-view-dismisser').toggleClass('msg-dismisser-display-none');$('.message-view').toggleClass('msg-view-z-index-adjust');">
+            <h4>{{user['Service'][3]['recievedby']}}</h4>
+            <small><a onclick="$('.view-messages').hide();$('#form1').attr('action','/message?obId={{user['aliases'][1]['toid']}}');$('.sender-name').find('h4').text('To {{user['Service'][3]['recievedby']}}');$('.send-messages').show();" style="cursor:pointer;color:black;;">Send message</a></small>
+          </div>
+        </div>
+      {%end%}
+      </div>
+      
+      
+        <!--    <div class="row">
   		<div class="col-md-12" style="background:#3498db; margin:2%; padding:5%;position:absolute;bottom:90px;text-align:center">
   			<a onclick="$('.view-messages').hide();$('.send-messages').show();" style="cursor:pointer;color:white;;">Compose Message</a>
   		</div>
-  	</div>
+  	</div> -->
     </div>
 
     <!-- Sending Messages -->
 
     <div class="container-fluid col-md-12 col-xs-12 col-sm-12 send-messages">
-    <form method="post" action="">
+    <form method="post" id="form1" action="">
     <div class="msg-topbar">
     	<div class="row">
     		<div class="col-lg-2 col-md-3">
