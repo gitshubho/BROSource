@@ -25,21 +25,21 @@
         $('#search-result-row').hide();
       $('.search-overlay').removeClass('search-overlay-triggered');
       });
-      
+
        $("#query").keydown(function(){
-    //only for checking purpose 
+    //only for checking purpose
         console.log($("input").val());
     });
-      
+
       $("#query").keyup(function()
       {
          setTimeout(returnJson,1);
       });
    var returnJson=function(){
 	var xhttp;
-    
+
     xhttp = new XMLHttpRequest();
-  
+
 	xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
 	  $("#search-result-row").show();
@@ -47,14 +47,14 @@
       console.log("response:"+xhttp.response);
       }
      };
-	
+
 	xhttp.open("GET", "/search?query="+$("#query").val(), true);
 	xhttp.send();
 	}
     $(document).click(function(){
-		
+
 		$("#search-result-row").hide();
-		
+
 		});
   });
 </script>
@@ -116,7 +116,7 @@
             <img src="../static/images/Login-Icon.png" class="login-modal-image" style="margin-left:-50px">
           </div>
         </a>
-   
+
        </div>
        </div>
      </div>

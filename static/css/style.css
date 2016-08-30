@@ -1282,6 +1282,17 @@ color:  rgb(173,214,241) !important;
  background-color: darkgrey;
  outline: 1px solid slategrey;
 }
+.CustomBadge
+{
+  background: white;
+  border: 1px solid #3498DB;
+  color: #3498DB;
+  padding:0.5%;
+  border-radius: 25px;
+  font-size: 80%;
+  padding-left: 0.7%;
+  padding-right: 0.7%;
+}
 .profile-self-aboutme-footer .CustomBadge
 {
   padding-top:2%;
