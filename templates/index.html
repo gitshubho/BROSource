@@ -25,25 +25,37 @@
         $('#search-result-row').hide();
       $('.search-overlay').removeClass('search-overlay-triggered');
       });
-      $('.search').on('keyup',function()
+      
+       $("#query").keydown(function(){
+    //only for checking purpose 
+        console.log($("input").val());
+    });
+      
+      $("#query").keyup(function()
       {
-          var search_item=$(this).val();
-          if(search_item==null)
-          {
-            $('#search-result-row').hide();
-            return;
-          }
-          $.ajax(
-            {
-              url: '#',
-              data: search_item,
-              success: function(result){
-                $('#search-result-row').show();
-                $('.search-overlay').addClass('search-overlay-triggered');
-              }
-            }
-          )
+         setTimeout(returnJson,1);
       });
+   var returnJson=function(){
+	var xhttp;
+    
+    xhttp = new XMLHttpRequest();
+  
+	xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	  $("#search-result-row").show();
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+      console.log("response:"+xhttp.response);
+      }
+     };
+	
+	xhttp.open("GET", "/search?query="+$("#query").val(), true);
+	xhttp.send();
+	}
+    $(document).click(function(){
+		
+		$("#search-result-row").hide();
+		
+		});
   });
 </script>
 
@@ -82,8 +94,8 @@
                <span class="glyphicon glyphicon-search" id="homepage-search-icon"></span>
              </div>
              <div class="col-md-11 col-xs-12 center">
-               <form action="/search" method="post" id="homepage-search-form">
-                 <input type="text" class=" search hide-on-small" name="query" placeholder="Search for Projects or People">
+               <form action="/search" method="get" id="homepage-search-form">
+                 <input type="text" class=" search hide-on-small" id="query" name="query" placeholder="Search for Projects or People">
                </form>
              </div>
           </div>
@@ -251,6 +263,7 @@
     <div class="col-md-5 col-md-push-2">
       <div class="row" id="search-result-heading">
         <p>People:</p>
+        <div id="demo"></div>
       </div>
       <div class="row search-result">
           <div class="col-md-2">

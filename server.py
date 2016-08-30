@@ -484,7 +484,10 @@ class Donate(RequestHandler):
 class SearchHandler(RequestHandler):
     @coroutine
     @removeslash
-    def post(self):
+    def get(self):
+        data=list()
+        l1 = list()
+        l2 = list()
         STRING = self.get_argument('query')
         word_doc = db.project.find()
         choices = list()
@@ -494,23 +497,35 @@ class SearchHandler(RequestHandler):
                 choices.append(doc['name'])
             except:
                 continue
+        #substring check        
         probableMatch = process.extract(STRING, choices, limit=5)
         choices = list(set(choices))
         projlist = list()
         for LIST in probableMatch:
-            if LIST[1] > 70:
+            print LIST[1]
+            if LIST[1] >55:
                 pname = LIST[0]
                 if pname in choices:
                     choices.remove(pname)
+               
+                    #query must be atleast 1 fifth of the asked project
+                    #ratio not used as project names are large                
+                    lenstr=len(STRING)
+                    lenpname=len(pname)
+                    
+                    if  not(lenstr<lenpname) and float(lenpname/lenstr)>=0.2:
+                        continue
+                        
                     doc = db.project.find({'name': pname}, {'name': 1, '_id': 1, 'bids': 1})
                     while (yield doc.fetch_next):
                         wdoc = doc.next_object()
-                        l1 = list()
-                        l1.append(wdoc['name'])
-                        l1.append(wdoc['_id'])
-                        if 'bids' in wdoc:
-                            l1.append(wdoc['bids'])
-                        projlist.append(l1)
+                        l1.append(json_util.dumps(wdoc))
+                        #l1 = list()
+                        #l1.append(wdoc['name'])
+                        #l1.append(wdoc['_id'])
+                        #if 'bids' in wdoc:
+                        #    l1.append(wdoc['bids'])
+                        #projlist.append(l1)
         userlist = list()
         word_doc = db.users.find()
         while (yield word_doc.fetch_next):
@@ -519,29 +534,39 @@ class SearchHandler(RequestHandler):
                 choices.append(doc['username'])
             except:
                 continue
+        #substring match
         probableMatch = process.extract(STRING, choices, limit=5)
         choices = list(set(choices))
-
         for LIST in probableMatch:
-            if LIST[1] > 70:
+            if LIST[1] > 65:
                 pname = LIST[0]
                 if pname in choices:
                     choices.remove(pname)
+                    #spelling match
+                    if fuzz.ratio(STRING,pname)<45:
+                        continue
                     doc = db.users.find({'username': pname}, {'username': 1, '_id': 1, 'category': 1, 'skills': 1})
+                    
                     while (yield doc.fetch_next):
                         wdoc = doc.next_object()
-                        l2 = list()
-                        l2.append(wdoc["username"])
-                        try:
-                            l2.append(wdoc['category'])
-                        except:
-                            pass
-                        try:
-                            l2.append(wdoc['skills'])
-                        except:
-                            pass
-                        userlist.append(l2)
-        self.render('searchresult.html', projlist=projlist, userlist=userlist)
+                        l2.append(json_util.dumps(wdoc))
+                        #l2 = list()
+                        #l2.append(wdoc["username"])
+                        #try:
+                        #    l2.append(wdoc['category'])
+                        #except:
+                        #    pass
+                        #try:
+                        #    l2.append(wdoc['skills'])
+                        #except:
+                        #    pass
+                        #userlist.append(l2)
+                       
+        data.append(l1)	
+        data.append(l2)
+        self.write('{data:%s}'%data)
+        print '\nData:\n',data
+        #self.render('searchresult.html', projlist=projlist, userlist=userlist)
 
 class ServiceRequestHandler(RequestHandler):
 
@@ -563,7 +588,7 @@ class ServiceRequestHandler(RequestHandler):
                 self.render('servicerequest.html',
                             result = {'user': userInfo['username'], 'service': service, 'cost': cost})
 
-        self.redirect('/profile/' + user)
+        self.redirect('/profile/' + userInfo['username']+'?serviceExists=False')
     @coroutine
     @removeslash
     def post(self):
@@ -625,7 +650,7 @@ class MessageHandler(RequestHandler):
         if userData and recvInfo:
             now = datetime.now()
             time = now.strftime("%d-%m-%Y %I:%M %p")
-            print '\n\n\n',result
+            #print '\n\n\n',result
             #db schema looks big but search will happen only on aliases if an index is created on aliases 
             #and to remove the number of queries sentby and revieved by is added to db to faciltate visiting their profile
             #from both sides.

@@ -36,26 +36,35 @@
     $('.search-overlay').removeClass('search-overlay-triggered');
     });
 
-    $('.search-in-navbar').on('keyup',function()
-    {
-        var search_item=$(this).val();
-        if(search_item==null)
-        {
-          $('#search-result-row').hide();
-          return;
-        }
-        $.ajax(
-          {
-            url: '#',
-            data: search_item,
-            success: function(result){
-              $('#search-result-row').show();
-              $('.search-overlay').addClass('search-overlay-triggered');
-            }
-          }
-        )
+     $("#query").keydown(function(){
+        //only for checking purpose
+        console.log($("input").val());
     });
-
+    $("#query").keyup(function(){
+        setTimeout(returnJson,1);
+    });
+	
+	var returnJson=function(){
+	var xhttp;
+    
+    xhttp = new XMLHttpRequest();
+  
+	xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      $("#search-result-row").show();
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+      console.log("response:"+xhttp.response);
+    }
+  };
+	
+	xhttp.open("GET", "/search?query="+$("#query").val(), true);
+	xhttp.send();
+	}
+    $(document).click(function(){
+		
+		$("#search-result-row").hide();
+		
+		});
     function toggle_MesgBar()
     {
         Mesg=!Mesg;
@@ -413,8 +422,8 @@
              <div class="col-md-10 col-md-push-2 hide-on-small">
                 <ul class="nav navbar-nav">
                     <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
-                      <form action="/search" method="post">
-                        <input type="text" class="search-in-navbar" name="query" placeholder="Search for Projects or People">
+                      <form action="/search" method="get">
+                        <input type="text" class="search-in-navbar" id="query" name="query" placeholder="Search for Projects or People">
                       </form>
                     </li>
                 </ul>
@@ -500,7 +509,7 @@
         <ul class="">
             <li class="nav-search"><span class="glyphicon glyphicon-search nav-search-icon"></span>
               <form action="/search" method="post">
-                <input type="" class="" name="string" placeholder="Search for Projects or People">
+                <input type="text" class="" id="query" name="query" placeholder="Search for Projects or People">
               </form>
             </li>
         </ul>
@@ -512,6 +521,7 @@
       <div class="col-md-5 col-md-push-2">
         <div class="row" id="search-result-heading">
           <p>People:</p>
+          <div id="demo"></div>
         </div>
         <div class="row search-result">
             <div class="col-md-2">
