@@ -68,11 +68,13 @@
     }
     if(i==inputs.length)
     {
+      var flag=0;	
       var sk=""+$('#onboarding-skill').select2('val');
       document.getElementById('send-skills').value=sk;
       if(ValidateEmail(document.getElementById('onboarding-email').value))
-      {
-          $('#carousel-generic').carousel('next');
+      {	
+      	  flag=flag+1;	
+          // $('#carousel-generic').carousel('next');
       }
       else
       {
@@ -80,7 +82,25 @@
           z.innerHTML="Please Enter A Valid Email Address"
           window.scroll(0,findPos(z));
       }
+      if(ValidateAboutMe(document.getElementById('onboarding-aboutme').value))
+      {
+      		console.log("About me was true");
+      		flag=flag+1;
+          // $('#carousel-generic').carousel('next');      	
+      }
+      else
+      {
+      	var l=document.getElementById('unfilled-form-7')
+      	l.innerHTML="About Me should be more than 350 characters";
+      	window.scroll(0,findPos(l-0.5));
+      	
+      }
+      if(flag==2)
+      {
+          $('#carousel-generic').carousel('next');      	
+      }
     }
+
     else
     {
       var x=document.getElementById('unfilled-form-'+i);
@@ -131,8 +151,17 @@ function ValidateEmail(mail)
   {
     return (true)
   }
-    alert("You have entered an invalid email address!")
+    // alert("You have entered an invalid email address!")
     return (false)
+}
+function ValidateAboutMe(val)
+{
+	if(val.length>=150)
+	{
+		return (true)
+	}
+		// alert("About Me should be more than 350 characters!")
+		return(false)
 }
 </script>
 
