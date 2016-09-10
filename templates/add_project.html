@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/messages.css">
     <link rel="stylesheet" href="../static/css/donate.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <script src="../static/js/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 
@@ -65,7 +65,7 @@
         </a>
         <a href='/profile/update'>
         <div class="col-md-12 col-xs-12 dash-cols">
-          <i class="fa fa-user" aria-hidden="true"></i> Edit Profile
+          <i class="fa fa-user" aria-hidden="x"></i> Edit Profile
         </div>
         </a>
 
@@ -189,7 +189,7 @@
     					<div class="form-group">
     					<textarea class="form-control" name = "message" placeholder="Enter the message here"></textarea>
      				</div>
-     				</div>
+     				</div>`  
     			</div>
     	</div>
     </form>
@@ -232,7 +232,7 @@
     </div>
   </div>
 -->
-
+<!-- 
 </div>
 
 <div class="container-fluid gray-background">
@@ -272,7 +272,7 @@
           <a class="navbar-brand" href="#"></a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
+      Collect the nav links, forms, and other content for toggling
       <div class="collapse navbar-collapse" id="navbar">
         <br>
          <ul class="nav navbar-nav navbar-right center-align-on-small" id="profile-self-nav-right">
@@ -302,16 +302,16 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> -->
 
     <br><br><br><br><br>
     <div class="row">
         <div class="col-md-1 col-xs-1"></div>
         <div class="col-md-10 col-xs-10 add-card">
                 <form enctype="multipart/form-data" method="post" action="/addproj">
-                    <label>
+                    <label id="title-hold">
                         Project Title
-                        <br><input type="text" name="project_title" placeholder="" class="add-text">
+                        <br><input type="text" name="project_title" placeholder="" class="add-text" >
                     </label>
 
                     <label>
@@ -323,7 +323,7 @@
                     </label>
 
                     <label>
-                        Project Deadline
+                        Project Deadline / Duration
                         <br><input type="date" name="project_deadline" placeholder="" class="add-date">
                     </label>
 
@@ -333,7 +333,7 @@
                     </label>
 
                     <label>
-                        Number of People Required
+                        Number of people required
                         <br>
                         <select name="nop" class="add-select">
                             <option>1</option>
@@ -1307,7 +1307,7 @@
 
                     <label>
                         Project Description<br>
-                        <textarea style="resize:none" class="add-textarea" name="project_description"></textarea>
+                        <textarea style="resize:none" class="add-textarea" name="project_description" placeholder="Add a vivid description of your project"></textarea>
                     </label>
 
                     <label>
@@ -1315,12 +1315,12 @@
                         <input type="file" name="project_files" multiple>
                     </label>
 
-                    <!--<label>
+                    <label>
                         Display Contact Information<br>
                         <input type="checkbox" name="display_contact">Email Address
                         <input type="checkbox" name="display_contact">Mobile Number
                         <input type="checkbox" name="display_contact">Direct Message
-                    </label>-->
+                    </label>
 
                     <input onclick="update();" type="submit" value="Add Project" class="btn custom-button">
                 </form>
