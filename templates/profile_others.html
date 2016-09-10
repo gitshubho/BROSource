@@ -1,3 +1,4 @@
+{% extends "navbar.html" %}
 <html>
 
   <head>
@@ -17,12 +18,15 @@
     <link rel="stylesheet" href="../static/css/donate.css">
     <link rel="stylesheet" href="../static/css/dash.css">
       <link rel="stylesheet" href="../static/css/navbar.css">
+      
   </head>
 
 <script src="../static/js/jquery.min.js"></script>
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/script.js"></script>
-<script>
+
+{%  block  body%}
+  <script>
     $(document).ready(function () {
         var window_height=$(window).height();
         var z=$('.nav').height();
@@ -46,8 +50,7 @@
     });
 
 </script>
-{% extends "navbar.html" %}
-{%  block  body%}
+
 <body id="profile-other">
 
 

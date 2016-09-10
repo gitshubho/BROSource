@@ -1,4 +1,6 @@
+{% extends "navbar.html" %}
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
@@ -15,11 +17,13 @@
 
 </head>
 
+
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/js/profile.js"></script>
 <script src="../static/frameworks/Chart.js/Chart.js"></script>
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/self_script.js"></script>
+{%  block  body%}
 <script>
     $(document).ready(function () {
         $('.projects-section').hide();
@@ -49,8 +53,7 @@
 
 </style>
 
-{% extends "navbar.html" %}
-{% block body %}
+
 <body id="profile-self">
 
 

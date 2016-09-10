@@ -464,6 +464,18 @@ class ViewProjectHandler(RequestHandler):
 
         else:
             self.redirect('/?project=False')
+"""
+class BidHandler(RequestHandler):
+    @removeslash
+    def get(self):
+        self.render('bidmodal.html')
+
+    @coroutine
+    @removeslash
+    def post(self):
+"""
+
+
 
 class Donate(RequestHandler):
     @removeslash
@@ -725,7 +737,7 @@ application = Application([
     (r"/search",SearchHandler),
     (r"/serviceRequest", ServiceRequestHandler),
      (r"/acceptService", AcceptServicesHandler),
-     (r"/message", MessageHandler)
+     (r"/message", MessageHandler),
 ], **settings)
 
 # main init
