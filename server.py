@@ -4,7 +4,7 @@ from tornado.escape import json_encode
 from tornado.web import RequestHandler, Application, asynchronous, removeslash
 from tornado.httpserver import HTTPServer
 from tornado.httpclient import AsyncHTTPClient
-from tornado.gen import engine, Task, coroutine
+from tornado.gen import engine, Task, coroutine,Return
 
 #Other Libraries
 import urllib
@@ -274,9 +274,10 @@ class UserProfileHandler(RequestHandler):
         userInfo = None
         validppl=list()
         validppl1=list()
-        userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
-        current_id=userInfo['_id']
+        
         if bool(self.get_secure_cookie('user')):
+            userInfo = yield db.users.find_one({'_id' : ObjectId(self.get_secure_cookie('user'))})
+            current_id=userInfo['_id']
             userInfo=setUserInfo(userInfo,'username','email','photo_link')
         data.append(json.loads(json_util.dumps(userInfo)))
 
@@ -482,15 +483,31 @@ class Donate(RequestHandler):
             yield db.donate.insert({'amt':self.get_argument('amt'),'msg':self.get_argument('msg'),'from':str(ObjectId(user_id)),'payment received':0})
 
 class SearchHandler(RequestHandler):
+    data=list()
+    realdata=list() 
     @coroutine
     @removeslash
     def get(self):
-        data=list()
-        l1 = list()
-        l2 = list()
+      
         STRING = self.get_argument('query')
+        print '\nnew line'
+        #l1=yield self.projectFind(STRING)
+        #l2=yield self.userFind(STRING)
+        self.projectFind(STRING)
+        self.userFind(STRING)  
+        for item in self.data:
+            self.realdata=[ele for ele in item if ele not in self.realdata] 
+     
+        self.write('{data:%s}'%self.realdata)
+        print '\nData:\n',self.realdata
+        #for item in self.data:
+        #	    self.data.remove(item)
+        
+    @coroutine
+    def projectFind(self,STRING):    
+        l1=list()
+        choices=list()
         word_doc = db.project.find()
-        choices = list()
         while (yield word_doc.fetch_next):
             doc = word_doc.next_object()
             try:
@@ -526,7 +543,17 @@ class SearchHandler(RequestHandler):
                         #if 'bids' in wdoc:
                         #    l1.append(wdoc['bids'])
                         #projlist.append(l1)
+        #print '\nl1:',self.l1
+        if l1:
+            self.data.append(l1)
+            #print '\n inside 1:',self.data
+        #raise Return(l1)
+        #return l1 
+    @coroutine
+    def userFind(self,STRING):    
+        l2=list()
         userlist = list()
+        choices=list()
         word_doc = db.users.find()
         while (yield word_doc.fetch_next):
             doc = word_doc.next_object()
@@ -561,13 +588,13 @@ class SearchHandler(RequestHandler):
                         #except:
                         #    pass
                         #userlist.append(l2)
-                       
-        data.append(l1)	
-        data.append(l2)
-        self.write('{data:%s}'%data)
-        print '\nData:\n',data
+        #raise Return(l2)              
+        #print '\nl2:',self.l2
+        if l2:
+            self.data.append(l2)
+            #print '\n inside 2:',self.data
         #self.render('searchresult.html', projlist=projlist, userlist=userlist)
-
+        #return l2
 class ServiceRequestHandler(RequestHandler):
 
     @coroutine
@@ -596,7 +623,9 @@ class ServiceRequestHandler(RequestHandler):
         cost = self.get_argument('cost')
         recvUser = self.get_argument('user')
         s = self.get_secure_cookie('user')
-
+        userInfo = yield db.users.find_one({'_id':ObjectId(s)})
+        if recvUser==s:
+                self.redirect('/profile/'+userInfo['username']+'?serviceRequest=False')
         now = datetime.now()
         time = now.strftime("%d-%m-%Y %I:%M %p")
         userInfo = yield db.users.find_one({'_id':ObjectId(s)})
