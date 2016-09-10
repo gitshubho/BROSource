@@ -1,6 +1,7 @@
 body{
-    background: #f5f5f5;
+    background: #f5f5f5 !important;
     font-family: Lato;
+    text-overflow: hidden;
 }
 
 nav{
@@ -11,9 +12,11 @@ nav{
     background: #3498db; color: #ffffff;
 }
 
-
 .add-card{
     box-shadow: 0 0 5px 0 #cccccc; background: #ffffff; padding: 20px;
+}
+.add-card label{
+  margin-bottom: 2%;
 }
 label{
     width: 100%; padding: 10px; font-size: 20px;
@@ -21,10 +24,17 @@ label{
 }
 .add-text{
     border: 1px solid #ccc; width: 100%;
+    background-color: #f5f5f5;
+    height: 5%;
+
 }
 
 .add-date{
     text-align: left; width: auto;
+    border: 1px solid #ccc; width: 100%;
+    background-color: #f5f5f5;
+    height: 5%;
+
 }
 
 .add-select-container{
@@ -33,6 +43,7 @@ label{
 
 .add-textarea{
     border: 1px solid #cccccc;
+    background-color: #f5f5f5;
 }
 
 #add-nav-right li
@@ -41,7 +52,10 @@ label{
     float: left;
     margin-left: 2px;
 }
-
+.bar {
+    height: 10px;
+    background: green;
+}
 .add-nav-image-small
 {
   margin: 0;
@@ -179,4 +193,19 @@ label{
 .z-index-high
 {
   z-index:5;
+}
+.custom-button{
+  width: 15%;
+  height: 5%;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 1%;
+}
+@media (max-width: 750px)
+{
+  .custom-button{
+    width: 50%;
+    height: 5%;
+    font-size: 14px;
+  }
 }
