@@ -31,10 +31,15 @@
         console.log($("input").val());
     });
 
-      $("#query").keyup(function()
+    /*  $("#query").keyup(function()
       {
-         setTimeout(returnJson,1);
-      });
+         debounce(100,returnJson);
+         //delay(returnJson,20);
+      });*/
+      var deb=debounce(function(){
+		  returnJson();
+		  },25);
+  window.addEventListner('keyup',deb);
    var returnJson=function(){
 	var xhttp;
 
@@ -44,7 +49,8 @@
     if (xhttp.readyState == 4 && xhttp.status == 200) {
 	  $("#search-result-row").show();
 	  var x = JSON.stringify(xhttp.response);
-	  alert(typeof jQuery.parseJSON(x));
+	  //alert(typeof jQuery.parseJSON(x));
+	  console.log(x);
       for(var i=0;i<xhttp.response.data[0].length;i++)
       {
 		  $('#search-project').append('');
@@ -89,6 +95,21 @@
 		$("#search-result-row").hide();
 
 		});
+	
+    function debounce(func, wait, immediate){
+        var timeout;              
+        return function() {
+            var context = this, 
+            args = arguments;
+            clearTimeout(timeout);  
+            timeout = setTimeout(function() {
+                 timeout = null;
+                 if (!immediate) func.apply(context, args);
+            }, wait);
+            if (immediate && !timeout) func.apply(context, args);  
+         }; 
+    };
+		//();	
   });
 </script>
 
