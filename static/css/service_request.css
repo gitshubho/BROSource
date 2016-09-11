@@ -104,12 +104,38 @@ margin-right:5px;}
     font-size:14px;
     float: right;
 }
+.submit-review{
+    background:#3498db; text-align: center; color: #ffffff;
+    padding: 12px;
+    margin: 4px;
+    width: 15%;
+    font-size:14px;
+    float: right;
+}
 @media (max-width: 1100px){
 	
 	.accept{
 		width: 30%;
 		
 	}
+
+}
+@media (max-width: 1100px){
+  
+  .submit-review{
+    width: 30%;
+    float: none;
+    margin-bottom: 15%;    
+  }
+
+}
+@media (max-width: 1100px){
+  
+  .new-cards h3{
+    float: none !important;
+    margin-bottom: 5%;
+    
+  }
 
 }
 .decline{
