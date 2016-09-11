@@ -2541,6 +2541,7 @@ Edit Profile
     width: auto;
     padding-top: 20px;
     text-align: center;
+    z-index: 20;
 }
 .footer-add-project
 {

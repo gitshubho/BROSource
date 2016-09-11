@@ -25,6 +25,7 @@ nav .brand-name
 .sliding
 {
   margin-top:-22px;
+  top:15vh !important;
 }
 .search-mobile-topbar
 {
@@ -76,15 +77,15 @@ nav .brand-name
 }
 .msg-dismisser
 {
-  top: 8vh !important;
+  top: 0vh !important;
 }
 .bar-dismisser
 {
-  top:8vh;
+  top:0vh;
 }
 .dash-dismisser
 {
-  top:8vh;
+  top:0vh;
 }
 @media(min-width:1000px) and (max-width:1300px)
 {
